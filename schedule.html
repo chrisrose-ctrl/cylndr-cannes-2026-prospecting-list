@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Schedule · CYLNDR × Cannes 2026</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #f5f5f5; color: #1a1a1a; min-height: 100vh; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; border-bottom: 1px solid #e5e5e5; background: #fff; }
+.nav-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1a1a1a; text-decoration: none; }
+.nav-links { display: flex; gap: 4px; }
+.nav-link { font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 6px; text-decoration: none; color: #666; transition: background 0.12s; }
+.nav-link:hover { background: #f0f0f0; color: #1a1a1a; }
+.nav-link.active { background: #1a1a1a; color: #fff; }
+
+.page-header { padding: 28px 32px 0; max-width: 1100px; margin: 0 auto; }
+.page-title { font-size: 26px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.01em; margin-bottom: 4px; }
+.page-sub { font-size: 13px; color: #888; margin-bottom: 16px; }
+
+/* Day tab bar */
+nav.day-tabs {
+  display: flex; overflow-x: auto; gap: 0;
+  background: #fff; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;
+  padding: 0 32px; max-width: 100%;
+}
+nav.day-tabs button {
+  flex: 0 0 auto; min-width: 72px; padding: 10px 12px;
+  background: none; border: none; border-bottom: 3px solid transparent;
+  font-family: inherit; font-size: 12px; color: #888; cursor: pointer; text-align: center;
+  transition: background 0.1s;
+}
+nav.day-tabs button:hover { background: #fafafa; color: #1a1a1a; }
+nav.day-tabs button.active { color: #1a1a1a; border-bottom-color: #b8922a; font-weight: 600; }
+nav.day-tabs button .day-short { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: inherit; }
+nav.day-tabs button .day-num { display: block; font-size: 18px; margin-top: 2px; font-weight: 700; }
+
+main { padding: 20px 32px 48px; max-width: 1100px; margin: 0 auto; }
+.day-panel { display: none; }
+.day-panel.active { display: block; }
+
+.day-header { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #1a1a1a; }
+.day-label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #b8922a; margin-bottom: 4px; }
+.day-header h2 { font-size: 22px; font-weight: 700; color: #1a1a1a; }
+
+table.schedule {
+  width: 100%; border-collapse: collapse; background: #fff;
+  border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden;
+  font-size: 13px;
+}
+table.schedule th {
+  background: #1a1a1a; color: #fff; text-align: left;
+  padding: 9px 12px; font-size: 10px; letter-spacing: 0.1em; font-weight: 700;
+}
+table.schedule td { padding: 10px 12px; border-top: 1px solid #f0f0f0; vertical-align: top; }
+table.schedule tr:first-child td { border-top: none; }
+table.schedule .time { background: #faf5eb; color: #1a1a1a; font-weight: 700; white-space: nowrap; width: 82px; font-size: 12px; }
+table.schedule .block { background: #fffbf3; color: #888; width: 120px; font-size: 11px; }
+table.schedule .activity { min-width: 200px; color: #1a1a1a; }
+table.schedule .activity ul { margin: 0; padding-left: 16px; }
+table.schedule .activity li { margin-bottom: 4px; color: #1a1a1a; }
+table.schedule .activity .empty { color: #ccc; font-style: italic; font-size: 12px; }
+table.schedule .location, table.schedule .notes { color: #888; font-size: 12px; }
+table.schedule tr.evening .time { background: #f0ece3; }
+table.schedule tr.evening .block { background: #f5f2ea; }
+table.schedule tr:hover td { background: #fafaf8; }
+table.schedule tr:hover td.time { background: #f5f0e0; }
+
+/* Highlight rows that have content */
+table.schedule tr.has-event td { background: #fffdf7; }
+table.schedule tr.has-event td.time { background: #fef3c7; color: #92400e; }
+table.schedule tr.has-event .activity li { color: #1a1a1a; font-weight: 500; }
+
+footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; font-size: 11px; color: #aaa; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 700px) {
+  nav { padding: 14px 16px; }
+  nav.day-tabs { padding: 0 8px; }
+  main { padding: 16px 16px 40px; }
+  .page-header { padding: 20px 16px 0; }
+  table.schedule .block { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">CYLNDR × Cannes 2026</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Overview</a>
+    <a href="calendar.html" class="nav-link">Calendar</a>
+    <a href="database.html" class="nav-link">Database</a>
+    <a href="schedule.html" class="nav-link active">My Schedule</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-title">My Schedule</div>
+  <div class="page-sub">Chris Rose · Cannes Lions 2026 · June 20–26</div>
+</div>
+
+<nav class="day-tabs" id="day-tabs"></nav>
+<main id="main"></main>
+
+<footer>
+  <span>CYLNDR × Cannes Lions 2026 · Personal Itinerary</span>
+  <span id="last-updated">Updated 2026-05-18</span>
+</footer>
+
+<script>
+const DAYS = [
+  { key:'d1', short:'SAT', num:'20', date:'2026-06-20', full:'Saturday, June 20', label:'Pre-festival' },
+  { key:'d2', short:'SUN', num:'21', date:'2026-06-21', full:'Sunday, June 21',   label:'Arrival day' },
+  { key:'d3', short:'MON', num:'22', date:'2026-06-22', full:'Monday, June 22',   label:'Day 1 — Festival opens' },
+  { key:'d4', short:'TUE', num:'23', date:'2026-06-23', full:'Tuesday, June 23',  label:'Day 2' },
+  { key:'d5', short:'WED', num:'24', date:'2026-06-24', full:'Wednesday, June 24',label:'Day 3' },
+  { key:'d6', short:'THU', num:'25', date:'2026-06-25', full:'Thursday, June 25', label:'Day 4' },
+  { key:'d7', short:'FRI', num:'26', date:'2026-06-26', full:'Friday, June 26',   label:'Close & departure' },
+];
+
+const SLOTS = [
+  { time:'8:00 AM',  block:'Breakfast' },
+  { time:'9:00 AM',  block:'Morning session' },
+  { time:'10:00 AM', block:'Morning session' },
+  { time:'11:00 AM', block:'Mid-morning' },
+  { time:'12:00 PM', block:'Lunch' },
+  { time:'1:00 PM',  block:'Lunch' },
+  { time:'2:00 PM',  block:'Afternoon session' },
+  { time:'3:00 PM',  block:'Afternoon session' },
+  { time:'4:00 PM',  block:'Afternoon mtgs' },
+  { time:'5:00 PM',  block:'Late afternoon' },
+  { time:'6:00 PM',  block:'Cocktail hour', evening:true },
+  { time:'7:00 PM',  block:'Cocktail hour', evening:true },
+  { time:'8:00 PM',  block:'Dinner',        evening:true },
+  { time:'9:00 PM',  block:'Dinner',        evening:true },
+  { time:'10:00 PM', block:'Evening event', evening:true },
+  { time:'11:00 PM', block:'Wrap',          evening:true },
+];
+
+const empty = () => SLOTS.map(() => ({ activity:[], location:'', notes:'' }));
+
+const DATA = {
+  __lastUpdated: '2026-05-18',
+  d1: { slots: empty() },
+  d2: { slots: empty() },
+  d3: { slots: empty() },
+  d4: { slots: empty() },
+  d5: { slots: empty() },
+  d6: { slots: empty() },
+  d7: { slots: empty() },
+};
+
+// --- Confirmed schedule ---
+
+// Sunday June 21 — Arrival
+DATA.d2.slots[8].activity  = ["Chris's Travel · Arrival · Lands NCE 4:20 PM · AA 7247 from LHR, dep 1:10 PM (op. British Airways)"];
+DATA.d2.slots[15].activity = ['Canva Creative Cabana opens · Vega la Plage, Bd de la Croisette · open through Thu 2 PM, drop-in'];
+
+// Monday June 22 — Day 1
+DATA.d3.slots[4].activity  = ['Canva Creative Cabana · Vega la Plage (drop-in)', 'Reddit Community Deli · Promenade Robert Favre le Bret · 11:30 AM–2:30 PM (pre-registered)'];
+DATA.d3.slots[9].activity  = ['Ad Age The List · Cannes kickoff (5:00–6:00 PM)'];
+
+// Tuesday June 23 — Day 2
+DATA.d4.slots[4].activity  = ['Canva Creative Cabana · Vega la Plage (drop-in)', 'Reddit Community Deli · Promenade Robert Favre le Bret · 11:30 AM–2:30 PM'];
+DATA.d4.slots[9].activity  = ['Ad Age Small Agency Network at Cannes (5:00–6:00 PM)'];
+
+// Wednesday June 24 — Day 3
+DATA.d5.slots[1].activity  = ['SIGAWomen Lounge · Roberto Cavalli, 67 Bd de la Croisette (9 AM–12 PM)'];
+DATA.d5.slots[4].activity  = ['Canva Creative Cabana · Vega la Plage (drop-in)', 'Reddit Community Deli · Promenade Robert Favre le Bret · 11:30 AM–2:30 PM'];
+DATA.d5.slots[9].activity  = ['Ad Age Cannes Lawn Party (5:30–7:30 PM, RSVP required)'];
+
+// Thursday June 25 — Day 4
+DATA.d6.slots[3].activity  = ['Canva Creative Cabana · Vega la Plage (closes 2 PM today)'];
+DATA.d6.slots[4].activity  = ['Reddit Community Deli · Promenade Robert Favre le Bret · 11:30 AM–2:30 PM'];
+DATA.d6.slots[5].activity  = ["Chris's Travel · Leave Cannes for NCE airport (allow ~30 min, check-in by 2:40 PM)"];
+DATA.d6.slots[7].activity  = ["Chris's Travel · Departure · NCE → CDG 3:10 PM · AF7311, Terminal 2 (op. Air France)"];
+
+// Friday June 26
+DATA.d7.slots[1].activity  = ['Reddit Community Deli · Promenade Robert Favre le Bret · 9 AM–12 PM'];
+
+// ---
+
+document.getElementById('last-updated').textContent = 'Updated ' + DATA.__lastUpdated;
+
+function renderDay(day) {
+  const panel = document.createElement('section');
+  panel.className = 'day-panel';
+  panel.dataset.day = day.key;
+
+  const header = document.createElement('div');
+  header.className = 'day-header';
+  header.innerHTML = `<div class="day-label">${day.label}</div><h2>${day.full}</h2>`;
+  panel.appendChild(header);
+
+  const table = document.createElement('table');
+  table.className = 'schedule';
+  table.innerHTML = `<thead><tr><th>Time</th><th>Block</th><th>Activity</th><th>Location</th><th>Notes</th></tr></thead><tbody></tbody>`;
+  const tbody = table.querySelector('tbody');
+
+  SLOTS.forEach((slot, i) => {
+    const data = DATA[day.key].slots[i] || { activity:[], location:'', notes:'' };
+    const hasEvent = Array.isArray(data.activity) && data.activity.length > 0;
+    const tr = document.createElement('tr');
+    if (slot.evening) tr.classList.add('evening');
+    if (hasEvent) tr.classList.add('has-event');
+
+    const tdTime = document.createElement('td'); tdTime.className = 'time'; tdTime.textContent = slot.time; tr.appendChild(tdTime);
+    const tdBlock = document.createElement('td'); tdBlock.className = 'block'; tdBlock.textContent = slot.block; tr.appendChild(tdBlock);
+
+    const tdAct = document.createElement('td'); tdAct.className = 'activity';
+    if (hasEvent) {
+      const ul = document.createElement('ul');
+      data.activity.forEach(item => { const li = document.createElement('li'); li.textContent = item; ul.appendChild(li); });
+      tdAct.appendChild(ul);
+    } else {
+      const span = document.createElement('span'); span.className = 'empty'; span.textContent = '—'; tdAct.appendChild(span);
+    }
+    tr.appendChild(tdAct);
+
+    const tdLoc = document.createElement('td'); tdLoc.className = 'location'; tdLoc.textContent = data.location || ''; tr.appendChild(tdLoc);
+    const tdNotes = document.createElement('td'); tdNotes.className = 'notes'; tdNotes.textContent = data.notes || ''; tr.appendChild(tdNotes);
+    tbody.appendChild(tr);
+  });
+
+  panel.appendChild(table);
+  return panel;
+}
+
+function buildTabs() {
+  const tabs = document.getElementById('day-tabs');
+  DAYS.forEach(day => {
+    const b = document.createElement('button');
+    b.dataset.day = day.key;
+    b.innerHTML = `<span class="day-short">${day.short}</span><span class="day-num">${day.num}</span>`;
+    b.addEventListener('click', () => setActive(day.key));
+    tabs.appendChild(b);
+  });
+}
+
+function setActive(dayKey) {
+  document.querySelectorAll('nav.day-tabs button').forEach(b => b.classList.toggle('active', b.dataset.day === dayKey));
+  document.querySelectorAll('.day-panel').forEach(p => p.classList.toggle('active', p.dataset.day === dayKey));
+}
+
+const mainEl = document.getElementById('main');
+DAYS.forEach(day => mainEl.appendChild(renderDay(day)));
+buildTabs();
+
+const today = new Date().toISOString().slice(0, 10);
+const match = DAYS.find(d => d.date === today);
+setActive(match ? match.key : 'd2');
+</script>
+</body>
+</html>
