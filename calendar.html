@@ -6,86 +6,62 @@
 <title>Event Calendar · CYLNDR × Cannes 2026</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #0d0d0d; color: #f0f0f0; min-height: 100vh; }
-nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; border-bottom: 1px solid #1e1e1e; }
-.nav-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; }
-.nav-links { display: flex; gap: 6px; }
-.nav-link { font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 6px; text-decoration: none; transition: background 0.15s; color: #ccc; }
-.nav-link:hover { background: #1a1a1a; color: #fff; }
-.nav-link.active { background: #fff; color: #0d0d0d; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #f5f5f5; color: #1a1a1a; min-height: 100vh; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; border-bottom: 1px solid #e5e5e5; background: #fff; }
+.nav-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1a1a1a; }
+.nav-links { display: flex; gap: 4px; }
+.nav-link { font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 6px; text-decoration: none; color: #666; transition: background 0.12s; }
+.nav-link:hover { background: #f0f0f0; color: #1a1a1a; }
+.nav-link.active { background: #1a1a1a; color: #fff; }
 
-.page-header { padding: 40px 32px 28px; max-width: 1400px; margin: 0 auto; }
-.page-title { font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.01em; margin-bottom: 6px; }
-.page-sub { font-size: 14px; color: #555; }
+.page-header { padding: 32px 32px 20px; max-width: 1400px; margin: 0 auto; }
+.page-title { font-size: 26px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.01em; margin-bottom: 4px; }
+.page-sub { font-size: 13px; color: #888; }
 
-/* Legend */
-.legend { display: flex; gap: 16px; flex-wrap: wrap; padding: 0 32px 24px; max-width: 1400px; margin: 0 auto; }
-.leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #666; }
+.legend { display: flex; gap: 20px; flex-wrap: wrap; padding: 0 32px 20px; max-width: 1400px; margin: 0 auto; }
+.leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #555; }
 .leg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
-/* Toggle strip */
-.filters { padding: 0 32px 24px; max-width: 1400px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; }
-.filter-btn { font: inherit; font-size: 12px; padding: 6px 12px; border-radius: 6px; border: 1px solid #2a2a2a; background: #111; color: #888; cursor: pointer; transition: all 0.15s; }
-.filter-btn:hover { border-color: #444; color: #ccc; }
-.filter-btn.on { background: #1a1a1a; border-color: #555; color: #fff; }
-.filter-btn.fit-btn.on { background: #0a1f12; border-color: #1a4a2e; color: #4ade80; }
-.filter-btn.adj-btn.on { background: #1a1200; border-color: #3d2e0a; color: #fbbf24; }
+.filters { padding: 0 32px 20px; max-width: 1400px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-btn { font: inherit; font-size: 12px; padding: 6px 14px; border-radius: 6px; border: 1px solid #d4d4d4; background: #fff; color: #666; cursor: pointer; transition: all 0.12s; }
+.filter-btn:hover { border-color: #aaa; color: #1a1a1a; }
+.filter-btn.on { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
+.filter-btn.fit-btn.on { background: #166534; border-color: #166534; color: #fff; }
+.filter-btn.adj-btn.on { background: #92400e; border-color: #92400e; color: #fff; }
 
-/* Calendar grid */
 .cal-wrap { padding: 0 32px 48px; max-width: 1400px; margin: 0 auto; overflow-x: auto; }
 .cal-table { width: 100%; border-collapse: collapse; min-width: 900px; }
-.cal-table th {
-  background: #111; border: 1px solid #1e1e1e; padding: 14px 16px;
-  text-align: left; font-size: 13px; font-weight: 600; color: #888;
-  position: sticky; top: 0; z-index: 2;
-}
-.cal-table th.day-header {
-  font-size: 13px; color: #fff; font-weight: 700;
-}
-.cal-table th .day-sub { font-size: 10px; color: #555; font-weight: 400; display: block; margin-top: 2px; }
-.cal-table td {
-  border: 1px solid #1a1a1a; padding: 12px 14px; vertical-align: top;
-  font-size: 12px; color: #666; line-height: 1.6;
-}
-.cal-table td.time-col { color: #444; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; background: #0d0d0d; width: 110px; }
-.cal-table tr:hover td { background: #111; }
-.cal-table tr:hover td.time-col { background: #0d0d0d; }
+.cal-table th { background: #fff; border: 1px solid #e5e5e5; padding: 12px 14px; text-align: left; font-size: 12px; font-weight: 600; color: #888; position: sticky; top: 0; z-index: 2; }
+.cal-table th.day-header { font-size: 13px; color: #1a1a1a; font-weight: 700; }
+.cal-table th .day-sub { font-size: 10px; color: #aaa; font-weight: 400; display: block; margin-top: 2px; }
+.cal-table td { border: 1px solid #ebebeb; padding: 10px 12px; vertical-align: top; font-size: 12px; color: #555; line-height: 1.6; background: #fff; }
+.cal-table td.time-col { color: #aaa; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; background: #fafafa; width: 100px; }
+.cal-table tr:hover td { background: #fafafa; }
+.cal-table tr:hover td.time-col { background: #f3f3f3; }
 
-/* Row backgrounds by time */
-tr.morning td:not(.time-col) { background: #0e0e12; }
-tr.midday td:not(.time-col) { background: #0e120e; }
-tr.afternoon td:not(.time-col) { background: #120e0e; }
-tr.evening td:not(.time-col) { background: #100e12; }
-tr.across td:not(.time-col) { background: #111; }
-tr.pre td:not(.time-col) { background: #0e100e; }
+.events { display: flex; flex-direction: column; gap: 5px; }
+.event { padding: 6px 8px; border-radius: 6px; background: #fafafa; border: 1px solid #e5e5e5; }
+.event.fit { background: #f0fdf4; border-color: #bbf7d0; }
+.event.adj { background: #fffbeb; border-color: #fde68a; }
+.event.key { background: #faf5ff; border-color: #e9d5ff; }
+.event-venue { font-size: 10px; color: #aaa; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+.event.fit .event-venue { color: #166534; }
+.event.adj .event-venue { color: #92400e; }
+.event.key .event-venue { color: #6b21a8; }
+.event-session { font-size: 12px; color: #333; line-height: 1.4; }
+.event.fit .event-session { color: #166534; }
+.event.adj .event-session { color: #78350f; }
+.event.key .event-session { color: #581c87; }
+.event-people { font-size: 11px; color: #aaa; margin-top: 2px; }
+.badge { display: inline-block; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 4px; margin-left: 3px; vertical-align: middle; }
+.badge-fit { background: #d1fae5; color: #065f46; }
+.badge-adj { background: #fef3c7; color: #92400e; }
+.badge-key { background: #ede9fe; color: #5b21b6; }
+.empty-cell { color: #ccc; font-style: italic; font-size: 11px; }
 
-/* Events within cells */
-.events { display: flex; flex-direction: column; gap: 6px; }
-.event { padding: 6px 8px; border-radius: 6px; background: #161616; border: 1px solid #222; }
-.event.fit { background: #0a1f12; border-color: #1a4a2e; }
-.event.adj { background: #1a1200; border-color: #3d2e0a; }
-.event.key { background: #120a1e; border-color: #2d1a4a; }
-.event-venue { font-size: 10px; color: #555; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
-.event.fit .event-venue { color: #1a5c30; }
-.event.adj .event-venue { color: #5c3a00; }
-.event.key .event-venue { color: #3d2e5c; }
-.event-session { font-size: 12px; color: #aaa; line-height: 1.4; }
-.event.fit .event-session { color: #86efac; }
-.event.adj .event-session { color: #fde68a; }
-.event.key .event-session { color: #c4b5fd; }
-.event-people { font-size: 11px; color: #555; margin-top: 2px; }
-.event.fit .event-people { color: #4ade8066; }
-.event.adj .event-people { color: #fbbf2466; }
-.badge { display: inline-block; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 4px; margin-left: 4px; vertical-align: middle; }
-.badge-fit { background: #0a1f12; color: #4ade80; border: 1px solid #1a4a2e; }
-.badge-adj { background: #1a1200; color: #fbbf24; border: 1px solid #3d2e0a; }
-.badge-key { background: #120a1e; color: #c4b5fd; border: 1px solid #2d1a4a; }
-.empty-cell { color: #2a2a2a; font-style: italic; font-size: 11px; }
+tr.divider td { background: #f5f5f5; border: none; padding: 8px 14px; font-size: 10px; color: #aaa; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; border-bottom: 1px solid #e5e5e5; }
 
-/* Section divider */
-tr.divider td { background: #0d0d0d; border: none; padding: 8px 14px; font-size: 10px; color: #333; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
-
-footer { border-top: 1px solid #161616; padding: 20px 32px; font-size: 11px; color: #333; display: flex; justify-content: space-between; }
+footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; display: flex; justify-content: space-between; font-size: 11px; color: #aaa; flex-wrap: wrap; gap: 8px; }
 </style>
 </head>
 <body>
@@ -105,10 +81,10 @@ footer { border-top: 1px solid #161616; padding: 20px 32px; font-size: 11px; col
 </div>
 
 <div class="legend">
-  <div class="leg"><div class="leg-dot" style="background:#4ade80"></div>ICP Fit</div>
-  <div class="leg"><div class="leg-dot" style="background:#fbbf24"></div>Adjacent</div>
-  <div class="leg"><div class="leg-dot" style="background:#c4b5fd"></div>Key relationship / Powell PR mandate</div>
-  <div class="leg"><div class="leg-dot" style="background:#555"></div>General / ignore</div>
+  <div class="leg"><div class="leg-dot" style="background:#166534"></div>ICP Fit</div>
+  <div class="leg"><div class="leg-dot" style="background:#92400e"></div>Adjacent</div>
+  <div class="leg"><div class="leg-dot" style="background:#6b21a8"></div>Key relationship / Powell PR mandate</div>
+  <div class="leg"><div class="leg-dot" style="background:#ccc"></div>General</div>
 </div>
 
 <div class="filters">
@@ -121,7 +97,7 @@ footer { border-top: 1px solid #161616; padding: 20px 32px; font-size: 11px; col
 <table class="cal-table" id="cal">
 <thead>
 <tr>
-  <th style="width:110px"></th>
+  <th style="width:100px"></th>
   <th class="day-header">Mon Jun 22<span class="day-sub">Day 1</span></th>
   <th class="day-header">Tue Jun 23<span class="day-sub">Day 2</span></th>
   <th class="day-header">Wed Jun 24<span class="day-sub">Day 3</span></th>
@@ -140,199 +116,164 @@ footer { border-top: 1px solid #161616; padding: 20px 32px; font-size: 11px; col
 
 <script>
 const CAL_DATA = [
-  {
-    label: 'Morning', cls: 'morning',
-    mon: [
-      {venue:'Brand Innovators Beach Stage', session:'The CMO Agenda', people:'Adrian Fung (eBay) · Joy Howard (Back Market) · Zoë Lazarre (Genentech)', time:'8:00 AM', cls:''},
-      {venue:'Lumière Theatre', session:'AB InBev Creative Marketer of the Year Keynote', people:'', time:'10:00 AM', cls:''},
-      {venue:'Brand Innovators Beach Stage', session:'Allison Stransky (Samsung CMO) Fireside', people:'', time:'11:00 AM', cls:''},
-      {venue:'FQ Beach (Female Quotient)', session:'Creative Currency: From Insight to Impact', people:'Carley Caldas (eos SVP Marketing) [FIT] · Gina Cavallo (xpln.ai)', time:'Morning', cls:'fit'},
+  { label:'Morning', cls:'morning',
+    mon:[
+      {venue:'FQ Beach (Female Quotient)',session:'Creative Currency: From Insight to Impact',people:'Carley Caldas (eos SVP Marketing)',time:'Morning',cls:'fit'},
+      {venue:'Brand Innovators Beach Stage',session:'The CMO Agenda',people:'Adrian Fung (eBay) · Joy Howard (Back Market)',time:'8:00 AM',cls:'adj'},
+      {venue:'Lumière Theatre',session:'AB InBev Creative Marketer of the Year Keynote',people:'',time:'10:00 AM',cls:''},
     ],
-    tue: [
-      {venue:'DEPT Secret Garden', session:'WFA Breakfast Panel (invite only)', people:'', time:'8:30 AM', cls:''},
-      {venue:'BIMA House, Hotel Le Suquet', session:'The Taste Gap — What AI Cannot Brief Itself On', people:'Linda Tong (Webflow CEO)', time:'9:00 AM', cls:''},
-      {venue:'Brand Innovators Beach Stage', session:'Unilever Personal Care Fireside', people:'', time:'9:30 AM', cls:''},
-      {venue:'Lumière Theatre', session:'Oprah Winfrey LionHeart Honoree Talk', people:'', time:'10:00 AM', cls:''},
-      {venue:'DEPT Secret Garden', session:'Rethinking growth in a B2A world', people:'Terri Wang (OpenAI) · Grace Kao (Snap) · Antonia Wade (PwC)', time:'10:30 AM', cls:''},
-      {venue:'Brand Innovators Beach Stage', session:'From Attention to Advocacy', people:'Alex Frias (Steve Madden CMO)', time:'10:50 AM', cls:'adj'},
+    tue:[
+      {venue:'DEPT Secret Garden',session:'WFA Breakfast Panel (invite only)',people:'',time:'8:30 AM',cls:''},
+      {venue:'BIMA House',session:'The Taste Gap — What AI Cannot Brief Itself On',people:'Linda Tong (Webflow CEO)',time:'9:00 AM',cls:''},
+      {venue:'Lumière Theatre',session:'Oprah Winfrey LionHeart Honoree Talk',people:'',time:'10:00 AM',cls:''},
+      {venue:'DEPT Secret Garden',session:'Rethinking growth in a B2A world',people:'Terri Wang (OpenAI) · Grace Kao (Snap) · Antonia Wade (PwC)',time:'10:30 AM',cls:''},
+      {venue:'Brand Innovators Beach Stage',session:'From Attention to Advocacy',people:'Alex Frias (Steve Madden CMO)',time:'10:50 AM',cls:'adj'},
     ],
-    wed: [
-      {venue:'Brand Innovators Beach Stage', session:'Kelly Mahoney (Ulta Beauty CMO) Fireside', people:'', time:'9:15 AM', cls:'adj'},
-      {venue:'Brand Innovators Showcase Stage', session:'eos Body Through Culture', people:'Kelsey Newberry (eos VP Brand Marketing)', time:'10:30 AM', cls:'fit'},
-      {venue:'DEPT Secret Garden', session:'What broke the Internet?', people:'Nic Brandenberger (Mammut CMO) · Kira Karlstrom (Twitch)', time:'10:30 AM', cls:'adj'},
-      {venue:'Brand Innovators Beach Stage', session:'State of Industry: Innovation', people:'Rob Master (Edgewell) · Ricardo Aspiazu (Verizon)', time:'10:00 AM', cls:''},
+    wed:[
+      {venue:'Brand Innovators Showcase Stage',session:'eos Body Through Culture',people:'Kelsey Newberry (eos VP Brand Marketing)',time:'10:30 AM',cls:'fit'},
+      {venue:'DEPT Secret Garden',session:'What broke the Internet?',people:'Nic Brandenberger (Mammut CMO) · Kira Karlstrom (Twitch)',time:'10:30 AM',cls:'adj'},
+      {venue:'Brand Innovators Beach Stage',session:'Kelly Mahoney (Ulta CMO) Fireside',people:'',time:'9:15 AM',cls:'adj'},
     ],
-    thu: [
-      {venue:'Brand Innovators Beach Stage', session:'Creating Experiences People Want to Share', people:'Ashley Kechter (Vuori President) · Jill Cress (Babylist CMO)', time:'10:30 AM', cls:'adj'},
-      {venue:'DEPT Secret Garden', session:'Running Club with Webby Awards', people:'', time:'9:30 AM', cls:''},
+    thu:[
+      {venue:'Brand Innovators Beach Stage',session:'Creating Experiences People Want to Share',people:'Ashley Kechter (Vuori) · Jill Cress (Babylist CMO)',time:'10:30 AM',cls:'adj'},
+      {venue:'DEPT Secret Garden',session:'Running Club with Webby Awards',people:'',time:'9:30 AM',cls:''},
     ],
-    fri: [
-      {venue:'', session:'Festival winds down — award shows / departures', people:'', time:'', cls:''},
-    ],
+    fri:[{venue:'',session:'Festival winds down — award shows / departures',people:'',time:'',cls:''}],
   },
-  {
-    label: 'Midday', cls: 'midday',
-    mon: [
-      {venue:'Brand Innovators Beach Stage', session:'From Reach to Relevance', people:'Damon Berger (Gap) · Dave Kersey (SharkNinja)', time:'12:25 PM', cls:'adj'},
-      {venue:'Brand Innovators Beach Stage', session:'Cultural Relevance', people:'', time:'1:25 PM', cls:''},
+  { label:'Midday', cls:'midday',
+    mon:[
+      {venue:'Brand Innovators Beach Stage',session:'From Reach to Relevance',people:'Damon Berger (Gap) · Dave Kersey (SharkNinja)',time:'12:25 PM',cls:'adj'},
     ],
-    tue: [
-      {venue:'Brands&Culture Villa', session:'Do Marketers Move Culture? (Live Debate)', people:'Catherine Ferdon (Coinbase CMO) · Viviana Ochoa (Essity VP Marketing) · Alex Weller (Patagonia)', time:'12:00 PM', cls:'adj'},
-      {venue:'DEPT Secret Garden', session:'WFA Roundtable Lunch (invite only)', people:'', time:'12:00 PM', cls:''},
-      {venue:'Brand Innovators Beach Stage', session:'Marketing at Speed of Culture', people:'Billy Bohan Chinique (Virgin Voyages VP Marketing)', time:'1:00 PM', cls:'adj'},
-      {venue:'Brand Innovators Beach Stage', session:'Beyond the Game: Sports & Culture', people:'', time:'1:35 PM', cls:''},
+    tue:[
+      {venue:'Brands&Culture Villa',session:'Do Marketers Move Culture? (Live Debate)',people:'Catherine Ferdon (Coinbase CMO) · Viviana Ochoa (Essity VP Marketing)',time:'12:00 PM',cls:'adj'},
+      {venue:'DEPT Secret Garden',session:'WFA Roundtable Lunch (invite only)',people:'',time:'12:00 PM',cls:''},
+      {venue:'Brand Innovators Beach Stage',session:'Marketing at Speed of Culture',people:'Billy Bohan Chinique (Virgin Voyages VP Marketing)',time:'1:00 PM',cls:'adj'},
     ],
-    wed: [
-      {venue:'Brand Innovators Beach Stage', session:'2026 Media Innovation Outlook', people:'Paloma Azulay (McDonald\'s VP)', time:'12:25 PM', cls:''},
-      {venue:'Brands&Culture Villa', session:'Fandoms, Communities & Niches', people:'Gigi Russo (HUNTER) · Sportradar · PepsiCo', time:'12:30 PM', cls:''},
-      {venue:'Brand Innovators Showcase Stage', session:'Leanne Fremar (JPMorganChase) Fireside', people:'', time:'12:30 PM', cls:''},
+    wed:[
+      {venue:'Brands&Culture Villa',session:'Fandoms, Communities & Niches',people:'Gigi Russo (HUNTER) · Sportradar · PepsiCo',time:'12:30 PM',cls:''},
+      {venue:'Brand Innovators Beach Stage',session:'2026 Media Innovation Outlook',people:'Paloma Azulay (McDonald\'s VP)',time:'12:25 PM',cls:''},
     ],
-    thu: [
-      {venue:'Brand Innovators Beach Stage', session:'Mars Portfolio Panel', people:'Natalia Ball · Rankin Carroll · Matt Graham', time:'11:05 AM', cls:''},
-      {venue:'Brand Innovators Beach Stage', session:'L\'Oréal Marketing Effectiveness Fireside', people:'', time:'12:10 PM', cls:''},
+    thu:[
+      {venue:'Brand Innovators Beach Stage',session:'Mars Portfolio Panel',people:'Natalia Ball · Rankin Carroll · Matt Graham',time:'11:05 AM',cls:''},
     ],
-    fri: [
-      {venue:'', session:'No major programming', people:'', time:'', cls:''},
-    ],
+    fri:[{venue:'',session:'No major programming',people:'',time:'',cls:''}],
   },
-  {
-    label: 'Afternoon', cls: 'afternoon',
-    mon: [
-      {venue:'Brand Innovators Beach Stage', session:'NFL / 72andSunny Fireside', people:'Tim Ellis (NFL EVP)', time:'2:00 PM', cls:''},
-      {venue:'Brand Innovators Showcase Stage', session:'The AI-First Marketing Organization', people:'', time:'4:00 PM', cls:''},
-      {venue:'Brand Innovators Showcase Stage', session:'BetterHelp / Sara Brooks (CGO)', people:'Sara Brooks (BetterHelp CGO) · Billy Bohan Chinique (Virgin Voyages VP)', time:'3:10 PM', cls:'adj'},
+  { label:'Afternoon', cls:'afternoon',
+    mon:[
+      {venue:'Brand Innovators Showcase Stage',session:'Sara Brooks (BetterHelp CGO) · Billy Bohan Chinique (Virgin Voyages VP)',people:'',time:'3:10 PM',cls:'adj'},
     ],
-    tue: [
-      {venue:'Brand Innovators Showcase Stage', session:'Audience First, Channel Second', people:'Benoit Vatere (Liquid Death CMO)', time:'2:00 PM', cls:'adj'},
-      {venue:'DEPT Secret Garden', session:'The new rules of scaling brands with AI', people:'Sona Iliffe-Moon (Yahoo) · Jessica Qaasim (Google) · Emily O\'Hara (eBay VP) · Ashley Penn (Adobe)', time:'2:00 PM', cls:''},
-      {venue:'Transform Magazine', session:'Modern Heritage Talk', people:'Mike Perry (Tavern)', time:'3:15 PM', cls:''},
+    tue:[
+      {venue:'Brand Innovators Showcase Stage',session:'Audience First, Channel Second',people:'Benoit Vatere (Liquid Death CMO)',time:'2:00 PM',cls:'adj'},
+      {venue:'DEPT Secret Garden',session:'The new rules of scaling brands with AI',people:'Sona Iliffe-Moon (Yahoo) · Jessica Qaasim (Google) · Emily O\'Hara (eBay VP)',time:'2:00 PM',cls:''},
     ],
-    wed: [
-      {venue:'Brand Innovators Beach Stage', session:'Agents, Signals & the Self-Driving Funnel', people:'Lindsey Slaby (Sunday Dinner) — KEY RELATIONSHIP', time:'3:40 PM', cls:'key'},
-      {venue:'Brand Innovators Beach Stage', session:'Commerce in Motion', people:'Jill Kramer (Mastercard CMO)', time:'2:00 PM', cls:''},
-      {venue:'DEPT Secret Garden', session:'How AI is helping keep loved ones safe from gun violence', people:'Laurie Keith (Ad Council) · Jennifer Kattula (Microsoft Advertising)', time:'4:00 PM', cls:''},
-      {venue:'DEPT Secret Garden', session:'Drinks at the bistro', people:'', time:'4:30 PM', cls:''},
+    wed:[
+      {venue:'Brand Innovators Beach Stage',session:'Agents, Signals & the Self-Driving Funnel',people:'Lindsey Slaby (Sunday Dinner) — KEY RELATIONSHIP',time:'3:40 PM',cls:'key'},
+      {venue:'DEPT Secret Garden',session:'How AI is helping keep loved ones safe from gun violence',people:'Laurie Keith (Ad Council) · Jennifer Kattula (Microsoft Advertising)',time:'4:00 PM',cls:''},
     ],
-    thu: [
-      {venue:'Brand Innovators Beach Stage', session:'Laurie Lam (e.l.f. CBO) Fireside', people:'', time:'1:35 PM', cls:'adj'},
-      {venue:'DEPT Secret Garden', session:'The human multiplier: why leadership is the real AI advantage', people:'Nili Klenoff (Mastercard) · Adrian Fung (eBay CMO) · Scott Zalaznik (BLACKROLL CEO)', time:'2:00 PM', cls:'adj'},
-      {venue:'Brand Innovators Beach Stage', session:'Post-Cannes Playbook: Leadership & Brand Strategy', people:'', time:'2:30 PM', cls:''},
+    thu:[
+      {venue:'Brand Innovators Beach Stage',session:'Laurie Lam (e.l.f. CBO) Fireside',people:'',time:'1:35 PM',cls:'adj'},
+      {venue:'DEPT Secret Garden',session:'The human multiplier: why leadership is the real AI advantage',people:'Scott Zalaznik (BLACKROLL CEO) · Adrian Fung (eBay CMO)',time:'2:00 PM',cls:'adj'},
     ],
-    fri: [
-      {venue:'', session:'No major programming', people:'', time:'', cls:''},
-    ],
+    fri:[{venue:'',session:'No major programming',people:'',time:'',cls:''}],
   },
-  {
-    label: 'Evening', cls: 'evening',
-    mon: [
-      {venue:'Ad Age / The List Lounge', session:'The List Evening Opener', people:'', time:'Evening', cls:''},
-      {venue:'Adweek House, Le Majestic Hotel', session:'Evening programming continues', people:'', time:'Evening', cls:''},
+  { label:'Evening', cls:'evening',
+    mon:[
+      {venue:'Ad Age / The List Lounge',session:'The List Evening Opener',people:'',time:'Evening',cls:''},
     ],
-    tue: [
-      {venue:'DEPT Secret Garden', session:'Future Club Dinner (invite only) — Hope Hydration', people:'', time:'7:00 PM', cls:''},
+    tue:[
+      {venue:'DEPT Secret Garden',session:'Future Club Dinner (invite only)',people:'',time:'7:00 PM',cls:''},
     ],
-    wed: [
-      {venue:'DEPT Secret Garden', session:'Future Club Dinner × WFA (invite only)', people:'', time:'7:00 PM', cls:''},
-      {venue:'Ad Age / The List Lounge', session:'Cannes Lawn Party (invite only)', people:'', time:'5:30 PM', cls:''},
+    wed:[
+      {venue:'DEPT Secret Garden',session:'Future Club Dinner × WFA (invite only)',people:'',time:'7:00 PM',cls:''},
+      {venue:'Ad Age / The List Lounge',session:'Cannes Lawn Party (invite only)',people:'',time:'5:30 PM',cls:''},
     ],
-    thu: [
-      {venue:'RTL Beach', session:'ACT Responsible Tributes Celebration', people:'', time:'5:00 PM', cls:''},
-      {venue:'DEPT Secret Garden', session:'afriCANNES × DEPT Closing Party', people:'Kojo Marfo · Kofi Turkson (My Runway Group)', time:'7:00 PM', cls:''},
+    thu:[
+      {venue:'RTL Beach',session:'ACT Responsible Tributes Celebration',people:'',time:'5:00 PM',cls:''},
+      {venue:'DEPT Secret Garden',session:'afriCANNES × DEPT Closing Party',people:'Kojo Marfo · Kofi Turkson (My Runway Group)',time:'7:00 PM',cls:''},
     ],
-    fri: [
-      {venue:'', session:'Festival closes', people:'', time:'', cls:''},
-    ],
+    fri:[{venue:'',session:'Festival closes',people:'',time:'',cls:''}],
   },
 ];
 
 const ACROSS_DATA = [
-  {
-    venue: 'Adweek House (Le Majestic Hotel)',
-    period: 'Jun 21–26 · Full week',
-    contacts: [
-      {name:'Sarah Leinberger', role:'VP Marketing · Yoobi & Altitude Brands', cls:'fit'},
-      {name:'Soyoung Kang', role:'President · eos Products', cls:'adj'},
-      {name:'Vanessa Wallace', role:'CMO · Savage X Fenty', cls:'adj'},
-      {name:'Jody Hallman', role:'VP Integrated Marketing · Perdue Farms', cls:'adj'},
-      {name:'Yasmin Dastmalchi', role:'GM · NYX Professional Makeup', cls:'adj'},
-      {name:'Aïda Moudachirou-Rebois', role:'SVP/GM · M·A·C Cosmetics', cls:'adj'},
-      {name:'Allyson Felix', role:'Co-Founder · Saysh', cls:'adj'},
-      {name:'Manu Orssaud', role:'CMO · Duolingo', cls:'adj'},
-      {name:'Kristen Lauria', role:'CCMO · Wheels Up', cls:'adj'},
-    ]
-  },
-  {
-    venue: 'DEPT Secret Garden (5 Rdpt Duboys d\'Angers)',
-    period: 'Jun 23–25 · Invite-only',
-    contacts: [
-      {name:'Nic Brandenberger', role:'CMO · Mammut', cls:'adj'},
-      {name:'Raji Behal', role:'Head W&S Europe, UK&I · Klarna', cls:'adj'},
-      {name:'Scott Zalaznik', role:'CEO · BLACKROLL', cls:'adj'},
-    ]
-  },
-  {
-    venue: 'Brands&Culture Villa',
-    period: 'Jun 23–24',
-    contacts: [
-      {name:'Paige Grossman', role:'VP Global Brand Creative · Ancestry', cls:'fit'},
-      {name:'Yasmin O\'Neal', role:'Global Brand Senior Director · DECIEM (The Ordinary)', cls:'fit'},
-      {name:'Catherine Ferdon', role:'CMO · Coinbase', cls:'adj'},
-      {name:'Viviana Ochoa', role:'VP Marketing · Essity', cls:'adj'},
-      {name:'Tamika Young', role:'CMCO · Hinge', cls:'adj'},
-      {name:'Ekta Chopra', role:'CTAIO · e.l.f. Beauty', cls:'adj'},
-    ]
-  },
-  {
-    venue: 'Stagwell Sport Beach (Plage du Festival)',
-    period: 'Jun 21–25 · Access intelligence (no title filter)',
-    contacts: [
-      {name:'Doug Sweeny', role:'CMO · Oura Ring', cls:'adj'},
-      {name:'Ken Griffey Jr · Noah Lyles · Maria Sharapova · CC Sabathia', role:'Athlete roster', cls:'adj'},
-    ]
-  },
-  {
-    venue: 'Brand Innovators (Rado Beach / Armani Caffè)',
-    period: 'Jun 22–25 · Full summit',
-    contacts: [
-      {name:'Kelsey Newberry', role:'VP Brand Marketing · eos', cls:'fit'},
-      {name:'Lindsey Slaby', role:'Founder · Sunday Dinner — KEY RELATIONSHIP', cls:'key'},
-      {name:'Ashley Kechter', role:'Global President · Vuori', cls:'adj'},
-      {name:'Jill Cress', role:'CMO · Babylist', cls:'adj'},
-      {name:'Benoit Vatere', role:'Chief Media Officer · Liquid Death', cls:'adj'},
-      {name:'Joy Howard', role:'CMO · Back Market', cls:'adj'},
-      {name:'Michelle Crossan-Matos', role:'CGO · SharkNinja', cls:'adj'},
-    ]
-  },
+  {venue:'Adweek House (Le Majestic Hotel)',period:'Jun 21–26 · Full week',contacts:[
+    {name:'Sarah Leinberger',role:'VP Marketing · Yoobi & Altitude Brands',cls:'fit'},
+    {name:'Soyoung Kang',role:'President · eos Products',cls:'adj'},
+    {name:'Vanessa Wallace',role:'CMO · Savage X Fenty',cls:'adj'},
+    {name:'Jody Hallman',role:'VP Integrated Marketing · Perdue Farms',cls:'adj'},
+    {name:'Yasmin Dastmalchi',role:'GM · NYX Professional Makeup',cls:'adj'},
+    {name:'Aïda Moudachirou-Rebois',role:'SVP/GM · M·A·C Cosmetics',cls:'adj'},
+    {name:'Allyson Felix',role:'Co-Founder · Saysh',cls:'adj'},
+    {name:'Manu Orssaud',role:'CMO · Duolingo',cls:'adj'},
+  ]},
+  {venue:'DEPT Secret Garden (5 Rdpt Duboys d\'Angers)',period:'Jun 23–25 · Invite-only',contacts:[
+    {name:'Nic Brandenberger',role:'CMO · Mammut',cls:'adj'},
+    {name:'Raji Behal',role:'Head W&S Europe, UK&I · Klarna',cls:'adj'},
+    {name:'Scott Zalaznik',role:'CEO · BLACKROLL',cls:'adj'},
+  ]},
+  {venue:'Brands&Culture Villa',period:'Jun 23–24',contacts:[
+    {name:'Paige Grossman',role:'VP Global Brand Creative · Ancestry',cls:'fit'},
+    {name:'Yasmin O\'Neal',role:'Global Brand Senior Director · DECIEM (The Ordinary)',cls:'fit'},
+    {name:'Catherine Ferdon',role:'CMO · Coinbase',cls:'adj'},
+    {name:'Viviana Ochoa',role:'VP Marketing · Essity',cls:'adj'},
+    {name:'Tamika Young',role:'CMCO · Hinge',cls:'adj'},
+    {name:'Ekta Chopra',role:'CTAIO · e.l.f. Beauty',cls:'adj'},
+  ]},
+  {venue:'Stagwell Sport Beach (Plage du Festival)',period:'Jun 21–25 · Access intelligence (no title filter)',contacts:[
+    {name:'Doug Sweeny',role:'CMO · Oura Ring',cls:'adj'},
+    {name:'Ken Griffey Jr · Noah Lyles · Maria Sharapova · CC Sabathia',role:'Confirmed athlete roster',cls:'adj'},
+  ]},
+  {venue:'Brand Innovators (Rado Beach / Armani Caffè)',period:'Jun 22–25 · Full summit',contacts:[
+    {name:'Kelsey Newberry',role:'VP Brand Marketing · eos',cls:'fit'},
+    {name:'Lindsey Slaby',role:'Founder · Sunday Dinner — KEY RELATIONSHIP',cls:'key'},
+    {name:'Ashley Kechter',role:'Global President · Vuori',cls:'adj'},
+    {name:'Jill Cress',role:'CMO · Babylist',cls:'adj'},
+    {name:'Benoit Vatere',role:'Chief Media Officer · Liquid Death',cls:'adj'},
+    {name:'Joy Howard',role:'CMO · Back Market',cls:'adj'},
+    {name:'Michelle Crossan-Matos',role:'CGO · SharkNinja',cls:'adj'},
+  ]},
 ];
 
 const PRE_DATA = [
-  { venue:'FQ Beach (Female Quotient Equality Lounge)', when:'Mon Jun 22', contacts:[{name:'Carley Caldas', role:'SVP Marketing & Creative · eos Products', cls:'fit'},{name:'Isabelle Sakai', role:'CMO · Mark Anthony Brands (White Claw)', cls:'adj'}] },
-  { venue:'Journal House (WSJ, 61 Blvd de la Croisette)', when:'Jun 22–25', contacts:[{name:'Access intelligence venue', role:'No title filter — track who is in the building. AI + media + accountability programming.', cls:''}] },
-  { venue:'Ad Age / The List Lounge', when:'Jun 22–25', contacts:[{name:'CMO Roundtable (Tue AM)', role:'Leading Women (Wed AM) · Cannes Lawn Party (Wed 5:30 PM)', cls:''},{name:'E.J. Schultz (Ad Age News Editor)', role:'At Brands&Culture — flag for Powell PR trade article placement', cls:'key'}] },
-  { venue:'Carlton + Majestic Terraces', when:'Daily · 90 min', contacts:[{name:'Strategic drift time', role:'Late morning or golden hour — unstructured networking, not downtime', cls:''}] },
-  { venue:'LBB & Friends Beach (65 Blvd de la Croisette)', when:'Jun 22–26', contacts:[{name:'Powell PR mandate venue', role:'15th year · Free drinks 4–6 PM · Pursue speaking slot', cls:'key'}] },
+  {venue:'FQ Beach (Female Quotient Equality Lounge)',when:'Mon Jun 22',contacts:[
+    {name:'Carley Caldas',role:'SVP Marketing & Creative · eos Products',cls:'fit'},
+    {name:'Isabelle Sakai',role:'CMO · Mark Anthony Brands (White Claw)',cls:'adj'},
+  ]},
+  {venue:'Journal House (WSJ, 61 Blvd de la Croisette)',when:'Jun 22–25',contacts:[
+    {name:'Access intelligence venue',role:'No title filter — track who is in the building.',cls:''},
+  ]},
+  {venue:'Ad Age / The List Lounge',when:'Jun 22–25',contacts:[
+    {name:'CMO Roundtable (Tue AM) · Leading Women (Wed AM)',role:'Cannes Lawn Party Wed 5:30 PM',cls:''},
+    {name:'E.J. Schultz (Ad Age News Editor)',role:'At Brands&Culture — flag for Powell PR trade article placement',cls:'key'},
+  ]},
+  {venue:'Carlton + Majestic Terraces',when:'Daily · 90 min',contacts:[
+    {name:'Strategic drift time',role:'Late morning or golden hour — unstructured networking, not downtime',cls:''},
+  ]},
+  {venue:'LBB & Friends Beach (65 Blvd de la Croisette)',when:'Jun 22–26',contacts:[
+    {name:'Powell PR mandate venue',role:'15th year · Free drinks 4–6 PM · Pursue speaking slot',cls:'key'},
+  ]},
 ];
 
 function makeEventHtml(ev) {
+  const badge = ev.cls==='fit'?'<span class="badge badge-fit">FIT</span>':ev.cls==='adj'?'<span class="badge badge-adj">ADJ</span>':ev.cls==='key'?'<span class="badge badge-key">KEY</span>':'';
   return `<div class="event ${ev.cls}" data-cls="${ev.cls}">
-    ${ev.time ? `<div class="event-venue">${ev.time}${ev.venue ? ' · '+ev.venue : ''}</div>` : ev.venue ? `<div class="event-venue">${ev.venue}</div>` : ''}
-    <div class="event-session">${ev.session}${ev.cls==='fit'?'<span class="badge badge-fit">FIT</span>':ev.cls==='adj'?'<span class="badge badge-adj">ADJ</span>':ev.cls==='key'?'<span class="badge badge-key">KEY</span>':''}</div>
-    ${ev.people ? `<div class="event-people">${ev.people}</div>` : ''}
+    ${(ev.time||ev.venue)?`<div class="event-venue">${ev.time?ev.time+' · ':''}${ev.venue||''}</div>`:''}
+    <div class="event-session">${ev.session}${badge}</div>
+    ${ev.people?`<div class="event-people">${ev.people}</div>`:''}
   </div>`;
 }
 
 function buildCell(events) {
-  if (!events || !events.length) return '<span class="empty-cell">No events</span>';
+  if (!events||!events.length) return '<span class="empty-cell">No events</span>';
   return `<div class="events">${events.map(makeEventHtml).join('')}</div>`;
 }
 
 let currentFilter = 'all';
 
-function filterEvent(ev) {
-  if (currentFilter === 'all') return true;
-  if (currentFilter === 'fit') return ev.cls === 'fit';
-  if (currentFilter === 'adj') return ev.cls === 'fit' || ev.cls === 'adj' || ev.cls === 'key';
-  return true;
+function filterEv(ev) {
+  if (currentFilter==='all') return true;
+  if (currentFilter==='fit') return ev.cls==='fit';
+  return ev.cls==='fit'||ev.cls==='adj'||ev.cls==='key';
 }
 
 function render() {
@@ -342,44 +283,35 @@ function render() {
   html += `<tr class="divider"><td colspan="6">Daily schedule</td></tr>`;
   CAL_DATA.forEach(row => {
     const cols = ['mon','tue','wed','thu','fri'].map(d => {
-      const evs = (row[d] || []).filter(filterEvent);
+      const evs = (row[d]||[]).filter(filterEv);
       return `<td>${buildCell(evs)}</td>`;
     }).join('');
-    html += `<tr class="${row.cls}"><td class="time-col">${row.label}</td>${cols}</tr>`;
+    html += `<tr><td class="time-col">${row.label}</td>${cols}</tr>`;
   });
 
   html += `<tr class="divider"><td colspan="6">Across the festival</td></tr>`;
   ACROSS_DATA.forEach(venue => {
-    const contacts = currentFilter === 'all'
-      ? venue.contacts
-      : venue.contacts.filter(c => currentFilter === 'fit' ? c.cls === 'fit' : (c.cls === 'fit' || c.cls === 'adj' || c.cls === 'key'));
-    if (contacts.length === 0) return;
-    const venueLabel = `<strong>${venue.venue}</strong><br><span style="font-size:10px;color:#444">${venue.period}</span>`;
-    const contactsHtml = contacts.map(c => {
-      const badge = c.cls === 'fit' ? '<span class="badge badge-fit">FIT</span>' : c.cls === 'adj' ? '<span class="badge badge-adj">ADJ</span>' : c.cls === 'key' ? '<span class="badge badge-key">KEY</span>' : '';
-      return `<div class="event ${c.cls}" data-cls="${c.cls}" style="margin-bottom:4px"><div class="event-session">${c.name}${badge}</div><div class="event-people">${c.role}</div></div>`;
+    const contacts = currentFilter==='all' ? venue.contacts : venue.contacts.filter(c => currentFilter==='fit' ? c.cls==='fit' : (c.cls==='fit'||c.cls==='adj'||c.cls==='key'));
+    if (!contacts.length) return;
+    const venueLabel = `<strong>${venue.venue}</strong><br><span style="font-size:10px;color:#aaa">${venue.period}</span>`;
+    const ch = contacts.map(c => {
+      const badge = c.cls==='fit'?'<span class="badge badge-fit">FIT</span>':c.cls==='adj'?'<span class="badge badge-adj">ADJ</span>':c.cls==='key'?'<span class="badge badge-key">KEY</span>':'';
+      return `<div class="event ${c.cls}" style="margin-bottom:4px"><div class="event-session">${c.name}${badge}</div><div class="event-people">${c.role}</div></div>`;
     }).join('');
-    html += `<tr class="across">
-      <td class="time-col" style="white-space:normal;font-size:10px;color:#555;font-style:normal;text-transform:none;letter-spacing:0">${venueLabel}</td>
-      <td colspan="5"><div class="events">${contactsHtml}</div></td>
-    </tr>`;
+    html += `<tr><td class="time-col" style="white-space:normal;font-size:10px;color:#888;text-transform:none;letter-spacing:0;font-weight:400">${venueLabel}</td><td colspan="5"><div class="events">${ch}</div></td></tr>`;
   });
 
   html += `<tr class="divider"><td colspan="6">Pre-festival access + ongoing</td></tr>`;
   PRE_DATA.forEach(venue => {
-    const contacts = currentFilter === 'all'
-      ? venue.contacts
-      : venue.contacts.filter(c => currentFilter === 'fit' ? c.cls === 'fit' : (c.cls === 'fit' || c.cls === 'adj' || c.cls === 'key'));
-    if (contacts.length === 0 && currentFilter !== 'all') return;
-    const venueLabel = `<strong>${venue.venue}</strong><br><span style="font-size:10px;color:#444">${venue.when}</span>`;
-    const contactsHtml = (currentFilter === 'all' ? venue.contacts : contacts).map(c => {
-      const badge = c.cls === 'key' ? '<span class="badge badge-key">KEY</span>' : c.cls === 'fit' ? '<span class="badge badge-fit">FIT</span>' : '';
-      return `<div class="event ${c.cls}" data-cls="${c.cls}" style="margin-bottom:4px"><div class="event-session">${c.name}${badge}</div><div class="event-people">${c.role}</div></div>`;
+    const contacts = currentFilter==='all' ? venue.contacts : venue.contacts.filter(c => currentFilter==='fit' ? c.cls==='fit' : (c.cls==='fit'||c.cls==='adj'||c.cls==='key'));
+    if (!contacts.length && currentFilter!=='all') return;
+    const venueLabel = `<strong>${venue.venue}</strong><br><span style="font-size:10px;color:#aaa">${venue.when}</span>`;
+    const toShow = currentFilter==='all' ? venue.contacts : contacts;
+    const ch = toShow.map(c => {
+      const badge = c.cls==='key'?'<span class="badge badge-key">KEY</span>':c.cls==='fit'?'<span class="badge badge-fit">FIT</span>':'';
+      return `<div class="event ${c.cls}" style="margin-bottom:4px"><div class="event-session">${c.name}${badge}</div><div class="event-people">${c.role}</div></div>`;
     }).join('');
-    html += `<tr class="pre">
-      <td class="time-col" style="white-space:normal;font-size:10px;color:#555;font-style:normal;text-transform:none;letter-spacing:0">${venueLabel}</td>
-      <td colspan="5"><div class="events">${contactsHtml}</div></td>
-    </tr>`;
+    html += `<tr><td class="time-col" style="white-space:normal;font-size:10px;color:#888;text-transform:none;letter-spacing:0;font-weight:400">${venueLabel}</td><td colspan="5"><div class="events">${ch}</div></td></tr>`;
   });
 
   tbody.innerHTML = html;
@@ -387,9 +319,9 @@ function render() {
 
 function setFilter(f) {
   currentFilter = f;
-  document.getElementById('btn-all').classList.toggle('on', f === 'all');
-  document.getElementById('btn-fit').classList.toggle('on', f === 'fit');
-  document.getElementById('btn-adj').classList.toggle('on', f === 'adj');
+  document.getElementById('btn-all').classList.toggle('on', f==='all');
+  document.getElementById('btn-fit').classList.toggle('on', f==='fit');
+  document.getElementById('btn-adj').classList.toggle('on', f==='adj');
   render();
 }
 
