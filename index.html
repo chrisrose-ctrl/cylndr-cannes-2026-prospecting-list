@@ -63,6 +63,7 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
     <a href="calendar.html" class="nav-link">Calendar</a>
     <a href="database.html" class="nav-link">Database</a>
     <a href="schedule.html" class="nav-link">My Schedule</a>
+    <a href="linkedin.html" class="nav-link">LinkedIn</a>
   </div>
 </nav>
 
@@ -159,7 +160,12 @@ const entries = [
 
 const el = document.getElementById('log');
 entries.forEach(e => {
-  const pills = (e.tags||[]).map(t => `<span class="pill ${t==='fit'?'pill-fit':'pill-adj'}">${t==='fit'?'ICP Fit':'Adjacent'}</span>`).join('');
+  const pills = (e.tags||[]).map(t => {
+    if (t === 'fit') return `<span class="pill pill-fit">ICP Fit</span>`;
+    if (t === 'adj') return `<span class="pill pill-adj">Adjacent</span>`;
+    if (t === 'linkedin') return `<span class="pill" style="background:#e8f0fb;color:#0a66c2;border:1px solid #c9d8ea;">LinkedIn</span>`;
+    return `<span class="pill pill-adj">${t}</span>`;
+  }).join('');
   el.innerHTML += `<div class="log-entry"><div class="log-date">${e.date}</div><div class="log-body">${e.body}${pills}</div></div>`;
 });
 </script>
