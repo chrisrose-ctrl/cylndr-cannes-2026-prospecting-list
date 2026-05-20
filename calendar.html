@@ -61,6 +61,26 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 
 tr.divider td { background: #f5f5f5; border: none; padding: 8px 14px; font-size: 10px; color: #aaa; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; border-bottom: 1px solid #e5e5e5; }
 
+/* Event action buttons */
+.event-actions { display: flex; gap: 4px; margin-top: 6px; align-items: center; position: relative; }
+.evt-btn { font: inherit; font-size: 10px; font-weight: 600; padding: 3px 7px; border-radius: 4px; border: 1px solid #d4d4d4; background: #fff; color: #555; cursor: pointer; transition: all 0.12s; line-height: 1.3; }
+.evt-btn:hover { border-color: #888; color: #1a1a1a; background: #fafafa; }
+.evt-btn.saved { background: #166534; border-color: #166534; color: #fff; }
+.evt-btn.saved:hover { background: #14532d; border-color: #14532d; color: #fff; }
+.cal-menu { position: absolute; top: 100%; left: 0; margin-top: 2px; background: #fff; border: 1px solid #d4d4d4; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); z-index: 10; min-width: 140px; display: none; }
+.cal-menu.open { display: block; }
+.cal-menu a { display: block; padding: 7px 12px; font-size: 11px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0; }
+.cal-menu a:last-child { border-bottom: none; }
+.cal-menu a:hover { background: #fafafa; color: #1a1a1a; }
+
+/* Saved-counter banner */
+.saved-banner { padding: 0 32px 16px; max-width: 1400px; margin: 0 auto; display: none; }
+.saved-banner.show { display: block; }
+.saved-banner-inner { background: #166534; color: #fff; padding: 10px 14px; border-radius: 6px; font-size: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.saved-banner-inner a { color: #fff; text-decoration: underline; font-weight: 600; }
+.saved-banner-inner button { font: inherit; font-size: 11px; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.4); background: transparent; color: #fff; cursor: pointer; }
+.saved-banner-inner button:hover { background: rgba(255,255,255,0.12); }
+
 footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; display: flex; justify-content: space-between; font-size: 11px; color: #aaa; flex-wrap: wrap; gap: 8px; }
 </style>
 </head>
@@ -92,6 +112,13 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
   <button class="filter-btn on" id="btn-all" onclick="setFilter('all')">Show all</button>
   <button class="filter-btn fit-btn" id="btn-fit" onclick="setFilter('fit')">ICP fit only</button>
   <button class="filter-btn adj-btn" id="btn-adj" onclick="setFilter('adj')">Fit + adjacent</button>
+</div>
+
+<div class="saved-banner" id="saved-banner">
+  <div class="saved-banner-inner">
+    <span><span id="saved-count">0</span> saved to <a href="schedule.html">My Schedule</a> · stored in this browser only</span>
+    <button onclick="clearSaved()">Clear all saved</button>
+  </div>
 </div>
 
 <div class="cal-wrap">
@@ -255,18 +282,210 @@ const PRE_DATA = [
   ]},
 ];
 
-function makeEventHtml(ev) {
+// ---- Add to Schedule + Add to Calendar helpers ----
+
+const DAY_INFO = {
+  mon: { key:'d3', date:'2026-06-22', label:'Mon Jun 22' },
+  tue: { key:'d4', date:'2026-06-23', label:'Tue Jun 23' },
+  wed: { key:'d5', date:'2026-06-24', label:'Wed Jun 24' },
+  thu: { key:'d6', date:'2026-06-25', label:'Thu Jun 25' },
+  fri: { key:'d7', date:'2026-06-26', label:'Fri Jun 26' },
+};
+
+const BLOCK_DEFAULT_HOUR = { Morning: 9, Midday: 12, Afternoon: 15, Evening: 18 };
+
+// Parse "10:30 AM" / "1:00 PM" / "Morning" / "All-Day" → {hour, minute}
+function parseTime(timeStr, blockLabel) {
+  if (timeStr) {
+    const m = timeStr.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (m) {
+      let h = parseInt(m[1], 10);
+      const min = parseInt(m[2], 10);
+      const ampm = m[3].toUpperCase();
+      if (ampm === 'PM' && h !== 12) h += 12;
+      if (ampm === 'AM' && h === 12) h = 0;
+      return { hour: h, minute: min };
+    }
+    if (/morning/i.test(timeStr))   return { hour: 9, minute: 0 };
+    if (/midday|noon/i.test(timeStr)) return { hour: 12, minute: 0 };
+    if (/afternoon/i.test(timeStr)) return { hour: 15, minute: 0 };
+    if (/evening/i.test(timeStr))   return { hour: 18, minute: 0 };
+    if (/all.?day/i.test(timeStr))  return { hour: 9, minute: 0 };
+  }
+  return { hour: BLOCK_DEFAULT_HOUR[blockLabel] || 9, minute: 0 };
+}
+
+// SLOTS in schedule.html are hourly 8 AM = 0 ... 11 PM = 15
+function slotIndex(hour) {
+  const idx = hour - 8;
+  if (idx < 0) return 0;
+  if (idx > 15) return 15;
+  return idx;
+}
+
+function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+// Build a saved-item record that schedule.html can consume
+function buildSavedItem(ev, day, blockLabel) {
+  const { hour, minute } = parseTime(ev.time, blockLabel);
+  const info = DAY_INFO[day];
+  return {
+    id: btoa(unescape(encodeURIComponent(day + '|' + ev.session + '|' + (ev.venue||'') + '|' + (ev.time||blockLabel)))).slice(0, 24),
+    dayKey: info.key,
+    date: info.date,
+    slot: slotIndex(hour),
+    hour, minute,
+    time: ev.time || blockLabel,
+    venue: ev.venue || '',
+    session: ev.session,
+    people: ev.people || '',
+    cls: ev.cls || '',
+    block: blockLabel,
+  };
+}
+
+function getSaved() {
+  try { return JSON.parse(localStorage.getItem('cylndr.cannes.schedule') || '[]'); }
+  catch (e) { return []; }
+}
+function setSaved(arr) {
+  localStorage.setItem('cylndr.cannes.schedule', JSON.stringify(arr));
+  updateSavedBanner();
+}
+function isSaved(id) { return getSaved().some(x => x.id === id); }
+
+function toggleSave(btn, encodedEv) {
+  const item = JSON.parse(decodeURIComponent(encodedEv));
+  let saved = getSaved();
+  const exists = saved.find(x => x.id === item.id);
+  if (exists) {
+    saved = saved.filter(x => x.id !== item.id);
+    setSaved(saved);
+    btn.classList.remove('saved');
+    btn.textContent = '📌 Save';
+  } else {
+    saved.push(item);
+    setSaved(saved);
+    btn.classList.add('saved');
+    btn.textContent = '✓ Saved';
+  }
+}
+
+function clearSaved() {
+  if (!confirm('Remove all saved items from My Schedule? (Does not affect your personal calendar.)')) return;
+  localStorage.removeItem('cylndr.cannes.schedule');
+  updateSavedBanner();
+  render(); // rebuild to reset button states
+}
+
+function updateSavedBanner() {
+  const saved = getSaved();
+  const banner = document.getElementById('saved-banner');
+  document.getElementById('saved-count').textContent = saved.length;
+  banner.classList.toggle('show', saved.length > 0);
+}
+
+// --- Calendar URL builders ---
+
+function fmtForCal(date, hour, minute) {
+  // local time format YYYYMMDDTHHMMSS (Cannes time, ctz parameter handles TZ in Google)
+  const [Y, M, D] = date.split('-');
+  return `${Y}${M}${D}T${pad(hour)}${pad(minute)}00`;
+}
+
+function gcalUrl(item, durationMin = 60) {
+  const start = fmtForCal(item.date, item.hour, item.minute);
+  const endHour = item.hour + Math.floor((item.minute + durationMin) / 60);
+  const endMin = (item.minute + durationMin) % 60;
+  const end = fmtForCal(item.date, endHour, endMin);
+  const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
+  const details = [item.people, 'Saved from CYLNDR × Cannes 2026 calendar'].filter(Boolean).join('\n\n');
+  const params = new URLSearchParams({
+    action: 'TEMPLATE', text: title, dates: `${start}/${end}`,
+    details, location: item.venue || 'Cannes, France', ctz: 'Europe/Paris',
+  });
+  return 'https://calendar.google.com/calendar/render?' + params.toString();
+}
+
+function outlookUrl(item, durationMin = 60) {
+  const [Y, M, D] = item.date.split('-');
+  const startISO = `${Y}-${M}-${D}T${pad(item.hour)}:${pad(item.minute)}:00`;
+  const endHour = item.hour + Math.floor((item.minute + durationMin) / 60);
+  const endMin = (item.minute + durationMin) % 60;
+  const endISO = `${Y}-${M}-${D}T${pad(endHour)}:${pad(endMin)}:00`;
+  const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
+  const body = [item.people, 'Saved from CYLNDR × Cannes 2026 calendar'].filter(Boolean).join('\n\n');
+  const params = new URLSearchParams({
+    path: '/calendar/action/compose', rru: 'addevent',
+    subject: title, body, location: item.venue || 'Cannes, France',
+    startdt: startISO, enddt: endISO,
+  });
+  return 'https://outlook.live.com/calendar/0/deeplink/compose?' + params.toString();
+}
+
+function icsDataUri(item, durationMin = 60) {
+  const start = fmtForCal(item.date, item.hour, item.minute);
+  const endHour = item.hour + Math.floor((item.minute + durationMin) / 60);
+  const endMin = (item.minute + durationMin) % 60;
+  const end = fmtForCal(item.date, endHour, endMin);
+  const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
+  const desc = [item.people, 'Saved from CYLNDR × Cannes 2026 calendar'].filter(Boolean).join('\n\n');
+  const esc = s => String(s).replace(/[\\,;]/g, '\\$&').replace(/\n/g, '\\n');
+  const ics = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CYLNDR//Cannes2026//EN', 'CALSCALE:GREGORIAN',
+    'BEGIN:VEVENT', 'UID:' + item.id + '@cylndr-cannes-2026',
+    'DTSTAMP:' + fmtForCal('2026-05-20', 12, 0) + 'Z',
+    'DTSTART;TZID=Europe/Paris:' + start,
+    'DTEND;TZID=Europe/Paris:' + end,
+    'SUMMARY:' + esc(title),
+    'LOCATION:' + esc(item.venue || 'Cannes, France'),
+    'DESCRIPTION:' + esc(desc),
+    'END:VEVENT', 'END:VCALENDAR',
+  ].join('\r\n');
+  return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+}
+
+function toggleMenu(btn) {
+  document.querySelectorAll('.cal-menu.open').forEach(m => { if (m !== btn.nextElementSibling) m.classList.remove('open'); });
+  btn.nextElementSibling.classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.event-actions')) {
+    document.querySelectorAll('.cal-menu.open').forEach(m => m.classList.remove('open'));
+  }
+});
+
+function makeEventHtml(ev, day, blockLabel) {
   const badge = ev.cls==='fit'?'<span class="badge badge-fit">FIT</span>':ev.cls==='adj'?'<span class="badge badge-adj">ADJ</span>':ev.cls==='key'?'<span class="badge badge-key">KEY</span>':'';
+  // Skip action buttons for empty/placeholder events (no session text or pure-info rows)
+  const hasActions = ev.session && day && DAY_INFO[day];
+  let actions = '';
+  if (hasActions) {
+    const item = buildSavedItem(ev, day, blockLabel);
+    const encoded = encodeURIComponent(JSON.stringify(item));
+    const savedClass = isSaved(item.id) ? ' saved' : '';
+    const saveLabel = isSaved(item.id) ? '✓ Saved' : '📌 Save';
+    actions = `<div class="event-actions">
+      <button class="evt-btn${savedClass}" onclick="toggleSave(this, '${encoded}')">${saveLabel}</button>
+      <button class="evt-btn" onclick="toggleMenu(this)">📅 Calendar ▾</button>
+      <div class="cal-menu">
+        <a href="${gcalUrl(item)}" target="_blank" rel="noopener">Google Calendar</a>
+        <a href="${outlookUrl(item)}" target="_blank" rel="noopener">Outlook</a>
+        <a href="${icsDataUri(item)}" download="cannes-${item.id}.ics">Apple / .ics</a>
+      </div>
+    </div>`;
+  }
   return `<div class="event ${ev.cls}" data-cls="${ev.cls}">
     ${(ev.time||ev.venue)?`<div class="event-venue">${ev.time?ev.time+' · ':''}${ev.venue||''}</div>`:''}
     <div class="event-session">${ev.session}${badge}</div>
     ${ev.people?`<div class="event-people">${ev.people}</div>`:''}
+    ${actions}
   </div>`;
 }
 
-function buildCell(events) {
+function buildCell(events, day, blockLabel) {
   if (!events||!events.length) return '<span class="empty-cell">No events</span>';
-  return `<div class="events">${events.map(makeEventHtml).join('')}</div>`;
+  return `<div class="events">${events.map(ev => makeEventHtml(ev, day, blockLabel)).join('')}</div>`;
 }
 
 let currentFilter = 'all';
@@ -285,7 +504,7 @@ function render() {
   CAL_DATA.forEach(row => {
     const cols = ['mon','tue','wed','thu','fri'].map(d => {
       const evs = (row[d]||[]).filter(filterEv);
-      return `<td>${buildCell(evs)}</td>`;
+      return `<td>${buildCell(evs, d, row.label)}</td>`;
     }).join('');
     html += `<tr><td class="time-col">${row.label}</td>${cols}</tr>`;
   });
@@ -327,6 +546,7 @@ function setFilter(f) {
 }
 
 render();
+updateSavedBanner();
 </script>
 </body>
 </html>

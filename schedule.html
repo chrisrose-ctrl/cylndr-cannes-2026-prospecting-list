@@ -71,6 +71,24 @@ table.schedule tr.has-event td { background: #fffdf7; }
 table.schedule tr.has-event td.time { background: #fef3c7; color: #92400e; }
 table.schedule tr.has-event .activity li { color: #1a1a1a; font-weight: 500; }
 
+/* Saved-from-calendar items */
+.saved-list { margin-top: 6px; padding-top: 6px; border-top: 1px dashed #e5e5e5; list-style: none; padding-left: 0; }
+.saved-item { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 4px; font-size: 12px; color: #166534; }
+.saved-item .pin { color: #166534; font-size: 11px; flex-shrink: 0; margin-top: 1px; }
+.saved-item .body { flex: 1; }
+.saved-item .body .session { font-weight: 600; color: #14532d; }
+.saved-item .body .meta { color: #888; font-size: 11px; }
+.saved-item .remove { background: none; border: none; color: #aaa; cursor: pointer; font-size: 14px; padding: 0 4px; line-height: 1; }
+.saved-item .remove:hover { color: #b91c1c; }
+table.schedule tr.has-saved td.time { background: #d1fae5; color: #065f46; }
+table.schedule tr.has-saved td { background: #f7fdf9; }
+
+.saved-banner { padding: 12px 32px 0; max-width: 1100px; margin: 0 auto; }
+.saved-banner-inner { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px 14px; border-radius: 6px; font-size: 12px; color: #14532d; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.saved-banner-inner a { color: #14532d; font-weight: 600; }
+.saved-banner-inner button { font: inherit; font-size: 11px; padding: 4px 10px; border-radius: 4px; border: 1px solid #bbf7d0; background: #fff; color: #14532d; cursor: pointer; }
+.saved-banner-inner button:hover { background: #166534; color: #fff; border-color: #166534; }
+
 footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; font-size: 11px; color: #aaa; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 
 @media (max-width: 700px) {
@@ -97,6 +115,13 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
 <div class="page-header">
   <div class="page-title">My Schedule</div>
   <div class="page-sub">Chris Rose · Cannes Lions 2026 · June 20–26</div>
+</div>
+
+<div class="saved-banner" id="saved-banner" style="display:none">
+  <div class="saved-banner-inner">
+    <span><span id="saved-count">0</span> events added from the <a href="calendar.html">Calendar</a> · stored in this browser only</span>
+    <button onclick="clearAllSaved()">Clear all added</button>
+  </div>
 </div>
 
 <nav class="day-tabs" id="day-tabs"></nav>
@@ -182,6 +207,57 @@ DATA.d7.slots[1].activity  = ['Reddit Community Deli · Promenade Robert Favre l
 
 document.getElementById('last-updated').textContent = 'Updated ' + DATA.__lastUpdated;
 
+// ---- Saved items from Calendar tab ----
+
+function getSavedItems() {
+  try { return JSON.parse(localStorage.getItem('cylndr.cannes.schedule') || '[]'); }
+  catch (e) { return []; }
+}
+
+function setSavedItems(arr) {
+  localStorage.setItem('cylndr.cannes.schedule', JSON.stringify(arr));
+  updateBanner();
+}
+
+function removeSavedItem(id) {
+  const next = getSavedItems().filter(x => x.id !== id);
+  setSavedItems(next);
+  rerender();
+}
+
+function clearAllSaved() {
+  if (!confirm('Remove all events added from the Calendar tab? (Does not affect your personal calendar.)')) return;
+  localStorage.removeItem('cylndr.cannes.schedule');
+  updateBanner();
+  rerender();
+}
+
+function updateBanner() {
+  const saved = getSavedItems();
+  const b = document.getElementById('saved-banner');
+  document.getElementById('saved-count').textContent = saved.length;
+  b.style.display = saved.length > 0 ? '' : 'none';
+}
+
+// Group saved items by dayKey + slot index
+function savedByDayAndSlot() {
+  const out = {};
+  getSavedItems().forEach(item => {
+    const key = item.dayKey + ':' + item.slot;
+    if (!out[key]) out[key] = [];
+    out[key].push(item);
+  });
+  return out;
+}
+
+function rerender() {
+  mainEl.innerHTML = '';
+  DAYS.forEach(day => mainEl.appendChild(renderDay(day)));
+  // Re-apply active state
+  const active = document.querySelector('nav.day-tabs button.active');
+  if (active) setActive(active.dataset.day);
+}
+
 function renderDay(day) {
   const panel = document.createElement('section');
   panel.className = 'day-panel';
@@ -197,12 +273,17 @@ function renderDay(day) {
   table.innerHTML = `<thead><tr><th>Time</th><th>Block</th><th>Activity</th><th>Location</th><th>Notes</th></tr></thead><tbody></tbody>`;
   const tbody = table.querySelector('tbody');
 
+  const savedMap = savedByDayAndSlot();
+
   SLOTS.forEach((slot, i) => {
     const data = DATA[day.key].slots[i] || { activity:[], location:'', notes:'' };
+    const savedForSlot = savedMap[day.key + ':' + i] || [];
     const hasEvent = Array.isArray(data.activity) && data.activity.length > 0;
+    const hasSaved = savedForSlot.length > 0;
     const tr = document.createElement('tr');
     if (slot.evening) tr.classList.add('evening');
     if (hasEvent) tr.classList.add('has-event');
+    if (hasSaved) tr.classList.add('has-saved');
 
     const tdTime = document.createElement('td'); tdTime.className = 'time'; tdTime.textContent = slot.time; tr.appendChild(tdTime);
     const tdBlock = document.createElement('td'); tdBlock.className = 'block'; tdBlock.textContent = slot.block; tr.appendChild(tdBlock);
@@ -212,8 +293,25 @@ function renderDay(day) {
       const ul = document.createElement('ul');
       data.activity.forEach(item => { const li = document.createElement('li'); li.textContent = item; ul.appendChild(li); });
       tdAct.appendChild(ul);
-    } else {
+    } else if (!hasSaved) {
       const span = document.createElement('span'); span.className = 'empty'; span.textContent = '—'; tdAct.appendChild(span);
+    }
+    if (hasSaved) {
+      const sUl = document.createElement('ul'); sUl.className = 'saved-list';
+      savedForSlot.forEach(item => {
+        const li = document.createElement('li'); li.className = 'saved-item';
+        const meta = [item.time, item.venue].filter(Boolean).join(' · ');
+        const people = item.people ? `<div class="meta">${item.people}</div>` : '';
+        li.innerHTML = `<span class="pin">📌</span>
+          <div class="body">
+            <div class="session">${item.session}</div>
+            ${meta ? `<div class="meta">${meta}</div>` : ''}
+            ${people}
+          </div>
+          <button class="remove" title="Remove from My Schedule" onclick="removeSavedItem('${item.id}')">✕</button>`;
+        sUl.appendChild(li);
+      });
+      tdAct.appendChild(sUl);
     }
     tr.appendChild(tdAct);
 
@@ -249,6 +347,8 @@ buildTabs();
 const today = new Date().toISOString().slice(0, 10);
 const match = DAYS.find(d => d.date === today);
 setActive(match ? match.key : 'd2');
+
+updateBanner();
 </script>
 </body>
 </html>
