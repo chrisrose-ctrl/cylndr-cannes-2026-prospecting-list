@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brands at Cannes — CYLNDR × 2026</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #f5f5f5; color: #1a1a1a; min-height: 100vh; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; border-bottom: 1px solid #e5e5e5; background: #fff; flex-wrap: wrap; gap: 8px; }
+.nav-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1a1a1a; text-decoration: none; }
+.nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+.nav-link { font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 6px; text-decoration: none; color: #666; transition: background 0.12s; }
+.nav-link:hover { background: #f0f0f0; color: #1a1a1a; }
+.nav-link.active { background: #1a1a1a; color: #fff; }
+.page-header { padding: 44px 32px 28px; max-width: 1100px; margin: 0 auto; }
+.page-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #b8922a; margin-bottom: 12px; }
+h1 { font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: #1a1a1a; margin-bottom: 10px; }
+h1 span { color: #b8922a; }
+.page-sub { font-size: 15px; color: #666; line-height: 1.6; max-width: 540px; margin-bottom: 0; }
+.controls { max-width: 1100px; margin: 24px auto 0; padding: 0 32px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.filter-btn { font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 6px; border: 1px solid #e5e5e5; background: #fff; color: #666; cursor: pointer; transition: all 0.12s; white-space: nowrap; }
+.filter-btn:hover { border-color: #b8922a; color: #b8922a; }
+.filter-btn.active { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
+.count-badge { font-size: 12px; color: #aaa; margin-left: auto; }
+.sort-row { max-width: 1100px; margin: 12px auto 20px; padding: 0 32px; display: flex; gap: 8px; align-items: center; }
+.sort-label { font-size: 11px; color: #aaa; text-transform: uppercase; letter-spacing: 0.08em; }
+.sort-btn { font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 5px; border: 1px solid #e5e5e5; background: #fff; color: #666; cursor: pointer; transition: all 0.12s; }
+.sort-btn.active { border-color: #1a1a1a; color: #1a1a1a; font-weight: 700; }
+.grid { max-width: 1100px; margin: 0 auto; padding: 0 32px 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.12s, box-shadow 0.12s; }
+.card:hover { border-color: #b8922a; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.card.icp-fit { border-left: 3px solid #22c55e; }
+.card.icp-adjacent { border-left: 3px solid #f59e0b; }
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.card-name { font-size: 16px; font-weight: 700; color: #1a1a1a; line-height: 1.2; }
+.card-badges { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; flex-shrink: 0; }
+.badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+.badge-fit { background: #d1fae5; color: #065f46; border: 1px solid #bbf7d0; }
+.badge-adj { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+.badge-monitor { background: #f3f4f6; color: #6b7280; border: 1px solid #e5e7eb; }
+.badge-cat { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+.people-list { display: flex; flex-direction: column; gap: 6px; }
+.person-row { display: flex; align-items: baseline; gap: 6px; }
+.person-name { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.person-title { font-size: 12px; color: #777; line-height: 1.4; }
+.person-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.dot-fit { background: #22c55e; }
+.dot-adj { background: #f59e0b; }
+.dot-ignore { background: #d1d5db; }
+.venue-list { display: flex; gap: 5px; flex-wrap: wrap; }
+.venue-tag { font-size: 10px; color: #555; background: #f5f5f5; border: 1px solid #e5e5e5; border-radius: 4px; padding: 2px 7px; }
+.no-people { font-size: 12px; color: #aaa; font-style: italic; }
+.empty-state { max-width: 1100px; margin: 0 auto; padding: 48px 32px; text-align: center; color: #aaa; font-size: 14px; }
+footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #aaa; flex-wrap: wrap; gap: 8px; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">CYLNDR × Cannes 2026</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Overview</a>
+    <a href="calendar.html" class="nav-link">Calendar</a>
+    <a href="database.html" class="nav-link">Database</a>
+    <a href="schedule.html" class="nav-link">My Schedule</a>
+    <a href="linkedin.html" class="nav-link">LinkedIn</a>
+    <a href="brands.html" class="nav-link active">Brands</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-label">Brand Intelligence</div>
+  <h1>Brands at <span>Cannes 2026</span></h1>
+  <p class="page-sub">Every confirmed brand sending people — aggregated from speaker lists, venue programmes, LinkedIn, and brand announcements. Agencies, platforms, and service providers excluded.</p>
+</div>
+
+<div class="controls" id="controls">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="Beauty">Beauty</button>
+  <button class="filter-btn" data-filter="Food &amp; Bev">Food &amp; Bev</button>
+  <button class="filter-btn" data-filter="Apparel">Apparel</button>
+  <button class="filter-btn" data-filter="Fintech">Fintech</button>
+  <button class="filter-btn" data-filter="Health">Health</button>
+  <button class="filter-btn" data-filter="Consumer Tech">Consumer Tech</button>
+  <button class="filter-btn" data-filter="Retail">Retail</button>
+  <button class="filter-btn" data-filter="CPG">CPG</button>
+  <button class="filter-btn" data-filter="Other">Other</button>
+  <span class="count-badge" id="count-badge"></span>
+</div>
+
+<div class="sort-row">
+  <span class="sort-label">Sort</span>
+  <button class="sort-btn active" data-sort="icp">ICP tier</button>
+  <button class="sort-btn" data-sort="people">Most people</button>
+  <button class="sort-btn" data-sort="alpha">A–Z</button>
+</div>
+
+<div class="grid" id="grid"></div>
+<div class="empty-state" id="empty-state" style="display:none">No brands match this filter.</div>
+
+<footer>
+  <span>CYLNDR × Cannes Lions 2026 · Brand Intelligence</span>
+  <span id="updated">—</span>
+</footer>
+
+<script>
+// ─── Exclusion logic ───────────────────────────────────────────────────────
+const AGENCY_NAMES = [
+  'tbwa','ogilvy','ddb','mccann','bbdo','leo burnett','grey group','saatchi',
+  'monks','72andsunny','edelman','weber shandwick','hill+knowlton','digennaro',
+  'with not for','glass labworks','wpp','publicis','omnicom','ipg','havas',
+  'dentsu','cheil','serviceplan','droga5','anomaly','deutsch','jwt','young &',
+  'grey worldwide','foote cone','arnold worldwide','draftfcb','draftline',
+  'mckinsey','bain ','deloitte','accenture','kpmg','pwc','bcg '
+];
+
+const NON_BRAND_SIGNALS = [
+  'adtech platform','programmatic platform','ad tech','dsp ','ssp ',
+  'b2b saas','b2b platform','saas platform','enterprise software',
+  'cloud/tech','cloud platform','tech platform','aws','web services',
+  'trade publisher','publisher;','media company','news publication',
+  'data/measurement','measurement provider','research firm','analytics provider',
+  'data platform','pr firm','pr agency','communications agency','communications firm',
+  'production company','creative studio','post-production',
+  'retail media platform','retail media arm',
+  'creator data','creator platform','influencer platform',
+  'consulting firm','professional services'
+];
+
+function isBrand(companyName, icpReasons) {
+  const name = companyName.toLowerCase();
+  if (AGENCY_NAMES.some(a => name.includes(a))) return false;
+  // A company is excluded only if EVERY one of its entries has non-brand signals
+  const allNonBrand = icpReasons.length > 0 && icpReasons.every(r => {
+    const rl = (r || '').toLowerCase();
+    return NON_BRAND_SIGNALS.some(s => rl.includes(s));
+  });
+  return !allNonBrand;
+}
+
+// ─── Category detection ────────────────────────────────────────────────────
+function categorize(company, reasons) {
+  const text = (company + ' ' + reasons.join(' ')).toLowerCase();
+  if (/beauty|skincare|cosmetic|makeup|haircare|fragrance|personal care|grooming|ordinary|deciem|elf |e\.l\.f|nyx|mac cosmetics|savage x|loreal|l'oréal|ulta/.test(text)) return 'Beauty';
+  if (/food|beverage|drink|spirits|alcohol|beer|wine|coffee|nutrition|candy|confection|snack|restaurant|quick.service|kfc|mcdonald|pepsi|ab inbev|perdue|liquid death|mars |unilever/.test(text)) return 'Food & Bev';
+  if (/apparel|fashion|clothing|footwear|athletic|sportswear|activewear|outdoor gear|vuori|mammut|blackroll|gap |gap,/.test(text)) return 'Apparel';
+  if (/fintech|financial|payments|banking|crypto|insurance|wealth|lending|credit|klarna|coinbase|jpmorgan|mastercard|td bank|onepay/.test(text)) return 'Fintech';
+  if (/health|wellness|fitness|recovery|medical|pharmaceutical|betterhelp|oura|blackroll/.test(text)) return 'Health';
+  if (/streaming|entertainment|gaming|sport |nfl |nba |mlb |nhl |esport/.test(text)) return 'Entertainment';
+  if (/retail|ecommerce|marketplace|back market|ebay|zillow|yoobi|rakuten|babylist|dick.s sporting/.test(text)) return 'Retail';
+  if (/p&g|procter|unilever|cpg|consumer goods|henkel|colgate|reckitt/.test(text)) return 'CPG';
+  if (/tech|app |software|platform|hinge|duolingo|ancestry|reddit|samsung|hisense|samsung/.test(text)) return 'Consumer Tech';
+  return 'Other';
+}
+
+// ─── ICP tier for company (best person in the group) ──────────────────────
+function companyTier(flags) {
+  if (flags.has('fit')) return 'fit';
+  if (flags.has('adjacent')) return 'adjacent';
+  return 'ignore';
+}
+
+// ─── Sort comparators ──────────────────────────────────────────────────────
+const TIER_ORDER = { fit: 0, adjacent: 1, ignore: 2 };
+const SORTERS = {
+  icp:    (a, b) => TIER_ORDER[a.tier] - TIER_ORDER[b.tier] || b.people.length - a.people.length || a.name.localeCompare(b.name),
+  people: (a, b) => b.people.length - a.people.length || TIER_ORDER[a.tier] - TIER_ORDER[b.tier] || a.name.localeCompare(b.name),
+  alpha:  (a, b) => a.name.localeCompare(b.name)
+};
+
+// ─── State ─────────────────────────────────────────────────────────────────
+let allBrands = [];
+let activeFilter = 'all';
+let activeSort = 'icp';
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty-state');
+  const badge = document.getElementById('count-badge');
+
+  let brands = activeFilter === 'all'
+    ? allBrands
+    : allBrands.filter(b => b.category === activeFilter);
+
+  brands = [...brands].sort(SORTERS[activeSort]);
+  badge.textContent = `${brands.length} brand${brands.length !== 1 ? 's' : ''}`;
+
+  if (brands.length === 0) {
+    grid.style.display = 'none';
+    empty.style.display = '';
+    return;
+  }
+  grid.style.display = '';
+  empty.style.display = 'none';
+
+  grid.innerHTML = brands.map(b => {
+    const tierClass = b.tier === 'fit' ? 'icp-fit' : b.tier === 'adjacent' ? 'icp-adjacent' : '';
+    const tierBadge = b.tier === 'fit'
+      ? `<span class="badge badge-fit">ICP Target</span>`
+      : b.tier === 'adjacent'
+      ? `<span class="badge badge-adj">Adjacent</span>`
+      : `<span class="badge badge-monitor">Monitor</span>`;
+    const catBadge = `<span class="badge badge-cat">${b.category}</span>`;
+
+    const peopleHtml = b.people.length > 0
+      ? b.people.map(p => `
+          <div class="person-row">
+            <div class="person-dot dot-${p.icpFlag === 'fit' ? 'fit' : p.icpFlag === 'adjacent' ? 'adj' : 'ignore'}"></div>
+            <div><span class="person-name">${p.name}</span> <span class="person-title">${p.title || ''}</span></div>
+          </div>`).join('')
+      : `<div class="no-people">Company confirmed — no named individuals yet</div>`;
+
+    const venueNames = [...b.venues].filter(Boolean);
+    const venuesHtml = venueNames.length > 0
+      ? `<div class="venue-list">${venueNames.map(v => `<span class="venue-tag">${v}</span>`).join('')}</div>`
+      : '';
+
+    return `
+    <div class="card ${tierClass}" data-company="${b.name}" data-category="${b.category}">
+      <div class="card-top">
+        <div class="card-name">${b.name}</div>
+        <div class="card-badges">${tierBadge}${catBadge}</div>
+      </div>
+      <div class="people-list">${peopleHtml}</div>
+      ${venuesHtml}
+    </div>`;
+  }).join('');
+}
+
+// ─── Controls ──────────────────────────────────────────────────────────────
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    renderGrid();
+  });
+});
+
+document.querySelectorAll('.sort-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeSort = btn.dataset.sort;
+    renderGrid();
+  });
+});
+
+// ─── Load data ─────────────────────────────────────────────────────────────
+fetch('data.json')
+  .then(r => r.json())
+  .then(data => {
+    if (data.lastUpdated) {
+      document.getElementById('updated').textContent =
+        'Updated ' + new Date(data.lastUpdated).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    // Group entries by company
+    const map = {};
+    (data.entries || []).forEach(e => {
+      if (!e.company) return;
+      const key = e.company.trim();
+      if (!map[key]) map[key] = { name: key, people: [], icpReasons: [], icpFlags: new Set(), venues: new Set() };
+      map[key].icpReasons.push(e.icpReason || '');
+      map[key].icpFlags.add(e.icpFlag);
+      // Collect venues (skip generic "Jun 22-26" placeholders)
+      if (e.venue && e.venue.length > 4) map[key].venues.add(e.venue);
+      // Add person (skip type=company entries and LinkedIn chatter without real roles)
+      if (e.type !== 'company' && e.name) {
+        map[key].people.push({ name: e.name, title: e.title || '', icpFlag: e.icpFlag });
+      }
+    });
+
+    // Filter to brands only and enrich
+    allBrands = Object.values(map)
+      .filter(b => isBrand(b.name, b.icpReasons))
+      .map(b => ({
+        ...b,
+        tier: companyTier(b.icpFlags),
+        category: categorize(b.name, b.icpReasons)
+      }));
+
+    renderGrid();
+  })
+  .catch(() => {
+    document.getElementById('grid').innerHTML =
+      '<p style="color:#aaa;font-size:14px;padding:32px;">Could not load data. Open via a local server or GitHub Pages.</p>';
+  });
+</script>
+</body>
+</html>
