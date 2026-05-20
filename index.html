@@ -147,11 +147,12 @@ fetch('data.json')
   .catch(() => {
     // fallback if data.json not available (e.g. local file open)
     document.getElementById('stat-fit').textContent   = '5';
-    document.getElementById('stat-adj').textContent   = '55+';
-    document.getElementById('stat-total').textContent = '280';
+    document.getElementById('stat-adj').textContent   = '56+';
+    document.getElementById('stat-total').textContent = '305';
   });
 
 const entries = [
+  { date:'2026-05-20 (evening)', body:'<strong>+5 entries (300→305).</strong> New adjacent: Tristan Pineiro (Grindr CMO) — consumer challenger brand, speaking Mon Jun 22 11:15 AM Adweek House "The Human Edge of Marketing." Previously Bumble/Badoo, Netflix, King. LinkedIn: 4 ignore-tier (Lara Hood Balazs/Adobe CMO, Jae Goodman/Superconnector, Nancy Grey/Viant, Hassan Babajane/Viant).', tags:['adj','linkedin'] },
   { date:'2026-05-20 (pm)', body:'<strong>+9 entries (291→300). LinkedIn Chatter layer launched.</strong> #CannesLions2026: 6 posts captured. #CannesLions: 5 posts (1 filtered pre-Apr-2026). All 9 are ignore-tier (adtech, platforms, agencies). Highlights: Jennifer Overbaugh (AWS) confirms Amazon Port activating at scale; Jonathan Skogmo (LOST iN) names Carlton patio as primary networking spot.', tags:['linkedin'] },
   { date:'2026-05-20 (am)', body:'<strong>+11 entries (280→291).</strong> Sport Beach Boardroom partnership: Kevin Durant + Rich Kleiman (VIP space + brunch all week). Eddy Cue (Apple) named Entertainment Person of the Year, Mon Jun 22 fireside with Jerry Bruckheimer. Taide Guajardo (P&G Global CBO) confirmed for LBB Beach.', tags:['adj'] },
   { date:'2026-05-19', body:'<strong>0 new entries.</strong> Propeller fringe list still in preparation. LBB Beach 2026 individual speaker list not yet published. No new programme announcements from canneslions.com.', tags:[] },
