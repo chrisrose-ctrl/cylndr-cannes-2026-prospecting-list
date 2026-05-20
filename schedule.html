@@ -80,6 +80,14 @@ table.schedule tr.has-event .activity li { color: #1a1a1a; font-weight: 500; }
 .saved-item .body .meta { color: #888; font-size: 11px; }
 .saved-item .remove { background: none; border: none; color: #aaa; cursor: pointer; font-size: 14px; padding: 0 4px; line-height: 1; }
 .saved-item .remove:hover { color: #b91c1c; }
+.saved-item .cal-trigger { background: none; border: none; color: #888; cursor: pointer; font-size: 12px; padding: 0 4px; line-height: 1; }
+.saved-item .cal-trigger:hover { color: #1a1a1a; }
+.cal-pop { position: relative; }
+.cal-pop-menu { position: absolute; right: 0; top: 100%; margin-top: 2px; background: #fff; border: 1px solid #d4d4d4; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 20; min-width: 150px; display: none; }
+.cal-pop-menu.open { display: block; }
+.cal-pop-menu a { display: block; padding: 7px 12px; font-size: 11px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0; }
+.cal-pop-menu a:last-child { border-bottom: none; }
+.cal-pop-menu a:hover { background: #fafafa; color: #1a1a1a; }
 table.schedule tr.has-saved td.time { background: #d1fae5; color: #065f46; }
 table.schedule tr.has-saved td { background: #f7fdf9; }
 
@@ -88,6 +96,23 @@ table.schedule tr.has-saved td { background: #f7fdf9; }
 .saved-banner-inner a { color: #14532d; font-weight: 600; }
 .saved-banner-inner button { font: inherit; font-size: 11px; padding: 4px 10px; border-radius: 4px; border: 1px solid #bbf7d0; background: #fff; color: #14532d; cursor: pointer; }
 .saved-banner-inner button:hover { background: #166534; color: #fff; border-color: #166534; }
+
+/* Subscribe section */
+.sub-section { padding: 14px 32px 0; max-width: 1100px; margin: 0 auto; }
+.sub-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px 16px; }
+.sub-title { font-size: 12px; font-weight: 700; color: #1a1a1a; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.sub-title .pill-set { font-size: 9px; padding: 2px 6px; border-radius: 3px; background: #fef3c7; color: #92400e; letter-spacing: 0.06em; }
+.sub-sub { font-size: 12px; color: #666; margin-bottom: 12px; line-height: 1.5; }
+.sub-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.sub-btn { font: inherit; font-size: 12px; font-weight: 600; padding: 7px 12px; border-radius: 6px; border: 1px solid #1a1a1a; background: #1a1a1a; color: #fff; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.sub-btn:hover { background: #000; }
+.sub-btn.secondary { background: #fff; color: #1a1a1a; border-color: #d4d4d4; }
+.sub-btn.secondary:hover { border-color: #1a1a1a; background: #fafafa; }
+.sub-url { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; color: #555; background: #f5f5f5; padding: 6px 10px; border-radius: 4px; border: 1px solid #e5e5e5; flex: 1; min-width: 240px; user-select: all; }
+.sub-toast { font-size: 11px; color: #166534; margin-left: 8px; opacity: 0; transition: opacity 0.2s; }
+.sub-toast.show { opacity: 1; }
+.sub-help { font-size: 11px; color: #888; margin-top: 8px; line-height: 1.5; }
+.sub-help code { font-family: ui-monospace, Menlo, monospace; background: #f5f5f5; padding: 1px 5px; border-radius: 3px; font-size: 11px; color: #1a1a1a; }
 
 footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; font-size: 11px; color: #aaa; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 
@@ -115,6 +140,25 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
 <div class="page-header">
   <div class="page-title">My Schedule</div>
   <div class="page-sub">Chris Rose · Cannes Lions 2026 · June 20–26</div>
+</div>
+
+<div class="sub-section">
+  <div class="sub-card">
+    <div class="sub-title">Subscribe in your calendar <span class="pill-set">SET ONCE</span></div>
+    <div class="sub-sub">Subscribe and the events below show up in Google Calendar, Apple Calendar, or Outlook on every device — and update whenever this schedule changes. Locally-saved items from the Calendar tab are <em>not</em> included in the subscription (they live in your browser); use the per-row buttons for those.</div>
+    <div class="sub-actions">
+      <a class="sub-btn" id="apple-sub" href="#"><span>🍎</span> Add to Apple Calendar</a>
+      <a class="sub-btn secondary" id="google-sub" href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl" target="_blank" rel="noopener"><span>📆</span> Open Google "From URL"</a>
+      <a class="sub-btn secondary" id="ics-download" href="schedule.ics" download="cylndr-cannes-2026.ics"><span>⬇️</span> Download .ics</a>
+      <span class="sub-url" id="sub-url-display"></span>
+      <button class="sub-btn secondary" onclick="copySubUrl()" id="copy-btn">Copy URL</button>
+      <span class="sub-toast" id="copy-toast">Copied</span>
+    </div>
+    <div class="sub-help">
+      <strong>Google Calendar setup:</strong> click <em>Open Google "From URL"</em> above, paste the copied URL, click <code>Add calendar</code>. Google refreshes external feeds roughly every 12–24 hours.<br>
+      <strong>Apple Calendar:</strong> click the Add to Apple Calendar button — it opens the subscription dialog. Set refresh frequency to your preference.
+    </div>
+  </div>
 </div>
 
 <div class="saved-banner" id="saved-banner" style="display:none">
@@ -239,6 +283,71 @@ function updateBanner() {
   b.style.display = saved.length > 0 ? '' : 'none';
 }
 
+// ---- Per-item Calendar URL helpers ----
+function pad(n) { return n < 10 ? '0' + n : String(n); }
+function fmtCal(date, hour, minute) {
+  const [Y, M, D] = date.split('-');
+  return `${Y}${M}${D}T${pad(hour)}${pad(minute)}00`;
+}
+function gcalUrlFor(item, dur = 60) {
+  const start = fmtCal(item.date, item.hour, item.minute);
+  const endH = item.hour + Math.floor((item.minute + dur) / 60);
+  const endM = (item.minute + dur) % 60;
+  const end = fmtCal(item.date, endH, endM);
+  const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
+  const details = [item.people, 'Saved from CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
+  const params = new URLSearchParams({
+    action: 'TEMPLATE', text: title, dates: `${start}/${end}`,
+    details, location: item.venue || 'Cannes, France', ctz: 'Europe/Paris',
+  });
+  return 'https://calendar.google.com/calendar/render?' + params.toString();
+}
+function outlookUrlFor(item, dur = 60) {
+  const [Y, M, D] = item.date.split('-');
+  const startISO = `${Y}-${M}-${D}T${pad(item.hour)}:${pad(item.minute)}:00`;
+  const endH = item.hour + Math.floor((item.minute + dur) / 60);
+  const endM = (item.minute + dur) % 60;
+  const endISO = `${Y}-${M}-${D}T${pad(endH)}:${pad(endM)}:00`;
+  const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
+  const body = [item.people, 'Saved from CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
+  const params = new URLSearchParams({
+    path: '/calendar/action/compose', rru: 'addevent',
+    subject: title, body, location: item.venue || 'Cannes, France',
+    startdt: startISO, enddt: endISO,
+  });
+  return 'https://outlook.live.com/calendar/0/deeplink/compose?' + params.toString();
+}
+function icsUriFor(item, dur = 60) {
+  const start = fmtCal(item.date, item.hour, item.minute);
+  const endH = item.hour + Math.floor((item.minute + dur) / 60);
+  const endM = (item.minute + dur) % 60;
+  const end = fmtCal(item.date, endH, endM);
+  const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
+  const desc = [item.people, 'Saved from CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
+  const esc = s => String(s).replace(/[\\,;]/g, '\\$&').replace(/\n/g, '\\n');
+  const ics = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CYLNDR//Cannes2026//EN',
+    'BEGIN:VEVENT', 'UID:' + item.id + '@cylndr-cannes-2026',
+    'DTSTAMP:' + fmtCal('2026-05-20', 12, 0) + 'Z',
+    'DTSTART;TZID=Europe/Paris:' + start,
+    'DTEND;TZID=Europe/Paris:' + end,
+    'SUMMARY:' + esc(title),
+    'LOCATION:' + esc(item.venue || 'Cannes, France'),
+    'DESCRIPTION:' + esc(desc),
+    'END:VEVENT', 'END:VCALENDAR',
+  ].join('\r\n');
+  return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+}
+function toggleCalPop(btn) {
+  document.querySelectorAll('.cal-pop-menu.open').forEach(m => { if (m !== btn.nextElementSibling) m.classList.remove('open'); });
+  btn.nextElementSibling.classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.cal-pop')) {
+    document.querySelectorAll('.cal-pop-menu.open').forEach(m => m.classList.remove('open'));
+  }
+});
+
 // Group saved items by dayKey + slot index
 function savedByDayAndSlot() {
   const out = {};
@@ -308,6 +417,14 @@ function renderDay(day) {
             ${meta ? `<div class="meta">${meta}</div>` : ''}
             ${people}
           </div>
+          <div class="cal-pop">
+            <button class="cal-trigger" title="Add to personal calendar" onclick="toggleCalPop(this)">📅</button>
+            <div class="cal-pop-menu">
+              <a href="${gcalUrlFor(item)}" target="_blank" rel="noopener">Google Calendar</a>
+              <a href="${outlookUrlFor(item)}" target="_blank" rel="noopener">Outlook</a>
+              <a href="${icsUriFor(item)}" download="cannes-${item.id}.ics">Apple / .ics</a>
+            </div>
+          </div>
           <button class="remove" title="Remove from My Schedule" onclick="removeSavedItem('${item.id}')">✕</button>`;
         sUl.appendChild(li);
       });
@@ -349,6 +466,33 @@ const match = DAYS.find(d => d.date === today);
 setActive(match ? match.key : 'd2');
 
 updateBanner();
+
+// ---- Subscribe URL wiring ----
+(function setupSubscribe() {
+  const icsPath = 'schedule.ics';
+  // Build absolute URL based on where this page is hosted
+  const base = window.location.href.replace(/[^\/]*$/, '');
+  const httpsUrl = base + icsPath;
+  const webcalUrl = httpsUrl.replace(/^https?:\/\//, 'webcal://');
+
+  document.getElementById('sub-url-display').textContent = httpsUrl;
+  document.getElementById('apple-sub').href = webcalUrl;
+})();
+
+function copySubUrl() {
+  const url = document.getElementById('sub-url-display').textContent;
+  navigator.clipboard.writeText(url).then(() => {
+    const toast = document.getElementById('copy-toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1500);
+  }).catch(() => {
+    const range = document.createRange();
+    range.selectNodeContents(document.getElementById('sub-url-display'));
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  });
+}
 </script>
 </body>
 </html>
