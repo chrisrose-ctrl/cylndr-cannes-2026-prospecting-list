@@ -14,72 +14,86 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-link:hover { background: #f0f0f0; color: #1a1a1a; }
 .nav-link.active { background: #1a1a1a; color: #fff; }
 
-.page-header { padding: 32px 32px 20px; max-width: 1400px; margin: 0 auto; }
-.page-title { font-size: 26px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.01em; margin-bottom: 4px; }
-.page-sub { font-size: 13px; color: #888; }
+/* DAY TAB BAR */
+.day-tab-bar { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 32px; display: flex; gap: 0; position: sticky; top: 0; z-index: 10; }
+.day-tab { font: inherit; font-size: 13px; font-weight: 600; padding: 14px 20px; border: none; background: none; color: #888; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; transition: color 0.12s, border-color 0.12s; display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.day-tab:hover { color: #1a1a1a; }
+.day-tab.active { color: #1a1a1a; border-bottom-color: #1a1a1a; }
+.day-tab-sub { font-size: 10px; font-weight: 400; color: #bbb; }
+.day-tab.active .day-tab-sub { color: #888; }
 
-.legend { display: flex; gap: 20px; flex-wrap: wrap; padding: 0 32px 20px; max-width: 1400px; margin: 0 auto; }
-.leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #555; }
-.leg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-
-.filters { padding: 0 32px 20px; max-width: 1400px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; }
+/* TOOLBAR */
+.toolbar { padding: 16px 32px; max-width: 800px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .filter-btn { font: inherit; font-size: 12px; padding: 6px 14px; border-radius: 6px; border: 1px solid #d4d4d4; background: #fff; color: #666; cursor: pointer; transition: all 0.12s; }
 .filter-btn:hover { border-color: #aaa; color: #1a1a1a; }
 .filter-btn.on { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
 .filter-btn.fit-btn.on { background: #166534; border-color: #166534; color: #fff; }
 .filter-btn.adj-btn.on { background: #92400e; border-color: #92400e; color: #fff; }
 
-.cal-wrap { padding: 0 32px 48px; max-width: 1400px; margin: 0 auto; overflow-x: auto; }
-.cal-table { width: 100%; border-collapse: collapse; min-width: 900px; }
-.cal-table th { background: #fff; border: 1px solid #e5e5e5; padding: 12px 14px; text-align: left; font-size: 12px; font-weight: 600; color: #888; position: sticky; top: 0; z-index: 2; }
-.cal-table th.day-header { font-size: 13px; color: #1a1a1a; font-weight: 700; }
-.cal-table th .day-sub { font-size: 10px; color: #aaa; font-weight: 400; display: block; margin-top: 2px; }
-.cal-table td { border: 1px solid #ebebeb; padding: 10px 12px; vertical-align: top; font-size: 12px; color: #555; line-height: 1.6; background: #fff; }
-.cal-table td.time-col { color: #aaa; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; background: #fafafa; width: 100px; }
-.cal-table tr:hover td { background: #fafafa; }
-.cal-table tr:hover td.time-col { background: #f3f3f3; }
+/* LEGEND */
+.legend { display: flex; gap: 16px; flex-wrap: wrap; padding: 0 32px 16px; max-width: 800px; margin: 0 auto; }
+.leg { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #777; }
+.leg-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
-.events { display: flex; flex-direction: column; gap: 5px; }
-.event { padding: 6px 8px; border-radius: 6px; background: #fafafa; border: 1px solid #e5e5e5; }
-.event.fit { background: #f0fdf4; border-color: #bbf7d0; }
-.event.adj { background: #fffbeb; border-color: #fde68a; }
-.event.key { background: #faf5ff; border-color: #e9d5ff; }
-.event-venue { font-size: 10px; color: #aaa; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
-.event.fit .event-venue { color: #166534; }
-.event.adj .event-venue { color: #92400e; }
-.event.key .event-venue { color: #6b21a8; }
-.event-session { font-size: 12px; color: #333; line-height: 1.4; }
-.event.fit .event-session { color: #166534; }
-.event.adj .event-session { color: #78350f; }
-.event.key .event-session { color: #581c87; }
-.event-people { font-size: 11px; color: #aaa; margin-top: 2px; }
-.badge { display: inline-block; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 4px; margin-left: 3px; vertical-align: middle; }
-.badge-fit { background: #d1fae5; color: #065f46; }
-.badge-adj { background: #fef3c7; color: #92400e; }
-.badge-key { background: #ede9fe; color: #5b21b6; }
-.empty-cell { color: #ccc; font-style: italic; font-size: 11px; }
-
-tr.divider td { background: #f5f5f5; border: none; padding: 8px 14px; font-size: 10px; color: #aaa; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; border-bottom: 1px solid #e5e5e5; }
-
-/* Event action buttons */
-.event-actions { display: flex; gap: 4px; margin-top: 6px; align-items: center; position: relative; }
-.evt-btn { font: inherit; font-size: 10px; font-weight: 600; padding: 3px 7px; border-radius: 4px; border: 1px solid #d4d4d4; background: #fff; color: #555; cursor: pointer; transition: all 0.12s; line-height: 1.3; }
-.evt-btn:hover { border-color: #888; color: #1a1a1a; background: #fafafa; }
-.evt-btn.saved { background: #166534; border-color: #166534; color: #fff; }
-.evt-btn.saved:hover { background: #14532d; border-color: #14532d; color: #fff; }
-.cal-menu { position: absolute; top: 100%; left: 0; margin-top: 2px; background: #fff; border: 1px solid #d4d4d4; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); z-index: 10; min-width: 140px; display: none; }
-.cal-menu.open { display: block; }
-.cal-menu a { display: block; padding: 7px 12px; font-size: 11px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0; }
-.cal-menu a:last-child { border-bottom: none; }
-.cal-menu a:hover { background: #fafafa; color: #1a1a1a; }
-
-/* Saved-counter banner */
-.saved-banner { padding: 0 32px 16px; max-width: 1400px; margin: 0 auto; display: none; }
+/* SAVED BANNER */
+.saved-banner { padding: 0 32px 12px; max-width: 800px; margin: 0 auto; display: none; }
 .saved-banner.show { display: block; }
 .saved-banner-inner { background: #166534; color: #fff; padding: 10px 14px; border-radius: 6px; font-size: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .saved-banner-inner a { color: #fff; text-decoration: underline; font-weight: 600; }
 .saved-banner-inner button { font: inherit; font-size: 11px; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.4); background: transparent; color: #fff; cursor: pointer; }
-.saved-banner-inner button:hover { background: rgba(255,255,255,0.12); }
+
+/* DAY CONTENT */
+.day-content { max-width: 800px; margin: 0 auto; padding: 0 32px 48px; }
+
+/* SECTION HEADER */
+.section-hdr { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; padding: 20px 0 10px; border-bottom: 1px solid #e5e5e5; margin-bottom: 12px; }
+
+/* SESSION CARDS */
+.session-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; display: flex; gap: 14px; transition: border-color 0.12s, box-shadow 0.12s; }
+.session-card:hover { border-color: #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.session-card.fit { border-left: 3px solid #16a34a; }
+.session-card.adj { border-left: 3px solid #d97706; }
+.session-card.key { border-left: 3px solid #7c3aed; }
+
+.session-time-col { flex-shrink: 0; width: 68px; display: flex; flex-direction: column; align-items: flex-start; padding-top: 2px; }
+.session-time { font-size: 11px; font-weight: 700; color: #1a1a1a; white-space: nowrap; }
+.session-block { font-size: 10px; color: #bbb; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.session-body { flex: 1; min-width: 0; }
+.session-venue { font-size: 10px; font-weight: 700; color: #aaa; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px; }
+.session-card.fit .session-venue { color: #166534; }
+.session-card.adj .session-venue { color: #92400e; }
+.session-card.key .session-venue { color: #6b21a8; }
+.session-title { font-size: 13px; font-weight: 600; color: #1a1a1a; line-height: 1.4; margin-bottom: 4px; }
+.session-people { font-size: 12px; color: #666; line-height: 1.5; margin-bottom: 8px; }
+
+.badge { display: inline-block; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 4px; margin-left: 5px; vertical-align: middle; }
+.badge-fit { background: #d1fae5; color: #065f46; }
+.badge-adj { background: #fef3c7; color: #92400e; }
+.badge-key { background: #ede9fe; color: #5b21b6; }
+
+/* SESSION ACTIONS */
+.session-actions { display: flex; gap: 4px; align-items: center; position: relative; }
+.evt-btn { font: inherit; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 5px; border: 1px solid #d4d4d4; background: #fff; color: #555; cursor: pointer; transition: all 0.12s; }
+.evt-btn:hover { border-color: #888; color: #1a1a1a; }
+.evt-btn.saved { background: #166534; border-color: #166534; color: #fff; }
+.cal-menu { position: absolute; top: 100%; left: 0; margin-top: 3px; background: #fff; border: 1px solid #d4d4d4; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 10; min-width: 145px; display: none; }
+.cal-menu.open { display: block; }
+.cal-menu a { display: block; padding: 8px 13px; font-size: 12px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0; }
+.cal-menu a:last-child { border-bottom: none; }
+.cal-menu a:hover { background: #fafafa; }
+
+/* VENUE CONTACT CARDS */
+.venue-contact-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; }
+.venue-name { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
+.venue-period { font-size: 11px; color: #aaa; margin-bottom: 10px; }
+.contact-row { display: flex; align-items: flex-start; gap: 8px; padding: 5px 0; border-bottom: 1px solid #f3f3f3; }
+.contact-row:last-child { border-bottom: none; }
+.contact-name { font-size: 12px; font-weight: 600; color: #1a1a1a; flex: 1; }
+.contact-role { font-size: 11px; color: #888; flex: 1.5; }
+
+/* EMPTY STATE */
+.empty-day { padding: 32px 0; text-align: center; color: #bbb; font-size: 14px; }
 
 footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; display: flex; justify-content: space-between; font-size: 11px; color: #aaa; flex-wrap: wrap; gap: 8px; }
 </style>
@@ -98,194 +112,151 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
   </div>
 </nav>
 
-<div class="page-header">
-  <div class="page-title">Event Calendar</div>
-  <div class="page-sub">June 22–26, 2026 · Cannes, France · All times CEST</div>
+<div class="day-tab-bar">
+  <button class="day-tab active" data-day="mon">Mon<span class="day-tab-sub">Jun 22</span></button>
+  <button class="day-tab" data-day="tue">Tue<span class="day-tab-sub">Jun 23</span></button>
+  <button class="day-tab" data-day="wed">Wed<span class="day-tab-sub">Jun 24</span></button>
+  <button class="day-tab" data-day="thu">Thu<span class="day-tab-sub">Jun 25</span></button>
+  <button class="day-tab" data-day="fri">Fri<span class="day-tab-sub">Jun 26</span></button>
+</div>
+
+<div class="toolbar">
+  <button class="filter-btn on" id="btn-all" onclick="setFilter('all')">All</button>
+  <button class="filter-btn fit-btn" id="btn-fit" onclick="setFilter('fit')">ICP fit only</button>
+  <button class="filter-btn adj-btn" id="btn-adj" onclick="setFilter('fit+adj')">Fit + adjacent</button>
 </div>
 
 <div class="legend">
-  <div class="leg"><div class="leg-dot" style="background:#166534"></div>ICP Fit</div>
-  <div class="leg"><div class="leg-dot" style="background:#92400e"></div>Adjacent</div>
-  <div class="leg"><div class="leg-dot" style="background:#6b21a8"></div>Key relationship / Powell PR mandate</div>
-  <div class="leg"><div class="leg-dot" style="background:#ccc"></div>General</div>
-</div>
-
-<div class="filters">
-  <button class="filter-btn on" id="btn-all" onclick="setFilter('all')">Show all</button>
-  <button class="filter-btn fit-btn" id="btn-fit" onclick="setFilter('fit')">ICP fit only</button>
-  <button class="filter-btn adj-btn" id="btn-adj" onclick="setFilter('adj')">Fit + adjacent</button>
+  <div class="leg"><div class="leg-dot" style="background:#16a34a"></div>ICP Fit</div>
+  <div class="leg"><div class="leg-dot" style="background:#d97706"></div>Adjacent</div>
+  <div class="leg"><div class="leg-dot" style="background:#7c3aed"></div>Key relationship</div>
 </div>
 
 <div class="saved-banner" id="saved-banner">
   <div class="saved-banner-inner">
-    <span><span id="saved-count">0</span> saved to <a href="schedule.html">My Schedule</a> · stored in this browser only</span>
-    <button onclick="clearSaved()">Clear all saved</button>
+    <span><span id="saved-count">0</span> saved to <a href="schedule.html">My Schedule</a></span>
+    <button onclick="clearSaved()">Clear all</button>
   </div>
 </div>
 
-<div class="cal-wrap">
-<table class="cal-table" id="cal">
-<thead>
-<tr>
-  <th style="width:100px"></th>
-  <th class="day-header">Mon Jun 22<span class="day-sub">Day 1</span></th>
-  <th class="day-header">Tue Jun 23<span class="day-sub">Day 2</span></th>
-  <th class="day-header">Wed Jun 24<span class="day-sub">Day 3</span></th>
-  <th class="day-header">Thu Jun 25<span class="day-sub">Day 4</span></th>
-  <th class="day-header">Fri Jun 26<span class="day-sub">Day 5</span></th>
-</tr>
-</thead>
-<tbody id="tbody"></tbody>
-</table>
-</div>
+<div class="day-content" id="day-content"></div>
 
 <footer>
   <span>CYLNDR × Cannes Lions 2026 · Event Calendar</span>
-  <span>Updated 2026-05-18 · Sources: canneslions.com · akommo.com · deptagency.com · brand-innovators.com · brandsnculture.com</span>
+  <span id="footer-updated">Sources: canneslions.com · deptagency.com · brand-innovators.com</span>
 </footer>
 
 <script>
-const CAL_DATA = [
-  { label:'Morning', cls:'morning',
-    mon:[
-      {venue:'FQ Beach (Female Quotient)',session:'Creative Currency: From Insight to Impact',people:'Carley Caldas (eos SVP Marketing)',time:'Morning',cls:'fit'},
-      {venue:'Brand Innovators Beach Stage',session:'The CMO Agenda',people:'Adrian Fung (eBay) · Joy Howard (Back Market)',time:'8:00 AM',cls:'fit'},
-      {venue:'Lumière Theatre',session:'AB InBev Creative Marketer of the Year Keynote',people:'',time:'10:00 AM',cls:''},
-    ],
-    tue:[
-      {venue:'DEPT Secret Garden',session:'WFA Breakfast Panel (invite only)',people:'',time:'8:30 AM',cls:''},
-      {venue:'BIMA House',session:'The Taste Gap — What AI Cannot Brief Itself On',people:'Linda Tong (Webflow CEO)',time:'9:00 AM',cls:''},
-      {venue:'Lumière Theatre',session:'Oprah Winfrey LionHeart Honoree Talk',people:'',time:'10:00 AM',cls:''},
-      {venue:'DEPT Secret Garden',session:'Rethinking growth in a B2A world',people:'Terri Wang (OpenAI) · Grace Kao (Snap) · Antonia Wade (PwC)',time:'10:30 AM',cls:''},
-      {venue:'Brand Innovators Beach Stage',session:'From Attention to Advocacy',people:'Alex Frias (Steve Madden CMO)',time:'10:50 AM',cls:'adj'},
-    ],
-    wed:[
-      {venue:'Brand Innovators Showcase Stage',session:'eos Body Through Culture',people:'Kelsey Newberry (eos VP Brand Marketing)',time:'10:30 AM',cls:'fit'},
-      {venue:'DEPT Secret Garden',session:'What broke the Internet?',people:'Nic Brandenberger (Mammut CMO) · Kira Karlstrom (Twitch)',time:'10:30 AM',cls:'fit'},
-      {venue:'Brand Innovators Beach Stage',session:'Kelly Mahoney (Ulta CMO) Fireside',people:'',time:'9:15 AM',cls:'adj'},
-    ],
-    thu:[
-      {venue:'Brand Innovators Beach Stage',session:'Creating Experiences People Want to Share',people:'Ashley Kechter (Vuori) · Jill Cress (Babylist CMO)',time:'10:30 AM',cls:'fit'},
-      {venue:'DEPT Secret Garden',session:'Running Club with Webby Awards',people:'',time:'9:30 AM',cls:''},
-    ],
-    fri:[{venue:'',session:'Festival winds down — award shows / departures',people:'',time:'',cls:''}],
-  },
-  { label:'Midday', cls:'midday',
-    mon:[
-      {venue:'Brand Innovators Beach Stage',session:'From Reach to Relevance',people:'Damon Berger (Gap) · Dave Kersey (SharkNinja)',time:'12:25 PM',cls:'adj'},
-    ],
-    tue:[
-      {venue:'Brands&Culture Villa',session:'Do Marketers Move Culture? (Live Debate)',people:'Catherine Ferdon (Coinbase CMO) · Viviana Ochoa (Essity VP Marketing)',time:'12:00 PM',cls:'adj'},
-      {venue:'DEPT Secret Garden',session:'WFA Roundtable Lunch (invite only)',people:'',time:'12:00 PM',cls:''},
-      {venue:'Brand Innovators Beach Stage',session:'Marketing at Speed of Culture',people:'Billy Bohan Chinique (Virgin Voyages VP Marketing)',time:'1:00 PM',cls:'adj'},
-    ],
-    wed:[
-      {venue:'Brands&Culture Villa',session:'Fandoms, Communities & Niches',people:'Gigi Russo (HUNTER) · Sportradar · PepsiCo',time:'12:30 PM',cls:''},
-      {venue:'Brand Innovators Beach Stage',session:'2026 Media Innovation Outlook',people:'Paloma Azulay (McDonald\'s VP)',time:'12:25 PM',cls:''},
-    ],
-    thu:[
-      {venue:'Brand Innovators Beach Stage',session:'Mars Portfolio Panel',people:'Natalia Ball · Rankin Carroll · Matt Graham',time:'11:05 AM',cls:''},
-    ],
-    fri:[{venue:'',session:'No major programming',people:'',time:'',cls:''}],
-  },
-  { label:'Afternoon', cls:'afternoon',
-    mon:[
-      {venue:'Brand Innovators Showcase Stage',session:'Sara Brooks (BetterHelp CGO) · Billy Bohan Chinique (Virgin Voyages VP)',people:'',time:'3:10 PM',cls:'adj'},
-    ],
-    tue:[
-      {venue:'Brand Innovators Showcase Stage',session:'Audience First, Channel Second',people:'Benoit Vatere (Liquid Death CMO)',time:'2:00 PM',cls:'fit'},
-      {venue:'DEPT Secret Garden',session:'The new rules of scaling brands with AI',people:'Sona Iliffe-Moon (Yahoo) · Jessica Qaasim (Google) · Emily O\'Hara (eBay VP)',time:'2:00 PM',cls:''},
-    ],
-    wed:[
-      {venue:'Brand Innovators Beach Stage',session:'Agents, Signals & the Self-Driving Funnel',people:'Lindsey Slaby (Sunday Dinner) — KEY RELATIONSHIP',time:'3:40 PM',cls:'key'},
-      {venue:'DEPT Secret Garden',session:'How AI is helping keep loved ones safe from gun violence',people:'Laurie Keith (Ad Council) · Jennifer Kattula (Microsoft Advertising)',time:'4:00 PM',cls:''},
-    ],
-    thu:[
-      {venue:'Brand Innovators Beach Stage',session:'Laurie Lam (e.l.f. CBO) Fireside',people:'',time:'1:35 PM',cls:'fit'},
-      {venue:'DEPT Secret Garden',session:'The human multiplier: why leadership is the real AI advantage',people:'Scott Zalaznik (BLACKROLL CEO) · Adrian Fung (eBay CMO)',time:'2:00 PM',cls:'fit'},
-    ],
-    fri:[{venue:'',session:'No major programming',people:'',time:'',cls:''}],
-  },
-  { label:'Evening', cls:'evening',
-    mon:[
-      {venue:'Ad Age / The List Lounge',session:'The List Evening Opener',people:'',time:'Evening',cls:''},
-    ],
-    tue:[
-      {venue:'DEPT Secret Garden',session:'Future Club Dinner (invite only)',people:'',time:'7:00 PM',cls:''},
-    ],
-    wed:[
-      {venue:'DEPT Secret Garden',session:'Future Club Dinner × WFA (invite only)',people:'',time:'7:00 PM',cls:''},
-      {venue:'Ad Age / The List Lounge',session:'Cannes Lawn Party (invite only)',people:'',time:'5:30 PM',cls:''},
-    ],
-    thu:[
-      {venue:'RTL Beach',session:'ACT Responsible Tributes Celebration',people:'',time:'5:00 PM',cls:''},
-      {venue:'DEPT Secret Garden',session:'afriCANNES × DEPT Closing Party',people:'Kojo Marfo · Kofi Turkson (My Runway Group)',time:'7:00 PM',cls:''},
-    ],
-    fri:[{venue:'',session:'Festival closes',people:'',time:'',cls:''}],
-  },
-];
+// ---- DATA ----
 
+// Sessions per day (time-sorted within each day)
+const CAL_DATA = {
+  mon: [
+    {time:'8:00 AM', venue:'Brand Innovators Beach Stage', session:'The CMO Agenda: Navigating Growth, Innovation & Change', people:'Joy Howard (Back Market CMO)', cls:'fit'},
+    {time:'Morning',  venue:'FQ Beach (Female Quotient Equality Lounge)', session:'Creative Currency: From Insight to Impact', people:'Carley Caldas (eos SVP Marketing)', cls:'fit'},
+    {time:'10:00 AM', venue:'Lumière Theatre', session:'AB InBev Creative Marketer of the Year Keynote', people:'', cls:''},
+    {time:'12:25 PM', venue:'Brand Innovators Beach Stage', session:'From Reach to Relevance: How Cultural Moments Drive Media Impact', people:'Damon Berger (Gap) · Dave Kersey (SharkNinja)', cls:'adj'},
+    {time:'3:10 PM',  venue:'Brand Innovators Showcase Stage', session:'Lessons, Wins and What\'s Next for AI', people:'Sara Brooks (BetterHelp CGO) · Billy Bohan Chinique (Virgin Voyages VP)', cls:'adj'},
+    {time:'Evening',  venue:'Ad Age / The List Lounge', session:'The List Evening Opener (members only)', people:'', cls:''},
+  ],
+  tue: [
+    {time:'8:30 AM', venue:'DEPT Secret Garden', session:'Breakfast Panel — WFA (invite only)', people:'', cls:''},
+    {time:'9:00 AM', venue:'BIMA House', session:'The Taste Gap — What AI Cannot Brief Itself On', people:'Linda Tong (Webflow CEO)', cls:''},
+    {time:'10:00 AM', venue:'Lumière Theatre', session:'Oprah Winfrey LionHeart Honoree Talk', people:'', cls:''},
+    {time:'10:30 AM', venue:'DEPT Secret Garden', session:'Rethinking growth in a B2A world', people:'Elke Karskens (OpenAI) · Grace Kao (Snap) · Antonia Wade (PwC)', cls:''},
+    {time:'10:50 AM', venue:'Brand Innovators Beach Stage', session:'From Attention to Advocacy', people:'Alex Frias (Steve Madden CMO)', cls:'adj'},
+    {time:'12:00 PM', venue:'Brands&Culture Villa', session:'Do Marketers Move Culture? (Live Debate)', people:'Catherine Ferdon (Coinbase CMO) · Viviana Ochoa (Essity VP Marketing)', cls:'adj'},
+    {time:'12:00 PM', venue:'DEPT Secret Garden', session:'WFA Roundtable Lunch (invite only)', people:'', cls:''},
+    {time:'1:00 PM',  venue:'Brand Innovators Beach Stage', session:'Marketing at the Speed of Culture', people:'Billy Bohan Chinique (Virgin Voyages VP Marketing)', cls:'adj'},
+    {time:'2:00 PM',  venue:'Brand Innovators Showcase Stage', session:'Audience First, Channel Second', people:'Benoit Vatere (Liquid Death Chief Media Officer)', cls:'fit'},
+    {time:'2:00 PM',  venue:'DEPT Secret Garden', session:'The new rules of scaling brands with AI', people:'Sona Iliffe-Moon (Yahoo CCO) · Emily O\'Hara (eBay VP Brand)', cls:''},
+    {time:'7:00 PM',  venue:'DEPT Secret Garden', session:'Future Club Dinner (invite only)', people:'Hope Hydration sponsoring', cls:''},
+  ],
+  wed: [
+    {time:'9:15 AM', venue:'Brand Innovators Beach Stage', session:'Kelly Mahoney (Ulta Beauty CMO) Fireside', people:'', cls:'adj'},
+    {time:'10:30 AM', venue:'Brand Innovators Showcase Stage', session:'From Shelf Staple to Cultural Resonance: Amplifying eos Body', people:'Kelsey Newberry (eos VP Brand Marketing)', cls:'fit'},
+    {time:'10:30 AM', venue:'DEPT Secret Garden', session:'What broke the Internet?', people:'Nic Brandenberger (Mammut CMO) · Kira Karlstrom (Twitch)', cls:'fit'},
+    {time:'12:25 PM', venue:'Brand Innovators Beach Stage', session:'2026 and Beyond: Media Innovation Outlook', people:'Paloma Azulay (McDonald\'s VP Global Brand)', cls:''},
+    {time:'12:30 PM', venue:'Brands&Culture Villa', session:'Fandoms, Communities & Niches', people:'Gigi Russo (HUNTER) · Sportradar · PepsiCo', cls:''},
+    {time:'2:00 PM',  venue:'DEPT Secret Garden', session:'The human multiplier: why leadership is the real AI advantage', people:'Erin Chin (Logitech CMO) · Scott Zalaznik (BLACKROLL CEO)', cls:'fit'},
+    {time:'3:40 PM',  venue:'Brand Innovators Beach Stage', session:'Agents, Signals, and the Self-Driving Funnel', people:'Lindsey Slaby (Sunday Dinner) — KEY RELATIONSHIP', cls:'key'},
+    {time:'4:00 PM',  venue:'DEPT Secret Garden', session:'How AI is helping keep loved ones safe from gun violence', people:'Laurie Keith (Ad Council) · Jennifer Kattula (Microsoft Advertising)', cls:''},
+    {time:'5:30 PM',  venue:'Ad Age / The List Lounge (Lawn at Mondrian)', session:'Cannes Lawn Party (invite only)', people:'', cls:''},
+    {time:'7:00 PM',  venue:'DEPT Secret Garden', session:'Future Club Dinner × WFA (invite only)', people:'', cls:''},
+  ],
+  thu: [
+    {time:'9:30 AM',  venue:'DEPT Secret Garden', session:'Running Club with Webby Awards', people:'', cls:''},
+    {time:'10:25 AM', venue:'Brand Innovators Beach Stage', session:'Fireside — Michelle Crossan-Matos (SharkNinja CGO)', people:'', cls:'adj'},
+    {time:'10:30 AM', venue:'Brand Innovators Beach Stage', session:'Creating Experiences People Want to Share', people:'Ashley Kechter (Vuori President) · Jill Cress (Babylist CMO)', cls:'fit'},
+    {time:'11:05 AM', venue:'Brand Innovators Beach Stage', session:'Mars Portfolio Panel', people:'Natalia Ball · Rankin Carroll · Matt Graham (Mars)', cls:''},
+    {time:'1:35 PM',  venue:'Brand Innovators Beach Stage', session:'Laurie Lam (e.l.f. Beauty CBO) Fireside', people:'', cls:'fit'},
+    {time:'2:00 PM',  venue:'Brand Innovators Beach Stage', session:'The Commerce Media Revolution', people:'Doug Sweeney (Oura CMO)', cls:'fit'},
+    {time:'2:00 PM',  venue:'DEPT Secret Garden', session:'The human multiplier: AI advantage panel', people:'Scott Zalaznik (BLACKROLL CEO) · Adrian Fung (eBay CMO)', cls:'fit'},
+    {time:'5:00 PM',  venue:'RTL Beach', session:'ACT Responsible Tributes Celebration', people:'', cls:''},
+    {time:'7:00 PM',  venue:'DEPT Secret Garden', session:'afriCANNES × DEPT Closing Party', people:'Kojo Marfo · Kofi Turkson (My Runway Group)', cls:''},
+  ],
+  fri: [
+    {time:'All day', venue:'Palais / Croisette', session:'Festival wind-down · Award shows · Departures', people:'', cls:''},
+    {time:'12:00 PM', venue:'Forbes CMO Luncheon', session:'World\'s Most Influential CMOs (invite only)', people:'', cls:''},
+  ],
+};
+
+// Venue contacts (who's there all week / multi-day)
+// activeDays: which days this venue is worth visiting
 let ACROSS_DATA = [
-  {venue:'Adweek House (Le Majestic Hotel)',period:'Jun 21–26 · Full week',contacts:[
-    {name:'Sarah Leinberger',role:'VP Marketing · Yoobi & Altitude Brands',cls:'fit'},
-    {name:'Soyoung Kang',role:'President · eos Products',cls:'adj'},
-    {name:'Vanessa Wallace',role:'CMO · Savage X Fenty',cls:'fit'},
-    {name:'Jody Hallman',role:'VP Integrated Marketing · Perdue Farms',cls:'adj'},
-    {name:'Yasmin Dastmalchi',role:'GM · NYX Professional Makeup',cls:'adj'},
-    {name:'Aïda Moudachirou-Rebois',role:'SVP/GM · M·A·C Cosmetics',cls:'adj'},
-    {name:'Allyson Felix',role:'Co-Founder · Saysh',cls:'adj'},
-    {name:'Manu Orssaud',role:'CMO · Duolingo',cls:'adj'},
+  {venue:'Brand Innovators (Rado Beach / Armani Caffè)', period:'Jun 22–25 · Brand-side free', activeDays:['mon','tue','wed','thu'], contacts:[
+    {name:'Kelsey Newberry', role:'VP Brand Marketing · eos', cls:'fit'},
+    {name:'Jill Cress', role:'CMO · Babylist', cls:'fit'},
+    {name:'Joy Howard', role:'CMO · Back Market', cls:'fit'},
+    {name:'Benoit Vatere', role:'Chief Media Officer · Liquid Death', cls:'fit'},
+    {name:'Lindsey Slaby', role:'Founder · Sunday Dinner — KEY RELATIONSHIP', cls:'key'},
+    {name:'Ashley Kechter', role:'Global President · Vuori', cls:'adj'},
+    {name:'Michelle Crossan-Matos', role:'CGO · SharkNinja', cls:'adj'},
+    {name:'Alex Frias', role:'CMO · Steve Madden', cls:'adj'},
   ]},
-  {venue:'DEPT Secret Garden (5 Rdpt Duboys d\'Angers)',period:'Jun 23–25 · Invite-only',contacts:[
-    {name:'Nic Brandenberger',role:'CMO · Mammut',cls:'fit'},
-    {name:'Raji Behal',role:'Head W&S Europe, UK&I · Klarna',cls:'adj'},
-    {name:'Scott Zalaznik',role:'CEO · BLACKROLL',cls:'fit'},
+  {venue:'Adweek House (Le Majestic Hotel)', period:'Jun 21–25 · Full week', activeDays:['mon','tue','wed','thu','fri'], contacts:[
+    {name:'Sarah Leinberger', role:'VP Marketing · Yoobi & Altitude Brands', cls:'fit'},
+    {name:'Vanessa Wallace', role:'CMO · Savage X Fenty', cls:'fit'},
+    {name:'Soyoung Kang', role:'President · eos Products', cls:'adj'},
+    {name:'Jody Hallman', role:'VP Integrated Marketing · Perdue Farms', cls:'adj'},
+    {name:'Manu Orssaud', role:'CMO · Duolingo', cls:'adj'},
   ]},
-  {venue:'Brands&Culture Villa',period:'Jun 23–24',contacts:[
-    {name:'Paige Grossman',role:'VP Global Brand Creative · Ancestry',cls:'fit'},
-    {name:'Yasmin O\'Neal',role:'Global Brand Senior Director · DECIEM (The Ordinary)',cls:'fit'},
-    {name:'Catherine Ferdon',role:'CMO · Coinbase',cls:'adj'},
-    {name:'Viviana Ochoa',role:'VP Marketing · Essity',cls:'adj'},
-    {name:'Tamika Young',role:'CMCO · Hinge',cls:'adj'},
-    {name:'Ekta Chopra',role:'CTAIO · e.l.f. Beauty',cls:'adj'},
+  {venue:'DEPT Secret Garden (5 Rdpt Duboys d\'Angers)', period:'Jun 23–25 · Invite-only', activeDays:['tue','wed','thu'], contacts:[
+    {name:'Nic Brandenberger', role:'CMO · Mammut', cls:'fit'},
+    {name:'Scott Zalaznik', role:'CEO · BLACKROLL', cls:'fit'},
+    {name:'Raji Behal', role:'Head W&S Europe, UK&I · Klarna', cls:'adj'},
   ]},
-  {venue:'Stagwell Sport Beach (Plage du Festival)',period:'Jun 21–25 · Access intelligence (no title filter)',contacts:[
-    {name:'Doug Sweeny',role:'CMO · Oura Ring',cls:'fit'},
-    {name:'Ken Griffey Jr · Noah Lyles · Maria Sharapova · CC Sabathia',role:'Confirmed athlete roster',cls:'adj'},
+  {venue:'FQ Beach (Female Quotient Equality Lounge)', period:'Jun 22–25 · Hotel Martinez', activeDays:['mon','tue','wed','thu'], contacts:[
+    {name:'Carley Caldas', role:'SVP Marketing & Creative · eos Products', cls:'fit'},
+    {name:'Isabelle Sakai', role:'CMO · Mark Anthony Brands (White Claw)', cls:'adj'},
   ]},
-  {venue:'Brand Innovators (Rado Beach / Armani Caffè)',period:'Jun 22–25 · Full summit',contacts:[
-    {name:'Kelsey Newberry',role:'VP Brand Marketing · eos',cls:'fit'},
-    {name:'Lindsey Slaby',role:'Founder · Sunday Dinner — KEY RELATIONSHIP',cls:'key'},
-    {name:'Ashley Kechter',role:'Global President · Vuori',cls:'adj'},
-    {name:'Jill Cress',role:'CMO · Babylist',cls:'fit'},
-    {name:'Benoit Vatere',role:'Chief Media Officer · Liquid Death',cls:'fit'},
-    {name:'Joy Howard',role:'CMO · Back Market',cls:'fit'},
-    {name:'Michelle Crossan-Matos',role:'CGO · SharkNinja',cls:'adj'},
+  {venue:'Brands&Culture Villa (13 Ave de Benefiat)', period:'Jun 23–24', activeDays:['tue','wed'], contacts:[
+    {name:'Paige Grossman', role:'VP Global Brand Creative · Ancestry', cls:'fit'},
+    {name:'Yasmin O\'Neal', role:'Global Brand Senior Director · DECIEM (The Ordinary)', cls:'fit'},
+    {name:'Tamika Young', role:'CMCO · Hinge', cls:'adj'},
+    {name:'Ekta Chopra', role:'CTAIO · e.l.f. Beauty', cls:'adj'},
+    {name:'Catherine Ferdon', role:'CMO · Coinbase', cls:'adj'},
   ]},
-];
-
-const PRE_DATA = [
-  {venue:'FQ Beach (Female Quotient Equality Lounge)',when:'Mon Jun 22',contacts:[
-    {name:'Carley Caldas',role:'SVP Marketing & Creative · eos Products',cls:'fit'},
-    {name:'Isabelle Sakai',role:'CMO · Mark Anthony Brands (White Claw)',cls:'adj'},
+  {venue:'Stagwell Sport Beach (Plage du Festival)', period:'Jun 21–25 · No title filter', activeDays:['mon','tue','wed','thu'], contacts:[
+    {name:'Doug Sweeney', role:'CMO · Oura Ring', cls:'fit'},
+    {name:'Louisa Wee', role:'CMO · Strava', cls:'fit'},
   ]},
-  {venue:'Journal House (WSJ, 61 Blvd de la Croisette)',when:'Jun 22–25',contacts:[
-    {name:'Access intelligence venue',role:'No title filter — track who is in the building.',cls:''},
+  {venue:'LBB & Friends Beach (68 Blvd de la Croisette)', period:'Jun 22–26 · Powell PR mandate', activeDays:['mon','tue','wed','thu','fri'], contacts:[
+    {name:'Powell PR speaking slot target', role:'15th year · Free drinks 4–6 PM daily', cls:'key'},
   ]},
-  {venue:'Ad Age / The List Lounge',when:'Jun 22–25',contacts:[
-    {name:'CMO Roundtable (Tue AM) · Leading Women (Wed AM)',role:'Cannes Lawn Party Wed 5:30 PM',cls:''},
-    {name:'E.J. Schultz (Ad Age News Editor)',role:'At Brands&Culture — flag for Powell PR trade article placement',cls:'key'},
+  {venue:'WSJ Journal House (61 Blvd de la Croisette)', period:'Jun 22–25 · No title filter', activeDays:['mon','tue','wed','thu'], contacts:[
+    {name:'Access intelligence venue', role:'Track who is in the building — no title filter', cls:''},
   ]},
-  {venue:'Carlton + Majestic Terraces',when:'Daily · 90 min',contacts:[
-    {name:'Strategic drift time',role:'Late morning or golden hour — unstructured networking, not downtime',cls:''},
-  ]},
-  {venue:'LBB & Friends Beach (65 Blvd de la Croisette)',when:'Jun 22–26',contacts:[
-    {name:'Powell PR mandate venue',role:'15th year · Free drinks 4–6 PM · Pursue speaking slot',cls:'key'},
+  {venue:'Carlton + Majestic Terraces', period:'Daily · 90 min unstructured', activeDays:['mon','tue','wed','thu','fri'], contacts:[
+    {name:'Strategic drift time', role:'Late morning or golden hour — not downtime', cls:''},
   ]},
 ];
 
-// ---- Add to Schedule + Add to Calendar helpers ----
+// ---- STATE ----
+let activeDay = 'mon';
+let currentFilter = 'all';
 
+// ---- SCHEDULE / SAVE HELPERS ----
 const DAY_INFO = {
   mon: { key:'d3', date:'2026-06-22', label:'Mon Jun 22' },
   tue: { key:'d4', date:'2026-06-23', label:'Tue Jun 23' },
@@ -293,11 +264,9 @@ const DAY_INFO = {
   thu: { key:'d6', date:'2026-06-25', label:'Thu Jun 25' },
   fri: { key:'d7', date:'2026-06-26', label:'Fri Jun 26' },
 };
-
 const BLOCK_DEFAULT_HOUR = { Morning: 9, Midday: 12, Afternoon: 15, Evening: 18 };
 
-// Parse "10:30 AM" / "1:00 PM" / "Morning" / "All-Day" → {hour, minute}
-function parseTime(timeStr, blockLabel) {
+function parseTime(timeStr) {
   if (timeStr) {
     const m = timeStr.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)/i);
     if (m) {
@@ -314,271 +283,252 @@ function parseTime(timeStr, blockLabel) {
     if (/evening/i.test(timeStr))   return { hour: 18, minute: 0 };
     if (/all.?day/i.test(timeStr))  return { hour: 9, minute: 0 };
   }
-  return { hour: BLOCK_DEFAULT_HOUR[blockLabel] || 9, minute: 0 };
+  return { hour: 9, minute: 0 };
 }
 
-// SLOTS in schedule.html are hourly 8 AM = 0 ... 11 PM = 15
-function slotIndex(hour) {
-  const idx = hour - 8;
-  if (idx < 0) return 0;
-  if (idx > 15) return 15;
-  return idx;
-}
-
+function slotIndex(hour) { const i = hour - 8; return i < 0 ? 0 : i > 15 ? 15 : i; }
 function pad(n) { return n < 10 ? '0' + n : String(n); }
 
-// Build a saved-item record that schedule.html can consume
-function buildSavedItem(ev, day, blockLabel) {
-  const { hour, minute } = parseTime(ev.time, blockLabel);
+function buildSavedItem(ev, day) {
+  const { hour, minute } = parseTime(ev.time);
   const info = DAY_INFO[day];
   return {
-    id: btoa(unescape(encodeURIComponent(day + '|' + ev.session + '|' + (ev.venue||'') + '|' + (ev.time||blockLabel)))).slice(0, 24),
-    dayKey: info.key,
-    date: info.date,
-    slot: slotIndex(hour),
-    hour, minute,
-    time: ev.time || blockLabel,
-    venue: ev.venue || '',
-    session: ev.session,
-    people: ev.people || '',
-    cls: ev.cls || '',
-    block: blockLabel,
+    id: btoa(unescape(encodeURIComponent(day + '|' + ev.session + '|' + (ev.venue||'') + '|' + (ev.time||'')))).slice(0, 24),
+    dayKey: info.key, date: info.date, slot: slotIndex(hour), hour, minute,
+    time: ev.time || '', venue: ev.venue || '', session: ev.session,
+    people: ev.people || '', cls: ev.cls || '',
   };
 }
 
-function getSaved() {
-  try { return JSON.parse(localStorage.getItem('cylndr.cannes.schedule') || '[]'); }
-  catch (e) { return []; }
-}
-function setSaved(arr) {
-  localStorage.setItem('cylndr.cannes.schedule', JSON.stringify(arr));
-  updateSavedBanner();
-}
+function getSaved() { try { return JSON.parse(localStorage.getItem('cylndr.cannes.schedule') || '[]'); } catch(e) { return []; } }
+function setSaved(arr) { localStorage.setItem('cylndr.cannes.schedule', JSON.stringify(arr)); updateSavedBanner(); }
 function isSaved(id) { return getSaved().some(x => x.id === id); }
 
 function toggleSave(btn, encodedEv) {
   const item = JSON.parse(decodeURIComponent(encodedEv));
   let saved = getSaved();
   const exists = saved.find(x => x.id === item.id);
-  if (exists) {
-    saved = saved.filter(x => x.id !== item.id);
-    setSaved(saved);
-    btn.classList.remove('saved');
-    btn.textContent = '📌 Save';
-  } else {
-    saved.push(item);
-    setSaved(saved);
-    btn.classList.add('saved');
-    btn.textContent = '✓ Saved';
-  }
+  if (exists) { saved = saved.filter(x => x.id !== item.id); setSaved(saved); btn.classList.remove('saved'); btn.textContent = '📌 Save'; }
+  else { saved.push(item); setSaved(saved); btn.classList.add('saved'); btn.textContent = '✓ Saved'; }
 }
 
 function clearSaved() {
-  if (!confirm('Remove all saved items from My Schedule? (Does not affect your personal calendar.)')) return;
+  if (!confirm('Remove all saved items from My Schedule?')) return;
   localStorage.removeItem('cylndr.cannes.schedule');
   updateSavedBanner();
-  render(); // rebuild to reset button states
+  render();
 }
 
 function updateSavedBanner() {
   const saved = getSaved();
-  const banner = document.getElementById('saved-banner');
   document.getElementById('saved-count').textContent = saved.length;
-  banner.classList.toggle('show', saved.length > 0);
+  document.getElementById('saved-banner').classList.toggle('show', saved.length > 0);
 }
 
-// --- Calendar URL builders ---
-
+// ---- CALENDAR URL BUILDERS ----
 function fmtForCal(date, hour, minute) {
-  // local time format YYYYMMDDTHHMMSS (Cannes time, ctz parameter handles TZ in Google)
-  const [Y, M, D] = date.split('-');
+  const [Y,M,D] = date.split('-');
   return `${Y}${M}${D}T${pad(hour)}${pad(minute)}00`;
 }
-
-function gcalUrl(item, durationMin = 60) {
+function gcalUrl(item) {
   const start = fmtForCal(item.date, item.hour, item.minute);
-  const endHour = item.hour + Math.floor((item.minute + durationMin) / 60);
-  const endMin = (item.minute + durationMin) % 60;
-  const end = fmtForCal(item.date, endHour, endMin);
-  const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
-  const details = [item.people, 'Saved from CYLNDR × Cannes 2026 calendar'].filter(Boolean).join('\n\n');
-  const params = new URLSearchParams({
-    action: 'TEMPLATE', text: title, dates: `${start}/${end}`,
-    details, location: item.venue || 'Cannes, France', ctz: 'Europe/Paris',
-  });
-  return 'https://calendar.google.com/calendar/render?' + params.toString();
+  const eh = item.hour + 1; const em = item.minute;
+  const end = fmtForCal(item.date, eh, em);
+  const title = `${item.session}${item.venue?' @ '+item.venue:''}`;
+  const p = new URLSearchParams({action:'TEMPLATE',text:title,dates:`${start}/${end}`,details:item.people||'',location:item.venue||'Cannes, France',ctz:'Europe/Paris'});
+  return 'https://calendar.google.com/calendar/render?' + p;
 }
-
-function outlookUrl(item, durationMin = 60) {
-  const [Y, M, D] = item.date.split('-');
-  const startISO = `${Y}-${M}-${D}T${pad(item.hour)}:${pad(item.minute)}:00`;
-  const endHour = item.hour + Math.floor((item.minute + durationMin) / 60);
-  const endMin = (item.minute + durationMin) % 60;
-  const endISO = `${Y}-${M}-${D}T${pad(endHour)}:${pad(endMin)}:00`;
-  const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
-  const body = [item.people, 'Saved from CYLNDR × Cannes 2026 calendar'].filter(Boolean).join('\n\n');
-  const params = new URLSearchParams({
-    path: '/calendar/action/compose', rru: 'addevent',
-    subject: title, body, location: item.venue || 'Cannes, France',
-    startdt: startISO, enddt: endISO,
-  });
-  return 'https://outlook.live.com/calendar/0/deeplink/compose?' + params.toString();
+function outlookUrl(item) {
+  const [Y,M,D] = item.date.split('-');
+  const s = `${Y}-${M}-${D}T${pad(item.hour)}:${pad(item.minute)}:00`;
+  const e = `${Y}-${M}-${D}T${pad(item.hour+1)}:${pad(item.minute)}:00`;
+  const title = `${item.session}${item.venue?' @ '+item.venue:''}`;
+  const p = new URLSearchParams({path:'/calendar/action/compose',rru:'addevent',subject:title,body:item.people||'',location:item.venue||'Cannes',startdt:s,enddt:e});
+  return 'https://outlook.live.com/calendar/0/deeplink/compose?' + p;
 }
-
-function icsDataUri(item, durationMin = 60) {
+function icsDataUri(item) {
   const start = fmtForCal(item.date, item.hour, item.minute);
-  const endHour = item.hour + Math.floor((item.minute + durationMin) / 60);
-  const endMin = (item.minute + durationMin) % 60;
-  const end = fmtForCal(item.date, endHour, endMin);
-  const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
-  const desc = [item.people, 'Saved from CYLNDR × Cannes 2026 calendar'].filter(Boolean).join('\n\n');
-  const esc = s => String(s).replace(/[\\,;]/g, '\\$&').replace(/\n/g, '\\n');
-  const ics = [
-    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CYLNDR//Cannes2026//EN', 'CALSCALE:GREGORIAN',
-    'BEGIN:VEVENT', 'UID:' + item.id + '@cylndr-cannes-2026',
-    'DTSTAMP:' + fmtForCal('2026-05-20', 12, 0) + 'Z',
-    'DTSTART;TZID=Europe/Paris:' + start,
-    'DTEND;TZID=Europe/Paris:' + end,
-    'SUMMARY:' + esc(title),
-    'LOCATION:' + esc(item.venue || 'Cannes, France'),
-    'DESCRIPTION:' + esc(desc),
-    'END:VEVENT', 'END:VCALENDAR',
-  ].join('\r\n');
-  return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+  const end   = fmtForCal(item.date, item.hour+1, item.minute);
+  const title = `${item.session}${item.venue?' @ '+item.venue:''}`;
+  const esc = s => String(s).replace(/[\\,;]/g,'\\$&').replace(/\n/g,'\\n');
+  const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//CYLNDR//Cannes2026//EN','BEGIN:VEVENT',
+    'UID:'+item.id+'@cylndr-cannes-2026','DTSTAMP:20260520T120000Z',
+    'DTSTART;TZID=Europe/Paris:'+start,'DTEND;TZID=Europe/Paris:'+end,
+    'SUMMARY:'+esc(title),'LOCATION:'+esc(item.venue||'Cannes'),'DESCRIPTION:'+esc(item.people||''),
+    'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  return 'data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
 }
 
 function toggleMenu(btn) {
-  document.querySelectorAll('.cal-menu.open').forEach(m => { if (m !== btn.nextElementSibling) m.classList.remove('open'); });
+  document.querySelectorAll('.cal-menu.open').forEach(m => { if (m!==btn.nextElementSibling) m.classList.remove('open'); });
   btn.nextElementSibling.classList.toggle('open');
 }
 document.addEventListener('click', e => {
-  if (!e.target.closest('.event-actions')) {
-    document.querySelectorAll('.cal-menu.open').forEach(m => m.classList.remove('open'));
-  }
+  if (!e.target.closest('.session-actions')) document.querySelectorAll('.cal-menu.open').forEach(m => m.classList.remove('open'));
 });
 
-function makeEventHtml(ev, day, blockLabel) {
-  const badge = ev.cls==='fit'?'<span class="badge badge-fit">FIT</span>':ev.cls==='adj'?'<span class="badge badge-adj">ADJ</span>':ev.cls==='key'?'<span class="badge badge-key">KEY</span>':'';
-  // Skip action buttons for empty/placeholder events (no session text or pure-info rows)
-  const hasActions = ev.session && day && DAY_INFO[day];
-  let actions = '';
-  if (hasActions) {
-    const item = buildSavedItem(ev, day, blockLabel);
-    const encoded = encodeURIComponent(JSON.stringify(item));
-    const savedClass = isSaved(item.id) ? ' saved' : '';
-    const saveLabel = isSaved(item.id) ? '✓ Saved' : '📌 Save';
-    actions = `<div class="event-actions">
-      <button class="evt-btn${savedClass}" onclick="toggleSave(this, '${encoded}')">${saveLabel}</button>
-      <button class="evt-btn" onclick="toggleMenu(this)">📅 Calendar ▾</button>
-      <div class="cal-menu">
-        <a href="${gcalUrl(item)}" target="_blank" rel="noopener">Google Calendar</a>
-        <a href="${outlookUrl(item)}" target="_blank" rel="noopener">Outlook</a>
-        <a href="${icsDataUri(item)}" download="cannes-${item.id}.ics">Apple / .ics</a>
-      </div>
-    </div>`;
-  }
-  return `<div class="event ${ev.cls}" data-cls="${ev.cls}">
-    ${(ev.time||ev.venue)?`<div class="event-venue">${ev.time?ev.time+' · ':''}${ev.venue||''}</div>`:''}
-    <div class="event-session">${ev.session}${badge}</div>
-    ${ev.people?`<div class="event-people">${ev.people}</div>`:''}
-    ${actions}
-  </div>`;
+// ---- FILTER HELPERS ----
+function passesFilter(cls) {
+  if (currentFilter === 'all') return true;
+  if (currentFilter === 'fit') return cls === 'fit';
+  return cls === 'fit' || cls === 'adj' || cls === 'key';
 }
 
-function buildCell(events, day, blockLabel) {
-  if (!events||!events.length) return '<span class="empty-cell">No events</span>';
-  return `<div class="events">${events.map(ev => makeEventHtml(ev, day, blockLabel)).join('')}</div>`;
-}
-
-let currentFilter = 'all';
-
-function filterEv(ev) {
-  if (currentFilter==='all') return true;
-  if (currentFilter==='fit') return ev.cls==='fit';
-  return ev.cls==='fit'||ev.cls==='adj'||ev.cls==='key';
-}
-
+// ---- RENDER ----
 function render() {
-  const tbody = document.getElementById('tbody');
+  const container = document.getElementById('day-content');
   let html = '';
 
-  html += `<tr class="divider"><td colspan="6">Daily schedule</td></tr>`;
-  CAL_DATA.forEach(row => {
-    const cols = ['mon','tue','wed','thu','fri'].map(d => {
-      const evs = (row[d]||[]).filter(filterEv);
-      return `<td>${buildCell(evs, d, row.label)}</td>`;
-    }).join('');
-    html += `<tr><td class="time-col">${row.label}</td>${cols}</tr>`;
+  // Sessions for this day
+  const sessions = (CAL_DATA[activeDay] || []).filter(ev => passesFilter(ev.cls));
+
+  if (sessions.length) {
+    html += `<div class="section-hdr">Sessions — ${DAY_INFO[activeDay].label}</div>`;
+    sessions.forEach(ev => {
+      const badge = ev.cls==='fit' ? '<span class="badge badge-fit">FIT</span>'
+                  : ev.cls==='adj' ? '<span class="badge badge-adj">ADJ</span>'
+                  : ev.cls==='key' ? '<span class="badge badge-key">KEY</span>' : '';
+      const item = buildSavedItem(ev, activeDay);
+      const encoded = encodeURIComponent(JSON.stringify(item));
+      const savedCls = isSaved(item.id) ? ' saved' : '';
+      const saveLabel = isSaved(item.id) ? '✓ Saved' : '📌 Save';
+      const hasSession = ev.session && ev.session.length > 2;
+      const actions = hasSession ? `<div class="session-actions">
+        <button class="evt-btn${savedCls}" onclick="toggleSave(this,'${encoded}')">${saveLabel}</button>
+        <button class="evt-btn" onclick="toggleMenu(this)">📅 Calendar ▾</button>
+        <div class="cal-menu">
+          <a href="${gcalUrl(item)}" target="_blank" rel="noopener">Google Calendar</a>
+          <a href="${outlookUrl(item)}" target="_blank" rel="noopener">Outlook</a>
+          <a href="${icsDataUri(item)}" download="cannes-${item.id}.ics">Apple / .ics</a>
+        </div>
+      </div>` : '';
+      html += `<div class="session-card ${ev.cls}">
+        <div class="session-time-col">
+          <div class="session-time">${ev.time||'TBD'}</div>
+        </div>
+        <div class="session-body">
+          <div class="session-venue">${ev.venue||''}</div>
+          <div class="session-title">${ev.session}${badge}</div>
+          ${ev.people ? `<div class="session-people">${ev.people}</div>` : ''}
+          ${actions}
+        </div>
+      </div>`;
+    });
+  } else {
+    html += `<div class="section-hdr">Sessions — ${DAY_INFO[activeDay].label}</div>`;
+    html += `<div class="empty-day">No sessions match the current filter for this day.</div>`;
+  }
+
+  // Active venue contacts for this day
+  const activeVenues = ACROSS_DATA.filter(v => {
+    if (!v.activeDays || v.activeDays.includes(activeDay)) {
+      const filtered = v.contacts.filter(c => passesFilter(c.cls));
+      return filtered.length > 0;
+    }
+    return false;
   });
 
-  html += `<tr class="divider"><td colspan="6">Across the festival</td></tr>`;
-  ACROSS_DATA.forEach(venue => {
-    const contacts = currentFilter==='all' ? venue.contacts : venue.contacts.filter(c => currentFilter==='fit' ? c.cls==='fit' : (c.cls==='fit'||c.cls==='adj'||c.cls==='key'));
-    if (!contacts.length) return;
-    const venueLabel = `<strong>${venue.venue}</strong><br><span style="font-size:10px;color:#aaa">${venue.period}</span>`;
-    const ch = contacts.map(c => {
-      const badge = c.cls==='fit'?'<span class="badge badge-fit">FIT</span>':c.cls==='adj'?'<span class="badge badge-adj">ADJ</span>':c.cls==='key'?'<span class="badge badge-key">KEY</span>':'';
-      return `<div class="event ${c.cls}" style="margin-bottom:4px"><div class="event-session">${c.name}${badge}</div><div class="event-people">${c.role}</div></div>`;
-    }).join('');
-    html += `<tr><td class="time-col" style="white-space:normal;font-size:10px;color:#888;text-transform:none;letter-spacing:0;font-weight:400">${venueLabel}</td><td colspan="5"><div class="events">${ch}</div></td></tr>`;
-  });
+  if (activeVenues.length) {
+    html += `<div class="section-hdr">Active venues — who's there today</div>`;
+    activeVenues.forEach(v => {
+      const contacts = v.contacts.filter(c => passesFilter(c.cls));
+      if (!contacts.length) return;
+      const rows = contacts.map(c => {
+        const badge = c.cls==='fit' ? '<span class="badge badge-fit">FIT</span>'
+                    : c.cls==='adj' ? '<span class="badge badge-adj">ADJ</span>'
+                    : c.cls==='key' ? '<span class="badge badge-key">KEY</span>' : '';
+        return `<div class="contact-row">
+          <div class="contact-name">${c.name}${badge}</div>
+          <div class="contact-role">${c.role}</div>
+        </div>`;
+      }).join('');
+      html += `<div class="venue-contact-card">
+        <div class="venue-name">${v.venue}</div>
+        <div class="venue-period">${v.period}</div>
+        ${rows}
+      </div>`;
+    });
+  }
 
-  html += `<tr class="divider"><td colspan="6">Pre-festival access + ongoing</td></tr>`;
-  PRE_DATA.forEach(venue => {
-    const contacts = currentFilter==='all' ? venue.contacts : venue.contacts.filter(c => currentFilter==='fit' ? c.cls==='fit' : (c.cls==='fit'||c.cls==='adj'||c.cls==='key'));
-    if (!contacts.length && currentFilter!=='all') return;
-    const venueLabel = `<strong>${venue.venue}</strong><br><span style="font-size:10px;color:#aaa">${venue.when}</span>`;
-    const toShow = currentFilter==='all' ? venue.contacts : contacts;
-    const ch = toShow.map(c => {
-      const badge = c.cls==='key'?'<span class="badge badge-key">KEY</span>':c.cls==='fit'?'<span class="badge badge-fit">FIT</span>':'';
-      return `<div class="event ${c.cls}" style="margin-bottom:4px"><div class="event-session">${c.name}${badge}</div><div class="event-people">${c.role}</div></div>`;
-    }).join('');
-    html += `<tr><td class="time-col" style="white-space:normal;font-size:10px;color:#888;text-transform:none;letter-spacing:0;font-weight:400">${venueLabel}</td><td colspan="5"><div class="events">${ch}</div></td></tr>`;
-  });
-
-  tbody.innerHTML = html;
+  container.innerHTML = html;
 }
 
+// ---- DAY TABS ----
+document.querySelectorAll('.day-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    activeDay = tab.dataset.day;
+    render();
+  });
+});
+
+// ---- FILTER ----
 function setFilter(f) {
   currentFilter = f;
   document.getElementById('btn-all').classList.toggle('on', f==='all');
   document.getElementById('btn-fit').classList.toggle('on', f==='fit');
-  document.getElementById('btn-adj').classList.toggle('on', f==='adj');
+  document.getElementById('btn-adj').classList.toggle('on', f==='fit+adj');
   render();
 }
 
+// ---- INITIAL RENDER ----
 render();
 updateSavedBanner();
 
-// Load live data from data.json and rebuild ACROSS_DATA dynamically
+// ---- DYNAMIC DATA from data.json ----
 fetch('data.json')
   .then(r => r.json())
   .then(data => {
+    if (data.lastUpdated) {
+      document.getElementById('footer-updated').textContent =
+        'Updated ' + new Date(data.lastUpdated).toLocaleDateString('en-US',{month:'short',day:'numeric'}) +
+        ' · canneslions.com · deptagency.com · brand-innovators.com';
+    }
+
     const entries = Array.isArray(data.entries) ? data.entries : [];
     const relevant = entries.filter(e =>
       (e.type === 'speaker' || e.type === 'attendee') &&
       (e.icpFlag === 'fit' || e.icpFlag === 'adjacent') &&
       e.name && e.venue
     );
-    // Group by venue
+
+    // Map ISO dates to day keys
+    const dateToDay = { '2026-06-22':'mon','2026-06-23':'tue','2026-06-24':'wed','2026-06-25':'thu','2026-06-26':'fri' };
+
+    // Determine which days a contact is active from their date field
+    function getDays(dateStr) {
+      if (!dateStr) return ['mon','tue','wed','thu','fri'];
+      if (dateToDay[dateStr]) return [dateToDay[dateStr]];
+      // Range or festival-wide
+      return ['mon','tue','wed','thu','fri'];
+    }
+
+    // Build venue map from data.json
     const venueMap = {};
     relevant.forEach(e => {
-      if (!venueMap[e.venue]) venueMap[e.venue] = { venue: e.venue, period: e.date || '', contacts: [] };
+      if (!venueMap[e.venue]) venueMap[e.venue] = { venue: e.venue, period: '', activeDays: new Set(), contacts: [] };
+      const days = getDays(e.date);
+      days.forEach(d => venueMap[e.venue].activeDays.add(d));
       venueMap[e.venue].contacts.push({
         name: e.name,
         role: [e.title, e.company].filter(Boolean).join(' · '),
         cls: e.icpFlag === 'fit' ? 'fit' : 'adj'
       });
     });
-    // Sort: most fit contacts first, then alphabetical
-    ACROSS_DATA = Object.values(venueMap).sort((a, b) => {
+
+    ACROSS_DATA = Object.values(venueMap).map(v => ({
+      ...v,
+      activeDays: Array.from(v.activeDays)
+    })).sort((a, b) => {
       const fa = a.contacts.filter(c => c.cls === 'fit').length;
       const fb = b.contacts.filter(c => c.cls === 'fit').length;
       return fb - fa || a.venue.localeCompare(b.venue);
     });
+
     render();
   })
-  .catch(() => { /* keep hardcoded ACROSS_DATA fallback */ });
+  .catch(() => { /* keep hardcoded ACROSS_DATA */ });
 </script>
 </body>
 </html>
