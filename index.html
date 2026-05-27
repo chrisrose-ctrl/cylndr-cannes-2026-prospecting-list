@@ -146,12 +146,13 @@ fetch('data.json')
   })
   .catch(() => {
     // fallback if data.json not available (e.g. local file open)
-    document.getElementById('stat-fit').textContent   = '5';
-    document.getElementById('stat-adj').textContent   = '65+';
+    document.getElementById('stat-fit').textContent   = '19';
+    document.getElementById('stat-adj').textContent   = '50+';
     document.getElementById('stat-total').textContent = '450';
   });
 
 const entries = [
+  { date:'2026-05-27 (pm)', body:'<strong>ICP expansion: 14 adjacent → fit reclassifications.</strong> Fit count: 5 → 19. Expanded ICP criteria applied: CMO at challenger brands under ~$300M revenue now qualifies; added production titles (Head of Production, Head of Design, Content Production lead) and in-house creative/production studio leaders as ICP-fit. Reclassified: Kory Marchisotto + Laurie Lam + Patrick O\'Keefe (e.l.f. Beauty) · Joy Howard (Back Market) · Louisa Wee (Strava) · Vanessa Wallace (Savage X Fenty) · Reema Amin (SheaMoisture) · Samantha Catalina (Happy Dad) · Tristan Pineiro (Grindr) · Benoit Vatere (Liquid Death) · Jill Cress (Babylist) · Nic Brandenberger (Mammut) · Scott Zalaznik (BLACKROLL) · Doug Sweeny (Oura Ring). Research note: Maya Dukes (Delta/Window Seat Studios), Joanna Gouraige (Bayer), Melanie Huet (Newell Brands), Warren Marenco Chase (Liberty Mutual) — no verifiable Cannes 2026 confirmation found, not added.', tags:['fit'] },
   { date:'2026-05-27', body:'<strong>+7 entries (443→450).</strong> 0 fit, 0 adjacent, 7 ignore. Brand Innovators Beach Stage update: Paloma Azulay (McDonald\'s VP Global Brand Mktg, Jun 24 12:25 PM) + Beverly Jackson (Zillow VP Brand & Product Mktg). Conscious Advertising Network + Clean Creatives sending reps. LinkedIn scrape: 3 ignore-tier (GWi, ABCS Insights, +Added). No new ICP fit or adjacent this run.', tags:[] },
   { date:'2026-05-26', body:'<strong>+14 entries (429→443).</strong> New adjacent: Jack Fleming (Boston Athletic Association CEO, Sport Beach access intel) · Jack Jia (Musely Founder & CEO, Adweek House — DTC personalized skincare, Series B). Sport Beach May 13 announcement fully captured: 5 new speakers (Emily Ketchen/Lenovo, Taylor Montgomery/Taco Bell, Rick Pineda/Diageo, Bex Smith/Crux Football). Adweek House additions: Andy Kauffman (Marriott CCO), Alvaro Luque (Avocados From Mexico), Bennett Richardson (NAR CMCO), Kyle Laughlin (Disney Imagineering SVP), Mia Calabrese + Lindsay Hubbard (Bravo talent). LinkedIn: Rah Ali (Onsite Media), Yaron Tomchin (Mobupps) — both ignore-tier.', tags:['adj'] },
   { date:'2026-05-21', body:'<strong>+13 entries (305→318).</strong> New adjacent: Reema Amin (SheaMoisture Head of Marketing) · Patrick O\'Keefe (e.l.f. Beauty CIMO, Jun 25 Adweek House) · Samantha Catalina (Happy Dad Fractional CMO) · Jessica Serrano (Einstein Bros CMO, LIONS Creators) · Chime (company — Sport Beach brand partner). e.l.f. Beauty now has 6 named contacts confirmed at Cannes 2026. Also: 8 ignore-tier from Adweek House and Brands&Culture Villa (Kraft Heinz, Georgia-Pacific, NFL, Hershey, Unilever, Mondelēz, Zeno).', tags:['adj'] },
