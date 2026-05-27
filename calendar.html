@@ -149,7 +149,7 @@ const CAL_DATA = [
   { label:'Morning', cls:'morning',
     mon:[
       {venue:'FQ Beach (Female Quotient)',session:'Creative Currency: From Insight to Impact',people:'Carley Caldas (eos SVP Marketing)',time:'Morning',cls:'fit'},
-      {venue:'Brand Innovators Beach Stage',session:'The CMO Agenda',people:'Adrian Fung (eBay) · Joy Howard (Back Market)',time:'8:00 AM',cls:'adj'},
+      {venue:'Brand Innovators Beach Stage',session:'The CMO Agenda',people:'Adrian Fung (eBay) · Joy Howard (Back Market)',time:'8:00 AM',cls:'fit'},
       {venue:'Lumière Theatre',session:'AB InBev Creative Marketer of the Year Keynote',people:'',time:'10:00 AM',cls:''},
     ],
     tue:[
@@ -161,11 +161,11 @@ const CAL_DATA = [
     ],
     wed:[
       {venue:'Brand Innovators Showcase Stage',session:'eos Body Through Culture',people:'Kelsey Newberry (eos VP Brand Marketing)',time:'10:30 AM',cls:'fit'},
-      {venue:'DEPT Secret Garden',session:'What broke the Internet?',people:'Nic Brandenberger (Mammut CMO) · Kira Karlstrom (Twitch)',time:'10:30 AM',cls:'adj'},
+      {venue:'DEPT Secret Garden',session:'What broke the Internet?',people:'Nic Brandenberger (Mammut CMO) · Kira Karlstrom (Twitch)',time:'10:30 AM',cls:'fit'},
       {venue:'Brand Innovators Beach Stage',session:'Kelly Mahoney (Ulta CMO) Fireside',people:'',time:'9:15 AM',cls:'adj'},
     ],
     thu:[
-      {venue:'Brand Innovators Beach Stage',session:'Creating Experiences People Want to Share',people:'Ashley Kechter (Vuori) · Jill Cress (Babylist CMO)',time:'10:30 AM',cls:'adj'},
+      {venue:'Brand Innovators Beach Stage',session:'Creating Experiences People Want to Share',people:'Ashley Kechter (Vuori) · Jill Cress (Babylist CMO)',time:'10:30 AM',cls:'fit'},
       {venue:'DEPT Secret Garden',session:'Running Club with Webby Awards',people:'',time:'9:30 AM',cls:''},
     ],
     fri:[{venue:'',session:'Festival winds down — award shows / departures',people:'',time:'',cls:''}],
@@ -193,7 +193,7 @@ const CAL_DATA = [
       {venue:'Brand Innovators Showcase Stage',session:'Sara Brooks (BetterHelp CGO) · Billy Bohan Chinique (Virgin Voyages VP)',people:'',time:'3:10 PM',cls:'adj'},
     ],
     tue:[
-      {venue:'Brand Innovators Showcase Stage',session:'Audience First, Channel Second',people:'Benoit Vatere (Liquid Death CMO)',time:'2:00 PM',cls:'adj'},
+      {venue:'Brand Innovators Showcase Stage',session:'Audience First, Channel Second',people:'Benoit Vatere (Liquid Death CMO)',time:'2:00 PM',cls:'fit'},
       {venue:'DEPT Secret Garden',session:'The new rules of scaling brands with AI',people:'Sona Iliffe-Moon (Yahoo) · Jessica Qaasim (Google) · Emily O\'Hara (eBay VP)',time:'2:00 PM',cls:''},
     ],
     wed:[
@@ -201,8 +201,8 @@ const CAL_DATA = [
       {venue:'DEPT Secret Garden',session:'How AI is helping keep loved ones safe from gun violence',people:'Laurie Keith (Ad Council) · Jennifer Kattula (Microsoft Advertising)',time:'4:00 PM',cls:''},
     ],
     thu:[
-      {venue:'Brand Innovators Beach Stage',session:'Laurie Lam (e.l.f. CBO) Fireside',people:'',time:'1:35 PM',cls:'adj'},
-      {venue:'DEPT Secret Garden',session:'The human multiplier: why leadership is the real AI advantage',people:'Scott Zalaznik (BLACKROLL CEO) · Adrian Fung (eBay CMO)',time:'2:00 PM',cls:'adj'},
+      {venue:'Brand Innovators Beach Stage',session:'Laurie Lam (e.l.f. CBO) Fireside',people:'',time:'1:35 PM',cls:'fit'},
+      {venue:'DEPT Secret Garden',session:'The human multiplier: why leadership is the real AI advantage',people:'Scott Zalaznik (BLACKROLL CEO) · Adrian Fung (eBay CMO)',time:'2:00 PM',cls:'fit'},
     ],
     fri:[{venue:'',session:'No major programming',people:'',time:'',cls:''}],
   },
@@ -225,11 +225,11 @@ const CAL_DATA = [
   },
 ];
 
-const ACROSS_DATA = [
+let ACROSS_DATA = [
   {venue:'Adweek House (Le Majestic Hotel)',period:'Jun 21–26 · Full week',contacts:[
     {name:'Sarah Leinberger',role:'VP Marketing · Yoobi & Altitude Brands',cls:'fit'},
     {name:'Soyoung Kang',role:'President · eos Products',cls:'adj'},
-    {name:'Vanessa Wallace',role:'CMO · Savage X Fenty',cls:'adj'},
+    {name:'Vanessa Wallace',role:'CMO · Savage X Fenty',cls:'fit'},
     {name:'Jody Hallman',role:'VP Integrated Marketing · Perdue Farms',cls:'adj'},
     {name:'Yasmin Dastmalchi',role:'GM · NYX Professional Makeup',cls:'adj'},
     {name:'Aïda Moudachirou-Rebois',role:'SVP/GM · M·A·C Cosmetics',cls:'adj'},
@@ -237,9 +237,9 @@ const ACROSS_DATA = [
     {name:'Manu Orssaud',role:'CMO · Duolingo',cls:'adj'},
   ]},
   {venue:'DEPT Secret Garden (5 Rdpt Duboys d\'Angers)',period:'Jun 23–25 · Invite-only',contacts:[
-    {name:'Nic Brandenberger',role:'CMO · Mammut',cls:'adj'},
+    {name:'Nic Brandenberger',role:'CMO · Mammut',cls:'fit'},
     {name:'Raji Behal',role:'Head W&S Europe, UK&I · Klarna',cls:'adj'},
-    {name:'Scott Zalaznik',role:'CEO · BLACKROLL',cls:'adj'},
+    {name:'Scott Zalaznik',role:'CEO · BLACKROLL',cls:'fit'},
   ]},
   {venue:'Brands&Culture Villa',period:'Jun 23–24',contacts:[
     {name:'Paige Grossman',role:'VP Global Brand Creative · Ancestry',cls:'fit'},
@@ -250,16 +250,16 @@ const ACROSS_DATA = [
     {name:'Ekta Chopra',role:'CTAIO · e.l.f. Beauty',cls:'adj'},
   ]},
   {venue:'Stagwell Sport Beach (Plage du Festival)',period:'Jun 21–25 · Access intelligence (no title filter)',contacts:[
-    {name:'Doug Sweeny',role:'CMO · Oura Ring',cls:'adj'},
+    {name:'Doug Sweeny',role:'CMO · Oura Ring',cls:'fit'},
     {name:'Ken Griffey Jr · Noah Lyles · Maria Sharapova · CC Sabathia',role:'Confirmed athlete roster',cls:'adj'},
   ]},
   {venue:'Brand Innovators (Rado Beach / Armani Caffè)',period:'Jun 22–25 · Full summit',contacts:[
     {name:'Kelsey Newberry',role:'VP Brand Marketing · eos',cls:'fit'},
     {name:'Lindsey Slaby',role:'Founder · Sunday Dinner — KEY RELATIONSHIP',cls:'key'},
     {name:'Ashley Kechter',role:'Global President · Vuori',cls:'adj'},
-    {name:'Jill Cress',role:'CMO · Babylist',cls:'adj'},
-    {name:'Benoit Vatere',role:'Chief Media Officer · Liquid Death',cls:'adj'},
-    {name:'Joy Howard',role:'CMO · Back Market',cls:'adj'},
+    {name:'Jill Cress',role:'CMO · Babylist',cls:'fit'},
+    {name:'Benoit Vatere',role:'Chief Media Officer · Liquid Death',cls:'fit'},
+    {name:'Joy Howard',role:'CMO · Back Market',cls:'fit'},
     {name:'Michelle Crossan-Matos',role:'CGO · SharkNinja',cls:'adj'},
   ]},
 ];
@@ -549,6 +549,36 @@ function setFilter(f) {
 
 render();
 updateSavedBanner();
+
+// Load live data from data.json and rebuild ACROSS_DATA dynamically
+fetch('data.json')
+  .then(r => r.json())
+  .then(data => {
+    const entries = Array.isArray(data.entries) ? data.entries : [];
+    const relevant = entries.filter(e =>
+      (e.type === 'speaker' || e.type === 'attendee') &&
+      (e.icpFlag === 'fit' || e.icpFlag === 'adjacent') &&
+      e.name && e.venue
+    );
+    // Group by venue
+    const venueMap = {};
+    relevant.forEach(e => {
+      if (!venueMap[e.venue]) venueMap[e.venue] = { venue: e.venue, period: e.date || '', contacts: [] };
+      venueMap[e.venue].contacts.push({
+        name: e.name,
+        role: [e.title, e.company].filter(Boolean).join(' · '),
+        cls: e.icpFlag === 'fit' ? 'fit' : 'adj'
+      });
+    });
+    // Sort: most fit contacts first, then alphabetical
+    ACROSS_DATA = Object.values(venueMap).sort((a, b) => {
+      const fa = a.contacts.filter(c => c.cls === 'fit').length;
+      const fb = b.contacts.filter(c => c.cls === 'fit').length;
+      return fb - fa || a.venue.localeCompare(b.venue);
+    });
+    render();
+  })
+  .catch(() => { /* keep hardcoded ACROSS_DATA fallback */ });
 </script>
 </body>
 </html>

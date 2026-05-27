@@ -149,13 +149,17 @@ const STATUS_OPTIONS = [
 ];
 const STATUS_BY_ID = Object.fromEntries(STATUS_OPTIONS.map(s=>[s.id,s]));
 const STATUS_DOTS = {new:'#9ca3af',research:'#6366f1',reach:'#f59e0b',scheduled:'#ea580c',met:'#10b981',qualified:'#8b5cf6',dropped:'#ef4444'};
-let allEntries=[], crm={}, pagination={page:1,perPage:50}, sortState={col:null,dir:1};
+let allEntries=[], crm={}, icpOverrides={}, pagination={page:1,perPage:50}, sortState={col:null,dir:1};
+const ICP_OVERRIDES_KEY='cannes-2026-icp-overrides-v1';
 
 function esc(s){if(s==null)return'';return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function loadCRM(){try{crm=JSON.parse(localStorage.getItem(CRM_KEY)||'{}');}catch(e){crm={};}}
 function saveCRM(){localStorage.setItem(CRM_KEY,JSON.stringify(crm));}
 function getCRM(id){return crm[id]||{status:'new',owner:'',contactDate:'',notes:''};}
 function updateCRM(id,patch){crm[id]=Object.assign(getCRM(id),patch);saveCRM();}
+function loadICPOverrides(){try{icpOverrides=JSON.parse(localStorage.getItem(ICP_OVERRIDES_KEY)||'{}');}catch(e){icpOverrides={};}}
+function saveICPOverride(id,flag){if(flag===null){delete icpOverrides[id];}else{icpOverrides[id]=flag;}localStorage.setItem(ICP_OVERRIDES_KEY,JSON.stringify(icpOverrides));}
+function getEffectiveICP(e){return icpOverrides[e.id]||e.icpFlag;}
 
 function loadFilters(){
   try{
@@ -183,8 +187,8 @@ function saveFilters(){
 }
 
 function renderStats(){
-  const fits=allEntries.filter(e=>e.icpFlag==='fit').length;
-  const adj=allEntries.filter(e=>e.icpFlag==='adjacent').length;
+  const fits=allEntries.filter(e=>getEffectiveICP(e)==='fit').length;
+  const adj=allEntries.filter(e=>getEffectiveICP(e)==='adjacent').length;
   let inPipeline=0,met=0;
   for(const e of allEntries){const st=getCRM(e.id).status;if(st==='met'||st==='qualified')met++;if(st!=='new'&&st!=='dropped')inPipeline++;}
   document.getElementById('stats').innerHTML=`
@@ -213,8 +217,8 @@ function applyFilters(){
   const v=document.getElementById('filter-venue').value;
   const priority=document.getElementById('toggle-priority').classList.contains('active');
   return allEntries.filter(e=>{
-    if(priority&&e.icpFlag!=='fit'&&e.icpFlag!=='adjacent')return false;
-    if(icp&&e.icpFlag!==icp)return false;
+    if(priority&&getEffectiveICP(e)!=='fit'&&getEffectiveICP(e)!=='adjacent')return false;
+    if(icp&&getEffectiveICP(e)!==icp)return false;
     if(t&&e.type!==t)return false;
     if(v&&e.venue!==v)return false;
     if(st&&getCRM(e.id).status!==st)return false;
@@ -226,10 +230,10 @@ function applyFilters(){
 function sortEntries(entries){
   if(!sortState.col){
     const rank={fit:0,adjacent:1,ignore:2};
-    return [...entries].sort((a,b)=>{const ra=rank[a.icpFlag]??3,rb=rank[b.icpFlag]??3;if(ra!==rb)return ra-rb;return(a.company||'').localeCompare(b.company||'');});
+    return [...entries].sort((a,b)=>{const ra=rank[getEffectiveICP(a)]??3,rb=rank[getEffectiveICP(b)]??3;if(ra!==rb)return ra-rb;return(a.company||'').localeCompare(b.company||'');});
   }
   const dir=sortState.dir,col=sortState.col;
-  const getVal=e=>{switch(col){case'status':return STATUS_OPTIONS.findIndex(s=>s.id===getCRM(e.id).status);case'name':return(e.name||'').toLowerCase();case'company':return(e.company||'').toLowerCase();case'venue':return(e.venue||'').toLowerCase();case'icp':return({fit:0,adjacent:1,ignore:2}[e.icpFlag]??3);case'added':return e.addedDate||'';default:return '';}};
+  const getVal=e=>{switch(col){case'status':return STATUS_OPTIONS.findIndex(s=>s.id===getCRM(e.id).status);case'name':return(e.name||'').toLowerCase();case'company':return(e.company||'').toLowerCase();case'venue':return(e.venue||'').toLowerCase();case'icp':return({fit:0,adjacent:1,ignore:2}[getEffectiveICP(e)]??3);case'added':return e.addedDate||'';default:return '';}};
   return [...entries].sort((a,b)=>{const av=getVal(a),bv=getVal(b);if(av<bv)return -1*dir;if(av>bv)return 1*dir;return 0;});
 }
 
@@ -238,7 +242,9 @@ function statusPillHtml(id){const c=getCRM(id);const st=STATUS_BY_ID[c.status]||
 function rowHtml(e){
   const c=getCRM(e.id);
   const typeBadge=e.type?`<span class="badge type-${esc(e.type)}">${esc(e.type)}</span>`:'';
-  const icpBadge=e.icpFlag?`<span class="badge ${esc(e.icpFlag)}">${esc(e.icpFlag)}</span>`:'';
+  const eICP=getEffectiveICP(e);
+  const isOverridden=!!icpOverrides[e.id];
+  const icpBadge=eICP?`<span class="badge ${esc(eICP)} icp-edit-badge" data-id="${esc(e.id)}" style="cursor:pointer" title="${isOverridden?'Overridden — click to change':'Click to change ICP flag'}">${esc(eICP)}${isOverridden?' ✎':' ▾'}</span>`:'<span class="badge icp-edit-badge" data-id="${esc(e.id)}" style="cursor:pointer;color:#999">— ▾</span>';
   const nameCell=`<div class="name-cell"><strong>${esc(e.name||'')}</strong>${e.title?`<span class="title">${esc(e.title)}</span>`:''}</div>`;
   const venueCell=e.venue?`<div class="venue-cell"><div>${esc(e.venue)}</div>${e.session?`<div class="session">${esc(e.session)}</div>`:''}${e.date?`<div class="date">${esc(e.date)}</div>`:''}</div>`:'';
   let srcCell='';
@@ -264,6 +270,7 @@ function renderTable(){
   container.querySelectorAll('th[data-col]').forEach(th=>{th.style.cursor='pointer';th.addEventListener('click',()=>{const col=th.dataset.col;if(sortState.col===col)sortState.dir*=-1;else{sortState.col=col;sortState.dir=1;}saveFilters();renderTable();});});
   const pps=document.getElementById('per-page-select');if(pps)pps.addEventListener('change',e=>{pagination.perPage=parseInt(e.target.value);pagination.page=1;saveFilters();renderTable();});
   container.querySelectorAll('.status-pill').forEach(pill=>pill.addEventListener('click',ev=>{ev.stopPropagation();openStatusMenu(pill);}));
+  container.querySelectorAll('.icp-edit-badge').forEach(badge=>badge.addEventListener('click',ev=>{ev.stopPropagation();openICPMenu(badge);}));
   container.querySelectorAll('.crm-owner').forEach(inp=>inp.addEventListener('change',()=>{updateCRM(inp.dataset.id,{owner:inp.value.trim()});renderStats();}));
   container.querySelectorAll('.crm-contact').forEach(inp=>inp.addEventListener('change',()=>updateCRM(inp.dataset.id,{contactDate:inp.value})));
   container.querySelectorAll('.crm-notes').forEach(ta=>ta.addEventListener('blur',()=>updateCRM(ta.dataset.id,{notes:ta.value})));
@@ -281,6 +288,24 @@ function openStatusMenu(anchor){
 }
 function closeStatusMenu(){document.querySelectorAll('.status-menu').forEach(m=>m.remove());}
 
+const ICP_MENU_OPTIONS=[{id:'fit',label:'ICP Fit',dot:'#0a7d3f'},{id:'adjacent',label:'Adjacent',dot:'#92400e'},{id:'ignore',label:'Ignore',dot:'#9ca3af'}];
+function openICPMenu(anchor){
+  closeICPMenu();closeStatusMenu();
+  const id=anchor.dataset.id,rect=anchor.getBoundingClientRect();
+  const menu=document.createElement('div');menu.className='status-menu icp-menu';
+  menu.style.top=(rect.bottom+window.scrollY+4)+'px';menu.style.left=(rect.left+window.scrollX)+'px';
+  menu.innerHTML=ICP_MENU_OPTIONS.map(o=>`<div class="opt" data-icp="${o.id}"><span class="dot" style="background:${o.dot}"></span>${esc(o.label)}</div>`).join('')+(icpOverrides[id]?`<div class="opt" data-icp="reset"><span class="dot" style="background:#d4d4d4;border:1px solid #aaa"></span>Reset to default</div>`:'');
+  document.body.appendChild(menu);
+  menu.addEventListener('click',ev=>{
+    const opt=ev.target.closest('.opt');if(!opt)return;
+    const flag=opt.dataset.icp;
+    saveICPOverride(id,flag==='reset'?null:flag);
+    closeICPMenu();renderTable();renderStats();
+  });
+  setTimeout(()=>document.addEventListener('click',closeICPMenu,{once:true}),0);
+}
+function closeICPMenu(){document.querySelectorAll('.icp-menu').forEach(m=>m.remove());}
+
 function exportCSV(){
   const filtered=applyFilters(),sorted=sortEntries(filtered);
   const header=['Status','ICP','Type','Name','Title','Company','Venue','Session','Date','Why','Owner','Last contact','Notes','Source','Added'];
@@ -290,7 +315,7 @@ function exportCSV(){
 }
 
 async function init(){
-  loadCRM();loadFilters();
+  loadCRM();loadICPOverrides();loadFilters();
   try{
     const res=await fetch('data.json');
     if(!res.ok)throw new Error('data.json not found');
