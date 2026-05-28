@@ -54,6 +54,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .session-card.fit { border-left: 4px solid #16a34a; background: #f0fdf4; }
 .session-card.adj { border-left: 4px solid #d97706; background: #fffbeb; }
 .session-card.key { border-left: 4px solid #7c3aed; background: #faf5ff; }
+.session-card.gen { border-left: 4px solid #cbd5e1; background: #f8fafc; }
 
 .session-time-col { flex-shrink: 0; width: 68px; display: flex; flex-direction: column; align-items: flex-start; padding-top: 2px; }
 .session-time { font-size: 11px; font-weight: 700; color: #1a1a1a; white-space: nowrap; }
@@ -64,6 +65,7 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .session-card.fit .session-venue { color: #166534; }
 .session-card.adj .session-venue { color: #92400e; }
 .session-card.key .session-venue { color: #6b21a8; }
+.session-card.gen .session-venue { color: #64748b; }
 .session-title { font-size: 13px; font-weight: 600; color: #1a1a1a; line-height: 1.4; margin-bottom: 4px; }
 .session-people { font-size: 12px; color: #666; line-height: 1.5; margin-bottom: 8px; }
 
@@ -132,6 +134,7 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
   <div class="leg"><div class="leg-dot" style="background:#16a34a"></div>ICP Fit</div>
   <div class="leg"><div class="leg-dot" style="background:#d97706"></div>Adjacent</div>
   <div class="leg"><div class="leg-dot" style="background:#7c3aed"></div>Key relationship</div>
+  <div class="leg"><div class="leg-dot" style="background:#cbd5e1"></div>General / awareness</div>
 </div>
 
 <div class="saved-banner" id="saved-banner">
@@ -173,6 +176,7 @@ const CAL_DATA = {
     {time:'10:25 AM', venue:'Brand Innovators Beach Stage', session:'Building Fandom & Friends Through Technology & Experiences', people:'Michelle Crossan-Matos (SharkNinja CGO)', cls:'adj'},
     {time:'10:50 AM', venue:'Brand Innovators Beach Stage', session:'From Attention to Advocacy', people:'Alex Frias (Steve Madden CMO)', cls:'adj'},
     {time:'11:30 AM', venue:'FQ Beach (Female Quotient Equality Lounge)', session:'Beyond Measurement: The New Shape of Marketing Impact', people:'Shana Stephenson (NY Liberty Chief Brand Officer)', cls:'adj'},
+    {time:'11:45 AM', venue:'Brands&Culture Villa', session:'The ROI of Relevance: Quantifying Culture\'s Business Impact', people:'Candace Payne (Sephora VP Brand Marketing)', cls:'adj'},
     {time:'11:50 AM', venue:'Brand Innovators Beach Stage', session:'Storytelling that Wins Culture', people:'Sara Brooks (BetterHelp CGO)', cls:'adj'},
     {time:'12:00 PM', venue:'DEPT Secret Garden', session:'WFA Roundtable Lunch (invite only)', people:'', cls:''},
     {time:'12:25 PM', venue:'Brand Innovators Beach Stage', session:'From Reach to Relevance: How Cultural Moments Drive Media Impact', people:'Damon Berger (Gap SVP Marketing) · Dave Kersey (SharkNinja Head of Media)', cls:'adj'},
@@ -213,6 +217,7 @@ const CAL_DATA = {
     {time:'9:00 AM',  venue:'Ad Age The List Lounge', session:'Ad Age The List Closing Breakfast — members only (9–10:30 AM)', people:'', cls:''},
     {time:'9:30 AM',  venue:'DEPT Secret Garden', session:'Running Club with Webby Awards', people:'', cls:''},
     {time:'9:30 AM',  venue:'FQ Beach (Female Quotient Equality Lounge)', session:'The Human Advantage: Creativity in the Age of AI', people:'Ekta Chopra (e.l.f. Beauty CTAIO)', cls:'adj'},
+    {time:'10:30 AM', venue:'DEPT Secret Garden', session:'You Bought the AI. Where\'s the Growth?', people:'Raji Behal (Klarna Head of W&S Europe)', cls:'adj'},
     {time:'10:25 AM', venue:'Brand Innovators Beach Stage', session:'Creating Experiences People Want to Share', people:'Ashley Kechter (Vuori President) · Jill Cress (Babylist CMO)', cls:'fit'},
     {time:'10:30 AM', venue:'FQ Beach (Female Quotient Equality Lounge)', session:'Culture on Cue: How Brands Show Up in Culture', people:'Manu Orssaud (Duolingo CMO)', cls:'adj'},
     {time:'10:50 AM', venue:'Adweek House (Le Majestic Hotel)', session:'Redefining the Role of Brands in Entertainment', people:'Patrick O\'Keefe (e.l.f. Beauty CIMO) · Samantha Catalina (Fractional CMO · Happy Dad)', cls:'fit'},
@@ -224,8 +229,9 @@ const CAL_DATA = {
     {time:'2:00 PM',  venue:'DEPT Secret Garden', session:'The human multiplier: AI advantage panel', people:'Scott Zalaznik (BLACKROLL CEO) · Adrian Fung (eBay CMO)', cls:'fit'},
     {time:'4:00 PM',  venue:'FQ Beach (Female Quotient Equality Lounge)', session:'Momentum Makers: Driving Growth Forward', people:'Krissy Cela (Oner Active Co-Founder & Creative Director) · Durana Elmi (Cymbiotika Co-Founder)', cls:'fit'},
     {time:'4:00 PM',  venue:'FT Teahouse (Nikkei, 11 Rue des Belges)', session:'FT: Driving the Future of Marketing — Drinks & Networking', people:'Ellie Norman (Formula E CMO)', cls:''},
+    {time:'4:15 PM',  venue:'DEPT Secret Garden', session:'afriCANNES Fireside Chat', people:'Kojo Marfo (My Runway Group Founder) · Kofi Turkson (My Runway Group COO)', cls:''},
+    {time:'4:35 PM',  venue:'DEPT Secret Garden', session:'afriCANNES × DEPT Closing Cocktail Party (open)', people:'', cls:''},
     {time:'5:00 PM',  venue:'RTL Beach', session:'ACT Responsible Tributes Celebration', people:'', cls:''},
-    {time:'7:00 PM',  venue:'DEPT Secret Garden', session:'afriCANNES × DEPT Closing Party', people:'Kojo Marfo · Kofi Turkson (My Runway Group)', cls:''},
   ],
   fri: [
     {time:'All day', venue:'Palais / Croisette', session:'Festival wind-down · Award shows · Departures', people:'', cls:''},
@@ -469,7 +475,7 @@ function render() {
         </div>
         ${rsvpBtn}
       </div>` : '';
-      html += `<div class="session-card ${ev.cls}">
+      html += `<div class="session-card ${ev.cls || 'gen'}">
         <div class="session-time-col">
           <div class="session-time">${ev.time||'TBD'}</div>
         </div>
