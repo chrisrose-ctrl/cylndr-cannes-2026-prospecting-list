@@ -239,56 +239,7 @@ const CAL_DATA = {
   ],
 };
 
-// Venue contacts (who's there all week / multi-day)
-// activeDays: which days this venue is worth visiting
-let ACROSS_DATA = [
-  {venue:'Brand Innovators (Rado Beach / Armani Caffè)', period:'Jun 22–25 · Brand-side free', activeDays:['mon','tue','wed','thu'], contacts:[
-    {name:'Kelsey Newberry', role:'VP Brand Marketing · eos', cls:'fit'},
-    {name:'Jill Cress', role:'CMO · Babylist', cls:'fit'},
-    {name:'Joy Howard', role:'CMO · Back Market', cls:'fit'},
-    {name:'Benoit Vatere', role:'Chief Media Officer · Liquid Death', cls:'fit'},
-    {name:'Lindsey Slaby', role:'Founder · Sunday Dinner — KEY RELATIONSHIP', cls:'key'},
-    {name:'Ashley Kechter', role:'Global President · Vuori', cls:'adj'},
-    {name:'Michelle Crossan-Matos', role:'CGO · SharkNinja', cls:'adj'},
-    {name:'Alex Frias', role:'CMO · Steve Madden', cls:'adj'},
-  ]},
-  {venue:'Adweek House (Le Majestic Hotel)', period:'Jun 21–25 · Full week', activeDays:['mon','tue','wed','thu','fri'], contacts:[
-    {name:'Sarah Leinberger', role:'VP Marketing · Yoobi & Altitude Brands', cls:'fit'},
-    {name:'Vanessa Wallace', role:'CMO · GLD', cls:'fit'},
-    {name:'Soyoung Kang', role:'President · eos Products', cls:'adj'},
-    {name:'Jody Hallman', role:'VP Integrated Marketing · Perdue Farms', cls:'adj'},
-    {name:'Manu Orssaud', role:'CMO · Duolingo', cls:'adj'},
-  ]},
-  {venue:'DEPT Secret Garden (5 Rdpt Duboys d\'Angers)', period:'Jun 23–25 · Invite-only', activeDays:['tue','wed','thu'], contacts:[
-    {name:'Nic Brandenberger', role:'CMO · Mammut', cls:'fit'},
-    {name:'Scott Zalaznik', role:'CEO · BLACKROLL', cls:'fit'},
-    {name:'Raji Behal', role:'Head W&S Europe, UK&I · Klarna', cls:'adj'},
-  ]},
-  {venue:'FQ Beach (Female Quotient Equality Lounge)', period:'Jun 22–25 · Hotel Martinez', activeDays:['mon','tue','wed','thu'], contacts:[
-    {name:'Carley Caldas', role:'SVP Marketing & Creative · eos Products', cls:'fit'},
-    {name:'Isabelle Sakai', role:'CMO · Mark Anthony Brands (White Claw)', cls:'adj'},
-  ]},
-  {venue:'Brands&Culture Villa (13 Ave de Benefiat)', period:'Jun 23–24', activeDays:['tue','wed'], contacts:[
-    {name:'Paige Grossman', role:'VP Global Brand Creative · Ancestry', cls:'fit'},
-    {name:'Yasmin O\'Neal', role:'Global Brand Senior Director · DECIEM (The Ordinary)', cls:'fit'},
-    {name:'Tamika Young', role:'CMCO · Hinge', cls:'adj'},
-    {name:'Ekta Chopra', role:'CTAIO · e.l.f. Beauty', cls:'adj'},
-    {name:'Catherine Ferdon', role:'CMO · Coinbase', cls:'adj'},
-  ]},
-  {venue:'Stagwell Sport Beach (Plage du Festival)', period:'Jun 21–25 · No title filter', activeDays:['mon','tue','wed','thu'], contacts:[
-    {name:'Doug Sweeney', role:'CMO · Oura Ring', cls:'fit'},
-    {name:'Louisa Wee', role:'CMO · Strava', cls:'fit'},
-  ]},
-  {venue:'LBB & Friends Beach (68 Blvd de la Croisette)', period:'Jun 22–26 · Powell PR mandate', activeDays:['mon','tue','wed','thu','fri'], contacts:[
-    {name:'Powell PR speaking slot target', role:'15th year · Free drinks 4–6 PM daily', cls:'key'},
-  ]},
-  {venue:'WSJ Journal House (61 Blvd de la Croisette)', period:'Jun 22–25 · No title filter', activeDays:['mon','tue','wed','thu'], contacts:[
-    {name:'Access intelligence venue', role:'Track who is in the building — no title filter', cls:''},
-  ]},
-  {venue:'Carlton + Majestic Terraces', period:'Daily · 90 min unstructured', activeDays:['mon','tue','wed','thu','fri'], contacts:[
-    {name:'Strategic drift time', role:'Late morning or golden hour — not downtime', cls:''},
-  ]},
-];
+// Venue contacts moved to events.html (Events Across Cannes tab)
 
 // ---- RSVP URLs (keyed by venue name; individual entries can override with ev.rsvp) ----
 const RSVP_URLS = {
@@ -492,37 +443,6 @@ function render() {
     html += `<div class="empty-day">No sessions match the current filter for this day.</div>`;
   }
 
-  // Active venue contacts for this day — exclude anyone already shown in a session card
-  const activeVenues = ACROSS_DATA.filter(v => {
-    if (!v.activeDays || v.activeDays.includes(activeDay)) {
-      const filtered = v.contacts.filter(c => passesFilter(c.cls) && !sessionPeopleNames.has(c.name.toLowerCase()));
-      return filtered.length > 0;
-    }
-    return false;
-  });
-
-  if (activeVenues.length) {
-    html += `<div class="section-hdr">Active venues — who's there today</div>`;
-    activeVenues.forEach(v => {
-      const contacts = v.contacts.filter(c => passesFilter(c.cls) && !sessionPeopleNames.has(c.name.toLowerCase()));
-      if (!contacts.length) return;
-      const rows = contacts.map(c => {
-        const badge = c.cls==='fit' ? '<span class="badge badge-fit">FIT</span>'
-                    : c.cls==='adj' ? '<span class="badge badge-adj">ADJ</span>'
-                    : c.cls==='key' ? '<span class="badge badge-key">KEY</span>' : '';
-        return `<div class="contact-row">
-          <div class="contact-name">${c.name}${badge}</div>
-          <div class="contact-role">${c.role}</div>
-        </div>`;
-      }).join('');
-      html += `<div class="venue-contact-card">
-        <div class="venue-name">${v.venue}</div>
-        <div class="venue-period">${v.period}</div>
-        ${rows}
-      </div>`;
-    });
-  }
-
   container.innerHTML = html;
 }
 
@@ -549,7 +469,7 @@ function setFilter(f) {
 render();
 updateSavedBanner();
 
-// ---- DYNAMIC DATA from data.json ----
+// ---- DYNAMIC DATA from data.json (footer date only) ----
 fetch('data.json')
   .then(r => r.json())
   .then(data => {
@@ -558,50 +478,8 @@ fetch('data.json')
         'Updated ' + new Date(data.lastUpdated).toLocaleDateString('en-US',{month:'short',day:'numeric'}) +
         ' · canneslions.com · deptagency.com · brand-innovators.com';
     }
-
-    const entries = Array.isArray(data.entries) ? data.entries : [];
-    const relevant = entries.filter(e =>
-      (e.type === 'speaker' || e.type === 'attendee') &&
-      (e.icpFlag === 'fit' || e.icpFlag === 'adjacent') &&
-      e.name && e.venue
-    );
-
-    // Map ISO dates to day keys
-    const dateToDay = { '2026-06-22':'mon','2026-06-23':'tue','2026-06-24':'wed','2026-06-25':'thu','2026-06-26':'fri' };
-
-    // Determine which days a contact is active from their date field
-    function getDays(dateStr) {
-      if (!dateStr) return ['mon','tue','wed','thu','fri'];
-      if (dateToDay[dateStr]) return [dateToDay[dateStr]];
-      // Range or festival-wide
-      return ['mon','tue','wed','thu','fri'];
-    }
-
-    // Build venue map from data.json
-    const venueMap = {};
-    relevant.forEach(e => {
-      if (!venueMap[e.venue]) venueMap[e.venue] = { venue: e.venue, period: '', activeDays: new Set(), contacts: [] };
-      const days = getDays(e.date);
-      days.forEach(d => venueMap[e.venue].activeDays.add(d));
-      venueMap[e.venue].contacts.push({
-        name: e.name,
-        role: [e.title, e.company].filter(Boolean).join(' · '),
-        cls: e.icpFlag === 'fit' ? 'fit' : 'adj'
-      });
-    });
-
-    ACROSS_DATA = Object.values(venueMap).map(v => ({
-      ...v,
-      activeDays: Array.from(v.activeDays)
-    })).sort((a, b) => {
-      const fa = a.contacts.filter(c => c.cls === 'fit').length;
-      const fb = b.contacts.filter(c => c.cls === 'fit').length;
-      return fb - fa || a.venue.localeCompare(b.venue);
-    });
-
-    render();
   })
-  .catch(() => { /* keep hardcoded ACROSS_DATA */ });
+  .catch(() => {});
 </script>
 </body>
 </html>
