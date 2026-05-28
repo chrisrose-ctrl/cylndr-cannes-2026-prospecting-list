@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events Across Cannes — CYLNDR × 2026</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #f5f5f5; color: #1a1a1a; min-height: 100vh; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; border-bottom: 1px solid #e5e5e5; background: #fff; flex-wrap: wrap; gap: 8px; }
+.nav-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1a1a1a; text-decoration: none; }
+.nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+.nav-link { font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 6px; text-decoration: none; color: #666; transition: background 0.12s; }
+.nav-link:hover { background: #f0f0f0; color: #1a1a1a; }
+.nav-link.active { background: #1a1a1a; color: #fff; }
+
+.page-header { padding: 44px 32px 28px; max-width: 1100px; margin: 0 auto; }
+.page-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #b8922a; margin-bottom: 12px; }
+h1 { font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: #1a1a1a; margin-bottom: 10px; }
+h1 span { color: #b8922a; }
+.page-sub { font-size: 15px; color: #666; line-height: 1.6; max-width: 580px; }
+
+.controls { max-width: 1100px; margin: 0 auto; padding: 20px 32px 0; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.filter-btn { font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 6px; border: 1px solid #e5e5e5; background: #fff; color: #666; cursor: pointer; transition: all 0.12s; }
+.filter-btn:hover { border-color: #b8922a; color: #b8922a; }
+.filter-btn.active { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
+.count-badge { font-size: 12px; color: #aaa; margin-left: auto; }
+
+.section-label { max-width: 1100px; margin: 28px auto 12px; padding: 0 32px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; }
+
+.venue-list { max-width: 1100px; margin: 0 auto; padding: 0 32px 48px; display: flex; flex-direction: column; gap: 10px; }
+
+.venue-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 20px 24px; display: flex; gap: 24px; transition: border-color 0.12s, box-shadow 0.12s; }
+.venue-card:hover { border-color: #ccc; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.venue-card.priority { border-left: 4px solid #b8922a; }
+.venue-card.secondary { border-left: 4px solid #64748b; }
+.venue-card.fringe { border-left: 4px solid #d1d5db; }
+
+.venue-meta { flex: 0 0 260px; min-width: 0; }
+.venue-name { font-size: 15px; font-weight: 700; color: #1a1a1a; line-height: 1.3; margin-bottom: 6px; }
+.venue-dates { font-size: 12px; color: #666; margin-bottom: 4px; }
+.venue-location { font-size: 11px; color: #aaa; margin-bottom: 10px; }
+.venue-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+.tag { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+.tag-priority { background: #fef3c7; color: #92400e; }
+.tag-secondary { background: #f1f5f9; color: #475569; }
+.tag-fringe { background: #f8fafc; color: #94a3b8; border: 1px solid #e2e8f0; }
+.tag-access { background: #eff6ff; color: #1d4ed8; }
+.tag-powell { background: #fdf4ff; color: #7c3aed; }
+.venue-notes { font-size: 11px; color: #888; line-height: 1.5; margin-bottom: 12px; }
+.rsvp-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 5px; border: 1px solid #2563eb; background: #eff6ff; color: #1d4ed8; text-decoration: none; transition: all 0.12s; }
+.rsvp-btn:hover { background: #2563eb; color: #fff; }
+
+.venue-people { flex: 1; min-width: 0; }
+.people-header { font-size: 11px; font-weight: 600; color: #aaa; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+.people-grid { display: flex; flex-direction: column; gap: 6px; }
+.person-row { display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-radius: 7px; background: #fafafa; border: 1px solid #f0f0f0; }
+.person-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.dot-fit { background: #16a34a; }
+.dot-adj { background: #d97706; }
+.dot-key { background: #7c3aed; }
+.person-info { flex: 1; min-width: 0; }
+.person-name { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.person-role { font-size: 11px; color: #777; line-height: 1.4; margin-top: 1px; }
+.person-session { font-size: 10px; color: #b8922a; margin-top: 2px; font-style: italic; }
+.badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; }
+.badge-fit { background: #d1fae5; color: #065f46; }
+.badge-adj { background: #fef3c7; color: #92400e; }
+.badge-key { background: #ede9fe; color: #5b21b6; }
+.no-people { font-size: 12px; color: #bbb; font-style: italic; padding: 8px 0; }
+
+footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #aaa; flex-wrap: wrap; gap: 8px; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">CYLNDR × Cannes 2026</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Overview</a>
+    <a href="calendar.html" class="nav-link">Calendar</a>
+    <a href="database.html" class="nav-link">Database</a>
+    <a href="schedule.html" class="nav-link">My Schedule</a>
+    <a href="linkedin.html" class="nav-link">LinkedIn</a>
+    <a href="brands.html" class="nav-link">Brands</a>
+    <a href="events.html" class="nav-link active">Events</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-label">Venue Intelligence</div>
+  <h1>Events Across <span>Cannes 2026</span></h1>
+  <p class="page-sub">Every confirmed venue and fringe event — who's confirmed there, when, and how to get in. The opposite view of Brands: organized by event, not person.</p>
+</div>
+
+<div class="controls">
+  <button class="filter-btn active" data-tier="all">All venues</button>
+  <button class="filter-btn" data-tier="priority">Priority</button>
+  <button class="filter-btn" data-tier="secondary">Secondary</button>
+  <button class="filter-btn" data-tier="fringe">Fringe</button>
+  <span class="count-badge" id="count-badge"></span>
+</div>
+
+<div id="venue-container"></div>
+
+<footer>
+  <span>CYLNDR × Cannes Lions 2026 · Events Across Cannes</span>
+  <span id="footer-updated">Sources: venue websites · data.json</span>
+</footer>
+
+<script>
+const VENUES = [
+  // ── PRIORITY ──────────────────────────────────────────────────
+  {
+    id: 'adweek-house',
+    name: 'Adweek House',
+    tier: 'priority',
+    dates: 'Jun 21–25 · All week',
+    location: 'Le Majestic Hotel, Cannes',
+    access: 'Invite / RSVP',
+    notes: 'Highest ICP density of any single venue. Group Chat sessions run all week with named speakers not in the public agenda.',
+    rsvp: 'https://event.adweek.com/awh-cannes-2026/register',
+    agenda: 'https://event.adweek.com/awh-cannes-2026/agenda',
+    powell: false,
+    dataKeys: ['Adweek House'],
+  },
+  {
+    id: 'brand-innovators',
+    name: 'Brand Innovators Marketing Leadership Summit',
+    tier: 'priority',
+    dates: 'Jun 22–25 · Beach Stage + Showcase Stage',
+    location: 'Rado Beach / Armani Caffè, Cannes',
+    access: 'Free · Brand-side only',
+    notes: 'Largest brand-side programming block at Cannes. Beach Stage and Showcase Stage run parallel sessions daily.',
+    rsvp: 'https://brand-innovators.com/events/marketing-leadership-summit-cannes-2026/',
+    agenda: 'https://brand-innovators.com/events/marketing-leadership-summit-cannes-2026/',
+    powell: false,
+    dataKeys: ['Brand Innovators Beach Stage', 'Brand Innovators Showcase Stage', 'Brand Innovators'],
+  },
+  {
+    id: 'fq-beach',
+    name: 'FQ Beach (Female Quotient Equality Lounge)',
+    tier: 'priority',
+    dates: 'Jun 22–25 · Daily programming',
+    location: 'Hotel Martinez, Cannes',
+    access: 'RSVP',
+    notes: 'Full published agenda Mon–Thu. Strong brand-side CMO and VP Marketing representation, especially in beauty, health, and consumer.',
+    rsvp: 'https://events.thefemalequotient.com/canneslions26/invite',
+    agenda: 'https://events.thefemalequotient.com/canneslions26?stage=9612869',
+    powell: false,
+    dataKeys: ['FQ Beach', 'Female Quotient'],
+  },
+  {
+    id: 'dept-secret-garden',
+    name: 'DEPT Secret Garden',
+    tier: 'priority',
+    dates: 'Jun 23–25 · Invite-only',
+    location: '5 Rdpt Duboys d\'Angers, Cannes',
+    access: 'Invite only',
+    notes: 'WFA partnership venue. Roundtable format — senior brand and CMO audience. Full agenda published.',
+    rsvp: 'https://www.deptagency.com/event/cannes-lions-2026/',
+    agenda: 'https://www.deptagency.com/event/cannes-lions-2026/',
+    powell: false,
+    dataKeys: ['DEPT Secret Garden'],
+  },
+  {
+    id: 'brands-culture',
+    name: 'Brands&Culture Villa',
+    tier: 'priority',
+    dates: 'Jun 23–24 · Tue + Wed only',
+    location: '13 Ave de Benefiat, Cannes',
+    access: 'RSVP',
+    notes: 'Tightest ICP alignment of any venue. Culture-led brand marketing focus. Full agenda published for both days.',
+    rsvp: 'https://www.brandsnculture.com/bc-cannes/cannes-2026-registration/',
+    agenda: 'https://www.brandsnculture.com/bc-cannes/agenda/',
+    powell: false,
+    dataKeys: ['Brands&Culture Villa', 'Brands&Culture'],
+  },
+  {
+    id: 'lbb-beach',
+    name: 'LBB & Friends Beach',
+    tier: 'priority',
+    dates: 'Jun 22–26 · Full week',
+    location: '68 Blvd de la Croisette, Cannes',
+    access: 'Free · No RSVP · Free drinks 4–6 PM daily',
+    notes: 'Powell PR mandate — speaking slot target. 15th year at Cannes. Free entry, high foot traffic, brand-side friendly.',
+    rsvp: 'https://beach.lbbonline.com/schedule',
+    agenda: 'https://beach.lbbonline.com/schedule',
+    powell: true,
+    dataKeys: ['LBB & Friends Beach', 'LBB'],
+  },
+  {
+    id: 'adage-list-lounge',
+    name: 'Ad Age / The List Lounge',
+    tier: 'priority',
+    dates: 'Jun 22–25 · Members + guests',
+    location: 'Lawn at Mondrian / various, Cannes',
+    access: 'Members + invite',
+    notes: 'Confirmed 2026. CMO-level invite events including opening reception, roundtable breakfast, and closing breakfast.',
+    rsvp: 'https://adage.com/events',
+    agenda: null,
+    powell: false,
+    dataKeys: ['Ad Age', 'The List Lounge'],
+  },
+  {
+    id: 'wsj-journal-house',
+    name: 'WSJ Journal House',
+    tier: 'priority',
+    dates: 'Jun 22–25',
+    location: '61 Blvd de la Croisette, Cannes',
+    access: 'Apply / No title filter',
+    notes: 'Powell PR target for confirmed invitations. Access intelligence only — goal is knowing who\'s in the building, not speaker opportunity.',
+    rsvp: null,
+    agenda: null,
+    powell: true,
+    dataKeys: ['WSJ', 'Journal House'],
+  },
+  {
+    id: 'campaign-house',
+    name: 'Campaign House',
+    tier: 'priority',
+    dates: 'Jun 22–26',
+    location: 'Canopy by Hilton Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Powell PR target for confirmed invitations.',
+    rsvp: null,
+    agenda: null,
+    powell: true,
+    dataKeys: ['Campaign House'],
+  },
+  {
+    id: 'sport-beach',
+    name: 'Stagwell Sport Beach',
+    tier: 'priority',
+    dates: 'Jun 21–25',
+    location: 'Plage du Festival, Cannes',
+    access: 'Register',
+    notes: 'Access intelligence venue — no title filter. Goal is proximity to athlete/brand crossover sessions and brand-side attendees.',
+    rsvp: 'https://www.sportbeach.com/register',
+    agenda: null,
+    powell: false,
+    dataKeys: ['Stagwell Sport Beach', 'Sport Beach', 'SPORT BEACH'],
+  },
+  {
+    id: 'ft-teahouse',
+    name: 'FT Teahouse',
+    tier: 'priority',
+    dates: 'Jun 23–26',
+    location: 'Nikkei, 11 Rue des Belges, Cannes',
+    access: 'Invite / Apply',
+    notes: 'Senior brand leader programming. Brunch briefings and evening networking sessions.',
+    rsvp: 'https://www.ft.com/events/cannes-2026',
+    agenda: 'https://www.ft.com/events/cannes-2026',
+    powell: false,
+    dataKeys: ['FT Teahouse'],
+  },
+  {
+    id: 'pinterest',
+    name: 'Pinterest Manifestival',
+    tier: 'priority',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Pinterest\'s flagship Cannes activation. Brand-side creative and social marketing leaders.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Pinterest'],
+  },
+  {
+    id: 'meta-beach',
+    name: 'Meta Beach',
+    tier: 'priority',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Brand marketing and performance marketing focus.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Meta Beach'],
+  },
+  {
+    id: 'amazon-port',
+    name: 'Amazon Port (Amazon Ads)',
+    tier: 'priority',
+    dates: 'Jun 22–26',
+    location: 'Port of Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Amazon Ads flagship venue. Digiday Cannes programming hosted here.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Amazon Port'],
+  },
+  {
+    id: 'linkedin-cannes',
+    name: 'LinkedIn at Cannes',
+    tier: 'priority',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'B2B marketing focus but strong CMO audience.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['LinkedIn'],
+  },
+  {
+    id: 'infillion',
+    name: 'Infillion Café',
+    tier: 'priority',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Open',
+    notes: 'Casual networking space on the Croisette.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Infillion'],
+  },
+  {
+    id: 'spotify-beach',
+    name: 'Spotify Beach / Soirées',
+    tier: 'priority',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Named programming only — ignore concert announcements',
+    notes: 'Named panel programming only. Brand marketing and culture-led sessions.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Spotify Beach', 'Spotify'],
+  },
+  {
+    id: 'reddit',
+    name: 'Reddit Explorer Club',
+    tier: 'priority',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Community marketing and cultural relevance programming.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Reddit'],
+  },
+  {
+    id: 'netflix',
+    name: 'Netflix Rooftop Activation',
+    tier: 'priority',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Invite only',
+    notes: 'Entertainment and brand partnerships focus.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Netflix'],
+  },
+  // ── SECONDARY ─────────────────────────────────────────────────
+  {
+    id: 'kantar',
+    name: 'Kantar Content Studio',
+    tier: 'secondary',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Brand-side attendee signals only.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Kantar'],
+  },
+  {
+    id: 'bima-house',
+    name: 'BIMA House',
+    tier: 'secondary',
+    dates: 'Jun 23–24 · Confirmed 2026',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Brand-side attendee signals only.',
+    rsvp: 'https://www.bima.co.uk',
+    agenda: null,
+    powell: false,
+    dataKeys: ['BIMA House'],
+  },
+  {
+    id: 'motel-yahoo',
+    name: 'Motel Yahoo / Martinez Beach',
+    tier: 'secondary',
+    dates: 'Jun 22–26',
+    location: 'Hotel Martinez Beach, Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Brand-side attendee signals only.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Motel Yahoo', 'Martinez Beach', 'Yahoo'],
+  },
+  // ── FRINGE ────────────────────────────────────────────────────
+  {
+    id: 'canva-cabana',
+    name: 'Canva Creative Cabana',
+    tier: 'fringe',
+    dates: 'Jun 23–26',
+    location: 'Cannes beachfront',
+    access: 'Open',
+    notes: 'Daily programming including C-Suite sessions and hands-on AI workshops. Published schedule.',
+    rsvp: 'https://www.canva.com/cannes/',
+    agenda: 'https://public.canva.site/cannes/schedule',
+    powell: false,
+    dataKeys: ['Canva'],
+  },
+  {
+    id: 'inkwell-beach',
+    name: 'Inkwell Beach',
+    tier: 'fringe',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Multicultural marketing and diverse brand leadership focus.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Inkwell Beach', 'Inkwell'],
+  },
+  {
+    id: 'creators-culture',
+    name: 'Creators & Culture (Culture Village)',
+    tier: 'fringe',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Creator economy and cultural marketing.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Culture Village', 'Creators & Culture'],
+  },
+  {
+    id: 'forbes-cmo',
+    name: 'Forbes World\'s Most Influential CMOs Luncheon',
+    tier: 'fringe',
+    dates: 'Jun 26 · Invite only',
+    location: 'Cannes',
+    access: 'Invite only',
+    notes: 'CMO-level only. Friday closing luncheon.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Forbes CMO', 'Forbes'],
+  },
+  {
+    id: 'digiday',
+    name: 'Digiday in Cannes',
+    tier: 'fringe',
+    dates: 'Jun 22–26',
+    location: 'Various (Le Mady, Mady)',
+    access: 'Apply to attend',
+    notes: 'Dinners and branded content sessions throughout the week.',
+    rsvp: 'https://digiday.com/events/digiday-in-cannes/',
+    agenda: null,
+    powell: false,
+    dataKeys: ['Digiday', 'Le Mady', 'Mady'],
+  },
+  {
+    id: 'adobe-cannes',
+    name: 'Adobe @ Cannes',
+    tier: 'fringe',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Creative technology and AI tools focus.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Adobe'],
+  },
+  {
+    id: 'axios-house',
+    name: 'Axios House Cannes',
+    tier: 'fringe',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'No published schedule. Media/policy focus — awareness only.',
+    rsvp: 'https://signupforupdates-axioshouse-cannes2026.splashthat.com/',
+    agenda: null,
+    powell: false,
+    dataKeys: ['Axios House', 'Axios'],
+  },
+  {
+    id: 'canva-pride',
+    name: 'Canva Pride on the Croisette',
+    tier: 'fringe',
+    dates: 'Thu Jun 26 · 8 PM',
+    location: 'Canva Creative Cabana, Cannes',
+    access: 'RSVP',
+    notes: 'Canva × GLAAD Pride party. Evening event.',
+    rsvp: 'https://www.canva.com/cannes/',
+    agenda: null,
+    powell: false,
+    dataKeys: [],
+  },
+  {
+    id: 'pmg-wsj',
+    name: 'PMG\'s AI & Tech Sandbox / WSJ Journal House',
+    tier: 'fringe',
+    dates: 'Jun 22–25',
+    location: 'WSJ Journal House, Cannes',
+    access: 'Apply / RSVP',
+    notes: 'PMG-hosted sessions inside WSJ Journal House.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: [],
+  },
+  {
+    id: 'criteo',
+    name: 'Criteo @ Cannes',
+    tier: 'fringe',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Commerce media and retail media focus.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Criteo'],
+  },
+  {
+    id: 'chez-verve',
+    name: 'Chez Verve',
+    tier: 'fringe',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: '',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Chez Verve'],
+  },
+  {
+    id: '3c-ventures',
+    name: '3C Ventures @ Cannes',
+    tier: 'fringe',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Venture and growth-stage brand focus.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['3C Ventures'],
+  },
+  {
+    id: 'tiktok',
+    name: 'TikTok @ Cannes',
+    tier: 'fringe',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Platform-side events. Attend for brand-side signal only.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['TikTok'],
+  },
+  {
+    id: 'digital-fight-club',
+    name: 'Digital Fight Club @ Cannes Lions',
+    tier: 'fringe',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Debate-format marketing sessions.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Digital Fight Club'],
+  },
+  {
+    id: 'iheart-cafe',
+    name: 'iHeartCafe @ Cannes',
+    tier: 'fringe',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Media/audio focus. Awareness only per project rules.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['iHeartMedia', 'iHeart'],
+  },
+  {
+    id: 'microsoft-gardens',
+    name: 'Microsoft Gardens',
+    tier: 'fringe',
+    dates: 'Jun 22–26',
+    location: 'Cannes',
+    access: 'Apply / RSVP',
+    notes: 'Platform-side. Awareness only per project rules.',
+    rsvp: null,
+    agenda: null,
+    powell: false,
+    dataKeys: ['Microsoft'],
+  },
+];
+
+// ── RENDER ─────────────────────────────────────────────────────
+
+let allEntries = [];
+let activeTier = 'all';
+
+function renderVenues() {
+  const container = document.getElementById('venue-container');
+  const filtered = activeTier === 'all' ? VENUES : VENUES.filter(v => v.tier === activeTier);
+
+  const tiers = activeTier === 'all'
+    ? ['priority', 'secondary', 'fringe']
+    : [activeTier];
+
+  const tierLabels = { priority: 'Priority Venues', secondary: 'Secondary Venues', fringe: 'Fringe Events' };
+  let html = '';
+
+  tiers.forEach(tier => {
+    const tierVenues = filtered.filter(v => v.tier === tier);
+    if (!tierVenues.length) return;
+
+    html += `<div class="section-label">${tierLabels[tier]}</div>`;
+    html += `<div class="venue-list">`;
+
+    tierVenues.forEach(venue => {
+      const people = getPeopleForVenue(venue);
+      const tierTagClass = tier === 'priority' ? 'tag-priority' : tier === 'secondary' ? 'tag-secondary' : 'tag-fringe';
+      const tierLabel = tier === 'priority' ? 'Priority' : tier === 'secondary' ? 'Secondary' : 'Fringe';
+
+      const rsvpBtn = venue.rsvp
+        ? `<a href="${venue.rsvp}" target="_blank" rel="noopener" class="rsvp-btn">↗ RSVP / Register</a>`
+        : `<span style="font-size:11px;color:#bbb">No RSVP link yet</span>`;
+
+      const agendaBtn = venue.agenda
+        ? `<a href="${venue.agenda}" target="_blank" rel="noopener" style="font-size:11px;color:#b8922a;text-decoration:none;margin-left:12px">View agenda ↗</a>`
+        : '';
+
+      const powellTag = venue.powell
+        ? `<span class="tag tag-powell">Powell PR target</span>`
+        : '';
+
+      let peopleHtml = '';
+      if (people.length) {
+        peopleHtml = `<div class="people-header">Confirmed contacts (${people.length})</div><div class="people-grid">`;
+        people.forEach(p => {
+          const dotClass = p.icpFlag === 'fit' ? 'dot-fit' : p.icpFlag === 'adjacent' ? 'dot-adj' : 'dot-key';
+          const badge = p.icpFlag === 'fit'
+            ? `<span class="badge badge-fit">FIT</span>`
+            : p.icpFlag === 'adjacent'
+            ? `<span class="badge badge-adj">ADJ</span>`
+            : `<span class="badge badge-key">KEY</span>`;
+          const sessionLine = p.session
+            ? `<div class="person-session">${p.session}</div>` : '';
+          peopleHtml += `<div class="person-row">
+            <div class="person-dot ${dotClass}"></div>
+            <div class="person-info">
+              <div class="person-name">${p.name}</div>
+              <div class="person-role">${[p.title, p.company].filter(Boolean).join(' · ')}</div>
+              ${sessionLine}
+            </div>
+            ${badge}
+          </div>`;
+        });
+        peopleHtml += `</div>`;
+      } else {
+        peopleHtml = `<div class="people-header">Confirmed contacts</div><div class="no-people">No confirmed ICP contacts yet — check back as agenda publishes.</div>`;
+      }
+
+      html += `<div class="venue-card ${tier}">
+        <div class="venue-meta">
+          <div class="venue-name">${venue.name}</div>
+          <div class="venue-dates">${venue.dates}</div>
+          ${venue.location ? `<div class="venue-location">${venue.location}</div>` : ''}
+          <div class="venue-tags">
+            <span class="tag ${tierTagClass}">${tierLabel}</span>
+            <span class="tag tag-access">${venue.access}</span>
+            ${powellTag}
+          </div>
+          ${venue.notes ? `<div class="venue-notes">${venue.notes}</div>` : ''}
+          <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+            ${rsvpBtn}${agendaBtn}
+          </div>
+        </div>
+        <div class="venue-people">
+          ${peopleHtml}
+        </div>
+      </div>`;
+    });
+
+    html += `</div>`;
+  });
+
+  container.innerHTML = html;
+
+  const totalContacts = filtered.reduce((n, v) => n + getPeopleForVenue(v).length, 0);
+  document.getElementById('count-badge').textContent =
+    `${filtered.length} venue${filtered.length !== 1 ? 's' : ''} · ${totalContacts} confirmed contacts`;
+}
+
+function getPeopleForVenue(venue) {
+  if (!venue.dataKeys || !venue.dataKeys.length) return [];
+  return allEntries.filter(e => {
+    if (!e.venue) return false;
+    if (e.icpFlag !== 'fit' && e.icpFlag !== 'adjacent') return false;
+    return venue.dataKeys.some(key => e.venue.toLowerCase().includes(key.toLowerCase()));
+  }).sort((a, b) => {
+    const order = { fit: 0, adjacent: 1 };
+    return (order[a.icpFlag] ?? 2) - (order[b.icpFlag] ?? 2);
+  });
+}
+
+// ── FILTERS ────────────────────────────────────────────────────
+document.querySelectorAll('.filter-btn[data-tier]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn[data-tier]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeTier = btn.dataset.tier;
+    renderVenues();
+  });
+});
+
+// ── DATA ───────────────────────────────────────────────────────
+fetch('data.json')
+  .then(r => r.json())
+  .then(data => {
+    if (data.lastUpdated) {
+      document.getElementById('footer-updated').textContent =
+        'Updated ' + new Date(data.lastUpdated).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) +
+        ' · venue websites · data.json';
+    }
+    allEntries = Array.isArray(data.entries) ? data.entries : [];
+    renderVenues();
+  })
+  .catch(() => renderVenues());
+
+// Initial render with empty entries (shows venue shells immediately)
+renderVenues();
+</script>
+</body>
+</html>
