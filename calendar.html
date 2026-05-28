@@ -51,9 +51,9 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 /* SESSION CARDS */
 .session-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; display: flex; gap: 14px; transition: border-color 0.12s, box-shadow 0.12s; }
 .session-card:hover { border-color: #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-.session-card.fit { border-left: 3px solid #16a34a; }
-.session-card.adj { border-left: 3px solid #d97706; }
-.session-card.key { border-left: 3px solid #7c3aed; }
+.session-card.fit { border-left: 4px solid #16a34a; background: #f0fdf4; }
+.session-card.adj { border-left: 4px solid #d97706; background: #fffbeb; }
+.session-card.key { border-left: 4px solid #7c3aed; background: #faf5ff; }
 
 .session-time-col { flex-shrink: 0; width: 68px; display: flex; flex-direction: column; align-items: flex-start; padding-top: 2px; }
 .session-time { font-size: 11px; font-weight: 700; color: #1a1a1a; white-space: nowrap; }
@@ -77,6 +77,8 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .evt-btn { font: inherit; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 5px; border: 1px solid #d4d4d4; background: #fff; color: #555; cursor: pointer; transition: all 0.12s; }
 .evt-btn:hover { border-color: #888; color: #1a1a1a; }
 .evt-btn.saved { background: #166534; border-color: #166534; color: #fff; }
+.rsvp-btn { font: inherit; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 5px; border: 1px solid #2563eb; background: #eff6ff; color: #1d4ed8; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 3px; transition: all 0.12s; }
+.rsvp-btn:hover { background: #2563eb; color: #fff; }
 .cal-menu { position: absolute; top: 100%; left: 0; margin-top: 3px; background: #fff; border: 1px solid #d4d4d4; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 10; min-width: 145px; display: none; }
 .cal-menu.open { display: block; }
 .cal-menu a { display: block; padding: 8px 13px; font-size: 12px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0; }
@@ -170,7 +172,9 @@ const CAL_DATA = {
     {time:'10:30 AM', venue:'DEPT Secret Garden', session:'Rethinking growth in a B2A world', people:'Elke Karskens (OpenAI) · Grace Kao (Snap) · Antonia Wade (PwC)', cls:''},
     {time:'10:50 AM', venue:'Brand Innovators Beach Stage', session:'From Attention to Advocacy', people:'Alex Frias (Steve Madden CMO)', cls:'adj'},
     {time:'11:40 AM', venue:'Adweek House (Le Majestic Hotel)', session:'The Silk Press Conference Heard Around The World', people:'Reema Amin (SheaMoisture Head of Marketing)', cls:'fit'},
-    {time:'12:00 PM', venue:'Brands&Culture Villa', session:'Do Marketers Move Culture? (Live Debate)', people:'Catherine Ferdon (Coinbase CMO) · Viviana Ochoa (Essity VP Marketing)', cls:'adj'},
+    {time:'2:00 PM',  venue:'Brands&Culture Villa', session:'Culture Lab Q&A: Live from Cannes', people:'Paige Grossman (Ancestry VP Global Brand & Creative)', cls:'fit'},
+    {time:'2:35 PM',  venue:'Brands&Culture Villa', session:'Anti-Slop, Pro-Humanity: Brands That Stand Out', people:'Yasmin O\'Neal (DECIEM / The Ordinary Global Brand Senior Director)', cls:'fit'},
+    {time:'3:45 PM',  venue:'Brands&Culture Villa', session:'Culturally Disruptive by Nature', people:'Catherine Ferdon (Coinbase CMO) · Viviana Ochoa (Essity VP Marketing)', cls:'adj'},
     {time:'12:00 PM', venue:'DEPT Secret Garden', session:'WFA Roundtable Lunch (invite only)', people:'', cls:''},
     {time:'1:00 PM',  venue:'Brand Innovators Beach Stage', session:'Marketing at the Speed of Culture', people:'Billy Bohan Chinique (Virgin Voyages VP Marketing)', cls:'adj'},
     {time:'2:00 PM',  venue:'Brand Innovators Showcase Stage', session:'Audience First, Channel Second', people:'Benoit Vatere (Liquid Death Chief Media Officer)', cls:'fit'},
@@ -188,7 +192,9 @@ const CAL_DATA = {
     {time:'11:00 AM', venue:'Mady', session:'Digiday Marketing Leaders Brunch (apply to attend)', people:'', cls:''},
     {time:'11:45 AM', venue:'Adweek House (Le Majestic Hotel)', session:'Partnership Is the New Power Move', people:'Carolina Cespedes Virguez (GoGo squeeZ U.S. GM)', cls:'adj'},
     {time:'12:25 PM', venue:'Brand Innovators Beach Stage', session:'2026 and Beyond: Media Innovation Outlook', people:'Paloma Azulay (McDonald\'s VP Global Brand)', cls:''},
-    {time:'12:30 PM', venue:'Brands&Culture Villa', session:'Fandoms, Communities & Niches', people:'Gigi Russo (HUNTER) · Sportradar · PepsiCo', cls:''},
+    {time:'12:30 PM', venue:'Brands&Culture Villa', session:'The Business Case for IRL: Turning Experiences into Cultural Impact', people:'Tristan Pineiro (Grindr CMO) · Louisa Wee (Strava CMO)', cls:'fit'},
+    {time:'2:00 PM',  venue:'Brands&Culture Villa', session:'What If Earned Is the Most Underleveraged Growth Driver?', people:'Tamika Young (Hinge CMCO)', cls:'adj'},
+    {time:'2:45 PM',  venue:'Brands&Culture Villa', session:'Keeping It Human: Influencer Marketing in the Age of AI', people:'Ekta Chopra (e.l.f. Beauty CTAIO) · Monica Caponigro (Bobbie MD)', cls:'adj'},
     {time:'2:00 PM',  venue:'DEPT Secret Garden', session:'The human multiplier: why leadership is the real AI advantage', people:'Erin Chin (Logitech CMO) · Scott Zalaznik (BLACKROLL CEO)', cls:'fit'},
     {time:'2:00 PM',  venue:'FT Teahouse (Nikkei, 11 Rue des Belges)', session:'FT Sessions at Cannes Lions — Senior Marketers & Brand Leaders (2–4:40 PM)', people:'', cls:''},
     {time:'3:40 PM',  venue:'Brand Innovators Beach Stage', session:'Agents, Signals, and the Self-Driving Funnel', people:'Lindsey Slaby (Sunday Dinner) — KEY RELATIONSHIP', cls:'key'},
@@ -266,6 +272,27 @@ let ACROSS_DATA = [
     {name:'Strategic drift time', role:'Late morning or golden hour — not downtime', cls:''},
   ]},
 ];
+
+// ---- RSVP URLs (keyed by venue name; individual entries can override with ev.rsvp) ----
+const RSVP_URLS = {
+  'Brand Innovators Beach Stage':         'https://brand-innovators.com/events/marketing-leadership-summit-cannes-2026/',
+  'Brand Innovators Showcase Stage':      'https://brand-innovators.com/events/marketing-leadership-summit-cannes-2026/',
+  'DEPT Secret Garden':                   'https://www.deptagency.com/event/cannes-lions-2026/',
+  'Adweek House (Le Majestic Hotel)':     'https://event.adweek.com/awh-cannes-2026/register',
+  'FQ Beach (Female Quotient Equality Lounge)': 'https://events.thefemalequotient.com/canneslions26/invite',
+  'Brands&Culture Villa':                 'https://www.brandsnculture.com/bc-cannes/cannes-2026-registration/',
+  'Stagwell Sport Beach (Plage du Festival)': 'https://www.sportbeach.com/register',
+  'FT Teahouse (Nikkei, 11 Rue des Belges)': 'https://www.ft.com/events/cannes-2026',
+  'LBB & Friends Beach (68 Blvd de la Croisette)': 'https://beach.lbbonline.com/schedule',
+  'BIMA House':                           'https://www.bima.co.uk',
+  'Ad Age The List Lounge':               'https://adage.com/events',
+  'Ad Age / The List Lounge':             'https://adage.com/events',
+  'Ad Age / The List Lounge (Lawn at Mondrian)': 'https://adage.com/events',
+  'Le Cirque':                            'https://digiday.com/events/cannes-brand-leaders-dinner/',
+  'TBC':                                  'https://digiday.com/events/cannes-brand-leaders-dinner/',
+  'Mady':                                 'https://digiday.com/events/digiday-in-cannes/',
+  'Le Mady':                              'https://digiday.com/events/digiday-in-cannes/',
+};
 
 // ---- STATE ----
 let activeDay = 'mon';
@@ -408,6 +435,8 @@ function render() {
       const savedCls = isSaved(item.id) ? ' saved' : '';
       const saveLabel = isSaved(item.id) ? '✓ Saved' : '📌 Save';
       const hasSession = ev.session && ev.session.length > 2;
+      const rsvpUrl = ev.rsvp || RSVP_URLS[ev.venue] || '';
+      const rsvpBtn = rsvpUrl ? `<a class="rsvp-btn" href="${rsvpUrl}" target="_blank" rel="noopener">↗ RSVP</a>` : '';
       const actions = hasSession ? `<div class="session-actions">
         <button class="evt-btn${savedCls}" onclick="toggleSave(this,'${encoded}')">${saveLabel}</button>
         <button class="evt-btn" onclick="toggleMenu(this)">📅 Calendar ▾</button>
@@ -416,6 +445,7 @@ function render() {
           <a href="${outlookUrl(item)}" target="_blank" rel="noopener">Outlook</a>
           <a href="${icsDataUri(item)}" download="cannes-${item.id}.ics">Apple / .ics</a>
         </div>
+        ${rsvpBtn}
       </div>` : '';
       html += `<div class="session-card ${ev.cls}">
         <div class="session-time-col">
