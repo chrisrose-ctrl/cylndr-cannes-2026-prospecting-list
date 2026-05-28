@@ -70,6 +70,15 @@ h1 span { color: #b8922a; }
 .no-people { font-size: 12px; color: #bbb; font-style: italic; padding: 8px 0; }
 
 footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #aaa; flex-wrap: wrap; gap: 8px; }
+
+.attending-section { max-width: 1100px; margin: 0 auto; padding: 0 32px 56px; }
+.attending-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px; margin-top: 10px; }
+.attending-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 9px; padding: 12px 14px; display: flex; gap: 10px; align-items: flex-start; }
+.attending-card:hover { border-color: #ccc; }
+.attending-name { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.attending-role { font-size: 11px; color: #777; margin-top: 2px; line-height: 1.4; }
+.attending-meta { font-size: 10px; color: #b8922a; margin-top: 3px; font-style: italic; }
+.attending-divider { max-width: 1100px; margin: 32px auto 0; padding: 0 32px; border-top: 1px solid #e5e5e5; padding-top: 32px; }
 </style>
 </head>
 <body>
@@ -101,6 +110,8 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
 </div>
 
 <div id="venue-container"></div>
+
+<div id="attendees-section"></div>
 
 <footer>
   <span>CYLNDR × Cannes Lions 2026 · Events Across Cannes</span>
@@ -663,7 +674,7 @@ function renderVenues() {
 
       let peopleHtml = '';
       if (people.length) {
-        peopleHtml = `<div class="people-header">Confirmed contacts (${people.length})</div><div class="people-grid">`;
+        peopleHtml = `<div class="people-header">Speaking here · on calendar (${people.length})</div><div class="people-grid">`;
         people.forEach(p => {
           const dotClass = p.icpFlag === 'fit' ? 'dot-fit' : p.icpFlag === 'adjacent' ? 'dot-adj' : 'dot-key';
           const badge = p.icpFlag === 'fit'
@@ -685,7 +696,7 @@ function renderVenues() {
         });
         peopleHtml += `</div>`;
       } else {
-        peopleHtml = `<div class="people-header">Confirmed contacts</div><div class="no-people">No confirmed ICP contacts yet — check back as agenda publishes.</div>`;
+        peopleHtml = `<div class="people-header">Speaking here</div><div class="no-people">No named speakers in data yet — check published agenda.</div>`;
       }
 
       html += `<div class="venue-card ${tier}">
@@ -724,11 +735,64 @@ function getPeopleForVenue(venue) {
   return allEntries.filter(e => {
     if (!e.venue) return false;
     if (e.icpFlag !== 'fit' && e.icpFlag !== 'adjacent') return false;
+    if (e.type === 'attendee') return false; // attendees shown in global section
     return venue.dataKeys.some(key => e.venue.toLowerCase().includes(key.toLowerCase()));
   }).sort((a, b) => {
     const order = { fit: 0, adjacent: 1 };
     return (order[a.icpFlag] ?? 2) - (order[b.icpFlag] ?? 2);
   });
+}
+
+function getAttendees() {
+  return allEntries.filter(e =>
+    e.type === 'attendee' &&
+    (e.icpFlag === 'fit' || e.icpFlag === 'adjacent')
+  ).sort((a, b) => {
+    const order = { fit: 0, adjacent: 1 };
+    return (order[a.icpFlag] ?? 2) - (order[b.icpFlag] ?? 2);
+  });
+}
+
+function renderAttendees() {
+  const section = document.getElementById('attendees-section');
+  if (!section) return;
+  const attendees = getAttendees();
+  if (!attendees.length) { section.innerHTML = ''; return; }
+
+  const dayMap = {
+    '2026-06-22': 'Mon Jun 22', '2026-06-23': 'Tue Jun 23',
+    '2026-06-24': 'Wed Jun 24', '2026-06-25': 'Thu Jun 25',
+    '2026-06-26': 'Fri Jun 26',
+  };
+
+  let cards = attendees.map(p => {
+    const badge = p.icpFlag === 'fit'
+      ? `<span class="badge badge-fit">FIT</span>`
+      : `<span class="badge badge-adj">ADJ</span>`;
+    const dotClass = p.icpFlag === 'fit' ? 'dot-fit' : 'dot-adj';
+    const dateLine = dayMap[p.date] || p.date || 'Full week';
+    const sourceLine = p.notes ? `<div class="attending-meta">${p.notes.split('.')[0]}</div>` : '';
+    return `<div class="attending-card">
+      <div class="person-dot ${dotClass}" style="margin-top:3px;flex-shrink:0"></div>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:6px">
+          <div class="attending-name">${p.name}</div>
+          ${badge}
+        </div>
+        <div class="attending-role">${[p.title, p.company].filter(Boolean).join(' · ')}</div>
+        <div class="attending-meta">${dateLine}${p.source && p.sourceType === 'social' ? ' · LinkedIn / social' : ''}</div>
+        ${sourceLine}
+      </div>
+    </div>`;
+  }).join('');
+
+  section.innerHTML = `
+    <div class="attending-divider"></div>
+    <div class="attending-section">
+      <div class="section-label" style="padding:0;margin-bottom:6px">Confirmed at Cannes · No published session (${attendees.length})</div>
+      <p style="font-size:13px;color:#888;margin-bottom:16px;max-width:600px;line-height:1.5">These contacts are confirmed attending the festival but have no specific timed session in the public agenda — LinkedIn signals, jury members, and private event attendees. The intelligence that has no home in the daily calendar.</p>
+      <div class="attending-grid">${cards}</div>
+    </div>`;
 }
 
 // ── FILTERS ────────────────────────────────────────────────────
@@ -738,6 +802,7 @@ document.querySelectorAll('.filter-btn[data-tier]').forEach(btn => {
     btn.classList.add('active');
     activeTier = btn.dataset.tier;
     renderVenues();
+    renderAttendees();
   });
 });
 
@@ -752,11 +817,13 @@ fetch('data.json')
     }
     allEntries = Array.isArray(data.entries) ? data.entries : [];
     renderVenues();
+    renderAttendees();
   })
-  .catch(() => renderVenues());
+  .catch(() => { renderVenues(); renderAttendees(); });
 
 // Initial render with empty entries (shows venue shells immediately)
 renderVenues();
+renderAttendees();
 </script>
 </body>
 </html>
