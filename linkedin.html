@@ -87,16 +87,22 @@ let activeFilter = 'all';
 
 function getDisplayText(entry) {
   const notes = entry.notes || '';
+<<<<<<< HEAD
   // 1. Try to extract a quoted post snippet
   const quotedMatch = notes.match(/Post:\s*["""](.+?)["""]/);
   if (quotedMatch) return { isQuote: true, text: quotedMatch[1] };
   // 2. Strip all known boilerplate and technical noise
+=======
+  const quotedMatch = notes.match(/Post:\s*["""](.+?)["""]/);
+  if (quotedMatch) return { isQuote: true, text: quotedMatch[1] };
+>>>>>>> 5344c53b7f2dadc78d6cc50cc00f460a1a77e858
   let cleaned = notes
     .replace(/LinkedIn chatter\s+[\d-T:.Z]+\.?\s*/gi, '')
     .replace(/LinkedIn chatter via #[\w]+\s+on\s+[^.]+\.\s*/gi, '')
     .replace(/JS extraction failed\.?\s*/gi, '')
     .replace(/\.\s*$/, '')
     .trim();
+<<<<<<< HEAD
   // 3. If meaningful text remains, use it
   if (cleaned && cleaned.length > 8 && !/^[.,\s]+$/.test(cleaned)) {
     return { isQuote: false, text: cleaned };
@@ -107,7 +113,15 @@ function getDisplayText(entry) {
 
 function extractPostQuote(notes) {
   return null; // replaced by getDisplayText
+=======
+  if (cleaned && cleaned.length > 8 && !/^[.,\s]+$/.test(cleaned)) {
+    return { isQuote: false, text: cleaned };
+  }
+  return { isQuote: false, text: 'Confirmed attending Cannes Lions 2026' };
+>>>>>>> 5344c53b7f2dadc78d6cc50cc00f460a1a77e858
 }
+
+function extractPostQuote(notes) { return null; }
 
 function extractHashtag(notes, source) {
   if (notes && notes.includes('#CannesLions2026')) return '#CannesLions2026';
