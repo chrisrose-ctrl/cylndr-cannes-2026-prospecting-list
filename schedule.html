@@ -27,13 +27,13 @@ nav.day-tabs {
 nav.day-tabs button {
   flex: 0 0 auto; min-width: 72px; padding: 10px 12px;
   background: none; border: none; border-bottom: 3px solid transparent;
-  font-family: inherit; font-size: 12px; color: #888; cursor: pointer; text-align: center;
+  font-family: inherit; font-size: 12px; color: #888; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 1px;
   transition: background 0.1s;
 }
 nav.day-tabs button:hover { background: #fafafa; color: #1a1a1a; }
-nav.day-tabs button.active { color: #1a1a1a; border-bottom-color: #b8922a; font-weight: 600; }
+nav.day-tabs button.active { color: #1a1a1a; border-bottom-color: #1a1a1a; font-weight: 600; }
 nav.day-tabs button { font-size: 13px; font-weight: 600; }
-nav.day-tabs button .day-tab-sub { font-size: 10px; font-weight: 400; color: #bbb; margin-left: 4px; }
+nav.day-tabs button .day-tab-sub { font-size: 10px; font-weight: 400; color: #bbb; }
 
 main { padding: 20px 32px 48px; max-width: 1100px; margin: 0 auto; }
 .day-panel { display: none; }
