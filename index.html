@@ -32,12 +32,12 @@ h1 span { color: #025623; }
 .stat-lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: #aaa; }
 .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 48px; }
 @media (max-width: 560px) { .cta-row { grid-template-columns: 1fr; } }
-.cta-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 16px; text-decoration: none; transition: border-color 0.12s, box-shadow 0.12s; display: block; }
+.cta-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 16px; text-decoration: none; transition: border-color 0.12s, box-shadow 0.12s; display: flex; flex-direction: column; }
 .cta-card:hover { border-color: #025623; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
 .cta-icon { font-size: 20px; margin-bottom: 12px; }
 .cta-title { font-size: 16px; font-weight: 600; color: #171717; margin-bottom: 7px; }
 .cta-desc { font-size: 13px; color: #666; line-height: 1.55; }
-.cta-arrow { display: inline-block; margin-top: 14px; font-size: 12px; color: #025623; font-weight: 600; }
+.cta-arrow { display: inline-block; margin-top: auto; padding-top: 14px; font-size: 12px; color: #025623; font-weight: 600; }
 .section { max-width: 920px; margin: 0 auto 44px; padding: 0 32px; }
 .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; margin-bottom: 14px; }
 .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
@@ -84,7 +84,8 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
     <div class="stat-card"><div class="stat-num" id="stat-total">—</div><div class="stat-lbl">Total entries</div></div>
     
   </div>
-  <div class="cta-row" style="grid-template-columns:repeat(5,1fr);gap:10px">
+  <p class="section-label" style="margin-bottom:10px">Content Hub</p>
+<div class="cta-row" style="grid-template-columns:repeat(5,1fr);gap:10px">
 <a href="calendar.html" class="cta-card">
 <div class="cta-icon">📍</div>
 <div class="cta-title">Where to Be</div>
@@ -119,10 +120,10 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
 
 <div class="section">
   <p class="section-label">Mission parameters</p>
-  <div class="mission-grid">
-    <div class="mission-item"><div class="mission-tag">Goal</div><div class="mission-text"><strong>15–20 qualified conversations</strong>Convert 5–8 to active opportunities within 90 days of the festival.</div></div>
-    <div class="mission-item"><div class="mission-tag">ICP</div><div class="mission-text"><strong>VP / Director of Marketing + in-house creative &amp; production leads</strong>DTC, Series B/C, challenger brand under ~$500M. Consumer · beauty · food/bev · apparel · fintech · health. CMO qualifies at brands under ~$300M.</div></div>
-    <div class="mission-item"><div class="mission-tag">Venues</div><div class="mission-text"><strong>Priority access targets</strong>LBB Beach · Adweek House · DEPT Secret Garden · Campaign House · WSJ Journal House · Ad Age List Lounge · Brands&amp;Culture Villa</div></div>
+  <div class="mission-grid" style="grid-template-columns:repeat(4,1fr)">
+    <div class="mission-item"><div class="mission-tag">Goal</div><div class="mission-text"><strong>15–20 qualified conversations</strong>Convert 5–8 into active opportunities within 90 days. Attend, don't host. Proximity to pipeline.</div></div>
+    <div class="mission-item"><div class="mission-tag">Who</div><div class="mission-text"><strong>VP / Director of Marketing · Head of Brand · Creative &amp; Production leads</strong>DTC and challenger brands, Series B/C, under ~$500M. Fast-moving categories: consumer, beauty, food/bev, apparel, fintech, health.</div></div>
+    <div class="mission-item"><div class="mission-tag">Where</div><div class="mission-text"><strong>7 priority venues</strong>LBB Beach · Adweek House · DEPT Secret Garden · Campaign House · WSJ Journal House · Ad Age List Lounge · Brands&amp;Culture Villa</div></div>
     <div class="mission-item"><div class="mission-tag">Access</div><div class="mission-text"><strong>PR Support</strong>On-ground access and introductions engine. Converting venue invites, brokering warm intros, placing trade coverage timed to festival week.</div></div>
   </div>
 </div>
