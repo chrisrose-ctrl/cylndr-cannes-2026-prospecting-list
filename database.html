@@ -82,6 +82,11 @@ a.src-link:hover { text-decoration:underline; }
 .status-menu .opt:hover { background:#fdf9f6; }
 .status-menu .opt .dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
 .loading { padding:40px; text-align:center; color:#888; font-size:14px; }
+.page-header { padding: 44px 24px 20px; max-width: 1500px; margin: 0 auto; }
+.page-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #025623; margin-bottom: 12px; }
+.page-title { font-size: 32px; font-weight: 700; color: #171717; letter-spacing: -0.02em; margin-bottom: 10px; }
+.page-title span { color: #025623; }
+.page-sub { font-size: 15px; color: #666; line-height: 1.6; max-width: 580px; margin-bottom: 24px; }
 </style>
 </head>
 <body>
@@ -93,17 +98,21 @@ a.src-link:hover { text-decoration:underline; }
     <a href="calendar.html" class="site-nav-link">Where to Be</a>
     <a href="database.html" class="site-nav-link active">Attendee Database</a>
     <a href="schedule.html" class="site-nav-link">My Schedule</a>
-    <a href="brands.html" class="site-nav-link">Brand Database</a>
-    <a href="events.html" class="site-nav-link">Fringe Event Tracker</a>
+    <a href="brands.html" class="site-nav-link">Brand Intelligence</a>
+    <a href="events.html" class="site-nav-link">Venue Intelligence</a>
   </div>
 </nav>
 
+<div class="page-header">
+  <div class="page-label">Attendee Database</div>
+  <h1 class="page-title">Every Confirmed <span>Contact</span></h1>
+  <p class="page-sub">Every confirmed speaker and brand-side attendee from daily intelligence reports — scored against ICP. Status and notes persist in your browser.</p>
+</div>
+
 <div class="wrap">
   <div class="header">
-    <h1>Cannes Lions 2026 — Attendee Database</h1>
-    <div class="meta" id="meta">Loading…</div>
+    <div class="meta" id="meta"></div>
   </div>
-  <div class="subtitle">Every confirmed attendee from daily intelligence reports. Status and notes persist in your browser.</div>
   <div class="stats" id="stats"></div>
   <div class="toolbar">
     <input type="search" id="search" placeholder="Search name, company, venue, session…">

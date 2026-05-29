@@ -14,13 +14,20 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-link:hover { background: #f0f0f0; color: #171717; }
 .nav-link.active { background: #ebfc40; color: #171717; font-weight: 700; }
 
+/* PAGE HEADER */
+.page-header { padding: 44px 32px 20px; max-width: 800px; margin: 0 auto; }
+.page-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; margin-bottom: 10px; }
+.page-title { font-size: 32px; font-weight: 700; color: #171717; letter-spacing: -0.02em; margin-bottom: 10px; }
+.page-title span { color: #025623; }
+.page-sub { font-size: 15px; color: #666; line-height: 1.6; max-width: 580px; margin-bottom: 24px; }
+
 /* DAY TAB BAR */
-.day-tab-bar { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 32px; display: flex; gap: 0; position: sticky; top: 0; z-index: 10; max-width: 800px; margin: 0 auto; }
-.day-tab { font: inherit; font-size: 13px; font-weight: 600; padding: 14px 20px; border: none; background: none; color: #888; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; transition: color 0.12s, border-color 0.12s; display: flex; flex-direction: column; align-items: center; gap: 1px; }
-.day-tab:hover { color: #171717; }
-.day-tab.active { color: #171717; border-bottom-color: #171717; }
+.day-tab-bar { padding: 0 32px 16px; max-width: 800px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; }
+.day-tab { font: inherit; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 6px; border: 1px solid #e5e5e5; background: #fff; color: #666; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 1px; transition: all 0.12s; }
+.day-tab:hover { border-color: #025623; color: #025623; }
+.day-tab.active { background: #171717; border-color: #171717; color: #fff; }
 .day-tab-sub { font-size: 10px; font-weight: 400; color: #bbb; }
-.day-tab.active .day-tab-sub { color: #888; }
+.day-tab.active .day-tab-sub { color: #aaa; }
 
 /* TOOLBAR */
 .toolbar { padding: 16px 32px; max-width: 800px; margin: 0 auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
@@ -115,6 +122,12 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
     <a href="events.html" class="nav-link">Venue Intelligence</a>
   </div>
 </nav>
+
+<div class="page-header">
+  <p class="page-label">Where to Be</p>
+  <h1 class="page-title">Event <span>Calendar</span></h1>
+  <p class="page-sub">Every confirmed session, activation, and priority venue — scored against ICP. Save sessions to My Schedule and filter by fit.</p>
+</div>
 
 <div class="day-tab-bar">
   <button class="day-tab" data-day="sun">Sun<span class="day-tab-sub">Jun 21</span></button>
