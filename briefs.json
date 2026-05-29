@@ -1,0 +1,349 @@
+{
+  "version": "1.0",
+  "generated": "2026-05-28",
+  "note": "Pre-generated briefs and outreach drafts for 15 FIT prospects. Triggered by double-click on FIT cards in database.html. Authored via Claude in Cowork against project ICP and JSON data on 2026-05-28.",
+  "prospects": {
+    "kelsey-newberry-eos-products": {
+      "name": "Kelsey Newberry",
+      "title": "VP Brand Marketing",
+      "company": "eos Products",
+      "brief": {
+        "who": "Kelsey Newberry leads brand-level work on eos Body, the category extension eos has been scaling since 2024. eos is a private DTC personal care company, estimated revenue $200-300M. The brand's reputation runs on bold, irreverent creative work: the Britney Spears body lotion campaign, the bigfoot 'Bless Your F***ing Cooch' shaving cream ad that went viral. eos doesn't do safe.",
+        "why": "Exact ICP target. VP-level title at a DTC challenger in beauty/personal care, well under $500M, fast-moving category. Her Cannes session is literally about amplifying a brand through culture, which is the CYLNDR pitch. She's one of three confirmed eos contacts at Cannes (with President Soyoung Kang and SVP Marketing Carley Caldas). Concentrated company access opportunity.",
+        "hooks": [
+          "Her session covers what to do after a campaign hit. The frame: how do you keep cultural momentum after the Britney moment?",
+          "Body extension is the operational challenge right now. She's evaluating partners who can move at challenger brand pace.",
+          "The bigfoot ad lineage suggests eos rewards partners who take real creative swings. Lead with conviction, not safety."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Kelsey, I'll be at Brand Innovators on Wednesday for your session on amplifying eos Body. The Britney lotion campaign was a masterclass in turning a category extension into a cultural moment, and I want to know how you're thinking about what comes next. I run growth at CYLNDR, Cheil's creative and production studio. We work fast with challenger brands that take real creative swings. Coffee at the Carlton terrace after your panel?",
+        "direct": "Kelsey, saw you're speaking Wed Jun 24 on eos Body. I run growth at CYLNDR, Cheil's in-house creative and production studio. We work with DTC brands that need partners who can move at challenger pace. 15 minutes Wed afternoon? I'll come to you.",
+        "curious": "Kelsey, your session caught my eye because the post-Britney question is the one I'd want to be working on right now. The cultural hit landed. The category extension is the harder play. I run growth at CYLNDR, a creative and production studio that partners with DTC brands on exactly that arc. Worth 15 minutes at Cannes?"
+      }
+    },
+    "carley-caldas-eos-products": {
+      "name": "Carley Caldas",
+      "title": "Senior Vice President, Marketing & Creative",
+      "company": "eos Products",
+      "brief": {
+        "who": "SVP Marketing & Creative at eos Products, leading both brand and creative for the DTC personal care brand. eos is the same private company described in Newberry's profile, est. $200-300M revenue, bold/irreverent creative reputation (Britney lotion, viral bigfoot ad). Caldas sits one tier above Newberry in the eos org and one tier below Soyoung Kang (President). Her FQ Beach session 'Creative Currency: From Insight to Impact' on Mon Jun 22 is the only Monday session worth blocking time for.",
+        "why": "Exact ICP. SVP Marketing matches the target seniority precisely. eos is a primary brand profile match. Caldas is the most direct decision-maker for creative partnerships at eos. Newberry is the title match, but Caldas owns the creative agenda.",
+        "hooks": [
+          "FQ Beach session is about turning insight into creative work that lands. The CYLNDR frame: how do you compress that loop for challenger brands?",
+          "Marketing AND creative under one leader signals eos doesn't want to manage handoffs. CYLNDR's integrated model fits.",
+          "Three eos contacts at Cannes and Caldas is the gravity well. Meet her well and the rest follow."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Carley, I'll be at FQ Beach on Monday for your 'Creative Currency' session. The insight-to-impact loop you're describing is the exact problem CYLNDR is built to solve for challenger brands. I run growth at Cheil's in-house creative and production studio. Coffee at the Martinez after?",
+        "direct": "Carley, saw you're on the FQ Beach panel Monday. I run growth at CYLNDR, Cheil's creative and production studio. We work with DTC brands on the insight-to-craft loop. 15 minutes Mon afternoon?",
+        "curious": "Carley, 'Creative Currency' is the right title for the right problem. Compressing the loop between brief and finished work is exactly what challenger brands need to win culture. I run growth at CYLNDR, Cheil's in-house studio. Worth comparing notes at Cannes?"
+      }
+    },
+    "tristan-pineiro-grindr": {
+      "name": "Tristan Pineiro",
+      "title": "Chief Marketing Officer",
+      "company": "Grindr",
+      "brief": {
+        "who": "CMO at Grindr. Grindr is a public DTC consumer app (~$300M revenue), social/dating category. Named to Campaign Top 50 US CMOs. Prior roles at Bumble/Badoo, Netflix, King (Candy Crush). His Adweek House session 'The Human Edge of Marketing' is on Mon Jun 22 at 11:15am. Grindr has built a strong content-first creative hub under his leadership.",
+        "why": "Grindr fits expanded ICP criteria. DTC consumer challenger at ~$300M revenue. CMO is above target title but at this scale Pineiro is the right entry point. Content-first approach matches CYLNDR's production-led model.",
+        "hooks": [
+          "'Human Edge' session is presumably about marketing that doesn't feel like marketing. CYLNDR makes that for a living.",
+          "His career arc (Bumble, Netflix, King, Grindr) is all consumer apps with strong brand culture. He values creative that earns attention.",
+          "Content-first marketing requires production capacity at scale. That's the CYLNDR pitch."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Tristan, I'll be at Adweek House Mon for 'The Human Edge of Marketing.' Your Bumble-to-Netflix-to-Grindr arc shows you build brands that don't feel like marketing. CYLNDR is built for the production side of that. I run growth here. Coffee at Carlton terrace after?",
+        "direct": "Tristan, saw you're speaking Mon at Adweek House. I run growth at CYLNDR, Cheil's creative and production studio. We work with consumer apps that compete on creative. 15 minutes Mon afternoon?",
+        "curious": "Tristan, the 'human edge' thesis is the one I'd want to be testing right now. The marketing-that-doesn't-feel-like-marketing playbook is harder than it looks, but Grindr's content reflects you've cracked something. I run growth at CYLNDR. Worth a conversation?"
+      }
+    },
+    "jill-cress-babylist": {
+      "name": "Jill Cress",
+      "title": "Chief Marketing Officer",
+      "company": "Babylist",
+      "brief": {
+        "who": "CMO at Babylist. Babylist is a private DTC baby registry and marketplace, founded 2011. Estimated revenue $200-300M. Speaking Thu Jun 25 at 10:25am Brand Innovators Beach Stage on 'Creating Experiences People Want to Share, and Communities They Want to Join.'",
+        "why": "Babylist sits in the consumer DTC sweet spot. CMO above target title but at this company scale she's the marketing decision-maker. Community-driven product means content and community work is the operational priority.",
+        "hooks": [
+          "Session title signals Babylist is investing in shareability and community. That's content-plus-experience work, which is CYLNDR-shaped.",
+          "Baby category is high-trust, high-content, high-frequency. Partners who can keep up matter.",
+          "Privately held mid-market means decisions move fast. Fewer layers between her and a yes."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Jill, I'll be at Brand Innovators Thu for your session on experiences and community. Babylist sits in the exact category sweet spot where content meets commerce, and the operational scale to keep up is rare. I run growth at CYLNDR, Cheil's creative and production studio. Coffee at Carlton after?",
+        "direct": "Jill, saw you're speaking Thu at Brand Innovators on community and experiences. I run growth at CYLNDR, Cheil's creative and production studio. We work with DTC brands on content-plus-experience at scale. 15 minutes?",
+        "curious": "Jill, the community-and-experiences problem is the right one to be obsessed with for a brand like Babylist. What's the operational bottleneck right now: content velocity, format mix, partner capacity? I run growth at CYLNDR. Worth 15 minutes at Cannes?"
+      }
+    },
+    "benoit-vatere-liquid-death": {
+      "name": "Benoit Vatere",
+      "title": "Chief Media Officer",
+      "company": "Liquid Death",
+      "brief": {
+        "who": "Chief Media Officer at Liquid Death. Liquid Death is a DTC food/bev challenger, est. $263M revenue 2023 and growing fast. The brand is the textbook DTC creative-first challenger: water in a tallboy, irreverent positioning, viral marketing. Vatere is the CMO-equivalent for the brand. Speaking Tue Jun 23 at 2pm Brand Innovators Showcase Stage on 'Audience First, Channel Second.'",
+        "why": "Liquid Death is the brand archetype CYLNDR is built for. Bold creative, fast moves, content-led. Chief Media Officer title but at this scale he's the marketing buy.",
+        "hooks": [
+          "'Audience First, Channel Second' is exactly how CYLNDR positions creative production for challenger brands.",
+          "Liquid Death rewards partners who match the brand voice. Show conviction in the first conversation or don't bother.",
+          "The brand is in the scaling-up phase where production volume becomes the bottleneck. Partners who can produce at pace win."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Benoit, I'll be at Brand Innovators Tue for 'Audience First, Channel Second.' Liquid Death is the brand I would have built if I'd thought of canned water first. I run growth at CYLNDR, a creative and production studio that thinks like Liquid Death thinks. Coffee after your panel?",
+        "direct": "Benoit, saw you're on the Liquid Death panel Tue at Brand Innovators. I run growth at CYLNDR, Cheil's creative and production studio. We work at the pace Liquid Death needs to move. 15 minutes Tue afternoon?",
+        "curious": "Benoit, 'Audience First, Channel Second' is the right title for the right problem, and Liquid Death is one of the only brands actually doing it. What breaks at scale: production volume, format-channel matching, brief turnaround? I run growth at CYLNDR. Worth a conversation?"
+      }
+    },
+    "nic-brandenberger-mammut": {
+      "name": "Nic Brandenberger",
+      "title": "Chief Marketing Officer",
+      "company": "Mammut",
+      "brief": {
+        "who": "CMO at Mammut. Mammut is a Swiss DTC outdoor apparel and gear challenger ($150-250M est. revenue). The brand has been working with DEPT agency on AI creative experiments. DEPT has a case study 'Take a Hike! Mammut deploys AI to rescue the internet from itself.' Brandenberger speaks Wed Jun 24 at 10:30am DEPT Secret Garden on 'What broke the Internet?'",
+        "why": "Mammut fits ICP. DTC outdoor apparel under $300M, fast-moving European challenger. CMO above target title but at this scale he's the marketing decision-maker.",
+        "hooks": [
+          "DEPT relationship is interesting context. Mammut already invests in AI creative. CYLNDR can talk to that level.",
+          "Outdoor category in Europe is consolidating fast. Mammut needs cultural relevance, not just functional credibility.",
+          "Session is at DEPT Secret Garden, a high-friction venue for outside partners. Powell PR or warm intro is the path in."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Nic, I'll be at DEPT Secret Garden Wed for your session. Mammut's AI and internet work with DEPT was one of the more interesting brand experiments of 2024, and I want to know where you're taking it next. I run growth at CYLNDR, Cheil's creative and production studio. Coffee after?",
+        "direct": "Nic, saw you're speaking Wed at DEPT Secret Garden. I run growth at CYLNDR, Cheil's creative and production studio. We work with DTC brands on bold creative production at pace. 15 minutes?",
+        "curious": "Nic, 'What broke the Internet' is a sharp prompt for the right brand to be asking. The Mammut AI work signaled you're not waiting for the category to catch up. What's the next swing? I run growth at CYLNDR. Worth a conversation at Cannes?"
+      }
+    },
+    "scott-zalaznik-blackroll": {
+      "name": "Scott Zalaznik",
+      "title": "Chief Executive Officer",
+      "company": "BLACKROLL",
+      "brief": {
+        "who": "CEO at BLACKROLL. BLACKROLL is a Swiss DTC health/fitness recovery brand (foam rollers, massage balls, recovery equipment). Estimated under $100M revenue. Speaking Thu Jun 25 at 2pm DEPT Secret Garden on 'The human multiplier: why leadership is the real AI advantage.'",
+        "why": "BLACKROLL fits ICP at the smaller end. DTC health/fitness recovery, sub-$100M. CEO title is the friction, but at this scale he's the marketing decision-maker too. Worth pursuing VP/Director Marketing under him if possible.",
+        "hooks": [
+          "Recovery category is having a moment (Oura, Theragun, BLACKROLL, Hyperice). Differentiation through brand is the key fight.",
+          "Founder-led brand at this scale means CEO is the decision. Talk creative substance directly.",
+          "DEPT Secret Garden access means warm intro through DEPT relationship would help."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Scott, I'll be at DEPT Secret Garden Thu for 'The human multiplier' session. BLACKROLL is in one of the more crowded recovery categories right now, and brand is the only durable moat. I run growth at CYLNDR, Cheil's creative and production studio. Coffee after?",
+        "direct": "Scott, saw you're speaking Thu at DEPT Secret Garden. I run growth at CYLNDR, Cheil's creative and production studio. We work with DTC challenger brands on brand-led differentiation. 15 minutes Thu afternoon?",
+        "curious": "Scott, recovery is one of the most interesting consumer categories right now: high engagement, high frequency, low brand differentiation. BLACKROLL has been building thoughtfully. What's working and what's the gap? I run growth at CYLNDR. Worth 15 minutes at DEPT?"
+      }
+    },
+    "doug-sweeny-oura": {
+      "name": "Doug Sweeny",
+      "title": "Chief Marketing Officer",
+      "company": "Oura Ring",
+      "brief": {
+        "who": "CMO at Oura Ring. Oura is a DTC consumer health tech brand (smart ring), est. $1B revenue in 2024. Growth-stage, Gen Z marketing focus. Confirmed at Sport Beach (Jun 21-25). Per project rules, Oura is one of the strongest ICP brand matches.",
+        "why": "Oura is named as ICP-fit by CYLNDR's own project rules. Health/wellness DTC at the right scale. CMO above target title but lean marketing team means he's the partner decision.",
+        "hooks": [
+          "Oura is in the scaling phase where brand consistency becomes the operational challenge. Partners who can move at pace and maintain quality win.",
+          "Gen Z focus is the long bet. Creative production that lives in that culture matters.",
+          "Sport Beach presence signals they value cultural relevance, not just product marketing."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Doug, I'll be at Sport Beach this week. Oura is one of the brands I'm most curious to talk to at Cannes. The Gen Z bet is the long bet, and brand consistency at scale is the hard part. I run growth at CYLNDR, Cheil's creative and production studio. Coffee on the Croisette?",
+        "direct": "Doug, I'll be at Sport Beach. I run growth at CYLNDR, Cheil's creative and production studio. We work with health and wellness DTC brands on brand-led growth. 15 minutes?",
+        "curious": "Doug, Oura is one of the more interesting consumer health brand-building stories right now: high-trust category, high-frequency wear, real Gen Z pull. What's the bottleneck on the creative side, brief volume, format mix, or culture-first thinking? I run growth at CYLNDR. Worth a conversation at Sport Beach?"
+      }
+    },
+    "vanessa-wallace-savage-x-fenty": {
+      "name": "Vanessa Wallace",
+      "title": "Chief Marketing Officer",
+      "company": "Savage X Fenty",
+      "brief": {
+        "who": "CMO at Savage X Fenty. Savage X Fenty is a DTC apparel/intimates brand, ~$150M revenue, founded by Rihanna. Known for bold creative, inclusive casting, strong cultural relevance. Speaking at Adweek House.",
+        "why": "Savage X Fenty fits expanded ICP. DTC apparel under $300M. CMO above target but at this scale she's the buy. Per May 15 brief: pursue VP/Director under her or approach directly.",
+        "hooks": [
+          "Savage X Fenty's brand identity is the product. Production partners need to share that creative bar.",
+          "Founder-led brand context means the founder voice is the through-line. Partners who match it stay.",
+          "Inclusive casting and creative direction is the operational signature. Show CYLNDR examples that match."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Vanessa, I'll be at Adweek House this week. Savage X Fenty has set the brand bar in intimates for the last five years, and matching that creative standard is the partner test. I run growth at CYLNDR, Cheil's creative and production studio. Coffee at the Majestic?",
+        "direct": "Vanessa, I'll be at Adweek House. I run growth at CYLNDR, Cheil's creative and production studio. We work with DTC apparel brands on creative production at brand-bar pace. 15 minutes?",
+        "curious": "Vanessa, Savage X Fenty's brand consistency over five years is genuinely impressive. Most founder-led brands wobble. What's the operational discipline that keeps the bar high? I run growth at CYLNDR. Worth 15 minutes at Cannes?"
+      }
+    },
+    "sarah-leinberger-yoobi": {
+      "name": "Sarah Leinberger",
+      "title": "Vice President of Marketing",
+      "company": "Yoobi & Altitude Brands",
+      "brief": {
+        "who": "VP Marketing at Yoobi & Altitude Brands. Yoobi is a DTC purpose-driven consumer brand (school supplies, give-one model). Growth stage, under $500M revenue. Background at Target and General Mills. Speaking at Adweek House.",
+        "why": "Exact ICP. VP Marketing at DTC consumer brand under cap, growth stage. Cleanest title match in the list.",
+        "hooks": [
+          "Purpose-driven brand requires production that doesn't compromise on craft. Mission alone doesn't sell.",
+          "Background at Target and General Mills means she values rigor and pace. Talk operationally.",
+          "Altitude Brands suggests she's running a portfolio. Partner relationship that scales across brands is the pitch."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Sarah, I'll be at Adweek House this week. The purpose-meets-craft challenge is one of the more interesting brand-building problems right now. Mission alone doesn't differentiate anymore. I run growth at CYLNDR, Cheil's creative and production studio. Coffee at the Majestic?",
+        "direct": "Sarah, I'll be at Adweek House. I run growth at CYLNDR, Cheil's creative and production studio. We work with VP-level marketing leaders at DTC growth brands. 15 minutes?",
+        "curious": "Sarah, your Target-to-General Mills-to-Yoobi arc is interesting: big-brand discipline applied to purpose-driven DTC. What's the operational gap when you make that move? I run growth at CYLNDR. Worth 15 minutes at Adweek House?"
+      }
+    },
+    "paige-grossman-ancestry": {
+      "name": "Paige Grossman",
+      "title": "Vice President, Global Brand Creative",
+      "company": "Ancestry",
+      "brief": {
+        "who": "VP Global Brand Creative at Ancestry. Ancestry is a private consumer DTC family-history brand (Blackstone-owned since 2020). DNA testing market has slowed, so current revenue likely closer to ICP cap. Background includes Publicis and FCB creative leadership. Speaking at Brands&Culture Villa.",
+        "why": "VP Brand Creative is exact target title. Ancestry sits at the edge of company size cap. Strong creative leadership history. Confirm revenue scale before pitching.",
+        "hooks": [
+          "DNA testing slowdown means Ancestry is reinventing what the brand stands for beyond the test. Creative challenge.",
+          "Publicis and FCB background means she speaks creative language. Lead with creative work, not capabilities.",
+          "VP Global Brand Creative is the right seat. She owns the creative agenda, not just execution."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Paige, I'll be at Brands&Culture Villa this week. The Ancestry reinvention, moving the brand beyond the testing kit, is one of the more interesting brand-stretch problems I've seen. I run growth at CYLNDR, Cheil's creative and production studio. Coffee at the Villa?",
+        "direct": "Paige, I'll be at Brands&Culture Villa. I run growth at CYLNDR, Cheil's creative and production studio. We work with VP Brand Creative leaders on brand-led production. 15 minutes?",
+        "curious": "Paige, Ancestry's challenge, staying culturally relevant when the category narrative has shifted, is the brand-strategy problem most companies will face. What does the next chapter look like? I run growth at CYLNDR. Worth 15 minutes at Cannes?"
+      }
+    },
+    "yasmin-oneal-deciem": {
+      "name": "Yasmin O'Neal",
+      "title": "Global Brand Senior Director",
+      "company": "DECIEM (The Ordinary)",
+      "brief": {
+        "who": "Global Brand Senior Director at DECIEM (The Ordinary). DECIEM is a DTC beauty challenger brand (Estée Lauder Companies acquired 2021 but operates independently). The Ordinary has built one of the most distinctive brand voices in beauty: clinical, ingredient-led, deliberately understated. London-based, background at P&G. Notable campaigns: 'The Periodic Fable,' 'The Secret Ingredient.' Speaking at Brands&Culture Villa.",
+        "why": "Senior Director title fits ICP target seniority. Core ICP brand profile (DTC beauty challenger). ELC parent is the only friction, but DECIEM operates independently.",
+        "hooks": [
+          "The Ordinary brand voice is one-of-one in beauty. Partners need to respect the restraint.",
+          "P&G background means she values discipline. Production approach matters as much as ideas.",
+          "Independent operating model under ELC means she has real decision authority. Talk straight."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Yasmin, I'll be at Brands&Culture Villa this week. The Ordinary has built one of the most distinctive brand voices in beauty, and the restraint is the hardest part to maintain at scale. I run growth at CYLNDR, Cheil's creative and production studio. Coffee at the Villa?",
+        "direct": "Yasmin, I'll be at Brands&Culture Villa. I run growth at CYLNDR, Cheil's creative and production studio. We work with beauty challenger brands on brand-led production. 15 minutes?",
+        "curious": "Yasmin, The Ordinary's brand voice consistency is one of the more impressive ongoing acts in beauty. What's the operational discipline that protects it as the brand scales? I run growth at CYLNDR. Worth 15 minutes at Cannes?"
+      }
+    },
+    "reema-amin-sheamoisture": {
+      "name": "Reema Amin",
+      "title": "Head of Marketing",
+      "company": "SheaMoisture",
+      "brief": {
+        "who": "Head of Marketing at SheaMoisture. SheaMoisture is a DTC-heritage Black-owned personal care brand, Unilever-acquired in 2017 but operates with brand autonomy. Strong cultural identity, community-driven marketing. Speaking at Adweek House.",
+        "why": "Head of Marketing qualifies under expanded ICP. SheaMoisture is the right brand profile in beauty and personal care. Operates with brand autonomy despite Unilever ownership.",
+        "hooks": [
+          "Brand authenticity is the operational priority. Partners who can navigate cultural specificity matter.",
+          "Community-driven marketing requires content that comes FROM community, not at community. CYLNDR's production model supports that.",
+          "Unilever ownership is the constraint, not the opportunity. Marketing decisions stay at the brand level."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Reema, I'll be at Adweek House this week. SheaMoisture's brand identity is one of the more authentic ongoing acts in personal care, and protecting that at scale is the operational fight. I run growth at CYLNDR, Cheil's creative and production studio. Coffee at the Majestic?",
+        "direct": "Reema, I'll be at Adweek House. I run growth at CYLNDR, Cheil's creative and production studio. We work with personal care brands on community-led production. 15 minutes?",
+        "curious": "Reema, SheaMoisture's authenticity at scale is one of the harder brand challenges right now: keeping community connection real while operating inside Unilever. What's the partner test for you? I run growth at CYLNDR. Worth 15 minutes at Adweek House?"
+      }
+    },
+    "samantha-catalina-happy-dad": {
+      "name": "Samantha Catalina",
+      "title": "Fractional Chief Marketing Officer",
+      "company": "Happy Dad",
+      "brief": {
+        "who": "Fractional CMO at Happy Dad. Happy Dad is a fast-growing DTC food/bev (hard seltzer) challenger, est. $100M revenue. Founded by SteveWillDoIt and Nelk Boys. Built on creator-led culture from day one. Speaking at Adweek House.",
+        "why": "Happy Dad is a DTC food/bev challenger at the right scale (~$100M). Fractional CMO is unconventional but she's the effective marketing decision-maker. Creator-led brand requires production that lives in that culture.",
+        "hooks": [
+          "Happy Dad's founders ARE the brand. Production partners need to match that voice, not impose agency voice.",
+          "Creator-led brands move at internet pace. Partners who can produce in days, not weeks, win.",
+          "Fractional CMO structure means she's optimizing for partner relationships that scale. Fewer, deeper."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Samantha, I'll be at Adweek House this week. Happy Dad is one of the more interesting creator-built brand stories. The founders ARE the brand, which is the hardest model to scale without losing voice. I run growth at CYLNDR, Cheil's creative and production studio. Coffee at the Majestic?",
+        "direct": "Samantha, I'll be at Adweek House. I run growth at CYLNDR, Cheil's creative and production studio. We work with creator-led DTC brands on production at internet pace. 15 minutes?",
+        "curious": "Samantha, the fractional CMO model plus creator-led brand is the most interesting marketing structure I've seen come out of DTC food/bev. What's working and what's the gap on the partner side? I run growth at CYLNDR. Worth 15 minutes at Adweek House?"
+      }
+    },
+    "joy-howard-back-market": {
+      "name": "Joy Howard",
+      "title": "Chief Marketing Officer",
+      "company": "Back Market",
+      "brief": {
+        "who": "CMO at Back Market. Back Market is a Series D DTC marketplace for refurbished electronics, growth-stage, sustainability-positioned challenger brand scaling in North America. Speaking Mon Jun 22 at 9:30am Brand Innovators Beach Stage on 'The CMO Agenda: Navigating Growth, Innovation & Change.'",
+        "why": "Back Market fits ICP. DTC marketplace, growth-stage, sustainability angle, active US expansion. CMO above target title but lean team means she's the partner decision.",
+        "hooks": [
+          "Sustainability story is the hook, but the creative has to translate it without preaching. CYLNDR's frame: how do you make refurbished feel desirable?",
+          "US expansion phase means new agency and production relationships are forming right now. Door is open.",
+          "Series D pacing means they need partners who can move with the brand, not slow it down."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Joy, I'll be at Brand Innovators Mon for 'The CMO Agenda.' Back Market's sustainability story is one of the more interesting brand-building challenges in DTC right now: making refurbished feel desirable, not just responsible. I run growth at CYLNDR, Cheil's creative and production studio. Coffee after your panel?",
+        "direct": "Joy, saw you're speaking Mon at Brand Innovators. I run growth at CYLNDR, Cheil's creative and production studio. We work with DTC marketplaces on creative-led growth. 15 minutes Mon afternoon?",
+        "curious": "Joy, the Back Market positioning is one of the more interesting brand puzzles in DTC right now: how do you make refurbished feel desirable without preaching? I run growth at CYLNDR. Worth 15 minutes at Cannes?"
+      }
+    },
+    "louisa-wee-strava": {
+      "name": "Louisa Wee",
+      "title": "Chief Marketing Officer",
+      "company": "Strava",
+      "brief": {
+        "who": "CMO at Strava. Strava is a DTC fitness/health scaleup with strong community-driven brand. Sport Beach speaker Jun 24-25 at Carlton Hotel / SPORT BEACH.",
+        "why": "Strava fits ICP. DTC fitness/health, scaling. CMO above target title but lean marketing team means she's the partner decision. Per project rules, named ICP example brand.",
+        "hooks": [
+          "Strava community is the moat. Marketing that activates the community without overplaying brand voice is the test.",
+          "Health and fitness DTC category is consolidating. Strava's challenge is keeping cultural pull as platforms compete.",
+          "Sport Beach presence signals they want cultural cachet alongside utility."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Louisa, I'll be at Sport Beach this week. Strava's community is the moat, and the marketing question is how you activate it without overplaying brand voice. I run growth at CYLNDR, Cheil's creative and production studio. Coffee on the Croisette?",
+        "direct": "Louisa, I'll be at Sport Beach. I run growth at CYLNDR, Cheil's creative and production studio. We work with DTC fitness brands on community-led production. 15 minutes?",
+        "curious": "Louisa, Strava is one of the few consumer apps where the brand and the community ARE the product. What's the marketing question that gets harder as the platform scales? I run growth at CYLNDR. Worth 15 minutes at Sport Beach?"
+      }
+    },
+    "carolina-cespedes-virguez-gogosqueez": {
+      "name": "Carolina Cespedes Virguez",
+      "title": "General Manager, GoGo squeeZ U.S.",
+      "company": "GoGo squeeZ (Materne)",
+      "brief": {
+        "who": "General Manager of GoGo squeeZ U.S. GoGo squeeZ is Materne's DTC challenger food brand: applesauce pouches, clean-label CPG, strong grocery and DTC presence. GM is the primary brand decision-maker for North America. Speaking Thu Jun 25 at Adweek House on 'Partnership Is The New Power Move.'",
+        "why": "GM U.S. is the top brand decision-maker for the U.S. market. Food/bev challenger, right category, right title tier. High priority fit.",
+        "hooks": [
+          "Session title is literally about partnerships, which is the CYLNDR business. Walk in ready to talk about what makes partnership work.",
+          "Clean-label CPG is a competitive category. Brand differentiation through creative is the moat.",
+          "GM U.S. means she controls the U.S. P&L. Partner decisions don't escalate. Talk operationally."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Carolina, I'll be at Adweek House Thu for 'Partnership Is The New Power Move.' The session title is literally the CYLNDR business model, and GoGo squeeZ is exactly the kind of DTC food brand we partner with. I run growth at Cheil's creative and production studio. Coffee at the Majestic?",
+        "direct": "Carolina, saw you're speaking Thu at Adweek House on partnerships. I run growth at CYLNDR, Cheil's creative and production studio. We work with DTC food/bev challengers on creative production at growth-brand pace. 15 minutes Thu afternoon?",
+        "curious": "Carolina, 'Partnership Is The New Power Move' is the right title at the right time for a brand like GoGo squeeZ. What makes a partner actually move the needle vs slow you down? I run growth at CYLNDR. Worth 15 minutes at Adweek House?"
+      }
+    },
+    "kelsey-newberry-eos": {
+      "name": "Kelsey Newberry",
+      "title": "Vice President of Brand Marketing",
+      "company": "eos Products",
+      "brief": {
+        "who": "Kelsey Newberry leads brand-level work on eos Body, the category extension eos has been scaling since 2024. eos is a private DTC personal care company, estimated revenue $200-300M. The brand's reputation runs on bold, irreverent creative work: the Britney Spears body lotion campaign, the bigfoot 'Bless Your F***ing Cooch' shaving cream ad that went viral. eos doesn't do safe.",
+        "why": "Exact ICP target. VP-level title at a DTC challenger in beauty/personal care, well under $500M, fast-moving category. Her Cannes session is literally about amplifying a brand through culture, which is the CYLNDR pitch. She's one of three confirmed eos contacts at Cannes (with President Soyoung Kang and SVP Marketing Carley Caldas). Concentrated company access opportunity.",
+        "hooks": [
+          "Her session covers what to do after a campaign hit. The frame: how do you keep cultural momentum after the Britney moment?",
+          "Body extension is the operational challenge right now. She's evaluating partners who can move at challenger brand pace.",
+          "The bigfoot ad lineage suggests eos rewards partners who take real creative swings. Lead with conviction, not safety."
+        ]
+      },
+      "drafts": {
+        "warm": "Hi Kelsey, I'll be at Brand Innovators on Wednesday for your session on amplifying eos Body. The Britney lotion campaign was a masterclass in turning a category extension into a cultural moment, and I want to know how you're thinking about what comes next. I run growth at CYLNDR, Cheil's creative and production studio. We work fast with challenger brands that take real creative swings. Coffee at the Carlton terrace after your panel?",
+        "direct": "Kelsey, saw you're speaking Wed Jun 24 on eos Body. I run growth at CYLNDR, Cheil's in-house creative and production studio. We work with DTC brands that need partners who can move at challenger pace. 15 minutes Wed afternoon? I'll come to you.",
+        "curious": "Kelsey, your session caught my eye because the post-Britney question is the one I'd want to be working on right now. The cultural hit landed. The category extension is the harder play. I run growth at CYLNDR, a creative and production studio that partners with DTC brands on exactly that arc. Worth 15 minutes at Cannes?"
+      }
+    }
+  }
+}
