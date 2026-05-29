@@ -6,16 +6,16 @@
 <title>My Schedule · CYLNDR × Cannes 2026</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #f5f5f5; color: #1a1a1a; min-height: 100vh; }
-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; border-bottom: 1px solid #e5e5e5; background: #fff; }
-.nav-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1a1a1a; text-decoration: none; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #fdf9f6; color: #171717; min-height: 100vh; }
+nav { display: flex; align-items: center;  padding: 16px 32px; border-bottom: 1px solid #e5e5e5; background: #fff; }
+.nav-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #171717; text-decoration: none; }
 .nav-links { display: flex; gap: 4px; }
 .nav-link { font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 6px; text-decoration: none; color: #666; transition: background 0.12s; }
-.nav-link:hover { background: #f0f0f0; color: #1a1a1a; }
-.nav-link.active { background: #1a1a1a; color: #fff; }
+.nav-link:hover { background: #f0f0f0; color: #171717; }
+.nav-link.active { background: #171717; color: #fff; }
 
 .page-header { padding: 28px 32px 0; max-width: 1100px; margin: 0 auto; }
-.page-title { font-size: 26px; font-weight: 700; color: #1a1a1a; letter-spacing: -0.01em; margin-bottom: 4px; }
+.page-title { font-size: 26px; font-weight: 700; color: #171717; letter-spacing: -0.01em; margin-bottom: 4px; }
 .page-sub { font-size: 13px; color: #888; margin-bottom: 16px; }
 
 /* Day tab bar */
@@ -30,8 +30,8 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
   font-family: inherit; font-size: 12px; color: #888; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 1px;
   transition: background 0.1s;
 }
-.day-tabs button:hover { background: #fafafa; color: #1a1a1a; }
-.day-tabs button.active { color: #1a1a1a; border-bottom-color: #1a1a1a; font-weight: 600; }
+.day-tabs button:hover { background: #fafafa; color: #171717; }
+.day-tabs button.active { color: #171717; border-bottom-color: #171717; font-weight: 600; }
 .day-tabs button { font-size: 13px; font-weight: 600; }
 .day-tabs button .day-tab-sub { font-size: 10px; font-weight: 400; color: #bbb; }
 
@@ -39,9 +39,9 @@ main { padding: 20px 32px 48px; max-width: 1100px; margin: 0 auto; }
 .day-panel { display: none; }
 .day-panel.active { display: block; }
 
-.day-header { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #1a1a1a; }
+.day-header { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #171717; }
 .day-label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #149182; margin-bottom: 4px; }
-.day-header h2 { font-size: 22px; font-weight: 700; color: #1a1a1a; }
+.day-header h2 { font-size: 22px; font-weight: 700; color: #171717; }
 
 table.schedule {
   width: 100%; border-collapse: collapse; background: #fff;
@@ -49,16 +49,16 @@ table.schedule {
   font-size: 13px;
 }
 table.schedule th {
-  background: #1a1a1a; color: #fff; text-align: left;
+  background: #171717; color: #fff; text-align: left;
   padding: 9px 12px; font-size: 10px; letter-spacing: 0.1em; font-weight: 700;
 }
 table.schedule td { padding: 10px 12px; border-top: 1px solid #f0f0f0; vertical-align: top; }
 table.schedule tr:first-child td { border-top: none; }
-table.schedule .time { background: #faf5eb; color: #1a1a1a; font-weight: 700; white-space: nowrap; width: 82px; font-size: 12px; }
+table.schedule .time { background: #faf5eb; color: #171717; font-weight: 700; white-space: nowrap; width: 82px; font-size: 12px; }
 table.schedule .block { background: #fffbf3; color: #888; width: 120px; font-size: 11px; }
-table.schedule .activity { min-width: 200px; color: #1a1a1a; }
+table.schedule .activity { min-width: 200px; color: #171717; }
 table.schedule .activity ul { margin: 0; padding-left: 16px; }
-table.schedule .activity li { margin-bottom: 4px; color: #1a1a1a; }
+table.schedule .activity li { margin-bottom: 4px; color: #171717; }
 table.schedule .activity .empty { color: #ccc; font-style: italic; font-size: 12px; }
 table.schedule tr.evening .time { background: #f0ece3; }
 table.schedule tr.evening .block { background: #f5f2ea; }
@@ -67,53 +67,53 @@ table.schedule tr:hover td.time { background: #f5f0e0; }
 
 /* Highlight rows that have content */
 table.schedule tr.has-event td { background: #fffdf7; }
-table.schedule tr.has-event td.time { background: #fef3c7; color: #92400e; }
-table.schedule tr.has-event .activity li { color: #1a1a1a; font-weight: 500; }
+table.schedule tr.has-event td.time { background: #eef2ea; color: #4a6040; }
+table.schedule tr.has-event .activity li { color: #171717; font-weight: 500; }
 
 /* Saved-from-calendar items */
 .saved-list { margin-top: 6px; padding-top: 6px; border-top: 1px dashed #e5e5e5; list-style: none; padding-left: 0; }
-.saved-item { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 4px; font-size: 12px; color: #166534; }
-.saved-item .pin { color: #166534; font-size: 11px; flex-shrink: 0; margin-top: 1px; }
+.saved-item { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 4px; font-size: 12px; color: #a83307; }
+.saved-item .pin { color: #a83307; font-size: 11px; flex-shrink: 0; margin-top: 1px; }
 .saved-item .body { flex: 1; }
-.saved-item .body .session { font-weight: 600; color: #14532d; }
+.saved-item .body .session { font-weight: 600; color: #6b1d05; }
 .saved-item .body .meta { color: #888; font-size: 11px; }
 .saved-item .remove { background: none; border: none; color: #aaa; cursor: pointer; font-size: 14px; padding: 0 4px; line-height: 1; }
 .saved-item .remove:hover { color: #b91c1c; }
 .saved-item .cal-trigger { background: none; border: none; color: #888; cursor: pointer; font-size: 12px; padding: 0 4px; line-height: 1; }
-.saved-item .cal-trigger:hover { color: #1a1a1a; }
+.saved-item .cal-trigger:hover { color: #171717; }
 .cal-pop { position: relative; }
 .cal-pop-menu { position: absolute; right: 0; top: 100%; margin-top: 2px; background: #fff; border: 1px solid #d4d4d4; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 20; min-width: 150px; display: none; }
 .cal-pop-menu.open { display: block; }
 .cal-pop-menu a { display: block; padding: 7px 12px; font-size: 11px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0; }
 .cal-pop-menu a:last-child { border-bottom: none; }
-.cal-pop-menu a:hover { background: #fafafa; color: #1a1a1a; }
-table.schedule tr.has-saved td.time { background: #d1fae5; color: #065f46; }
-table.schedule tr.has-saved td { background: #f7fdf9; }
+.cal-pop-menu a:hover { background: #fafafa; color: #171717; }
+table.schedule tr.has-saved td.time { background: #fde8e0; color: #7a2405; }
+table.schedule tr.has-saved td { background: #fff8f6; }
 
 .saved-banner { padding: 12px 32px 0; max-width: 1100px; margin: 0 auto; }
-.saved-banner-inner { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px 14px; border-radius: 6px; font-size: 12px; color: #14532d; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.saved-banner-inner a { color: #14532d; font-weight: 600; }
-.saved-banner-inner button { font: inherit; font-size: 11px; padding: 4px 10px; border-radius: 4px; border: 1px solid #bbf7d0; background: #fff; color: #14532d; cursor: pointer; }
-.saved-banner-inner button:hover { background: #166534; color: #fff; border-color: #166534; }
+.saved-banner-inner { background: #fff5f2; border: 1px solid #f8bfaa; padding: 10px 14px; border-radius: 6px; font-size: 12px; color: #6b1d05; display: flex; align-items: center;  gap: 12px; }
+.saved-banner-inner a { color: #6b1d05; font-weight: 600; }
+.saved-banner-inner button { font: inherit; font-size: 11px; padding: 4px 10px; border-radius: 4px; border: 1px solid #f8bfaa; background: #fff; color: #6b1d05; cursor: pointer; }
+.saved-banner-inner button:hover { background: #a83307; color: #fff; border-color: #a83307; }
 
 /* Subscribe section */
 .sub-section { padding: 14px 32px 0; max-width: 1100px; margin: 0 auto; }
 .sub-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px 16px; }
-.sub-title { font-size: 12px; font-weight: 700; color: #1a1a1a; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-.sub-title .pill-set { font-size: 9px; padding: 2px 6px; border-radius: 3px; background: #fef3c7; color: #92400e; letter-spacing: 0.06em; }
+.sub-title { font-size: 12px; font-weight: 700; color: #171717; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.sub-title .pill-set { font-size: 9px; padding: 2px 6px; border-radius: 3px; background: #eef2ea; color: #4a6040; letter-spacing: 0.06em; }
 .sub-sub { font-size: 12px; color: #666; margin-bottom: 12px; line-height: 1.5; }
 .sub-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-.sub-btn { font: inherit; font-size: 12px; font-weight: 600; padding: 7px 12px; border-radius: 6px; border: 1px solid #1a1a1a; background: #1a1a1a; color: #fff; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.sub-btn { font: inherit; font-size: 12px; font-weight: 600; padding: 7px 12px; border-radius: 6px; border: 1px solid #171717; background: #171717; color: #fff; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
 .sub-btn:hover { background: #000; }
-.sub-btn.secondary { background: #fff; color: #1a1a1a; border-color: #d4d4d4; }
-.sub-btn.secondary:hover { border-color: #1a1a1a; background: #fafafa; }
-.sub-url { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; color: #555; background: #f5f5f5; padding: 6px 10px; border-radius: 4px; border: 1px solid #e5e5e5; flex: 1; min-width: 240px; user-select: all; }
-.sub-toast { font-size: 11px; color: #166534; margin-left: 8px; opacity: 0; transition: opacity 0.2s; }
+.sub-btn.secondary { background: #fff; color: #171717; border-color: #d4d4d4; }
+.sub-btn.secondary:hover { border-color: #171717; background: #fafafa; }
+.sub-url { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; color: #555; background: #fdf9f6; padding: 6px 10px; border-radius: 4px; border: 1px solid #e5e5e5; flex: 1; min-width: 240px; user-select: all; }
+.sub-toast { font-size: 11px; color: #a83307; margin-left: 8px; opacity: 0; transition: opacity 0.2s; }
 .sub-toast.show { opacity: 1; }
 .sub-help { font-size: 11px; color: #888; margin-top: 8px; line-height: 1.5; }
-.sub-help code { font-family: ui-monospace, Menlo, monospace; background: #f5f5f5; padding: 1px 5px; border-radius: 3px; font-size: 11px; color: #1a1a1a; }
+.sub-help code { font-family: ui-monospace, Menlo, monospace; background: #fdf9f6; padding: 1px 5px; border-radius: 3px; font-size: 11px; color: #171717; }
 
-footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; font-size: 11px; color: #aaa; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; font-size: 11px; color: #aaa; display: flex;  flex-wrap: wrap; gap: 8px; }
 
 @media (max-width: 700px) {
   nav { padding: 14px 16px; }

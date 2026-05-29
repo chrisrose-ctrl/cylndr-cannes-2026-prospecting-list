@@ -6,24 +6,24 @@
 <title>Events Across Cannes — CYLNDR × 2026</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #f5f5f5; color: #1a1a1a; min-height: 100vh; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #fdf9f6; color: #171717; min-height: 100vh; }
 nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; border-bottom: 1px solid #e5e5e5; background: #fff; flex-wrap: wrap; gap: 8px; }
-.nav-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1a1a1a; text-decoration: none; }
+.nav-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #171717; text-decoration: none; }
 .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
 .nav-link { font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 6px; text-decoration: none; color: #666; transition: background 0.12s; }
-.nav-link:hover { background: #f0f0f0; color: #1a1a1a; }
-.nav-link.active { background: #1a1a1a; color: #fff; }
+.nav-link:hover { background: #f0f0f0; color: #171717; }
+.nav-link.active { background: #171717; color: #fff; }
 
 .page-header { padding: 44px 32px 28px; max-width: 1100px; margin: 0 auto; }
 .page-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #149182; margin-bottom: 12px; }
-h1 { font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: #1a1a1a; margin-bottom: 10px; }
+h1 { font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: #171717; margin-bottom: 10px; }
 h1 span { color: #149182; }
 .page-sub { font-size: 15px; color: #666; line-height: 1.6; max-width: 580px; }
 
 .controls { max-width: 1100px; margin: 0 auto; padding: 20px 32px 0; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .filter-btn { font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 6px; border: 1px solid #e5e5e5; background: #fff; color: #666; cursor: pointer; transition: all 0.12s; }
 .filter-btn:hover { border-color: #149182; color: #149182; }
-.filter-btn.active { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
+.filter-btn.active { background: #171717; border-color: #171717; color: #fff; }
 .count-badge { font-size: 12px; color: #aaa; margin-left: auto; }
 
 .section-label { max-width: 1100px; margin: 28px auto 12px; padding: 0 32px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; }
@@ -37,12 +37,12 @@ h1 span { color: #149182; }
 .venue-card.fringe { border-left: 4px solid #d1d5db; }
 
 .venue-meta { flex: 0 0 260px; min-width: 0; }
-.venue-name { font-size: 15px; font-weight: 700; color: #1a1a1a; line-height: 1.3; margin-bottom: 6px; }
+.venue-name { font-size: 15px; font-weight: 700; color: #171717; line-height: 1.3; margin-bottom: 6px; }
 .venue-dates { font-size: 12px; color: #666; margin-bottom: 4px; }
 .venue-location { font-size: 11px; color: #aaa; margin-bottom: 10px; }
 .venue-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
 .tag { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
-.tag-priority { background: #fef3c7; color: #92400e; }
+.tag-priority { background: #eef2ea; color: #4a6040; }
 .tag-secondary { background: #f1f5f9; color: #475569; }
 .tag-fringe { background: #f8fafc; color: #94a3b8; border: 1px solid #e2e8f0; }
 .tag-access { background: #eff6ff; color: #1d4ed8; }
@@ -56,16 +56,16 @@ h1 span { color: #149182; }
 .people-grid { display: flex; flex-direction: column; gap: 6px; }
 .person-row { display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-radius: 7px; background: #fafafa; border: 1px solid #f0f0f0; }
 .person-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
-.dot-fit { background: #16a34a; }
-.dot-adj { background: #d97706; }
+.dot-fit { background: #d04009; }
+.dot-adj { background: #98aa8e; }
 .dot-key { background: #7c3aed; }
 .person-info { flex: 1; min-width: 0; }
-.person-name { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.person-name { font-size: 13px; font-weight: 600; color: #171717; }
 .person-role { font-size: 11px; color: #777; line-height: 1.4; margin-top: 1px; }
 .person-session { font-size: 10px; color: #149182; margin-top: 2px; font-style: italic; }
 .badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; }
-.badge-fit { background: #d1fae5; color: #065f46; }
-.badge-adj { background: #fef3c7; color: #92400e; }
+.badge-fit { background: #fde8e0; color: #7a2405; }
+.badge-adj { background: #eef2ea; color: #4a6040; }
 .badge-key { background: #ede9fe; color: #5b21b6; }
 .no-people { font-size: 12px; color: #bbb; font-style: italic; padding: 8px 0; }
 
@@ -75,7 +75,7 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
 .attending-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px; margin-top: 10px; }
 .attending-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 9px; padding: 12px 14px; display: flex; gap: 10px; align-items: flex-start; }
 .attending-card:hover { border-color: #ccc; }
-.attending-name { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.attending-name { font-size: 13px; font-weight: 600; color: #171717; }
 .attending-role { font-size: 11px; color: #777; margin-top: 2px; line-height: 1.4; }
 .attending-meta { font-size: 10px; color: #149182; margin-top: 3px; font-style: italic; }
 .attending-divider { max-width: 1100px; margin: 32px auto 0; padding: 0 32px; border-top: 1px solid #e5e5e5; padding-top: 32px; }
