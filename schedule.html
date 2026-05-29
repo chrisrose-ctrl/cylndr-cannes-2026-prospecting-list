@@ -60,7 +60,6 @@ table.schedule .activity { min-width: 200px; color: #1a1a1a; }
 table.schedule .activity ul { margin: 0; padding-left: 16px; }
 table.schedule .activity li { margin-bottom: 4px; color: #1a1a1a; }
 table.schedule .activity .empty { color: #ccc; font-style: italic; font-size: 12px; }
-table.schedule .location, table.schedule .notes { color: #888; font-size: 12px; }
 table.schedule tr.evening .time { background: #f0ece3; }
 table.schedule tr.evening .block { background: #f5f2ea; }
 table.schedule tr:hover td { background: #fafaf8; }
@@ -389,7 +388,7 @@ function renderDay(day) {
 
   const table = document.createElement('table');
   table.className = 'schedule';
-  table.innerHTML = `<thead><tr><th>Time</th><th>Block</th><th>Activity</th><th>Location</th><th>Notes</th></tr></thead><tbody></tbody>`;
+  table.innerHTML = `<thead><tr><th>Time</th><th>Block</th><th>Activity</th></tr></thead><tbody></tbody>`;
   const tbody = table.querySelector('tbody');
 
   const savedMap = savedByDayAndSlot();
@@ -441,9 +440,6 @@ function renderDay(day) {
       tdAct.appendChild(sUl);
     }
     tr.appendChild(tdAct);
-
-    const tdLoc = document.createElement('td'); tdLoc.className = 'location'; tdLoc.textContent = data.location || ''; tr.appendChild(tdLoc);
-    const tdNotes = document.createElement('td'); tdNotes.className = 'notes'; tdNotes.textContent = data.notes || ''; tr.appendChild(tdNotes);
     tbody.appendChild(tr);
   });
 
