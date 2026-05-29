@@ -7,7 +7,7 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #fdf9f6; color: #171717; min-height: 100vh; }
-nav { display: flex; align-items: center;  padding: 16px 32px; border-bottom: 1px solid #e5e5e5; background: #fff; }
+nav { display: flex; align-items: center;  justify-content: space-between; padding: 16px 32px; border-bottom: 1px solid #e5e5e5; background: #fff; }
 .nav-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #171717; text-decoration: none; }
 .nav-links { display: flex; gap: 4px; }
 .nav-link { font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 6px; text-decoration: none; color: #666; transition: background 0.12s; }
@@ -1678,6 +1678,14 @@ function renderDay(day) {
   const savedMap = savedByDayAndSlot();
 
   SLOTS.forEach((slot, i) => {
+// Find last slot with content to hide trailing empty rows
+let lastSlot = 9; // minimum: always show through 5 PM
+SLOTS.forEach((slot, i) => {
+  const d = DATA[day.key].slots[i] || {};
+  const sv = savedMap[day.key + ':' + i] || [];
+  if ((d.activity && d.activity.length > 0) || sv.length > 0) lastSlot = i;
+});
+if (i > lastSlot + 1) return;
     const data = DATA[day.key].slots[i] || { activity:[], location:'', notes:'' };
     const savedForSlot = savedMap[day.key + ':' + i] || [];
     const hasEvent = Array.isArray(data.activity) && data.activity.length > 0;
