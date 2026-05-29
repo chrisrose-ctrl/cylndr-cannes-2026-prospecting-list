@@ -15,14 +15,14 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .nav-link.active { background: #171717; color: #fff; }
 
 .page-header { padding: 44px 32px 28px; max-width: 1100px; margin: 0 auto; }
-.page-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #149182; margin-bottom: 12px; }
+.page-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #025623; margin-bottom: 12px; }
 h1 { font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: #171717; margin-bottom: 10px; }
-h1 span { color: #149182; }
+h1 span { color: #025623; }
 .page-sub { font-size: 15px; color: #666; line-height: 1.6; max-width: 580px; }
 
 .controls { max-width: 1100px; margin: 0 auto; padding: 20px 32px 0; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .filter-btn { font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 6px; border: 1px solid #e5e5e5; background: #fff; color: #666; cursor: pointer; transition: all 0.12s; }
-.filter-btn:hover { border-color: #149182; color: #149182; }
+.filter-btn:hover { border-color: #025623; color: #025623; }
 .filter-btn.active { background: #171717; border-color: #171717; color: #fff; }
 .count-badge { font-size: 12px; color: #aaa; margin-left: auto; }
 
@@ -32,7 +32,7 @@ h1 span { color: #149182; }
 
 .venue-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 20px 24px; display: flex; gap: 24px; transition: border-color 0.12s, box-shadow 0.12s; }
 .venue-card:hover { border-color: #ccc; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-.venue-card.priority { border-left: 4px solid #149182; }
+.venue-card.priority { border-left: 4px solid #025623; }
 .venue-card.secondary { border-left: 4px solid #64748b; }
 .venue-card.fringe { border-left: 4px solid #d1d5db; }
 
@@ -62,7 +62,7 @@ h1 span { color: #149182; }
 .person-info { flex: 1; min-width: 0; }
 .person-name { font-size: 13px; font-weight: 600; color: #171717; }
 .person-role { font-size: 11px; color: #777; line-height: 1.4; margin-top: 1px; }
-.person-session { font-size: 10px; color: #149182; margin-top: 2px; font-style: italic; }
+.person-session { font-size: 10px; color: #025623; margin-top: 2px; font-style: italic; }
 .badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; }
 .badge-fit { background: #fde8e0; color: #7a2405; }
 .badge-adj { background: #eef2ea; color: #4a6040; }
@@ -77,7 +77,7 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
 .attending-card:hover { border-color: #ccc; }
 .attending-name { font-size: 13px; font-weight: 600; color: #171717; }
 .attending-role { font-size: 11px; color: #777; margin-top: 2px; line-height: 1.4; }
-.attending-meta { font-size: 10px; color: #149182; margin-top: 3px; font-style: italic; }
+.attending-meta { font-size: 10px; color: #025623; margin-top: 3px; font-style: italic; }
 .attending-divider { max-width: 1100px; margin: 32px auto 0; padding: 0 32px; border-top: 1px solid #e5e5e5; padding-top: 32px; }
 </style>
 </head>
@@ -664,7 +664,7 @@ function renderVenues() {
         : `<span style="font-size:11px;color:#bbb">No RSVP link yet</span>`;
 
       const agendaBtn = venue.agenda
-        ? `<a href="${venue.agenda}" target="_blank" rel="noopener" style="font-size:11px;color:#149182;text-decoration:none;margin-left:12px">View agenda ↗</a>`
+        ? `<a href="${venue.agenda}" target="_blank" rel="noopener" style="font-size:11px;color:#025623;text-decoration:none;margin-left:12px">View agenda ↗</a>`
         : '';
 
       const powellTag = venue.powell
