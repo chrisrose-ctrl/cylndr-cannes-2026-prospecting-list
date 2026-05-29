@@ -19,21 +19,21 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .page-sub { font-size: 13px; color: #888; margin-bottom: 16px; }
 
 /* Day tab bar */
-nav.day-tabs {
-  display: flex; justify-content: flex-start; overflow-x: auto; gap: 0;
+.day-tabs {
+  display: flex; overflow-x: auto; gap: 0;
   background: #fff; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;
   padding: 0 32px; max-width: 100%;
 }
-nav.day-tabs button {
+.day-tabs button {
   flex: 0 0 auto; min-width: 72px; padding: 14px 20px;
   background: none; border: none; border-bottom: 3px solid transparent;
   font-family: inherit; font-size: 12px; color: #888; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 1px;
   transition: background 0.1s;
 }
-nav.day-tabs button:hover { background: #fafafa; color: #1a1a1a; }
-nav.day-tabs button.active { color: #1a1a1a; border-bottom-color: #1a1a1a; font-weight: 600; }
-nav.day-tabs button { font-size: 13px; font-weight: 600; }
-nav.day-tabs button .day-tab-sub { font-size: 10px; font-weight: 400; color: #bbb; }
+.day-tabs button:hover { background: #fafafa; color: #1a1a1a; }
+.day-tabs button.active { color: #1a1a1a; border-bottom-color: #1a1a1a; font-weight: 600; }
+.day-tabs button { font-size: 13px; font-weight: 600; }
+.day-tabs button .day-tab-sub { font-size: 10px; font-weight: 400; color: #bbb; }
 
 main { padding: 20px 32px 48px; max-width: 1100px; margin: 0 auto; }
 .day-panel { display: none; }
@@ -118,7 +118,7 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
 
 @media (max-width: 700px) {
   nav { padding: 14px 16px; }
-  nav.day-tabs { padding: 0 8px; }
+  .day-tabs { padding: 0 8px; }
   main { padding: 16px 16px 40px; }
   .page-header { padding: 20px 16px 0; }
   table.schedule .block { display: none; }
@@ -170,7 +170,7 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
   </div>
 </div>
 
-<nav class="day-tabs" id="day-tabs"></nav>
+<div class="day-tabs" id="day-tabs"></div>
 <main id="main"></main>
 
 <footer>
@@ -373,7 +373,7 @@ function rerender() {
   mainEl.innerHTML = '';
   DAYS.forEach(day => mainEl.appendChild(renderDay(day)));
   // Re-apply active state
-  const active = document.querySelector('nav.day-tabs button.active');
+  const active = document.querySelector('.day-tabs button.active');
   if (active) setActive(active.dataset.day);
 }
 
@@ -463,7 +463,7 @@ function buildTabs() {
 }
 
 function setActive(dayKey) {
-  document.querySelectorAll('nav.day-tabs button').forEach(b => b.classList.toggle('active', b.dataset.day === dayKey));
+  document.querySelectorAll('.day-tabs button').forEach(b => b.classList.toggle('active', b.dataset.day === dayKey));
   document.querySelectorAll('.day-panel').forEach(p => p.classList.toggle('active', p.dataset.day === dayKey));
 }
 
