@@ -60,11 +60,11 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
   <div class="nav-brand">CYLNDR × Cannes 2026</div>
   <div class="nav-links">
     <a href="index.html" class="nav-link active">Overview</a>
-    <a href="calendar.html" class="nav-link">Calendar</a>
-    <a href="database.html" class="nav-link">Database</a>
+    <a href="calendar.html" class="nav-link">Where to Be</a>
+    <a href="database.html" class="nav-link">Attendee Database</a>
     <a href="schedule.html" class="nav-link">My Schedule</a>
-    <a href="brands.html" class="nav-link">Brands</a>
-    <a href="events.html" class="nav-link">Events</a>
+    <a href="brands.html" class="nav-link">Brand Database</a>
+    <a href="events.html" class="nav-link">Fringe Event Tracker</a>
   </div>
 </nav>
 
@@ -81,31 +81,49 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
     <div class="stat-card fit"><div class="stat-num" id="stat-fit">—</div><div class="stat-lbl">ICP Fit</div></div>
     <div class="stat-card adj"><div class="stat-num" id="stat-adj">—</div><div class="stat-lbl">Adjacent</div></div>
     <div class="stat-card"><div class="stat-num" id="stat-total">—</div><div class="stat-lbl">Total entries</div></div>
-    <div class="stat-card"><div class="stat-num" id="stat-days">—</div><div class="stat-lbl">Days to festival</div></div>
+    
   </div>
-  <div class="cta-row">
-    <a href="database.html" class="cta-card">
-      <div class="cta-icon">🗂</div>
-      <div class="cta-title">Attendee Database</div>
-      <div class="cta-desc">Every confirmed speaker and attendee scored against ICP. Search, filter by ICP flag, and track outreach status inline.</div>
-      <div class="cta-arrow">Open database →</div>
-    </a>
-    <a href="calendar.html" class="cta-card">
-      <div class="cta-icon">📅</div>
-      <div class="cta-title">Event Calendar</div>
-      <div class="cta-desc">Full week schedule across all priority venues. ICP contacts flagged inline so you know where to be and when.</div>
-      <div class="cta-arrow">Open calendar →</div>
-    </a>
-  </div>
+  <div class="cta-row" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+<a href="calendar.html" class="cta-card">
+<div class="cta-icon">📍</div>
+<div class="cta-title">Where to Be</div>
+<div class="cta-desc">Session-by-session view across every priority venue, Mon–Fri. ICP contacts flagged inline. Filter by fit, adjacent, or all.</div>
+<div class="cta-arrow">Open →</div>
+</a>
+<a href="schedule.html" class="cta-card">
+<div class="cta-icon">🗓</div>
+<div class="cta-title">My Schedule</div>
+<div class="cta-desc">Chris's personal itinerary for the week — confirmed events, travel, and saved items from the calendar.</div>
+<div class="cta-arrow">Open →</div>
+</a>
+<a href="database.html" class="cta-card">
+<div class="cta-icon">🗂</div>
+<div class="cta-title">Attendee Database</div>
+<div class="cta-desc">Every confirmed speaker and brand-side attendee scored against ICP. Search and filter by fit flag.</div>
+<div class="cta-arrow">Open →</div>
+</a>
+<a href="brands.html" class="cta-card">
+<div class="cta-icon">🏷</div>
+<div class="cta-title">Brand Database</div>
+<div class="cta-desc">Consumer brands confirmed attending or activating at Cannes 2026, filtered to ICP-fit and adjacent.</div>
+<div class="cta-arrow">Open →</div>
+</a>
+<a href="events.html" class="cta-card">
+<div class="cta-icon">🎟</div>
+<div class="cta-title">Fringe Event Tracker</div>
+<div class="cta-desc">Off-programme dinners, parties, and venue activations across the week, with access notes and RSVP status.</div>
+<div class="cta-arrow">Open →</div>
+</a>
 </div>
 
 <div class="section">
   <p class="section-label">Mission parameters</p>
   <div class="mission-grid">
     <div class="mission-item"><div class="mission-tag">Goal</div><div class="mission-text"><strong>15–20 qualified conversations</strong>Convert 5–8 to active opportunities within 90 days of the festival.</div></div>
-    <div class="mission-item"><div class="mission-tag">ICP</div><div class="mission-text"><strong>VP / Director of Marketing</strong>DTC, Series B/C scale-up, challenger brand under ~$500M. Consumer · beauty · food/bev · apparel · fintech · health.</div></div>
+    <div class="mission-item"><div class="mission-tag">ICP</div><div class="mission-text"><strong>VP / Director of Marketing + in-house creative &amp; production leads</strong>DTC, Series B/C, challenger brand under ~$500M. Consumer · beauty · food/bev · apparel · fintech · health. CMO qualifies at brands under ~$300M.</div></div>
     <div class="mission-item"><div class="mission-tag">Venues</div><div class="mission-text"><strong>Priority access targets</strong>LBB Beach · Adweek House · DEPT Secret Garden · Campaign House · WSJ Journal House · Ad Age List Lounge · Brands&amp;Culture Villa</div></div>
-    <div class="mission-item"><div class="mission-tag">Key rel.</div><div class="mission-text"><strong>Lindsey Slaby / Sunday Dinner</strong>On-call CMO advisor · Cannes regular · broker of warm intros. Outreach before the festival, not at it.</div></div>
+    <div class="mission-item"><div class="mission-tag">Access</div><div class="mission-text"><strong>Powell PR</strong>On-ground access and introductions engine. Converting venue invites, brokering warm intros, placing trade coverage timed to festival week.</div></div>
+<div class="mission-item"><div class="mission-tag">Key rel.</div><div class="mission-text"><strong>Lindsey Slaby / Sunday Dinner</strong>On-call CMO advisor · Cannes regular · no conflict recommending CYLNDR. Outreach before the festival, not at it.</div></div>
   </div>
 </div>
 
@@ -127,7 +145,6 @@ function tick() {
   document.getElementById('cd-days').textContent = d;
   document.getElementById('cd-hrs').textContent = String(h).padStart(2,'0');
   document.getElementById('cd-min').textContent = String(m).padStart(2,'0');
-  document.getElementById('stat-days').textContent = d;
 }
 tick(); setInterval(tick, 60000);
 

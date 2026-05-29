@@ -32,8 +32,8 @@ nav.day-tabs button {
 }
 nav.day-tabs button:hover { background: #fafafa; color: #1a1a1a; }
 nav.day-tabs button.active { color: #1a1a1a; border-bottom-color: #b8922a; font-weight: 600; }
-nav.day-tabs button .day-short { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: inherit; }
-nav.day-tabs button .day-num { display: block; font-size: 18px; margin-top: 2px; font-weight: 700; }
+nav.day-tabs button { font-size: 13px; font-weight: 600; }
+nav.day-tabs button .day-tab-sub { font-size: 10px; font-weight: 400; color: #bbb; margin-left: 4px; }
 
 main { padding: 20px 32px 48px; max-width: 1100px; margin: 0 auto; }
 .day-panel { display: none; }
@@ -131,11 +131,11 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
   <a href="index.html" class="nav-brand">CYLNDR × Cannes 2026</a>
   <div class="nav-links">
     <a href="index.html" class="nav-link">Overview</a>
-    <a href="calendar.html" class="nav-link">Calendar</a>
-    <a href="database.html" class="nav-link">Database</a>
+    <a href="calendar.html" class="nav-link">Where to Be</a>
+    <a href="database.html" class="nav-link">Attendee Database</a>
     <a href="schedule.html" class="nav-link active">My Schedule</a>
-    <a href="brands.html" class="nav-link">Brands</a>
-    <a href="events.html" class="nav-link">Events</a>
+    <a href="brands.html" class="nav-link">Brand Database</a>
+    <a href="events.html" class="nav-link">Fringe Event Tracker</a>
   </div>
 </nav>
 
@@ -165,7 +165,7 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
 
 <div class="saved-banner" id="saved-banner" style="display:none">
   <div class="saved-banner-inner">
-    <span><span id="saved-count">0</span> events added from the <a href="calendar.html">Calendar</a> · stored in this browser only</span>
+    <span><span id="saved-count">0</span> events added from the <a href="calendar.html">Where to Be</a> · stored in this browser only</span>
     <button onclick="clearAllSaved()">Clear all added</button>
   </div>
 </div>
@@ -180,7 +180,6 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
 
 <script>
 const DAYS = [
-  { key:'d1', short:'SAT', num:'20', date:'2026-06-20', full:'Saturday, June 20', label:'Pre-festival' },
   { key:'d2', short:'SUN', num:'21', date:'2026-06-21', full:'Sunday, June 21',   label:'Arrival day' },
   { key:'d3', short:'MON', num:'22', date:'2026-06-22', full:'Monday, June 22',   label:'Day 1 — Festival opens' },
   { key:'d4', short:'TUE', num:'23', date:'2026-06-23', full:'Tuesday, June 23',  label:'Day 2' },
@@ -457,7 +456,7 @@ function buildTabs() {
   DAYS.forEach(day => {
     const b = document.createElement('button');
     b.dataset.day = day.key;
-    b.innerHTML = `<span class="day-short">${day.short}</span><span class="day-num">${day.num}</span>`;
+    b.innerHTML = `${day.short}<span class="day-tab-sub">Jun ${day.num}</span>`;
     b.addEventListener('click', () => setActive(day.key));
     tabs.appendChild(b);
   });
