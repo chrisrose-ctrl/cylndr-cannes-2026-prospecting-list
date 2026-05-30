@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intelligence Log · CYLNDR × Cannes 2026</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #fdf9f6; color: #171717; min-height: 100vh; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; border-bottom: 1px solid #e5e5e5; background: #fff; }
+.nav-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #171717; text-decoration: none; }
+.nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+.nav-link { font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 6px; text-decoration: none; color: #666; transition: background 0.12s; }
+.nav-link:hover { background: #f0f0f0; color: #171717; }
+.nav-link.active { background: #ebfc40; color: #171717; font-weight: 700; }
+.page-header { padding: 44px 32px 28px; max-width: 920px; margin: 0 auto; }
+.page-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #025623; margin-bottom: 12px; }
+.page-title { font-size: 32px; font-weight: 700; color: #171717; letter-spacing: -0.02em; margin-bottom: 10px; }
+.page-title span { color: #025623; }
+.page-sub { font-size: 15px; color: #666; line-height: 1.6; max-width: 580px; }
+.log-wrap { max-width: 920px; margin: 0 auto; padding: 0 32px 64px; }
+.log-entry { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px 16px; margin-bottom: 8px; display: flex; gap: 16px; align-items: baseline; }
+.log-date { font-size: 11px; color: #aaa; white-space: nowrap; font-variant-numeric: tabular-nums; min-width: 100px; }
+.log-body { font-size: 13px; color: #555; line-height: 1.5; }
+.log-body strong { color: #171717; }
+.pill { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 8px; margin-left: 4px; vertical-align: middle; }
+.pill-fit { background: #fde8e0; color: #7a2405; }
+.pill-adj { background: #eef2ea; color: #4a6040; }
+footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #aaa; flex-wrap: wrap; gap: 8px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand"><img src="cylndr-logo.png" alt="CYLNDR Studios" style="height:24px;width:auto;display:block;filter:invert(1) brightness(0.8)"></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Overview</a>
+    <a href="calendar.html" class="nav-link">Where to Be</a>
+    <a href="database.html" class="nav-link">Attendee Database</a>
+    <a href="schedule.html" class="nav-link">My Schedule</a>
+    <a href="brands.html" class="nav-link">Brand Intelligence</a>
+    <a href="events.html" class="nav-link">Venue Intelligence</a>
+    <a href="log.html" class="nav-link active">Intelligence Log</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-label">Intelligence Log</div>
+  <h1 class="page-title">Daily <span>Research Log</span></h1>
+  <p class="page-sub">Every research pass — new entries added, ICP scoring changes, venue updates, and what was found or ruled out each day.</p>
+</div>
+
+<div class="log-wrap" id="log-wrap"></div>
+
+<footer>
+  <span>CYLNDR × Cannes Lions 2026 · Intelligence Log</span>
+  <span id="updated">Updated 2026-05-29</span>
+</footer>
+
+<script>
+const entries = [
+  { date:'2026-05-29', body:'<strong>+12 entries (557→569). Two research passes.</strong> Pass 1: 0 fit, 1 adjacent (Zoe Housman/L\'Oréal VP Mktg Influencer), 8 ignore (Loesch/Foot Locker, Minassian/Genentech, Monahan/Albertsons, Huffman/Reddit, Boster/Boster Group, Reinecke/Campbell\'s Snacks, Guerin/Mastercard, Jain/Luma AI). Pass 2: 3 ignore (Laura Jones/Instacart CMO, Renaldo Chapman/DoorDash VP Brand+Creative, Kristi Argyilan/Uber Head Global Advertising). Notable: LBB Beach 2026 speaker page live for first time this cycle. DEPT Secret Garden + Sport Beach + Adweek House no new additions since last scrape.', tags:['adj'] },
+  { date:'2026-05-28 (run 2)', body:'<strong>+14 entries (491→505).</strong> 2 fit: Amanda Calabrese (Sequel Co-Founder/CMO — DTC period care DTC, growth-stage) · Joe Staples (Coinbase VP Creative). 8 adjacent (incl. Lisa McKnight/Mattel CBO, Kenny Mitchell/Levi Strauss CMO, Andrea Hopelain/EA Sports GM+SVP Mktg, David Tinson/EA, Louise McEwen/McLaren CMO, Attica Alexis Jaques/Ancestry CMO). Buyer profiles integration: 8 profiles (BP1-BP8) active, EXPANDED_TITLES and CONGLOMERATE_LIST loaded.', tags:['fit','adj'] },
+  { date:'2026-05-27 (pm)', body:'<strong>ICP expansion: 14 adjacent → fit reclassifications.</strong> Fit count: 5 → 19. Expanded ICP criteria applied: CMO at challenger brands under ~$300M revenue now qualifies; added production titles (Head of Production, Head of Design, Content Production lead) and in-house creative/production studio leaders as ICP-fit. Reclassified: Kory Marchisotto + Laurie Lam + Patrick O\'Keefe (e.l.f. Beauty) · Joy Howard (Back Market) · Louisa Wee (Strava) · Vanessa Wallace (Savage X Fenty) · Reema Amin (SheaMoisture) · Samantha Catalina (Happy Dad) · Tristan Pineiro (Grindr) · Benoit Vatere (Liquid Death) · Jill Cress (Babylist) · Nic Brandenberger (Mammut) · Scott Zalaznik (BLACKROLL) · Doug Sweeny (Oura Ring).', tags:['fit'] },
+  { date:'2026-05-27', body:'<strong>+7 entries (443→450).</strong> 0 fit, 0 adjacent, 7 ignore. Brand Innovators Beach Stage update: Paloma Azulay (McDonald\'s VP Global Brand Mktg, Jun 24 12:25 PM) + Beverly Jackson (Zillow VP Brand & Product Mktg). Conscious Advertising Network + Clean Creatives sending reps. LinkedIn scrape: 3 ignore-tier (GWi, ABCS Insights, +Added). No new ICP fit or adjacent this run.', tags:[] },
+  { date:'2026-05-26', body:'<strong>+14 entries (429→443).</strong> New adjacent: Jack Fleming (Boston Athletic Association CEO, Sport Beach access intel) · Jack Jia (Musely Founder & CEO, Adweek House — DTC personalized skincare, Series B). Sport Beach May 13 announcement fully captured: 5 new speakers (Emily Ketchen/Lenovo, Taylor Montgomery/Taco Bell, Rick Pineda/Diageo, Bex Smith/Crux Football). Adweek House additions: Andy Kauffman (Marriott CCO), Alvaro Luque (Avocados From Mexico), Bennett Richardson (NAR CMCO), Kyle Laughlin (Disney Imagineering SVP), Mia Calabrese + Lindsay Hubbard (Bravo talent). LinkedIn: Rah Ali (Onsite Media), Yaron Tomchin (Mobupps) — both ignore-tier.', tags:['adj'] },
+  { date:'2026-05-21', body:'<strong>+13 entries (305→318).</strong> New adjacent: Reema Amin (SheaMoisture Head of Marketing) · Patrick O\'Keefe (e.l.f. Beauty CIMO, Jun 25 Adweek House) · Samantha Catalina (Happy Dad Fractional CMO) · Jessica Serrano (Einstein Bros CMO, LIONS Creators) · Chime (company — Sport Beach brand partner). e.l.f. Beauty now has 6 named contacts confirmed at Cannes 2026. Also: 8 ignore-tier from Adweek House and Brands&Culture Villa (Kraft Heinz, Georgia-Pacific, NFL, Hershey, Unilever, Mondelēz, Zeno).', tags:['adj'] },
+  { date:'2026-05-20 (evening)', body:'<strong>+5 entries (300→305).</strong> New adjacent: Tristan Pineiro (Grindr CMO) — consumer challenger brand, speaking Mon Jun 22 11:15 AM Adweek House "The Human Edge of Marketing." LinkedIn: 4 ignore-tier (Lara Hood Balazs/Adobe CMO, Jae Goodman/Superconnector, Nancy Grey/Viant, Hassan Babajane/Viant).', tags:['adj','linkedin'] },
+  { date:'2026-05-20 (pm)', body:'<strong>+9 entries (291→300). LinkedIn Chatter layer launched.</strong> #CannesLions2026: 6 posts. #CannesLions: 5 posts (1 filtered pre-Apr-2026). All 9 ignore-tier. Highlights: Jennifer Overbaugh (AWS) confirms Amazon Port activating at scale; Jonathan Skogmo (LOST iN) names Carlton patio as primary networking spot.', tags:['linkedin'] },
+];
+
+const wrap = document.getElementById('log-wrap');
+entries.forEach(e => {
+  const pills = (e.tags||[]).map(t => {
+    if (t === 'fit') return `<span class="pill pill-fit">ICP Fit</span>`;
+    if (t === 'adj') return `<span class="pill pill-adj">Adjacent</span>`;
+    if (t === 'linkedin') return `<span class="pill" style="background:#e8f0fb;color:#0a66c2;border:1px solid #c9d8ea;">LinkedIn</span>`;
+    return `<span class="pill pill-adj">${t}</span>`;
+  }).join('');
+  wrap.innerHTML += `<div class="log-entry"><div class="log-date">${e.date}</div><div class="log-body">${e.body}${pills}</div></div>`;
+});
+</script>
+</body>
+</html>
