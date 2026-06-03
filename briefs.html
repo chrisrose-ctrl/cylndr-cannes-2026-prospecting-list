@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prospect Briefs · CYLNDR × Cannes 2026</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; background:#fdf9f6; color:#171717; font-size:14px; line-height:1.5; }
+
+/* Nav */
+.site-nav { display:flex; align-items:center; justify-content:space-between; padding:16px 24px; border-bottom:1px solid #e5e5e5; background:#fff; }
+.site-nav-brand { font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#171717; text-decoration:none; }
+.site-nav-links { display:flex; gap:4px; flex-wrap:wrap; }
+.site-nav-link { font-size:12px; padding:6px 12px; border-radius:5px; text-decoration:none; color:#666; transition:background 0.12s; }
+.site-nav-link:hover { background:#ececec; color:#171717; }
+.site-nav-link.active { background:#ebfc40; color:#171717; font-weight:700; }
+
+/* Page header */
+.page-header { padding:44px 24px 20px; max-width:800px; margin:0 auto; }
+.page-label { font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#025623; margin-bottom:12px; }
+.page-title { font-size:32px; font-weight:700; color:#171717; letter-spacing:-0.02em; margin-bottom:10px; }
+.page-title span { color:#025623; }
+.page-sub { font-size:15px; color:#666; line-height:1.6; max-width:580px; margin-bottom:24px; }
+
+/* Toolbar */
+.wrap { max-width:800px; margin:0 auto; padding:0 24px 60px; }
+.toolbar { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; align-items:center; background:white; padding:10px 12px; border:1px solid #e5e5e5; border-radius:8px; }
+.toolbar input { font:inherit; font-size:13px; padding:6px 10px; border:1px solid #d4d4d4; border-radius:6px; background:white; color:#171717; flex:1; min-width:200px; }
+.toolbar input:focus { outline:2px solid #0066cc40; border-color:#0066cc; }
+.filter-btn { font:inherit; font-size:12px; padding:5px 12px; border:1px solid #d4d4d4; border-radius:20px; background:white; color:#555; cursor:pointer; transition:all 0.12s; }
+.filter-btn:hover { background:#f0f0f0; color:#171717; }
+.filter-btn.active { background:#171717; color:#fff; border-color:#171717; }
+.summary { font-size:12px; color:#888; margin-left:auto; white-space:nowrap; }
+
+/* Brief cards */
+.briefs-list { display:flex; flex-direction:column; gap:0; }
+
+.brief-card {
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:12px;
+  margin-bottom:16px;
+  overflow:hidden;
+  transition:border-color 0.12s;
+}
+.brief-card:hover { border-color:#ccc; }
+.brief-card.placeholder { opacity:0.75; }
+
+.brief-header {
+  padding:20px 24px 16px;
+  border-bottom:1px solid #f0f0f0;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.brief-identity { flex:1; min-width:0; }
+.brief-name { font-size:20px; font-weight:700; letter-spacing:-0.02em; color:#171717; margin:0 0 3px; }
+.brief-title { font-size:13px; color:#555; margin:0; }
+.brief-company { font-size:13px; font-weight:600; color:#171717; margin:0; }
+.brief-meta { display:flex; flex-direction:column; align-items:flex-end; gap:6px; flex-shrink:0; }
+.badge { display:inline-block; padding:3px 9px; border-radius:10px; font-size:11px; font-weight:700; line-height:1.4; letter-spacing:0.02em; }
+.badge.fit { background:#d1fae5; color:#065f46; }
+.badge.adjacent { background:#fef3c7; color:#92400e; }
+.venue-info { font-size:11px; color:#888; text-align:right; line-height:1.5; }
+.venue-info strong { color:#555; font-weight:600; display:block; }
+
+/* Brief body */
+.brief-body { padding:20px 24px; }
+.brief-section { margin-bottom:18px; }
+.brief-section:last-child { margin-bottom:0; }
+.brief-section-label {
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:#aaa;
+  margin-bottom:7px;
+}
+.brief-text { font-size:14px; color:#333; line-height:1.65; }
+.hooks-list { margin:0; padding:0 0 0 18px; }
+.hooks-list li { font-size:14px; color:#333; line-height:1.65; margin-bottom:4px; }
+.hooks-list li:last-child { margin-bottom:0; }
+
+/* Outreach drafts */
+.drafts-grid { display:flex; flex-direction:column; gap:10px; }
+.draft-block {
+  border:1px solid #e8e8e8;
+  border-radius:8px;
+  overflow:hidden;
+}
+.draft-label {
+  background:#fdf9f6;
+  border-bottom:1px solid #e8e8e8;
+  padding:7px 14px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:#666;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.draft-label .draft-type-warm { color:#059669; }
+.draft-label .draft-type-direct { color:#0066cc; }
+.draft-label .draft-type-curious { color:#7c3aed; }
+.draft-text {
+  padding:12px 14px;
+  font-size:13px;
+  color:#333;
+  line-height:1.7;
+  white-space:pre-wrap;
+  font-family: inherit;
+}
+.copy-btn {
+  font:inherit;
+  font-size:10px;
+  padding:2px 8px;
+  border:1px solid #d4d4d4;
+  border-radius:4px;
+  background:white;
+  color:#666;
+  cursor:pointer;
+  letter-spacing:0;
+  text-transform:none;
+}
+.copy-btn:hover { background:#f0f0f0; }
+.copy-btn.copied { background:#d1fae5; color:#065f46; border-color:#a7f3d0; }
+
+/* Placeholder card */
+.placeholder-body {
+  padding:20px 24px;
+  color:#888;
+  font-size:13px;
+  font-style:italic;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.placeholder-dot {
+  width:8px; height:8px; border-radius:50%; background:#d4d4d4; flex-shrink:0;
+}
+
+/* Divider label between sections */
+.section-divider {
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:#aaa;
+  margin:28px 0 14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.section-divider::after { content:''; flex:1; height:1px; background:#e5e5e5; }
+
+.loading { padding:60px; text-align:center; color:#888; font-size:14px; }
+.empty { background:white; border:1px dashed #d4d4d4; border-radius:8px; padding:40px; text-align:center; color:#777; }
+.empty strong { color:#333; display:block; margin-bottom:6px; font-size:16px; }
+
+footer { border-top:1px solid #e5e5e5; background:#fff; padding:18px 32px; display:flex; justify-content:space-between; align-items:center; font-size:11px; color:#aaa; flex-wrap:wrap; gap:8px; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="site-nav-brand"><img src="cylndr-logo.png" alt="CYLNDR Studios" style="height:22px;width:auto;display:block"></a>
+  <div class="site-nav-links">
+    <a href="index.html" class="site-nav-link">Overview</a>
+    <a href="calendar.html" class="site-nav-link">Where to Be</a>
+    <a href="database.html" class="site-nav-link">Attendee Database</a>
+    <a href="schedule.html" class="site-nav-link">My Schedule</a>
+    <a href="brands.html" class="site-nav-link">Brand Intelligence</a>
+    <a href="events.html" class="site-nav-link">Venue Intelligence</a>
+    <a href="briefs.html" class="site-nav-link active">Briefs</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-label">Cannes Lions 2026 · June 22–26</div>
+  <h1 class="page-title">Prospect <span>Briefs</span></h1>
+  <p class="page-sub">Conversation prep for ICP-fit and adjacent prospects confirmed at Cannes Lions 2026. Who they are, why they matter to CYLNDR, conversation hooks, and three outreach angles ready to send.</p>
+</div>
+
+<div class="wrap">
+  <div class="toolbar">
+    <input type="search" id="search" placeholder="Search name or company…">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="fit">ICP Fit</button>
+    <button class="filter-btn" data-filter="adjacent">Adjacent</button>
+    <span class="summary" id="summary"></span>
+  </div>
+  <div id="briefs-container"><div class="loading">Loading briefs…</div></div>
+</div>
+
+<footer>
+  <span>CYLNDR × Cannes Lions 2026 · Business Development Intelligence</span>
+  <span id="footer-updated">Updated 2026-05-28</span>
+</footer>
+
+<script>
+function esc(s){if(s==null)return'';return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+let activeFilter = 'all';
+let searchQuery = '';
+let briefsData = {};
+let dataEntries = [];
+
+// Build lookup from data.json entries by id
+function buildDataLookup(entries) {
+  const map = {};
+  for (const e of entries) {
+    if (e.id) map[e.id] = e;
+  }
+  return map;
+}
+
+// Match a brief key to a data.json entry
+function findDataEntry(briefKey, dataMap) {
+  if (dataMap[briefKey]) return dataMap[briefKey];
+  // Try partial match: brief key like "kelsey-newberry-eos" vs data id "kelsey-newberry-eos-products"
+  for (const [k, v] of Object.entries(dataMap)) {
+    if (k.startsWith(briefKey) || briefKey.startsWith(k)) return v;
+    // Also match by name+company fragment
+    const name = (v.name||'').toLowerCase().replace(/\s+/g,'-');
+    const briefName = briefKey.split('-').slice(0,2).join('-');
+    if (name.startsWith(briefName)) return v;
+  }
+  return null;
+}
+
+function getIcpFromData(entry) {
+  if (!entry) return null;
+  return entry.icpFlag || null;
+}
+
+function draftTypeClass(type) {
+  if (type === 'warm') return 'draft-type-warm';
+  if (type === 'direct') return 'draft-type-direct';
+  if (type === 'curious') return 'draft-type-curious';
+  return '';
+}
+
+function copyText(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
+  }).catch(() => {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.textContent = 'Copied!'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
+  });
+}
+
+function renderBriefCard(briefKey, briefEntry, dataEntry) {
+  const icpFlag = getIcpFromData(dataEntry) || 'fit';
+  const name = briefEntry.name || (dataEntry && dataEntry.name) || '';
+  const title = briefEntry.title || (dataEntry && dataEntry.title) || '';
+  const company = briefEntry.company || (dataEntry && dataEntry.company) || '';
+  const b = briefEntry.brief || {};
+  const drafts = briefEntry.drafts || {};
+
+  // Venue info from data.json
+  let venueHtml = '';
+  if (dataEntry) {
+    const venue = dataEntry.venue || '';
+    const session = dataEntry.session || '';
+    const date = dataEntry.date || '';
+    if (venue || session || date) {
+      venueHtml = `<div class="venue-info">
+        ${venue ? `<strong>${esc(venue)}</strong>` : ''}
+        ${session ? `<span>${esc(session)}</span><br>` : ''}
+        ${date ? `<span>${esc(date)}</span>` : ''}
+      </div>`;
+    }
+  }
+
+  const badgeClass = icpFlag === 'fit' ? 'fit' : 'adjacent';
+  const badgeLabel = icpFlag === 'fit' ? 'ICP Fit' : 'Adjacent';
+
+  const hooksHtml = (b.hooks || []).length
+    ? `<ul class="hooks-list">${b.hooks.map(h => `<li>${esc(h)}</li>`).join('')}</ul>`
+    : '';
+
+  const draftsHtml = Object.entries(drafts).map(([type, text]) => `
+    <div class="draft-block" data-type="${esc(type)}">
+      <div class="draft-label">
+        <span class="${draftTypeClass(type)}">${type.charAt(0).toUpperCase() + type.slice(1)}</span>
+        <button class="copy-btn" data-text="${esc(text)}">Copy</button>
+      </div>
+      <div class="draft-text">${esc(text)}</div>
+    </div>
+  `).join('');
+
+  return `
+    <div class="brief-card" data-icp="${esc(icpFlag)}" data-name="${esc(name.toLowerCase())}" data-company="${esc(company.toLowerCase())}">
+      <div class="brief-header">
+        <div class="brief-identity">
+          <h2 class="brief-name">${esc(name)}</h2>
+          <p class="brief-title">${esc(title)}</p>
+          <p class="brief-company">${esc(company)}</p>
+        </div>
+        <div class="brief-meta">
+          <span class="badge ${badgeClass}">${badgeLabel}</span>
+          ${venueHtml}
+        </div>
+      </div>
+      <div class="brief-body">
+        ${b.who ? `
+        <div class="brief-section">
+          <div class="brief-section-label">Who ${esc(name.split(' ')[0])} is</div>
+          <div class="brief-text">${esc(b.who)}</div>
+        </div>` : ''}
+        ${b.why ? `
+        <div class="brief-section">
+          <div class="brief-section-label">Why ${esc(name.split(' ')[0])} matters to CYLNDR</div>
+          <div class="brief-text">${esc(b.why)}</div>
+        </div>` : ''}
+        ${hooksHtml ? `
+        <div class="brief-section">
+          <div class="brief-section-label">Conversation hooks</div>
+          ${hooksHtml}
+        </div>` : ''}
+        ${draftsHtml ? `
+        <div class="brief-section">
+          <div class="brief-section-label">Outreach drafts</div>
+          <div class="drafts-grid">${draftsHtml}</div>
+        </div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function renderPlaceholderCard(entry) {
+  const icpFlag = entry.icpFlag || 'adjacent';
+  const badgeClass = icpFlag === 'fit' ? 'fit' : 'adjacent';
+  const badgeLabel = icpFlag === 'fit' ? 'ICP Fit' : 'Adjacent';
+
+  const venueHtml = (entry.venue || entry.session || entry.date) ? `
+    <div class="venue-info">
+      ${entry.venue ? `<strong>${esc(entry.venue)}</strong>` : ''}
+      ${entry.session ? `<span>${esc(entry.session)}</span><br>` : ''}
+      ${entry.date ? `<span>${esc(entry.date)}</span>` : ''}
+    </div>` : '';
+
+  return `
+    <div class="brief-card placeholder" data-icp="${esc(icpFlag)}" data-name="${esc((entry.name||'').toLowerCase())}" data-company="${esc((entry.company||'').toLowerCase())}">
+      <div class="brief-header">
+        <div class="brief-identity">
+          <h2 class="brief-name">${esc(entry.name||'')}</h2>
+          <p class="brief-title">${esc(entry.title||'')}</p>
+          <p class="brief-company">${esc(entry.company||'')}</p>
+        </div>
+        <div class="brief-meta">
+          <span class="badge ${badgeClass}">${badgeLabel}</span>
+          ${venueHtml}
+        </div>
+      </div>
+      <div class="placeholder-body">
+        <div class="placeholder-dot"></div>
+        <span>Brief coming soon — ${esc(entry.icpReason || 'ICP-scored prospect')}</span>
+      </div>
+    </div>
+  `;
+}
+
+function applyFilters() {
+  const cards = document.querySelectorAll('.brief-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const icp = card.dataset.icp;
+    const name = card.dataset.name || '';
+    const company = card.dataset.company || '';
+    const matchFilter = activeFilter === 'all' || icp === activeFilter;
+    const matchSearch = !searchQuery || name.includes(searchQuery) || company.includes(searchQuery);
+    const show = matchFilter && matchSearch;
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  const dividers = document.querySelectorAll('.section-divider');
+  dividers.forEach(d => { d.style.display = ''; });
+  document.getElementById('summary').textContent = `${visible} brief${visible !== 1 ? 's' : ''}`;
+}
+
+function render(briefsMap, dataMap) {
+  const container = document.getElementById('briefs-container');
+
+  // Deduplicate briefs: if two keys map to same name+company, keep the one with more data
+  const seen = new Map();
+  const deduped = [];
+  for (const [key, entry] of Object.entries(briefsMap)) {
+    const sig = `${(entry.name||'').toLowerCase()}|${(entry.company||'').toLowerCase()}`;
+    if (!seen.has(sig)) {
+      seen.set(sig, key);
+      deduped.push([key, entry]);
+    }
+    // else skip duplicate
+  }
+
+  // Collect brief keys' resolved names to find placeholders
+  const briefedSigs = new Set(deduped.map(([,e]) => `${(e.name||'').toLowerCase()}|${(e.company||'').toLowerCase()}`));
+
+  // ICP fit/adjacent entries from data.json NOT covered by briefs
+  const placeholders = dataEntries.filter(e => {
+    if (e.icpFlag !== 'fit' && e.icpFlag !== 'adjacent') return false;
+    const sig = `${(e.name||'').toLowerCase()}|${(e.company||'').toLowerCase()}`;
+    return !briefedSigs.has(sig);
+  });
+
+  let html = '';
+
+  // Full briefs section
+  if (deduped.length) {
+    html += `<div class="briefs-list" id="full-briefs">`;
+    for (const [key, entry] of deduped) {
+      const dataEntry = findDataEntry(key, dataMap);
+      html += renderBriefCard(key, entry, dataEntry);
+    }
+    html += `</div>`;
+  }
+
+  // Placeholder section
+  if (placeholders.length) {
+    html += `<div class="section-divider">Additional prospects — brief pending</div>`;
+    html += `<div class="briefs-list" id="placeholder-briefs">`;
+    for (const e of placeholders) {
+      html += renderPlaceholderCard(e);
+    }
+    html += `</div>`;
+  }
+
+  if (!deduped.length && !placeholders.length) {
+    html = `<div class="empty"><strong>No briefs found</strong>Check that briefs.json and data.json are in the same folder.</div>`;
+  }
+
+  container.innerHTML = html;
+
+  // Attach copy button listeners
+  container.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      copyText(btn, btn.dataset.text);
+    });
+  });
+
+  // Update summary count
+  const total = deduped.length + placeholders.length;
+  document.getElementById('summary').textContent = `${total} brief${total !== 1 ? 's' : ''}`;
+
+  applyFilters();
+}
+
+async function init() {
+  try {
+    const [briefsRes, dataRes] = await Promise.all([
+      fetch('./briefs.json'),
+      fetch('./data.json').catch(() => null)
+    ]);
+
+    if (!briefsRes.ok) throw new Error('briefs.json not found');
+    const briefsJson = await briefsRes.json();
+    briefsData = briefsJson.prospects || {};
+
+    if (dataRes && dataRes.ok) {
+      const dataJson = await dataRes.json();
+      dataEntries = Array.isArray(dataJson.entries) ? dataJson.entries : [];
+      if (dataJson.lastUpdated) {
+        document.getElementById('footer-updated').textContent =
+          'Updated ' + new Date(dataJson.lastUpdated).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+      }
+    }
+
+    const dataMap = buildDataLookup(dataEntries);
+    render(briefsData, dataMap);
+
+  } catch (err) {
+    document.getElementById('briefs-container').innerHTML =
+      `<div class="empty"><strong>Could not load briefs</strong>${esc(err.message)}</div>`;
+  }
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeFilter = btn.dataset.filter;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  });
+});
+
+// Search
+document.getElementById('search').addEventListener('input', e => {
+  searchQuery = e.target.value.trim().toLowerCase();
+  applyFilters();
+});
+
+init();
+</script>
+</body>
+</html>
