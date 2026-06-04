@@ -94,6 +94,22 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .cal-menu a:last-child { border-bottom: none; }
 .cal-menu a:hover { background: #fafafa; }
 
+/* DISMISS BUTTON */
+.dismiss-x {
+  font: inherit; font-size: 14px; line-height: 1;
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1px solid #e0e0e0; background: transparent; color: #ccc;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background 0.12s, color 0.12s, border-color 0.12s;
+  padding: 0; margin-left: 4px;
+}
+.dismiss-x:hover { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+.show-hidden-bar { max-width: 800px; margin: 0 auto; padding: 0 32px 12px; display: none; }
+.show-hidden-bar.show { display: block; }
+.show-hidden-inner { background: #f5f5f5; border: 1px solid #e5e5e5; border-radius: 6px; padding: 8px 13px; font-size: 12px; color: #888; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.show-hidden-inner button { font: inherit; font-size: 11px; padding: 3px 9px; border-radius: 4px; border: 1px solid #d4d4d4; background: white; color: #555; cursor: pointer; }
+.show-hidden-inner button:hover { background: #f0f0f0; }
+
 /* VENUE CONTACT CARDS */
 .venue-contact-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; }
 .venue-name { font-size: 13px; font-weight: 700; color: #171717; margin-bottom: 2px; }
@@ -156,6 +172,12 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
   <div class="saved-banner-inner">
     <span><span id="saved-count">0</span> saved to <a href="schedule.html">My Schedule</a></span>
     <button onclick="clearSaved()">Clear all</button>
+  </div>
+</div>
+
+<div class="show-hidden-bar" id="show-hidden-bar">
+  <div class="show-hidden-inner">
+    <span><span id="hidden-count">0</span> sessions hidden on this day — <button onclick="clearDismissed()">Restore all</button></span>
   </div>
 </div>
 
@@ -329,6 +351,14 @@ function getSaved() { try { return JSON.parse(localStorage.getItem('cylndr.canne
 function setSaved(arr) { localStorage.setItem('cylndr.cannes.schedule', JSON.stringify(arr)); updateSavedBanner(); }
 function isSaved(id) { return getSaved().some(x => x.id === id); }
 
+// ---- DISMISS ----
+const DISMISS_KEY = 'cylndr.cannes.dismissed';
+function getDismissed() { try { return new Set(JSON.parse(localStorage.getItem(DISMISS_KEY) || '[]')); } catch(e) { return new Set(); } }
+function setDismissed(set) { localStorage.setItem(DISMISS_KEY, JSON.stringify([...set])); }
+function isDismissed(id) { return getDismissed().has(id); }
+function dismissSession(id) { const d = getDismissed(); d.add(id); setDismissed(d); render(); }
+function clearDismissed() { localStorage.removeItem(DISMISS_KEY); render(); }
+
 function toggleSave(btn, encodedEv) {
   const item = JSON.parse(decodeURIComponent(encodedEv));
   let saved = getSaved();
@@ -404,8 +434,18 @@ function render() {
   const container = document.getElementById('day-content');
   let html = '';
 
-  // Sessions for this day
-  const sessions = (CAL_DATA[activeDay] || []).filter(ev => passesFilter(ev.cls));
+  // Sessions for this day (excluding dismissed)
+  const allForDay = (CAL_DATA[activeDay] || []).filter(ev => passesFilter(ev.cls));
+  const dismissed = getDismissed();
+  const sessions = allForDay.filter(ev => {
+    const id = buildSavedItem(ev, activeDay).id;
+    return !dismissed.has(id);
+  });
+  const hiddenCount = allForDay.length - sessions.length;
+  const hiddenBar = document.getElementById('show-hidden-bar');
+  const hiddenCountEl = document.getElementById('hidden-count');
+  if (hiddenBar) { hiddenBar.classList.toggle('show', hiddenCount > 0); }
+  if (hiddenCountEl) hiddenCountEl.textContent = hiddenCount;
 
   // Build set of names already shown in session cards — used to suppress duplicates in venue contacts
   const sessionPeopleNames = new Set();
@@ -440,7 +480,8 @@ function render() {
           <a href="${icsDataUri(item)}" download="cannes-${item.id}.ics">Apple / .ics</a>
         </div>
         ${rsvpBtn}
-      </div>` : '';
+        <button class="dismiss-x" onclick="dismissSession('${item.id}')" title="Hide this session">×</button>
+      </div>` : `<div class="session-actions"><button class="dismiss-x" onclick="dismissSession('${buildSavedItem(ev,activeDay).id}')" title="Hide this session">×</button></div>`;
       html += `<div class="session-card ${ev.cls || 'gen'}">
         <div class="session-time-col">
           <div class="session-time">${ev.time||'TBD'}</div>
