@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fringe Events · CYLNDR × Cannes 2026</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #fdf9f6; color: #171717; min-height: 100vh; }
+nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; border-bottom: 1px solid #e5e5e5; background: #fff; }
+.nav-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #171717; text-decoration: none; }
+.nav-links { display: flex; gap: 4px; }
+.nav-link { font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 6px; text-decoration: none; color: #666; transition: background 0.12s; }
+.nav-link:hover { background: #f0f0f0; color: #171717; }
+.nav-link.active { background: #ebfc40; color: #171717; font-weight: 700; }
+
+.page-header { padding: 44px 32px 20px; max-width: 960px; margin: 0 auto; }
+.page-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #025623; margin-bottom: 12px; }
+.page-title { font-size: 32px; font-weight: 700; color: #171717; letter-spacing: -0.02em; margin-bottom: 10px; }
+.page-title span { color: #025623; }
+.page-sub { font-size: 15px; color: #666; line-height: 1.6; max-width: 600px; }
+
+.content { padding: 24px 32px 60px; max-width: 960px; margin: 0 auto; }
+
+/* Day filter tabs */
+.filter-bar { display: flex; gap: 6px; margin-bottom: 24px; flex-wrap: wrap; }
+.filter-btn { font: inherit; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 6px; border: 1px solid #e5e5e5; background: #fff; color: #666; cursor: pointer; transition: all 0.12s; }
+.filter-btn:hover { border-color: #025623; color: #025623; }
+.filter-btn.active { background: #171717; border-color: #171717; color: #fff; }
+
+/* Venue cards */
+.venue-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 12px;
+  border-left: 4px solid #cbd5e1;
+}
+.venue-card.pass-wallet  { border-left-color: #0284c7; }
+.venue-card.pass-wristband { border-left-color: #059669; }
+.venue-card.pass-rsvp    { border-left-color: #7c3aed; }
+.venue-card.pass-ticket  { border-left-color: #d04009; }
+.venue-card.pass-dropin  { border-left-color: #94a3b8; }
+
+.venue-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.venue-name { font-size: 16px; font-weight: 700; color: #171717; flex: 1; }
+.pass-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
+}
+.pass-badge.wallet    { background: #e0f2fe; color: #0369a1; }
+.pass-badge.wristband { background: #d1fae5; color: #065f46; }
+.pass-badge.rsvp      { background: #ede9fe; color: #5b21b6; }
+.pass-badge.ticket    { background: #fde8e0; color: #7a2405; }
+.pass-badge.dropin    { background: #f1f5f9; color: #475569; }
+
+.venue-meta { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 10px; }
+.venue-meta-item { font-size: 12px; color: #555; display: flex; gap: 5px; align-items: baseline; }
+.venue-meta-label { font-weight: 700; color: #888; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.venue-access { font-size: 12px; color: #666; line-height: 1.6; }
+.venue-access strong { color: #171717; font-weight: 600; }
+
+.venue-days { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+.day-pill {
+  font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px;
+  background: #f1f5f9; color: #475569;
+}
+.day-pill.active { background: #171717; color: #fff; }
+
+.section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #025623; padding: 0 0 8px; border-bottom: 2px solid #025623; margin-bottom: 16px; margin-top: 32px;
+}
+.section-label:first-child { margin-top: 0; }
+
+footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; font-size: 11px; color: #aaa; display: flex; flex-wrap: wrap; gap: 8px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand"><img src="cylndr-logo.png" alt="CYLNDR Studios" style="height:24px;width:auto;display:block;filter:invert(1) brightness(0.8)"></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Overview</a>
+    <a href="calendar.html" class="nav-link">Where to Be</a>
+    <a href="database.html" class="nav-link">Attendee Database</a>
+    <a href="schedule.html" class="nav-link">My Schedule</a>
+    <a href="sylvain.html" class="nav-link">Sylvain's Schedule</a>
+    <a href="fringe.html" class="nav-link active">Fringe Events</a>
+    <a href="brands.html" class="nav-link">Brand Intelligence</a>
+    <a href="events.html" class="nav-link">Venue Intelligence</a>
+    <a href="briefs.html" class="nav-link">Briefs</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-label">Fringe Events</div>
+  <h1 class="page-title">Pass-Based <span>Access</span></h1>
+  <p class="page-sub">Confirmed venues with open or ticketed access — drop in any time during operating hours. No session slot required.</p>
+</div>
+
+<div class="content">
+
+  <div class="filter-bar" id="filter-bar">
+    <button class="filter-btn active" data-day="all" onclick="setDay('all')">All Days</button>
+    <button class="filter-btn" data-day="mon" onclick="setDay('mon')">Mon Jun 22</button>
+    <button class="filter-btn" data-day="tue" onclick="setDay('tue')">Tue Jun 23</button>
+    <button class="filter-btn" data-day="wed" onclick="setDay('wed')">Wed Jun 24</button>
+    <button class="filter-btn" data-day="thu" onclick="setDay('thu')">Thu Jun 25</button>
+    <button class="filter-btn" data-day="fri" onclick="setDay('fri')">Fri Jun 26</button>
+  </div>
+
+  <div id="cards-container"></div>
+
+</div>
+
+<footer>
+  <span>CYLNDR × Cannes Lions 2026 · Fringe &amp; Pass Events</span>
+</footer>
+
+<script>
+const VENUES = [
+  {
+    name: 'PLAGE 3CV',
+    organizer: '3C Ventures',
+    location: 'See plage3cv.com for address',
+    passType: 'wallet',
+    passLabel: 'Airship Wallet',
+    passNote: 'Download Airship pass to phone Wallet before arriving — NOT on computer. Full schedule at plage3cv.com.',
+    hours: '8:00 AM – 6:00 PM',
+    days: ['mon','tue','wed','thu'],
+    notes: '',
+  },
+  {
+    name: 'LBB & Friends Beach',
+    organizer: 'LBB / Mark Allen & Co.',
+    location: 'Plage Croisette Beach, between Carlton and Martinez (68 Bd de la Croisette)',
+    passType: 'wristband',
+    passLabel: 'GuestQueue Wristband',
+    passNote: 'Wristband ID: N9DO0M — collect on first arrival. Happy hour daily 4:00–5:45 PM.',
+    hours: '9:30 AM – 5:45 PM',
+    days: ['mon','tue','wed','thu','fri'],
+    notes: '',
+  },
+  {
+    name: 'Meta Beach',
+    organizer: 'Meta',
+    location: 'Meta Beach, Cannes',
+    passType: 'rsvp',
+    passLabel: 'RSVP Confirmed',
+    passNote: 'RSVP approved June 22–26. Contact if issues: cannes@meta.com',
+    hours: 'TBC — check Meta Beach schedule',
+    days: ['mon','tue','wed','thu','fri'],
+    notes: '',
+  },
+  {
+    name: 'CÎROC Athletic Club',
+    organizer: 'CÎROC Athletic Club',
+    location: '145 Bd Leader, 06150 Cannes (Château de la Croix des Gardes)',
+    passType: 'ticket',
+    passLabel: 'Rumor App Ticket',
+    passNote: '3 daily tickets via Rumor app. Shuttle from Hôtel Martinez throughout day. Dress to move. Pickleball, wellness, IV drips, DJ, cocktails.',
+    hours: '10:00 AM – 4:00 PM',
+    days: ['mon','tue','wed'],
+    dayNotes: { tue: 'Pickleball tournament day' },
+    notes: '',
+  },
+  {
+    name: 'Canva Creative Cabana',
+    organizer: 'Canva',
+    location: 'Vega la Plage, Bd de la Croisette',
+    passType: 'dropin',
+    passLabel: 'Open Access',
+    passNote: 'Drop-in — no pass required. Closes Thursday at 2:00 PM.',
+    hours: 'Open – 2:00 PM (Thu close)',
+    days: ['mon','tue','wed','thu'],
+    dayNotes: { thu: 'Closes at 2:00 PM today' },
+    notes: '',
+  },
+  {
+    name: 'Reddit Community Deli',
+    organizer: 'Reddit',
+    location: 'Promenade Robert Favre le Bret',
+    passType: 'dropin',
+    passLabel: 'Open Access',
+    passNote: 'Drop-in — no pass required. Pre-registered for access.',
+    hours: '11:30 AM – 2:30 PM',
+    days: ['mon','tue','wed','thu','fri'],
+    dayNotes: { fri: '9:00 AM – 12:00 PM' },
+    notes: '',
+  },
+  {
+    name: 'PMG AI & Tech Sandbox',
+    organizer: 'PMG',
+    location: 'Miramar Plage, 64 Bd de la Croisette',
+    passType: 'dropin',
+    passLabel: 'Open Access',
+    passNote: 'Open access — drop in any time during operating hours.',
+    hours: 'Open hours TBC',
+    days: ['mon','tue','wed','thu','fri'],
+    notes: '',
+  },
+];
+
+const DAY_LABELS = { mon:'Mon', tue:'Tue', wed:'Wed', thu:'Thu', fri:'Fri' };
+const ALL_DAYS = ['mon','tue','wed','thu','fri'];
+
+let activeDay = 'all';
+
+function setDay(day) {
+  activeDay = day;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.day === day));
+  render();
+}
+
+function passClass(type) {
+  return { wallet:'wallet', wristband:'wristband', rsvp:'rsvp', ticket:'ticket', dropin:'dropin' }[type] || 'dropin';
+}
+function cardClass(type) {
+  return { wallet:'pass-wallet', wristband:'pass-wristband', rsvp:'pass-rsvp', ticket:'pass-ticket', dropin:'pass-dropin' }[type] || 'pass-dropin';
+}
+
+function render() {
+  const container = document.getElementById('cards-container');
+  const filtered = activeDay === 'all'
+    ? VENUES
+    : VENUES.filter(v => v.days.includes(activeDay));
+
+  if (!filtered.length) {
+    container.innerHTML = '<div style="color:#aaa;font-size:14px;padding:32px 0;text-align:center;">No fringe events on this day.</div>';
+    return;
+  }
+
+  // Group by pass type — confirmed passes first, then open access
+  const confirmed = filtered.filter(v => v.passType !== 'dropin');
+  const open = filtered.filter(v => v.passType === 'dropin');
+
+  let html = '';
+
+  if (confirmed.length) {
+    html += '<div class="section-label">Confirmed Access Passes</div>';
+    confirmed.forEach(v => html += buildCard(v));
+  }
+  if (open.length) {
+    html += '<div class="section-label">Open Access — Drop In</div>';
+    open.forEach(v => html += buildCard(v));
+  }
+
+  container.innerHTML = html;
+}
+
+function buildCard(v) {
+  const dayPills = ALL_DAYS.map(d => {
+    const isOn = v.days.includes(d);
+    const cls = isOn ? 'day-pill active' : 'day-pill';
+    const note = v.dayNotes && v.dayNotes[d] ? ` title="${v.dayNotes[d]}"` : '';
+    return `<span class="${cls}"${note}>${DAY_LABELS[d]}</span>`;
+  }).join('');
+
+  return `<div class="venue-card ${cardClass(v.passType)}">
+    <div class="venue-top">
+      <div class="venue-name">${v.name}</div>
+      <span class="pass-badge ${passClass(v.passType)}">${v.passLabel}</span>
+    </div>
+    <div class="venue-meta">
+      <div class="venue-meta-item"><span class="venue-meta-label">Organizer</span> ${v.organizer}</div>
+      <div class="venue-meta-item"><span class="venue-meta-label">Hours</span> ${v.hours}</div>
+      <div class="venue-meta-item"><span class="venue-meta-label">Location</span> ${v.location}</div>
+    </div>
+    <div class="venue-access">${v.passNote}</div>
+    <div class="venue-days">${dayPills}</div>
+  </div>`;
+}
+
+render();
+</script>
+</body>
+</html>

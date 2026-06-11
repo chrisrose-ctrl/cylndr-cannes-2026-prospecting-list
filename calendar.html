@@ -93,6 +93,11 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .cal-menu a { display: block; padding: 8px 13px; font-size: 12px; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0; }
 .cal-menu a:last-child { border-bottom: none; }
 .cal-menu a:hover { background: #fafafa; }
+.save-menu { position: absolute; top: 100%; left: 0; margin-top: 3px; background: #fff; border: 1px solid #d4d4d4; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 10; min-width: 195px; display: none; }
+.save-menu.open { display: block; }
+.save-menu a { display: block; padding: 8px 13px; font-size: 12px; color: #333; cursor: pointer; border-bottom: 1px solid #f0f0f0; user-select: none; }
+.save-menu a:last-child { border-bottom: none; }
+.save-menu a:hover { background: #fafafa; }
 
 /* DISMISS BUTTON */
 .dismiss-x {
@@ -134,6 +139,8 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
     <a href="calendar.html" class="nav-link active">Where to Be</a>
     <a href="database.html" class="nav-link">Attendee Database</a>
     <a href="schedule.html" class="nav-link">My Schedule</a>
+    <a href="sylvain.html" class="nav-link">Sylvain's Schedule</a>
+    <a href="fringe.html" class="nav-link">Fringe Events</a>
     <a href="brands.html" class="nav-link">Brand Intelligence</a>
     <a href="events.html" class="nav-link">Venue Intelligence</a>
     <a href="briefs.html" class="nav-link">Briefs</a>
@@ -170,7 +177,7 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
 
 <div class="saved-banner" id="saved-banner">
   <div class="saved-banner-inner">
-    <span><span id="saved-count">0</span> saved to <a href="schedule.html">My Schedule</a></span>
+    <span><span id="saved-count">0</span> saved — <a href="schedule.html">Chris' Schedule</a> · <a href="sylvain.html">Sylvain's Schedule</a></span>
     <button onclick="clearSaved()">Clear all</button>
   </div>
 </div>
@@ -359,25 +366,70 @@ function isDismissed(id) { return getDismissed().has(id); }
 function dismissSession(id) { const d = getDismissed(); d.add(id); setDismissed(d); render(); }
 function clearDismissed() { localStorage.removeItem(DISMISS_KEY); render(); }
 
-function toggleSave(btn, encodedEv) {
+// Sylvain schedule helpers
+function getSylvainSaved() { try { return JSON.parse(localStorage.getItem('cylndr.cannes.sylvain') || '[]'); } catch(e) { return []; } }
+function setSylvainSaved(arr) { localStorage.setItem('cylndr.cannes.sylvain', JSON.stringify(arr)); updateSavedBanner(); }
+function isSylvainSaved(id) { return getSylvainSaved().some(x => x.id === id); }
+
+function getSaveLabel(id) {
+  const c = isSaved(id), s = isSylvainSaved(id);
+  if (c && s) return '✓ Both';
+  if (c) return '✓ Chris';
+  if (s) return '✓ Sylvain';
+  return '📌 Save';
+}
+
+function toggleSaveMenu(btn) {
+  document.querySelectorAll('.save-menu.open').forEach(m => { if (m !== btn.nextElementSibling) m.classList.remove('open'); });
+  btn.nextElementSibling.classList.toggle('open');
+}
+
+function saveFor(target, linkEl, encodedEv) {
   const item = JSON.parse(decodeURIComponent(encodedEv));
-  let saved = getSaved();
-  const exists = saved.find(x => x.id === item.id);
-  if (exists) { saved = saved.filter(x => x.id !== item.id); setSaved(saved); btn.classList.remove('saved'); btn.textContent = '📌 Save'; }
-  else { saved.push(item); setSaved(saved); btn.classList.add('saved'); btn.textContent = '✓ Saved'; }
+  if (target === 'chris') {
+    let saved = getSaved();
+    const exists = saved.find(x => x.id === item.id);
+    if (exists) { saved = saved.filter(x => x.id !== item.id); setSaved(saved); }
+    else { saved.push(item); setSaved(saved); }
+  } else if (target === 'sylvain') {
+    let saved = getSylvainSaved();
+    const exists = saved.find(x => x.id === item.id);
+    if (exists) { saved = saved.filter(x => x.id !== item.id); setSylvainSaved(saved); }
+    else { saved.push(item); setSylvainSaved(saved); }
+  } else if (target === 'both') {
+    let chSaved = getSaved();
+    if (!chSaved.find(x => x.id === item.id)) { chSaved.push(item); setSaved(chSaved); }
+    let sylSaved = getSylvainSaved();
+    if (!sylSaved.find(x => x.id === item.id)) { sylSaved.push(item); setSylvainSaved(sylSaved); }
+  }
+  const menu = linkEl.closest('.save-menu');
+  const btn = menu.previousElementSibling;
+  const c = isSaved(item.id), s = isSylvainSaved(item.id);
+  btn.classList.toggle('saved', c || s);
+  btn.textContent = getSaveLabel(item.id);
+  const links = menu.querySelectorAll('a');
+  links[0].textContent = (c ? '✓ ' : '') + "Chris' Schedule";
+  links[1].textContent = (s ? '✓ ' : '') + "Sylvain's Schedule";
+  if (links[2]) links[2].style.display = (c && s) ? 'none' : '';
 }
 
 function clearSaved() {
-  if (!confirm('Remove all saved items from My Schedule?')) return;
+  if (!confirm('Remove all saved items from both schedules?')) return;
   localStorage.removeItem('cylndr.cannes.schedule');
+  localStorage.removeItem('cylndr.cannes.sylvain');
   updateSavedBanner();
   render();
 }
 
 function updateSavedBanner() {
-  const saved = getSaved();
-  document.getElementById('saved-count').textContent = saved.length;
-  document.getElementById('saved-banner').classList.toggle('show', saved.length > 0);
+  const chrisCount = getSaved().length;
+  const sylvainCount = getSylvainSaved().length;
+  const total = chrisCount + sylvainCount;
+  const parts = [];
+  if (chrisCount > 0) parts.push(`Chris: ${chrisCount}`);
+  if (sylvainCount > 0) parts.push(`Sylvain: ${sylvainCount}`);
+  document.getElementById('saved-count').textContent = parts.join(' · ') || '0';
+  document.getElementById('saved-banner').classList.toggle('show', total > 0);
 }
 
 // ---- CALENDAR URL BUILDERS ----
@@ -419,7 +471,10 @@ function toggleMenu(btn) {
   btn.nextElementSibling.classList.toggle('open');
 }
 document.addEventListener('click', e => {
-  if (!e.target.closest('.session-actions')) document.querySelectorAll('.cal-menu.open').forEach(m => m.classList.remove('open'));
+  if (!e.target.closest('.session-actions')) {
+    document.querySelectorAll('.cal-menu.open').forEach(m => m.classList.remove('open'));
+    document.querySelectorAll('.save-menu.open').forEach(m => m.classList.remove('open'));
+  }
 });
 
 // ---- FILTER HELPERS ----
@@ -466,13 +521,23 @@ function render() {
                   : ev.cls==='key' ? '<span class="badge badge-key">KEY</span>' : '';
       const item = buildSavedItem(ev, activeDay);
       const encoded = encodeURIComponent(JSON.stringify(item));
-      const savedCls = isSaved(item.id) ? ' saved' : '';
-      const saveLabel = isSaved(item.id) ? '✓ Saved' : '📌 Save';
+      const chrisSaved = isSaved(item.id);
+      const sylvainSaved = isSylvainSaved(item.id);
+      const savedCls = (chrisSaved || sylvainSaved) ? ' saved' : '';
+      const saveLabel = getSaveLabel(item.id);
+      const chrisLabel = (chrisSaved ? '✓ ' : '') + "Chris' Schedule";
+      const sylvainLabel = (sylvainSaved ? '✓ ' : '') + "Sylvain's Schedule";
+      const bothStyle = (chrisSaved && sylvainSaved) ? ' style="display:none"' : '';
       const hasSession = ev.session && ev.session.length > 2;
       const rsvpUrl = ev.rsvp || RSVP_URLS[ev.venue] || '';
       const rsvpBtn = rsvpUrl ? `<a class="rsvp-btn" href="${rsvpUrl}" target="_blank" rel="noopener">↗ RSVP</a>` : '';
       const actions = hasSession ? `<div class="session-actions">
-        <button class="evt-btn${savedCls}" onclick="toggleSave(this,'${encoded}')">${saveLabel}</button>
+        <button class="evt-btn${savedCls}" onclick="toggleSaveMenu(this)">${saveLabel}</button>
+        <div class="save-menu">
+          <a onclick="saveFor('chris',this,'${encoded}')">${chrisLabel}</a>
+          <a onclick="saveFor('sylvain',this,'${encoded}')">${sylvainLabel}</a>
+          <a onclick="saveFor('both',this,'${encoded}')"${bothStyle}>Add to Both</a>
+        </div>
         <button class="evt-btn" onclick="toggleMenu(this)">📅 Calendar ▾</button>
         <div class="cal-menu">
           <a href="${gcalUrl(item)}" target="_blank" rel="noopener">Google Calendar</a>

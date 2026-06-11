@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Schedule · CYLNDR × Cannes 2026</title>
+<title>Sylvain's Schedule · CYLNDR × Cannes 2026</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; background: #fdf9f6; color: #171717; min-height: 100vh; }
@@ -98,23 +98,6 @@ table.schedule tr.has-saved td { background: #fff8f6; }
 .saved-banner-inner button { font: inherit; font-size: 11px; padding: 4px 10px; border-radius: 4px; border: 1px solid #f8bfaa; background: #fff; color: #6b1d05; cursor: pointer; }
 .saved-banner-inner button:hover { background: #a83307; color: #fff; border-color: #a83307; }
 
-/* Subscribe section */
-.sub-section { padding: 14px 32px 0; max-width: 1100px; margin: 0 auto; }
-.sub-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px 16px; }
-.sub-title { font-size: 12px; font-weight: 700; color: #171717; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-.sub-title .pill-set { font-size: 9px; padding: 2px 6px; border-radius: 3px; background: #eef2ea; color: #4a6040; letter-spacing: 0.06em; }
-.sub-sub { font-size: 12px; color: #666; margin-bottom: 12px; line-height: 1.5; }
-.sub-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-.sub-btn { font: inherit; font-size: 12px; font-weight: 600; padding: 7px 12px; border-radius: 6px; border: 1px solid #171717; background: #171717; color: #fff; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-.sub-btn:hover { background: #000; }
-.sub-btn.secondary { background: #fff; color: #171717; border-color: #d4d4d4; }
-.sub-btn.secondary:hover { border-color: #171717; background: #fafafa; }
-.sub-url { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; color: #555; background: #fdf9f6; padding: 6px 10px; border-radius: 4px; border: 1px solid #e5e5e5; flex: 1; min-width: 240px; user-select: all; }
-.sub-toast { font-size: 11px; color: #a83307; margin-left: 8px; opacity: 0; transition: opacity 0.2s; }
-.sub-toast.show { opacity: 1; }
-.sub-help { font-size: 11px; color: #888; margin-top: 8px; line-height: 1.5; }
-.sub-help code { font-family: ui-monospace, Menlo, monospace; background: #fdf9f6; padding: 1px 5px; border-radius: 3px; font-size: 11px; color: #171717; }
-
 footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; font-size: 11px; color: #aaa; display: flex;  flex-wrap: wrap; gap: 8px; }
 
 @media (max-width: 700px) {
@@ -134,8 +117,8 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
     <a href="index.html" class="nav-link">Overview</a>
     <a href="calendar.html" class="nav-link">Where to Be</a>
     <a href="database.html" class="nav-link">Attendee Database</a>
-    <a href="schedule.html" class="nav-link active">My Schedule</a>
-    <a href="sylvain.html" class="nav-link">Sylvain's Schedule</a>
+    <a href="schedule.html" class="nav-link">My Schedule</a>
+    <a href="sylvain.html" class="nav-link active">Sylvain's Schedule</a>
     <a href="fringe.html" class="nav-link">Fringe Events</a>
     <a href="brands.html" class="nav-link">Brand Intelligence</a>
     <a href="events.html" class="nav-link">Venue Intelligence</a>
@@ -144,14 +127,14 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
 </nav>
 
 <div class="page-header">
-  <div class="page-label">My Schedule</div>
-  <h1 class="page-title">Personal <span>Itinerary</span></h1>
-  <p class="page-sub">Chris Rose · Cannes Lions 2026 · June 20–26. Your confirmed itinerary — events, travel, and sessions saved from Where to Be.</p>
+  <div class="page-label">Sylvain's Schedule</div>
+  <h1 class="page-title">Sylvain's <span>Itinerary</span></h1>
+  <p class="page-sub">Sylvain Tron · Cannes Lions 2026 · June 22–26. Sessions saved from Where to Be.</p>
 </div>
 
 <div class="saved-banner" id="saved-banner" style="display:none">
   <div class="saved-banner-inner">
-    <span><span id="saved-count">0</span> events added from the <a href="calendar.html">Where to Be</a> · stored in this browser only</span>
+    <span><span id="saved-count">0</span> events added from <a href="calendar.html">Where to Be</a> · stored in this browser only</span>
     <button onclick="clearAllSaved()">Clear all added</button>
   </div>
 </div>
@@ -159,47 +142,15 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
 <div class="day-tabs" id="day-tabs"></div>
 <main id="main"></main>
 
-<div class="sub-section">
-  <div class="sub-card">
-    <div class="sub-title">Subscribe in your calendar <span class="pill-set">SET ONCE</span></div>
-    <div class="sub-sub">Subscribe and the events below show up in Google Calendar, Apple Calendar, or Outlook on every device — and update whenever this schedule changes. Locally-saved items from the Calendar tab are <em>not</em> included in the subscription (they live in your browser); use the per-row buttons for those.</div>
-    <div class="sub-actions">
-      <a class="sub-btn" id="apple-sub" href="#"><span>🍎</span> Add to Apple Calendar</a>
-      <a class="sub-btn secondary" id="google-sub" href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl" target="_blank" rel="noopener"><span>📆</span> Open Google "From URL"</a>
-      <a class="sub-btn secondary" id="ics-download" href="schedule.ics" download="cylndr-cannes-2026.ics"><span>⬇️</span> Download .ics</a>
-      <span class="sub-url" id="sub-url-display"></span>
-      <button class="sub-btn secondary" onclick="copySubUrl()" id="copy-btn">Copy URL</button>
-      <span class="sub-toast" id="copy-toast">Copied</span>
-    </div>
-    <div class="sub-help">
-      <strong>Google Calendar setup:</strong> click <em>Open Google "From URL"</em> above, paste the copied URL, click <code>Add calendar</code>. Google refreshes external feeds roughly every 12–24 hours.<br>
-      <strong>Apple Calendar:</strong> click the Add to Apple Calendar button — it opens the subscription dialog. Set refresh frequency to your preference.
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <footer>
-  <span>CYLNDR × Cannes Lions 2026 · Personal Itinerary</span>
-  <span id="last-updated">Updated 2026-05-18</span>
+  <span>CYLNDR × Cannes Lions 2026 · Sylvain Tron's Schedule</span>
+  <span>Events saved from the Where to Be tab</span>
 </footer>
 
 <script>
+const STORAGE_KEY = 'cylndr.cannes.sylvain';
+
 const DAYS = [
-  { key:'d2', short:'Sun', num:'21', date:'2026-06-21', full:'Sunday, June 21',   label:'Arrival day' },
   { key:'d3', short:'Mon', num:'22', date:'2026-06-22', full:'Monday, June 22',   label:'Day 1 — Festival opens' },
   { key:'d4', short:'Tue', num:'23', date:'2026-06-23', full:'Tuesday, June 23',  label:'Day 2' },
   { key:'d5', short:'Wed', num:'24', date:'2026-06-24', full:'Wednesday, June 24',label:'Day 3' },
@@ -226,56 +177,15 @@ const SLOTS = [
   { time:'11:00 PM', block:'Wrap',          evening:true },
 ];
 
-const empty = () => SLOTS.map(() => ({ activity:[], location:'', notes:'' }));
-
-const DATA = {
-  __lastUpdated: '2026-06-02',
-  d1: { slots: empty() },
-  d2: { slots: empty() },
-  d3: { slots: empty() },
-  d4: { slots: empty() },
-  d5: { slots: empty() },
-  d6: { slots: empty() },
-  d7: { slots: empty() },
-};
-
-// --- Confirmed schedule ---
-
-// Sunday June 21 — Arrival
-DATA.d2.slots[8].activity  = ["Chris's Travel · Arrival · Lands NCE 4:20 PM · AA 7247 from LHR, dep 1:10 PM (op. British Airways)"];
-
-// Monday June 22 — Day 1
-DATA.d3.slots[1].activity = ['Indie Agency Kickoff Breakfast · LBB Beach, 68 Bd de la Croisette · 9:00–10:30 AM (confirmed)'];
-DATA.d3.slots[3].activity = ['Campaign House: Does the board trust your marketing? · Canopy by Hilton · 11:30 AM–1:00 PM (confirmed)'];
-DATA.d3.slots[9].activity  = ['Ad Age The List · Cannes kickoff (5:00–6:00 PM)'];
-
-// Tuesday June 23 — Day 2
-DATA.d4.slots[1].activity = ['Campaign House: How brands and agencies can get back their AI investment · Canopy by Hilton · 9:00–10:30 AM (confirmed)'];
-DATA.d4.slots[9].activity  = ['Ad Age Small Agency Network at Cannes (5:00–6:00 PM)'];
-
-// Wednesday June 24 — Day 3
-DATA.d5.slots[1].activity  = ['SIGAWomen Lounge · Roberto Cavalli, 67 Bd de la Croisette (9 AM–12 PM)', 'Campaign House: The digital advertising reset — A balanced diet for 2026 · Canopy by Hilton · 9:00–10:30 AM (confirmed)'];
-DATA.d5.slots[2].activity = ['The Confident Brand Forum @ Cannes · LBB Beach, 68 Bd de la Croisette · 10:00–11:30 AM · hosted by Mark Allen & Co. (confirmed)'];
-DATA.d5.slots[9].activity  = ['Ad Age Cannes Lawn Party (5:30–7:30 PM, RSVP required)'];
-DATA.d5.slots[11].activity = ['Cognitiv Pride Party: Confidently Together · Plage 3CV, Lucia Cannes · 7:30–10:30 PM (RSVP confirmed — arrive early, entry not guaranteed)'];
-
-// Thursday June 25 — Day 4
-DATA.d6.slots[5].activity  = ["Chris's Travel · Leave Cannes for NCE airport (allow ~30 min, check-in by 2:40 PM)"];
-DATA.d6.slots[7].activity  = ["Chris's Travel · Departure · NCE → CDG 3:10 PM · AF7311, Terminal 2 (op. Air France)"];
-
-// ---
-
-document.getElementById('last-updated').textContent = 'Updated ' + DATA.__lastUpdated;
-
 // ---- Saved items from Calendar tab ----
 
 function getSavedItems() {
-  try { return JSON.parse(localStorage.getItem('cylndr.cannes.schedule') || '[]'); }
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
   catch (e) { return []; }
 }
 
 function setSavedItems(arr) {
-  localStorage.setItem('cylndr.cannes.schedule', JSON.stringify(arr));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
   updateBanner();
 }
 
@@ -286,8 +196,8 @@ function removeSavedItem(id) {
 }
 
 function clearAllSaved() {
-  if (!confirm('Remove all events added from the Calendar tab? (Does not affect your personal calendar.)')) return;
-  localStorage.removeItem('cylndr.cannes.schedule');
+  if (!confirm('Remove all events added from the Where to Be tab? (Does not affect your personal calendar.)')) return;
+  localStorage.removeItem(STORAGE_KEY);
   updateBanner();
   rerender();
 }
@@ -378,7 +288,6 @@ function savedByDayAndSlot() {
 function rerender() {
   mainEl.innerHTML = '';
   DAYS.forEach(day => mainEl.appendChild(renderDay(day)));
-  // Re-apply active state
   const active = document.querySelector('.day-tabs button.active');
   if (active) setActive(active.dataset.day);
 }
@@ -403,31 +312,23 @@ function renderDay(day) {
   // Find last slot with content to hide trailing empty rows
   let lastSlot = 9;
   SLOTS.forEach((slot, i) => {
-    const d = DATA[day.key].slots[i] || {};
     const sv = savedMap[day.key + ':' + i] || [];
-    if ((d.activity && d.activity.length > 0) || sv.length > 0) lastSlot = i;
+    if (sv.length > 0) lastSlot = i;
   });
 
   SLOTS.forEach((slot, i) => {
     if (i > lastSlot + 1) return;
-    const data = DATA[day.key].slots[i] || { activity:[], location:'', notes:'' };
     const savedForSlot = savedMap[day.key + ':' + i] || [];
-    const hasEvent = Array.isArray(data.activity) && data.activity.length > 0;
     const hasSaved = savedForSlot.length > 0;
     const tr = document.createElement('tr');
     if (slot.evening) tr.classList.add('evening');
-    if (hasEvent) tr.classList.add('has-event');
     if (hasSaved) tr.classList.add('has-saved');
 
     const tdTime = document.createElement('td'); tdTime.className = 'time'; tdTime.textContent = slot.time; tr.appendChild(tdTime);
     const tdBlock = document.createElement('td'); tdBlock.className = 'block'; tdBlock.textContent = slot.block; tr.appendChild(tdBlock);
 
     const tdAct = document.createElement('td'); tdAct.className = 'activity';
-    if (hasEvent) {
-      const ul = document.createElement('ul');
-      data.activity.forEach(item => { const li = document.createElement('li'); li.textContent = item; ul.appendChild(li); });
-      tdAct.appendChild(ul);
-    } else if (!hasSaved) {
+    if (!hasSaved) {
       const span = document.createElement('span'); span.className = 'empty'; span.textContent = '—'; tdAct.appendChild(span);
     }
     if (hasSaved) {
@@ -450,7 +351,7 @@ function renderDay(day) {
               <a href="${icsUriFor(item)}" download="cannes-${item.id}.ics">Apple / .ics</a>
             </div>
           </div>
-          <button class="remove" title="Remove from My Schedule" onclick="removeSavedItem('${item.id}')">✕</button>`;
+          <button class="remove" title="Remove from Sylvain's Schedule" onclick="removeSavedItem('${item.id}')">✕</button>`;
         sUl.appendChild(li);
       });
       tdAct.appendChild(sUl);
@@ -482,39 +383,11 @@ function setActive(dayKey) {
 const mainEl = document.getElementById('main');
 DAYS.forEach(day => mainEl.appendChild(renderDay(day)));
 buildTabs();
+updateBanner();
 
 const today = new Date().toISOString().slice(0, 10);
 const match = DAYS.find(d => d.date === today);
-setActive(match ? match.key : 'd2');
-
-updateBanner();
-
-// ---- Subscribe URL wiring ----
-(function setupSubscribe() {
-  const icsPath = 'schedule.ics';
-  // Build absolute URL based on where this page is hosted
-  const base = window.location.href.replace(/[^\/]*$/, '');
-  const httpsUrl = base + icsPath;
-  const webcalUrl = httpsUrl.replace(/^https?:\/\//, 'webcal://');
-
-  document.getElementById('sub-url-display').textContent = httpsUrl;
-  document.getElementById('apple-sub').href = webcalUrl;
-})();
-
-function copySubUrl() {
-  const url = document.getElementById('sub-url-display').textContent;
-  navigator.clipboard.writeText(url).then(() => {
-    const toast = document.getElementById('copy-toast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 1500);
-  }).catch(() => {
-    const range = document.createRange();
-    range.selectNodeContents(document.getElementById('sub-url-display'));
-    const sel = window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(range);
-  });
-}
+setActive(match ? match.key : 'd3');
 </script>
 </body>
 </html>
