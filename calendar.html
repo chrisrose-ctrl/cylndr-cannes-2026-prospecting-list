@@ -559,7 +559,7 @@ function render() {
                   : ev.cls==='adj' ? '<span class="badge badge-adj">ADJ</span>'
                   : ev.cls==='key' ? '<span class="badge badge-key">KEY</span>' : '';
       const item = buildSavedItem(ev, activeDay);
-      const encoded = encodeURIComponent(JSON.stringify(item));
+      const encoded = encodeURIComponent(JSON.stringify(item)).replace(/'/g, '%27');
       const chrisSaved = isSaved(item.id);
       const sylvainSaved = isSylvainSaved(item.id);
       const savedCls = (chrisSaved || sylvainSaved) ? ' saved' : '';
