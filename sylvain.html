@@ -177,6 +177,36 @@ const SLOTS = [
   { time:'11:00 PM', block:'Wrap',          evening:true },
 ];
 
+// ---- Hardcoded pinned events (always shown regardless of localStorage) ----
+const PINNED = [
+  {
+    id: 'pinned-shots-podcast',
+    dayKey: 'd4',
+    slot: 5,
+    hour: 13,
+    minute: 0,
+    date: '2026-06-23',
+    time: '1:00 PM',
+    venue: 'shots! — Cannes',
+    session: 'shots! Podcast Recording',
+    people: '',
+    pinned: true,
+  },
+  {
+    id: 'pinned-famous-for-something',
+    dayKey: 'd4',
+    slot: 5,
+    hour: 12,
+    minute: 30,
+    date: '2026-06-23',
+    time: '12:30–2:00 PM',
+    venue: 'CAN Boat (Molly Malone) — Jetée Albert Edouard',
+    session: 'Famous for Something: A Private Conversation on the Riviera',
+    people: 'NBZ + Cheil Agency Network · Invitation-only · Cocktails & hors d\'oeuvres',
+    pinned: true,
+  },
+];
+
 // ---- Saved items from Calendar tab ----
 
 function getSavedItems() {
@@ -274,13 +304,18 @@ document.addEventListener('click', e => {
   }
 });
 
-// Group saved items by dayKey + slot index
+// Group saved items by dayKey + slot index (includes hardcoded PINNED events)
 function savedByDayAndSlot() {
   const out = {};
   getSavedItems().forEach(item => {
     const key = item.dayKey + ':' + item.slot;
     if (!out[key]) out[key] = [];
     out[key].push(item);
+  });
+  PINNED.forEach(item => {
+    const key = item.dayKey + ':' + item.slot;
+    if (!out[key]) out[key] = [];
+    if (!out[key].some(x => x.id === item.id)) out[key].push(item);
   });
   return out;
 }
@@ -337,7 +372,9 @@ function renderDay(day) {
         const li = document.createElement('li'); li.className = 'saved-item';
         const meta = [item.time, item.venue].filter(Boolean).join(' · ');
         const people = item.people ? `<div class="meta">${item.people}</div>` : '';
-        li.innerHTML = `<span class="pin">📌</span>
+        const pinIcon = item.pinned ? '✦' : '📌';
+        const removeBtn = item.pinned ? '' : `<button class="remove" title="Remove from Sylvain's Schedule" onclick="removeSavedItem('${item.id}')">✕</button>`;
+        li.innerHTML = `<span class="pin">${pinIcon}</span>
           <div class="body">
             <div class="session">${item.session}</div>
             ${meta ? `<div class="meta">${meta}</div>` : ''}
@@ -351,7 +388,7 @@ function renderDay(day) {
               <a href="${icsUriFor(item)}" download="cannes-${item.id}.ics">Apple / .ics</a>
             </div>
           </div>
-          <button class="remove" title="Remove from Sylvain's Schedule" onclick="removeSavedItem('${item.id}')">✕</button>`;
+          ${removeBtn}`;
         sUl.appendChild(li);
       });
       tdAct.appendChild(sUl);
