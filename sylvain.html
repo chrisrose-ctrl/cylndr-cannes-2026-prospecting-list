@@ -129,13 +129,12 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
 <div class="page-header">
   <div class="page-label">Sylvain's Schedule</div>
   <h1 class="page-title">Sylvain's <span>Itinerary</span></h1>
-  <p class="page-sub">Sylvain Tron · Cannes Lions 2026 · June 22–26. Sessions saved from Where to Be.</p>
+  <p class="page-sub">Sylvain Tron · Cannes Lions 2026 · June 21–25.</p>
 </div>
 
-<div class="saved-banner" id="saved-banner" style="display:none">
+<div class="saved-banner" id="saved-banner">
   <div class="saved-banner-inner">
-    <span><span id="saved-count">0</span> events added from <a href="calendar.html">Where to Be</a> · stored in this browser only</span>
-    <button onclick="clearAllSaved()">Clear all added</button>
+    <span>26 scheduled events · Jun 21–25</span>
   </div>
 </div>
 
@@ -148,14 +147,13 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
 </footer>
 
 <script>
-const STORAGE_KEY = 'cylndr.cannes.sylvain';
-
 const DAYS = [
-  { key:'d3', short:'Mon', num:'22', date:'2026-06-22', full:'Monday, June 22',   label:'Day 1 — Festival opens' },
-  { key:'d4', short:'Tue', num:'23', date:'2026-06-23', full:'Tuesday, June 23',  label:'Day 2' },
-  { key:'d5', short:'Wed', num:'24', date:'2026-06-24', full:'Wednesday, June 24',label:'Day 3' },
-  { key:'d6', short:'Thu', num:'25', date:'2026-06-25', full:'Thursday, June 25', label:'Day 4' },
-  { key:'d7', short:'Fri', num:'26', date:'2026-06-26', full:'Friday, June 26',   label:'Close & departure' },
+  { key:'d2', short:'Sun', num:'21', date:'2026-06-21', full:'Sunday, June 21',    label:'Pre-festival' },
+  { key:'d3', short:'Mon', num:'22', date:'2026-06-22', full:'Monday, June 22',    label:'Day 1 — Festival opens' },
+  { key:'d4', short:'Tue', num:'23', date:'2026-06-23', full:'Tuesday, June 23',   label:'Day 2' },
+  { key:'d5', short:'Wed', num:'24', date:'2026-06-24', full:'Wednesday, June 24', label:'Day 3' },
+  { key:'d6', short:'Thu', num:'25', date:'2026-06-25', full:'Thursday, June 25',  label:'Day 4' },
+  { key:'d7', short:'Fri', num:'26', date:'2026-06-26', full:'Friday, June 26',    label:'Close & departure' },
 ];
 
 const SLOTS = [
@@ -177,67 +175,224 @@ const SLOTS = [
   { time:'11:00 PM', block:'Wrap',          evening:true },
 ];
 
-// ---- Hardcoded pinned events (always shown regardless of localStorage) ----
+// All of Sylvain's scheduled events — hardcoded, visible to anyone with the link
 const PINNED = [
+  // ---- Always shown ----
   {
     id: 'pinned-shots-podcast',
-    dayKey: 'd4',
-    slot: 5,
-    hour: 13,
-    minute: 0,
-    date: '2026-06-23',
-    time: '1:00 PM',
+    dayKey: 'd4', slot: 5, hour: 13, minute: 0, endHour: 14, endMinute: 0,
+    date: '2026-06-23', time: '1:00 PM',
     venue: 'shots! — Cannes',
     session: 'shots! Podcast Recording',
-    people: '',
-    pinned: true,
+    people: '', pinned: true,
   },
   {
     id: 'pinned-famous-for-something',
-    dayKey: 'd4',
-    slot: 5,
-    hour: 12,
-    minute: 30,
-    date: '2026-06-23',
-    time: '12:30–2:00 PM',
+    dayKey: 'd4', slot: 5, hour: 12, minute: 30, endHour: 14, endMinute: 0,
+    date: '2026-06-23', time: '12:30–2:00 PM',
     venue: 'CAN Boat (Molly Malone) — Jetée Albert Edouard',
     session: 'Famous for Something: A Private Conversation on the Riviera',
-    people: 'NBZ + Cheil Agency Network · Invitation-only · Cocktails & hors d\'oeuvres',
+    people: "NBZ + Cheil Agency Network · Invitation-only · Cocktails & hors d'oeuvres",
     pinned: true,
   },
+  // ---- Sunday Jun 21 ----
+  {
+    id: 'sylvain-sun-captains-table',
+    dayKey: 'd2', slot: 13, hour: 21, minute: 0, endHour: 23, endMinute: 0,
+    date: '2026-06-21', time: '9:00 PM',
+    venue: 'CAN Flagship (Jetée Albert Edouard, Port de Cannes)',
+    session: "The Captain's Table: Private Dinner on the Riviera (9–11 PM CEST). Accepted — note any food allergies in advance.",
+    people: '', pinned: true,
+  },
+  // ---- Monday Jun 22 ----
+  {
+    id: 'sylvain-mon-can-breakfast',
+    dayKey: 'd3', slot: 0, hour: 8, minute: 30, endHour: 11, endMinute: 30,
+    date: '2026-06-22', time: '8:30 AM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: 'CAN Boat open — light breakfast, workspace & 1:1 meetings',
+    people: '', pinned: true,
+  },
+  {
+    id: 'sylvain-mon-hannah-bowler',
+    dayKey: 'd3', slot: 7, hour: 15, minute: 30, endHour: 17, endMinute: 0,
+    date: '2026-06-22', time: '3:30 PM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: 'CAN Boat — Hannah Bowler on board',
+    people: 'Hannah Bowler (Adweek / The Subthread, freelance journalist)', pinned: true,
+  },
+  {
+    id: 'sylvain-mon-rose-riviera',
+    dayKey: 'd3', slot: 9, hour: 17, minute: 0, endHour: 19, endMinute: 30,
+    date: '2026-06-22', time: '5:00 PM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: 'Rose on the Riviera — networking, agencies bring partners (5–7:30 PM)',
+    people: '', pinned: true,
+  },
+  {
+    id: 'sylvain-mon-chloe-markowicz',
+    dayKey: 'd3', slot: 9, hour: 17, minute: 45, endHour: 19, endMinute: 30,
+    date: '2026-06-22', time: '5:45 PM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: 'CAN Boat — Chloe Markowicz on board',
+    people: 'Chloe Markowicz (Contagious)', pinned: true,
+  },
+  {
+    id: 'sylvain-mon-after-dark',
+    dayKey: 'd3', slot: 14, hour: 22, minute: 0, endHour: 23, endMinute: 0,
+    date: '2026-06-22', time: '10:00 PM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: 'CAN After Dark — cocktails, popcorn & charcuterie under the stars (10 PM–12:30 AM)',
+    people: '', pinned: true,
+  },
+  // ---- Tuesday Jun 23 ----
+  {
+    id: 'sylvain-tue-can-breakfast',
+    dayKey: 'd4', slot: 0, hour: 8, minute: 30, endHour: 11, endMinute: 30,
+    date: '2026-06-23', time: '8:30 AM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: 'CAN Boat open — light breakfast, workspace & 1:1 meetings (main deck only)',
+    people: '', pinned: true,
+  },
+  {
+    id: 'sylvain-tue-campaign-house',
+    dayKey: 'd4', slot: 1, hour: 9, minute: 0, endHour: 10, endMinute: 30,
+    date: '2026-06-23', time: '9:00 AM',
+    venue: 'Campaign House (Canopy by Hilton)',
+    session: 'Campaign & Marketing Week: How Brands and Agencies Will Win the AI Investment Race (9–10:30 AM) — registered, reminder received',
+    people: '', pinned: true,
+  },
+  {
+    id: 'sylvain-tue-uta-beach',
+    dayKey: 'd4', slot: 2, hour: 10, minute: 0, endHour: 11, endMinute: 0,
+    date: '2026-06-23', time: '10:00 AM',
+    venue: 'UTA Beach (Palais des Festivals)',
+    session: "UTA Beach Executive Salon — Clicks Don't Pay the Bills (10–11 AM)",
+    people: '', pinned: true,
+  },
+  {
+    id: 'sylvain-tue-paige-grossman',
+    dayKey: 'd4', slot: 6, hour: 14, minute: 0, endHour: 14, endMinute: 30,
+    date: '2026-06-23', time: '2:00 PM',
+    venue: 'Brands&Culture Villa',
+    session: 'Culture Lab Q&A: Live from Cannes',
+    people: 'Paige Grossman (Ancestry VP Global Brand & Creative)', pinned: true,
+  },
+  {
+    id: 'sylvain-tue-yasmin-oneal',
+    dayKey: 'd4', slot: 6, hour: 14, minute: 35, endHour: 15, endMinute: 5,
+    date: '2026-06-23', time: '2:35 PM',
+    venue: 'Brands&Culture Villa',
+    session: 'Anti-Slop, Pro-Humanity: Brands That Stand Out',
+    people: "Yasmin O'Neal (DECIEM / The Ordinary Global Brand Senior Director)", pinned: true,
+  },
+  {
+    id: 'sylvain-tue-ali-payne',
+    dayKey: 'd4', slot: 7, hour: 15, minute: 10, endHour: 16, endMinute: 10,
+    date: '2026-06-23', time: '3:10 PM',
+    venue: 'Brands&Culture Villa',
+    session: 'From Hype to Habit: Gen Z and the Mega-Sports Moment',
+    people: 'Ali Payne (Heineken USA CMO) · Ricardo Aspiazu (Verizon SVP Creative & Brand Design)', pinned: true,
+  },
+  {
+    id: 'sylvain-tue-catherine-ferdon',
+    dayKey: 'd4', slot: 7, hour: 15, minute: 45, endHour: 16, endMinute: 45,
+    date: '2026-06-23', time: '3:45 PM',
+    venue: 'Brands&Culture Villa',
+    session: 'Culturally Disruptive by Nature',
+    people: 'Catherine Ferdon (Coinbase CMO) · Sona Iliffe-Moon (Yahoo CCO) · Alex Weller (Patagonia Global VP Creative)', pinned: true,
+  },
+  {
+    id: 'sylvain-tue-craft-cocktails',
+    dayKey: 'd4', slot: 8, hour: 16, minute: 0, endHour: 18, endMinute: 0,
+    date: '2026-06-23', time: '4:00 PM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: 'Craft & Cocktails: Long Form Content for Short Attention Spans (4–6 PM) — Clio Awards × Cheil Agency Network × McKinney × Iris × Barbarian. CCOs on why long-form is winning.',
+    people: '', pinned: true,
+  },
+  {
+    id: 'sylvain-tue-sips-croisette',
+    dayKey: 'd4', slot: 10, hour: 18, minute: 30, endHour: 20, endMinute: 0,
+    date: '2026-06-23', time: '6:30 PM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: 'Sips on the Croisette — Cheil Agency Network golden hour cocktails (6:30–8 PM). Invite only.',
+    people: '', pinned: true,
+  },
+  // ---- Wednesday Jun 24 ----
+  {
+    id: 'sylvain-wed-can-breakfast',
+    dayKey: 'd5', slot: 0, hour: 8, minute: 30, endHour: 11, endMinute: 0,
+    date: '2026-06-24', time: '8:30 AM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: 'CAN Boat open — light breakfast, workspace & 1:1 meetings',
+    people: '', pinned: true,
+  },
+  {
+    id: 'sylvain-wed-teads-yacht',
+    dayKey: 'd5', slot: 3, hour: 11, minute: 30, endHour: 12, endMinute: 30,
+    date: '2026-06-24', time: '11:30 AM',
+    venue: 'Teads Yacht (Vieux-Port, Cannes)',
+    session: '"She Runs It, He Gets It" — Teads Yacht (11:30 AM–12:30 PM)',
+    people: '', pinned: true,
+  },
+  {
+    id: 'sylvain-wed-adaptive-brands',
+    dayKey: 'd5', slot: 6, hour: 14, minute: 45, endHour: 15, endMinute: 45,
+    date: '2026-06-24', time: '2:45 PM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: 'The Future Belongs to Adaptive Brands (2:45–3:45 PM) — Barbarian × New Generation × Genspark AI. AI, agentic internet & the future of brand experience.',
+    people: 'Lia Haberman (ICYMI, moderator) · Wen Sang (Genspark AI Co-Founder & COO) · Jeff Blackman (Barbarian Managing Director) · Jonathan Arena (New Generation Co-Founder)', pinned: true,
+  },
+  {
+    id: 'sylvain-wed-shannon-womack',
+    dayKey: 'd5', slot: 8, hour: 16, minute: 0, endHour: 16, endMinute: 30,
+    date: '2026-06-24', time: '4:00 PM',
+    venue: 'Brands&Culture Villa',
+    session: 'Culture in the Making: Where AI Helps — and Human Judgment Still Wins',
+    people: 'Shannon Womack (Delta Air Lines Head of Global Brand & Creative) · Matt Watson (PepsiCo CCO)', pinned: true,
+  },
+  {
+    id: 'sylvain-wed-cote-azur',
+    dayKey: 'd5', slot: 9, hour: 17, minute: 0, endHour: 19, endMinute: 30,
+    date: '2026-06-24', time: '5:00 PM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: "Côte d'Azur Cocktail Event — networking (agencies bring partners, 5–7:30 PM)",
+    people: '', pinned: true,
+  },
+  {
+    id: 'sylvain-wed-adage-lawn',
+    dayKey: 'd5', slot: 9, hour: 17, minute: 30, endHour: 19, endMinute: 30,
+    date: '2026-06-24', time: '5:30 PM',
+    venue: 'Ad Age / The List Lounge (Lawn at Mondrian)',
+    session: 'Cannes Lawn Party (invite only) — 5:30–7:30 PM',
+    people: '', pinned: true,
+  },
+  {
+    id: 'sylvain-wed-campaign-party',
+    dayKey: 'd5', slot: 10, hour: 18, minute: 30, endHour: 21, endMinute: 30,
+    date: '2026-06-24', time: '6:30 PM',
+    venue: 'Campaign Party (Carlton Beach)',
+    session: 'Campaign Party — invite only (6:30–9:30 PM)',
+    people: '', pinned: true,
+  },
+  {
+    id: 'sylvain-wed-after-dark',
+    dayKey: 'd5', slot: 14, hour: 22, minute: 0, endHour: 23, endMinute: 0,
+    date: '2026-06-24', time: '10:00 PM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: 'CAN After Dark — cocktails, popcorn & charcuterie under the stars (10 PM–12:30 AM)',
+    people: '', pinned: true,
+  },
+  // ---- Thursday Jun 25 ----
+  {
+    id: 'sylvain-thu-can-breakfast',
+    dayKey: 'd6', slot: 0, hour: 8, minute: 30, endHour: 11, endMinute: 30,
+    date: '2026-06-25', time: '8:30 AM',
+    venue: 'CAN Boat (Jetée Albert Edouard)',
+    session: 'CAN Boat open — light breakfast, workspace & 1:1 meetings (main deck only)',
+    people: '', pinned: true,
+  },
 ];
-
-// ---- Saved items from Calendar tab ----
-
-function getSavedItems() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
-  catch (e) { return []; }
-}
-
-function setSavedItems(arr) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
-  updateBanner();
-}
-
-function removeSavedItem(id) {
-  const next = getSavedItems().filter(x => x.id !== id);
-  setSavedItems(next);
-  rerender();
-}
-
-function clearAllSaved() {
-  if (!confirm('Remove all events added from the Where to Be tab? (Does not affect your personal calendar.)')) return;
-  localStorage.removeItem(STORAGE_KEY);
-  updateBanner();
-  rerender();
-}
-
-function updateBanner() {
-  const saved = getSavedItems();
-  const b = document.getElementById('saved-banner');
-  document.getElementById('saved-count').textContent = saved.length;
-  b.style.display = saved.length > 0 ? '' : 'none';
-}
 
 // ---- Per-item Calendar URL helpers ----
 function pad(n) { return n < 10 ? '0' + n : String(n); }
@@ -245,27 +400,31 @@ function fmtCal(date, hour, minute) {
   const [Y, M, D] = date.split('-');
   return `${Y}${M}${D}T${pad(hour)}${pad(minute)}00`;
 }
-function gcalUrlFor(item, dur = 60) {
+function endFor(item) {
+  return {
+    endH: (item.endHour !== undefined) ? item.endHour : item.hour + 1,
+    endM: (item.endMinute !== undefined) ? item.endMinute : item.minute,
+  };
+}
+function gcalUrlFor(item) {
   const start = fmtCal(item.date, item.hour, item.minute);
-  const endH = item.hour + Math.floor((item.minute + dur) / 60);
-  const endM = (item.minute + dur) % 60;
+  const { endH, endM } = endFor(item);
   const end = fmtCal(item.date, endH, endM);
   const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
-  const details = [item.people, 'Saved from CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
+  const details = [item.people, 'Sylvain Tron · CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
   const params = new URLSearchParams({
     action: 'TEMPLATE', text: title, dates: `${start}/${end}`,
     details, location: item.venue || 'Cannes, France', ctz: 'Europe/Paris',
   });
   return 'https://calendar.google.com/calendar/render?' + params.toString();
 }
-function outlookUrlFor(item, dur = 60) {
+function outlookUrlFor(item) {
   const [Y, M, D] = item.date.split('-');
   const startISO = `${Y}-${M}-${D}T${pad(item.hour)}:${pad(item.minute)}:00`;
-  const endH = item.hour + Math.floor((item.minute + dur) / 60);
-  const endM = (item.minute + dur) % 60;
+  const { endH, endM } = endFor(item);
   const endISO = `${Y}-${M}-${D}T${pad(endH)}:${pad(endM)}:00`;
   const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
-  const body = [item.people, 'Saved from CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
+  const body = [item.people, 'Sylvain Tron · CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
   const params = new URLSearchParams({
     path: '/calendar/action/compose', rru: 'addevent',
     subject: title, body, location: item.venue || 'Cannes, France',
@@ -273,10 +432,9 @@ function outlookUrlFor(item, dur = 60) {
   });
   return 'https://outlook.live.com/calendar/0/deeplink/compose?' + params.toString();
 }
-function icsUriFor(item, dur = 60) {
+function icsUriFor(item) {
   const start = fmtCal(item.date, item.hour, item.minute);
-  const endH = item.hour + Math.floor((item.minute + dur) / 60);
-  const endM = (item.minute + dur) % 60;
+  const { endH, endM } = endFor(item);
   const end = fmtCal(item.date, endH, endM);
   const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
   const desc = [item.people, 'Saved from CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
@@ -304,27 +462,15 @@ document.addEventListener('click', e => {
   }
 });
 
-// Group saved items by dayKey + slot index (includes hardcoded PINNED events)
+// Group all scheduled events by dayKey + slot index
 function savedByDayAndSlot() {
   const out = {};
-  getSavedItems().forEach(item => {
-    const key = item.dayKey + ':' + item.slot;
-    if (!out[key]) out[key] = [];
-    out[key].push(item);
-  });
   PINNED.forEach(item => {
     const key = item.dayKey + ':' + item.slot;
     if (!out[key]) out[key] = [];
     if (!out[key].some(x => x.id === item.id)) out[key].push(item);
   });
   return out;
-}
-
-function rerender() {
-  mainEl.innerHTML = '';
-  DAYS.forEach(day => mainEl.appendChild(renderDay(day)));
-  const active = document.querySelector('.day-tabs button.active');
-  if (active) setActive(active.dataset.day);
 }
 
 function renderDay(day) {
@@ -372,9 +518,7 @@ function renderDay(day) {
         const li = document.createElement('li'); li.className = 'saved-item';
         const meta = [item.time, item.venue].filter(Boolean).join(' · ');
         const people = item.people ? `<div class="meta">${item.people}</div>` : '';
-        const pinIcon = item.pinned ? '✦' : '📌';
-        const removeBtn = item.pinned ? '' : `<button class="remove" title="Remove from Sylvain's Schedule" onclick="removeSavedItem('${item.id}')">✕</button>`;
-        li.innerHTML = `<span class="pin">${pinIcon}</span>
+        li.innerHTML = `<span class="pin">✦</span>
           <div class="body">
             <div class="session">${item.session}</div>
             ${meta ? `<div class="meta">${meta}</div>` : ''}
@@ -387,8 +531,7 @@ function renderDay(day) {
               <a href="${outlookUrlFor(item)}" target="_blank" rel="noopener">Outlook</a>
               <a href="${icsUriFor(item)}" download="cannes-${item.id}.ics">Apple / .ics</a>
             </div>
-          </div>
-          ${removeBtn}`;
+          </div>`;
         sUl.appendChild(li);
       });
       tdAct.appendChild(sUl);
@@ -420,7 +563,6 @@ function setActive(dayKey) {
 const mainEl = document.getElementById('main');
 DAYS.forEach(day => mainEl.appendChild(renderDay(day)));
 buildTabs();
-updateBanner();
 
 const today = new Date().toISOString().slice(0, 10);
 const match = DAYS.find(d => d.date === today);
