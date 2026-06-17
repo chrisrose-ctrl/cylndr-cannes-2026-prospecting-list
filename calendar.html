@@ -63,8 +63,9 @@ nav { display: flex; align-items: center; justify-content: space-between; paddin
 .session-card.key { border-left: 4px solid #7c3aed; background: #faf5ff; }
 .session-card.gen { border-left: 4px solid #cbd5e1; background: #f8fafc; }
 
-.session-time-col { flex-shrink: 0; width: 68px; display: flex; flex-direction: column; align-items: flex-start; padding-top: 2px; }
-.session-time { font-size: 11px; font-weight: 700; color: #171717; white-space: nowrap; }
+.session-time-col { flex-shrink: 0; width: 110px; display: flex; flex-direction: column; align-items: flex-start; padding-top: 2px; }
+.session-time { font-size: 11px; font-weight: 700; color: #171717; white-space: nowrap; line-height: 1.5; }
+.session-end { font-weight: 500; color: #888; }
 .session-block { font-size: 10px; color: #bbb; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
 
 .session-body { flex: 1; min-width: 0; }
@@ -587,7 +588,7 @@ function render() {
       </div>` : `<div class="session-actions"><button class="dismiss-x" onclick="dismissSession('${buildSavedItem(ev,activeDay).id}')" title="Hide this session">×</button></div>`;
       html += `<div class="session-card ${ev.cls || 'gen'}">
         <div class="session-time-col">
-          <div class="session-time">${ev.time||'TBD'}</div>
+          <div class="session-time">${ev.time||'TBD'}${ev.endTime ? `<span class="session-end"> – ${ev.endTime}</span>` : ''}</div>
         </div>
         <div class="session-body">
           <div class="session-venue">${ev.venue||''}</div>
