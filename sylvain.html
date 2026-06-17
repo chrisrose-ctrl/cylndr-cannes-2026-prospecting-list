@@ -348,7 +348,7 @@ function renderDay(day) {
   let lastSlot = 15;
   SLOTS.forEach((slot, i) => {
     const sv = savedMap[day.key + ':' + i] || [];
-    if (sv.length > 0) lastSlot = i;
+    if (sv.length > 0) lastSlot = Math.max(lastSlot, i);
   });
 
   SLOTS.forEach((slot, i) => {

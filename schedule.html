@@ -400,12 +400,12 @@ function renderDay(day) {
 
   const savedMap = savedByDayAndSlot();
 
-  // Find last slot with content to hide trailing empty rows (show through 11 PM)
+  // Always show through 11 PM (slot 15); extend further if content runs later
   let lastSlot = 15;
   SLOTS.forEach((slot, i) => {
     const d = DATA[day.key].slots[i] || {};
     const sv = savedMap[day.key + ':' + i] || [];
-    if ((d.activity && d.activity.length > 0) || sv.length > 0) lastSlot = i;
+    if ((d.activity && d.activity.length > 0) || sv.length > 0) lastSlot = Math.max(lastSlot, i);
   });
 
   SLOTS.forEach((slot, i) => {
