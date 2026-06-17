@@ -401,7 +401,7 @@ function renderDay(day) {
   const savedMap = savedByDayAndSlot();
 
   // Find last slot with content to hide trailing empty rows
-  let lastSlot = 9;
+  let lastSlot = 15;
   SLOTS.forEach((slot, i) => {
     const d = DATA[day.key].slots[i] || {};
     const sv = savedMap[day.key + ':' + i] || [];
