@@ -81,6 +81,8 @@ table.schedule tr.has-event .activity li { color: #171717; font-weight: 500; }
 .saved-item .body .meta { color: #888; font-size: 11px; }
 .saved-item .remove { background: none; border: none; color: #aaa; cursor: pointer; font-size: 14px; padding: 0 4px; line-height: 1; }
 .saved-item .remove:hover { color: #b91c1c; }
+.item-remove { background: none; border: none; color: #ccc; cursor: pointer; font-size: 13px; padding: 0 2px; line-height: 1.3; flex-shrink: 0; margin-top: 1px; }
+.item-remove:hover { color: #b91c1c; }
 .saved-item .cal-trigger { background: none; border: none; color: #888; cursor: pointer; font-size: 12px; padding: 0 4px; line-height: 1; }
 .saved-item .cal-trigger:hover { color: #171717; }
 .cal-pop { position: relative; }
@@ -152,6 +154,7 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
 <div class="saved-banner" id="saved-banner">
   <div class="saved-banner-inner">
     <span>26 scheduled events · Jun 21–25</span>
+    <button id="restore-btn" onclick="restoreAll()" style="display:none">Restore hidden</button>
   </div>
 </div>
 
@@ -498,6 +501,34 @@ document.addEventListener('click', e => {
   }
 });
 
+// ---- Hidden item tracking ----
+const HIDDEN_KEY = 'cylndr.cannes.sylvain.hidden';
+function getHiddenIds() {
+  try { return new Set(JSON.parse(localStorage.getItem(HIDDEN_KEY) || '[]')); }
+  catch(e) { return new Set(); }
+}
+function hideItem(id) {
+  const s = getHiddenIds(); s.add(id);
+  localStorage.setItem(HIDDEN_KEY, JSON.stringify([...s]));
+  rerender();
+}
+function restoreAll() {
+  localStorage.removeItem(HIDDEN_KEY);
+  rerender();
+}
+function updateHiddenBanner() {
+  const n = getHiddenIds().size;
+  const btn = document.getElementById('restore-btn');
+  if (btn) btn.style.display = n > 0 ? '' : 'none';
+}
+function rerender() {
+  mainEl.innerHTML = '';
+  DAYS.forEach(day => mainEl.appendChild(renderDay(day)));
+  const active = document.querySelector('.day-tabs button.active');
+  if (active) setActive(active.dataset.day);
+  updateHiddenBanner();
+}
+
 // Group all scheduled events by dayKey + slot index
 function savedByDayAndSlot() {
   const out = {};
@@ -525,6 +556,7 @@ function renderDay(day) {
   const tbody = table.querySelector('tbody');
 
   const savedMap = savedByDayAndSlot();
+  const hidden = getHiddenIds();
 
   // Find last slot with content to hide trailing empty rows
   let lastSlot = 15;
@@ -535,8 +567,9 @@ function renderDay(day) {
 
   SLOTS.forEach((slot, i) => {
     if (i > lastSlot + 1) return;
-    const savedForSlot = savedMap[day.key + ':' + i] || [];
-    const hasSaved = savedForSlot.length > 0;
+    const allSaved = savedMap[day.key + ':' + i] || [];
+    const visibleSaved = allSaved.filter(item => !hidden.has(item.id));
+    const hasSaved = visibleSaved.length > 0;
     const tr = document.createElement('tr');
     if (slot.evening) tr.classList.add('evening');
     if (hasSaved) tr.classList.add('has-saved');
@@ -550,7 +583,7 @@ function renderDay(day) {
     }
     if (hasSaved) {
       const sUl = document.createElement('ul'); sUl.className = 'saved-list';
-      savedForSlot.forEach(item => {
+      visibleSaved.forEach(item => {
         const li = document.createElement('li'); li.className = 'saved-item';
         const meta = [item.time, item.venue].filter(Boolean).join(' · ');
         const people = item.people ? `<div class="meta">${item.people}</div>` : '';
@@ -567,7 +600,8 @@ function renderDay(day) {
               <a href="${outlookUrlFor(item)}" target="_blank" rel="noopener">Outlook</a>
               <a href="${icsUriFor(item)}" download="cannes-${item.id}.ics">Apple / .ics</a>
             </div>
-          </div>`;
+          </div>
+          <button class="item-remove" title="Hide" onclick="hideItem('${item.id}')">✕</button>`;
         sUl.appendChild(li);
       });
       tdAct.appendChild(sUl);
@@ -603,6 +637,7 @@ buildTabs();
 const today = new Date().toISOString().slice(0, 10);
 const match = DAYS.find(d => d.date === today);
 setActive(match ? match.key : 'd3');
+updateHiddenBanner();
 
 (function setupSubscribe() {
   const icsPath = 'sylvain.ics';
