@@ -200,6 +200,10 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; di
 
 // Sessions per day (time-sorted within each day)
 const CAL_DATA = {
+  sun: [
+    {time:'8:00 AM', endTime:'8:00 PM', venue:'Palais des Festivals (Registration Desk)', session:'Badge Collection — pre-registration open 8 AM–8 PM. Bring ID + barcode email. Walk-up fee applies from today.', people:'', cls:''},
+    {time:'7:00 PM', endTime:'9:00 PM', venue:'WACL Empower Café (Esplanade de Pantiero)', session:'Adweek House Kickoff Soirée — pre-festival opening reception (7–9 PM). Hosted by Adweek x Cint, Codeword, Screenvision & Tatari. Mix, mingle, rosé.', people:'', cls:'adj'},
+  ],
   mon: [
     {time:'8:30 AM', venue:'CAN Boat (Jetée Albert Edouard)', session:'CAN Boat open — light breakfast, workspace & 1:1 meetings', people:'', cls:'can'},
     {time:'2:30 PM', venue:'CAN Boat (Jetée Albert Edouard)', session:'CAN Boat open — workspace & 1:1 meetings', people:'', cls:'can'},
@@ -213,7 +217,7 @@ const CAL_DATA = {
     {time:'12:00 PM', venue:'Brands&Culture Villa', session:'The Cultural Edge — brand culture panel (12–3 PM)', people:'Crossmedia · Kepler · Thinkingbox', cls:'adj'},
     {time:'3:00 PM',  venue:'Brand Innovators Showcase Stage', session:'Lessons, Wins and What\'s Next for AI', people:'', cls:''},
     {time:'3:00 PM',  venue:'Inkwell Beach Cannes', session:'Inkwell Beach Cannes 2026 — full week access (Jun 22–26)', people:'', cls:''},
-    {time:'5:00 PM',  venue:'Ad Age / The List Lounge', session:'The List Evening Opener — members only (5–6 PM)', people:'', cls:''},
+    {time:'5:00 PM', endTime:'6:00 PM', venue:'Ad Age / The List Lounge', session:'The List Evening Opener — members only (5–6 PM)', people:'', cls:''},
     {time:'7:00 PM',  venue:'Le Cirque', session:'Digiday Brand Leaders Dinner (apply to attend)', people:'', cls:''},
   ],
   tue: [
@@ -268,15 +272,15 @@ const CAL_DATA = {
     {time:'2:00 PM',  venue:'Brands&Culture Villa', session:'What If Earned Is the Most Underleveraged Growth Driver?', people:'Tamika Young (Hinge CMCO)', cls:'adj'},
     {time:'2:45 PM',  venue:'Brands&Culture Villa', session:'Keeping It Human: Influencer Marketing in the Age of AI', people:'Ekta Chopra (e.l.f. Beauty CTAIO) · Monica Caponigro (Bobbie MD)', cls:'adj'},
     {time:'2:00 PM',  venue:'DEPT Secret Garden', session:'The human multiplier: why leadership is the real AI advantage', people:'Erin Chin (Logitech CMO) · Scott Zalaznik (BLACKROLL CEO)', cls:'fit'},
-    {time:'2:00 PM',  venue:'FT Teahouse (Nikkei, 11 Rue des Belges)', session:'FT Sessions at Cannes Lions — Senior Marketers & Brand Leaders (2–4:40 PM)', people:'', cls:''},
+    {time:'2:00 PM', endTime:'4:40 PM', venue:'FT Teahouse (Nikkei, 11 Rue des Belges)', session:'FT Sessions at Cannes Lions — Senior Marketers & Brand Leaders (2–4:40 PM)', people:'', cls:''},
     {time:'3:30 PM',  venue:'FQ Beach (Female Quotient Equality Lounge)', session:'Beyond the Purchase: Building Loyalty for Every Generation', people:'Kelly Mahoney (Ulta Beauty CMO)', cls:'adj'},
     {time:'3:40 PM',  venue:'Brand Innovators Beach Stage', session:'Agents, Signals, and the Self-Driving Funnel', people:'Lindsey Slaby (Sunday Dinner) — KEY RELATIONSHIP', cls:'key'},
     {time:'3:15 PM',  venue:'Brands&Culture Villa', session:'The Long Game: Measuring Cultural Impact the Way Gaming Brands Do', people:'Andrea Garabedian (Amazon/Twitch Global Director) · Charlie Villiers (EA SPORTS FC Sr Director Franchise Marketing)', cls:''},
     {time:'4:00 PM',  venue:'Brands&Culture Villa', session:'Culture in the Making: Where AI Helps — and Human Judgment Still Wins', people:'Shannon Womack (Delta Air Lines Head of Global Brand & Creative) · Matt Watson (PepsiCo CCO)', cls:'adj'},
     {time:'4:30 PM',  venue:'Brands&Culture Villa', session:'Scale vs Context: Build a Global Brand Through Local Relevance', people:'Danielle Jin (Visa SVP CMO Asia Pacific) · Anna Engel (McDonald\'s Director Brand Relevance)', cls:''},
     {time:'4:00 PM',  venue:'DEPT Secret Garden', session:'How AI is helping keep loved ones safe from gun violence', people:'Laurie Keith (Ad Council) · Jennifer Kattula (Microsoft Advertising)', cls:''},
-    {time:'5:30 PM',  venue:'Ad Age / The List Lounge (Lawn at Mondrian)', session:'Cannes Lawn Party (invite only) — 5:30–7:30 PM', people:'', cls:''},
-    {time:'6:30 PM',  venue:'Campaign Party (Carlton Beach)', session:'Campaign Party — invite only (6:30–9:30 PM)', people:'', cls:'key'},
+    {time:'5:30 PM', endTime:'7:30 PM', venue:'Ad Age / The List Lounge (Lawn at Mondrian)', session:'Cannes Lawn Party (invite only) — 5:30–7:30 PM', people:'', cls:''},
+    {time:'6:30 PM', endTime:'9:30 PM', venue:'Campaign Party (Carlton Beach)', session:'Campaign Party — invite only (6:30–9:30 PM)', people:'', cls:'key'},
     {time:'7:00 PM',  venue:'Le Mady', session:'Digiday Marketing Leaders Dinner (apply to attend)', people:'', cls:''},
     {time:'7:00 PM',  venue:'DEPT Secret Garden', session:'Future Club Dinner × WFA (invite only)', people:'', cls:''},
   ],
@@ -284,7 +288,7 @@ const CAL_DATA = {
     {time:'8:30 AM', venue:'CAN Boat (Jetée Albert Edouard)', session:'CAN Boat open — light breakfast, workspace & 1:1 meetings (main deck only)', people:'', cls:''},
     {time:'1:00 PM', venue:'CAN Boat (Jetée Albert Edouard)', session:'CAN Boat open — workspace & 1:1 meetings', people:'', cls:''},
     {time:'10:00 PM',venue:'CAN Boat (Jetée Albert Edouard)', session:'CAN After Dark — cocktails, popcorn & charcuterie under the stars', people:'', cls:''},
-    {time:'9:00 AM',  venue:'Ad Age The List Lounge', session:'Ad Age The List Closing Breakfast — members only (9–10:30 AM)', people:'', cls:''},
+    {time:'9:00 AM', endTime:'10:30 AM', venue:'Ad Age The List Lounge', session:'Ad Age The List Closing Breakfast — members only (9–10:30 AM)', people:'', cls:''},
     {time:'9:30 AM',  venue:'DEPT Secret Garden', session:'Running Club with Webby Awards', people:'', cls:''},
     {time:'9:30 AM',  venue:'FQ Beach (Female Quotient Equality Lounge)', session:'The Human Advantage: Creativity in the Age of AI', people:'Ekta Chopra (e.l.f. Beauty CTAIO)', cls:'adj'},
     {time:'10:30 AM', venue:'DEPT Secret Garden', session:'You Bought the AI. Where\'s the Growth?', people:'Raji Behal (Klarna Head of W&S Europe)', cls:'adj'},
@@ -300,7 +304,7 @@ const CAL_DATA = {
     {time:'4:00 PM',  venue:'FQ Beach (Female Quotient Equality Lounge)', session:'Momentum Makers: Driving Growth Forward', people:'Krissy Cela (Oner Active Co-Founder & Creative Director) · Durana Elmi (Cymbiotika Co-Founder)', cls:'fit'},
     {time:'4:00 PM',  venue:'FT Teahouse (Nikkei, 11 Rue des Belges)', session:'FT: Driving the Future of Marketing — Drinks & Networking', people:'Ellie Norman (Formula E CMO)', cls:''},
     {time:'4:15 PM',  venue:'DEPT Secret Garden', session:'afriCANNES Fireside Chat', people:'Kojo Marfo (My Runway Group Founder) · Kofi Turkson (My Runway Group COO)', cls:''},
-    {time:'4:35 PM',  venue:'DEPT Secret Garden', session:'afriCANNES × DEPT Closing Cocktail Party (open)', people:'', cls:''},
+    {time:'4:35 PM', endTime:'7:00 PM', venue:'DEPT Secret Garden', session:'afriCANNES × DEPT Closing Cocktail Party (open)', people:'', cls:''},
     {time:'5:00 PM',  venue:'RTL Beach', session:'ACT Responsible Tributes Celebration', people:'', cls:''},
   ],
   fri: [
@@ -341,6 +345,7 @@ let currentFilter = 'all';
 
 // ---- SCHEDULE / SAVE HELPERS ----
 const DAY_INFO = {
+  sun: { key:'d2', date:'2026-06-21', label:'Sun Jun 21' },
   mon: { key:'d3', date:'2026-06-22', label:'Mon Jun 22' },
   tue: { key:'d4', date:'2026-06-23', label:'Tue Jun 23' },
   wed: { key:'d5', date:'2026-06-24', label:'Wed Jun 24' },
@@ -374,11 +379,13 @@ function pad(n) { return n < 10 ? '0' + n : String(n); }
 
 function buildSavedItem(ev, day) {
   const { hour, minute } = parseTime(ev.time);
+  const endParsed = ev.endTime ? parseTime(ev.endTime) : { hour: hour + 1, minute };
   const info = DAY_INFO[day];
   return {
     id: btoa(unescape(encodeURIComponent(day + '|' + ev.session + '|' + (ev.venue||'') + '|' + (ev.time||'')))).slice(0, 24),
     dayKey: info.key, date: info.date, slot: slotIndex(hour), hour, minute,
-    time: ev.time || '', venue: ev.venue || '', session: ev.session,
+    endHour: endParsed.hour, endMinute: endParsed.minute,
+    time: ev.time || '', endTime: ev.endTime || '', venue: ev.venue || '', session: ev.session,
     people: ev.people || '', cls: ev.cls || '',
   };
 }
@@ -468,8 +475,7 @@ function fmtForCal(date, hour, minute) {
 }
 function gcalUrl(item) {
   const start = fmtForCal(item.date, item.hour, item.minute);
-  const eh = item.hour + 1; const em = item.minute;
-  const end = fmtForCal(item.date, eh, em);
+  const end = fmtForCal(item.date, item.endHour ?? item.hour + 1, item.endMinute ?? item.minute);
   const title = `${item.session}${item.venue?' @ '+item.venue:''}`;
   const p = new URLSearchParams({action:'TEMPLATE',text:title,dates:`${start}/${end}`,details:item.people||'',location:item.venue||'Cannes, France',ctz:'Europe/Paris'});
   return 'https://calendar.google.com/calendar/render?' + p;
@@ -477,14 +483,14 @@ function gcalUrl(item) {
 function outlookUrl(item) {
   const [Y,M,D] = item.date.split('-');
   const s = `${Y}-${M}-${D}T${pad(item.hour)}:${pad(item.minute)}:00`;
-  const e = `${Y}-${M}-${D}T${pad(item.hour+1)}:${pad(item.minute)}:00`;
+  const e = `${Y}-${M}-${D}T${pad(item.endHour ?? item.hour+1)}:${pad(item.endMinute ?? item.minute)}:00`;
   const title = `${item.session}${item.venue?' @ '+item.venue:''}`;
   const p = new URLSearchParams({path:'/calendar/action/compose',rru:'addevent',subject:title,body:item.people||'',location:item.venue||'Cannes',startdt:s,enddt:e});
   return 'https://outlook.live.com/calendar/0/deeplink/compose?' + p;
 }
 function icsDataUri(item) {
   const start = fmtForCal(item.date, item.hour, item.minute);
-  const end   = fmtForCal(item.date, item.hour+1, item.minute);
+  const end   = fmtForCal(item.date, item.endHour ?? item.hour+1, item.endMinute ?? item.minute);
   const title = `${item.session}${item.venue?' @ '+item.venue:''}`;
   const esc = s => String(s).replace(/[\\,;]/g,'\\$&').replace(/\n/g,'\\n');
   const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//CYLNDR//Cannes2026//EN','BEGIN:VEVENT',
