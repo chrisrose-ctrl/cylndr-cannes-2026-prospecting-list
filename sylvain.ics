@@ -1,0 +1,290 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//CYLNDR//Cannes2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:CYLNDR × Cannes 2026 — Sylvain Tron
+X-WR-CALDESC:Sylvain Tron's itinerary for Cannes Lions 2026 (Jun 21–25)
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+
+BEGIN:VTIMEZONE
+TZID:Europe/Paris
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+
+BEGIN:VEVENT
+UID:sylvain-sun-captains-table@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260621T210000
+DTEND;TZID=Europe/Paris:20260621T230000
+SUMMARY:The Captain's Table: Private Dinner on the Riviera
+LOCATION:CAN Flagship (Jetée Albert Edouard\, Port de Cannes)
+DESCRIPTION:The Captain's Table: Private Dinner on the Riviera (9–11 PM CEST). Accepted — note any food allergies in advance.\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-mon-can-breakfast@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T083000
+DTEND;TZID=Europe/Paris:20260622T113000
+SUMMARY:CAN Boat open — light breakfast\, workspace & 1:1 meetings
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:CAN Boat open — light breakfast\, workspace & 1:1 meetings\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-mon-hannah-bowler@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T153000
+DTEND;TZID=Europe/Paris:20260622T170000
+SUMMARY:CAN Boat — Hannah Bowler on board
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:Hannah Bowler (Adweek / The Subthread\, freelance journalist)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-mon-rose-riviera@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T170000
+DTEND;TZID=Europe/Paris:20260622T193000
+SUMMARY:Rose on the Riviera — networking (5–7:30 PM)
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:Rose on the Riviera — networking\, agencies bring partners (5–7:30 PM)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-mon-chloe-markowicz@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T174500
+DTEND;TZID=Europe/Paris:20260622T193000
+SUMMARY:CAN Boat — Chloe Markowicz on board
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:Chloe Markowicz (Contagious)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-mon-after-dark@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T220000
+DTEND;TZID=Europe/Paris:20260622T230000
+SUMMARY:CAN After Dark — cocktails\, popcorn & charcuterie under the stars
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:CAN After Dark — cocktails\, popcorn & charcuterie under the stars (10 PM–12:30 AM)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-tue-can-breakfast@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T083000
+DTEND;TZID=Europe/Paris:20260623T113000
+SUMMARY:CAN Boat open — light breakfast\, workspace & 1:1 meetings
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:CAN Boat open — light breakfast\, workspace & 1:1 meetings (main deck only)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-tue-campaign-house@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T090000
+DTEND;TZID=Europe/Paris:20260623T103000
+SUMMARY:Campaign: How Brands & Agencies Will Win the AI Investment Race
+LOCATION:Campaign House (Canopy by Hilton)
+DESCRIPTION:Campaign & Marketing Week: How Brands and Agencies Will Win the AI Investment Race (9–10:30 AM) — registered\, reminder received\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-tue-uta-beach@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T100000
+DTEND;TZID=Europe/Paris:20260623T110000
+SUMMARY:UTA Beach Executive Salon — Clicks Don't Pay the Bills
+LOCATION:UTA Beach (Palais des Festivals)
+DESCRIPTION:UTA Beach Executive Salon — Clicks Don't Pay the Bills (10–11 AM)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:pinned-shots-podcast@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T130000
+DTEND;TZID=Europe/Paris:20260623T140000
+SUMMARY:shots! Podcast Recording
+LOCATION:shots! — Cannes
+DESCRIPTION:shots! Podcast Recording\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:pinned-famous-for-something@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T123000
+DTEND;TZID=Europe/Paris:20260623T140000
+SUMMARY:Famous for Something: A Private Conversation on the Riviera
+LOCATION:CAN Boat (Molly Malone) — Jetée Albert Edouard
+DESCRIPTION:Famous for Something: A Private Conversation on the Riviera\n\nNBZ + Cheil Agency Network · Invitation-only · Cocktails & hors d'oeuvres\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-tue-paige-grossman@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T140000
+DTEND;TZID=Europe/Paris:20260623T143000
+SUMMARY:Culture Lab Q&A: Live from Cannes
+LOCATION:Brands&Culture Villa
+DESCRIPTION:Culture Lab Q&A: Live from Cannes\n\nPaige Grossman (Ancestry VP Global Brand & Creative)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-tue-yasmin-oneal@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T143500
+DTEND;TZID=Europe/Paris:20260623T150500
+SUMMARY:Anti-Slop\, Pro-Humanity: Brands That Stand Out
+LOCATION:Brands&Culture Villa
+DESCRIPTION:Anti-Slop\, Pro-Humanity: Brands That Stand Out\n\nYasmin O'Neal (DECIEM / The Ordinary Global Brand Senior Director)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-tue-ali-payne@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T151000
+DTEND;TZID=Europe/Paris:20260623T161000
+SUMMARY:From Hype to Habit: Gen Z and the Mega-Sports Moment
+LOCATION:Brands&Culture Villa
+DESCRIPTION:From Hype to Habit: Gen Z and the Mega-Sports Moment\n\nAli Payne (Heineken USA CMO) · Ricardo Aspiazu (Verizon SVP Creative & Brand Design)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-tue-catherine-ferdon@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T154500
+DTEND;TZID=Europe/Paris:20260623T164500
+SUMMARY:Culturally Disruptive by Nature
+LOCATION:Brands&Culture Villa
+DESCRIPTION:Culturally Disruptive by Nature\n\nCatherine Ferdon (Coinbase CMO) · Sona Iliffe-Moon (Yahoo CCO) · Alex Weller (Patagonia Global VP Creative)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-tue-craft-cocktails@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T160000
+DTEND;TZID=Europe/Paris:20260623T180000
+SUMMARY:Craft & Cocktails: Long Form Content for Short Attention Spans
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:Craft & Cocktails: Long Form Content for Short Attention Spans (4–6 PM) — Clio Awards × Cheil Agency Network × McKinney × Iris × Barbarian. CCOs on why long-form is winning.\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-tue-sips-croisette@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T183000
+DTEND;TZID=Europe/Paris:20260623T200000
+SUMMARY:Sips on the Croisette — Cheil Agency Network golden hour
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:Sips on the Croisette — Cheil Agency Network golden hour cocktails (6:30–8 PM). Invite only.\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-wed-can-breakfast@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T083000
+DTEND;TZID=Europe/Paris:20260624T110000
+SUMMARY:CAN Boat open — light breakfast\, workspace & 1:1 meetings
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:CAN Boat open — light breakfast\, workspace & 1:1 meetings\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-wed-teads-yacht@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T113000
+DTEND;TZID=Europe/Paris:20260624T123000
+SUMMARY:"She Runs It\, He Gets It" — Teads Yacht
+LOCATION:Teads Yacht (Vieux-Port\, Cannes)
+DESCRIPTION:"She Runs It\, He Gets It" — Teads Yacht (11:30 AM–12:30 PM)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-wed-adaptive-brands@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T144500
+DTEND;TZID=Europe/Paris:20260624T154500
+SUMMARY:The Future Belongs to Adaptive Brands
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:The Future Belongs to Adaptive Brands (2:45–3:45 PM) — Barbarian × New Generation × Genspark AI. AI\, agentic internet & the future of brand experience.\n\nLia Haberman (ICYMI\, moderator) · Wen Sang (Genspark AI Co-Founder & COO) · Jeff Blackman (Barbarian Managing Director) · Jonathan Arena (New Generation Co-Founder)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-wed-shannon-womack@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T160000
+DTEND;TZID=Europe/Paris:20260624T163000
+SUMMARY:Culture in the Making: Where AI Helps — and Human Judgment Still Wins
+LOCATION:Brands&Culture Villa
+DESCRIPTION:Culture in the Making: Where AI Helps — and Human Judgment Still Wins\n\nShannon Womack (Delta Air Lines Head of Global Brand & Creative) · Matt Watson (PepsiCo CCO)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-wed-cote-azur@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T170000
+DTEND;TZID=Europe/Paris:20260624T193000
+SUMMARY:Côte d'Azur Cocktail Event — networking (5–7:30 PM)
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:Côte d'Azur Cocktail Event — networking (agencies bring partners\, 5–7:30 PM)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-wed-adage-lawn@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T173000
+DTEND;TZID=Europe/Paris:20260624T193000
+SUMMARY:Ad Age Cannes Lawn Party (invite only)
+LOCATION:Ad Age / The List Lounge (Lawn at Mondrian)
+DESCRIPTION:Cannes Lawn Party (invite only) — 5:30–7:30 PM\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-wed-campaign-party@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T183000
+DTEND;TZID=Europe/Paris:20260624T213000
+SUMMARY:Campaign Party (invite only)
+LOCATION:Campaign Party (Carlton Beach)
+DESCRIPTION:Campaign Party — invite only (6:30–9:30 PM)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-wed-after-dark@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T220000
+DTEND;TZID=Europe/Paris:20260624T230000
+SUMMARY:CAN After Dark — cocktails\, popcorn & charcuterie under the stars
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:CAN After Dark — cocktails\, popcorn & charcuterie under the stars (10 PM–12:30 AM)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:sylvain-thu-can-breakfast@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260625T083000
+DTEND;TZID=Europe/Paris:20260625T113000
+SUMMARY:CAN Boat open — light breakfast\, workspace & 1:1 meetings
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:CAN Boat open — light breakfast\, workspace & 1:1 meetings (main deck only)\n\nSylvain Tron · CYLNDR × Cannes 2026
+END:VEVENT
+
+END:VCALENDAR

@@ -149,10 +149,9 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
   <p class="page-sub">Chris Rose · Cannes Lions 2026 · June 20–26. Your confirmed itinerary — events, travel, and sessions saved from Where to Be.</p>
 </div>
 
-<div class="saved-banner" id="saved-banner" style="display:none">
+<div class="saved-banner" id="saved-banner">
   <div class="saved-banner-inner">
-    <span><span id="saved-count">0</span> events added from the <a href="calendar.html">Where to Be</a> · stored in this browser only</span>
-    <button onclick="clearAllSaved()">Clear all added</button>
+    <span>30 events from <a href="calendar.html">Where to Be</a> · Jun 21–25</span>
   </div>
 </div>
 
@@ -162,7 +161,7 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
 <div class="sub-section">
   <div class="sub-card">
     <div class="sub-title">Subscribe in your calendar <span class="pill-set">SET ONCE</span></div>
-    <div class="sub-sub">Subscribe and the events below show up in Google Calendar, Apple Calendar, or Outlook on every device — and update whenever this schedule changes. Locally-saved items from the Calendar tab are <em>not</em> included in the subscription (they live in your browser); use the per-row buttons for those.</div>
+    <div class="sub-sub">Subscribe and the events below show up in Google Calendar, Apple Calendar, or Outlook on every device — and update whenever this schedule changes.</div>
     <div class="sub-actions">
       <a class="sub-btn" id="apple-sub" href="#"><span>🍎</span> Add to Apple Calendar</a>
       <a class="sub-btn secondary" id="google-sub" href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl" target="_blank" rel="noopener"><span>📆</span> Open Google "From URL"</a>
@@ -267,37 +266,144 @@ DATA.d6.slots[7].activity  = ["Chris's Travel · Departure · NCE → CDG 3:10 P
 
 document.getElementById('last-updated').textContent = 'Updated ' + DATA.__lastUpdated;
 
-// ---- Saved items from Calendar tab ----
+// ---- Saved events from Where to Be — hardcoded, visible to anyone with the link ----
 
-function getSavedItems() {
-  try { return JSON.parse(localStorage.getItem('cylndr.cannes.schedule') || '[]'); }
-  catch (e) { return []; }
-}
-
-function setSavedItems(arr) {
-  localStorage.setItem('cylndr.cannes.schedule', JSON.stringify(arr));
-  updateBanner();
-}
-
-function removeSavedItem(id) {
-  const next = getSavedItems().filter(x => x.id !== id);
-  setSavedItems(next);
-  rerender();
-}
-
-function clearAllSaved() {
-  if (!confirm('Remove all events added from the Calendar tab? (Does not affect your personal calendar.)')) return;
-  localStorage.removeItem('cylndr.cannes.schedule');
-  updateBanner();
-  rerender();
-}
-
-function updateBanner() {
-  const saved = getSavedItems();
-  const b = document.getElementById('saved-banner');
-  document.getElementById('saved-count').textContent = saved.length;
-  b.style.display = saved.length > 0 ? '' : 'none';
-}
+const PINNED = [
+  // Sunday Jun 21
+  { id:'chris-sun-kickoff-cocktails', dayKey:'d2', slot:9, hour:17, minute:30, endHour:20, endMinute:30,
+    date:'2026-06-21', time:'5:30 PM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:"CAN@Cannes Kick Off Cocktails (5:30–8:30 PM CEST). Organized by Desiree Pomales." },
+  { id:'chris-sun-adweek-soiree', dayKey:'d2', slot:11, hour:19, minute:0, endHour:21, endMinute:0,
+    date:'2026-06-21', time:'7:00 PM',
+    venue:'Esplanade de Pantiero, Cannes',
+    session:'ADWEEK Annual Kickoff Soirée (7–9 PM) — connecting brand-side leaders at Cannes. Invite required.' },
+  { id:'chris-sun-captains-table', dayKey:'d2', slot:13, hour:21, minute:0, endHour:23, endMinute:0,
+    date:'2026-06-21', time:'9:00 PM',
+    venue:'CAN Flagship (Jetée Albert Edouard, Port de Cannes)',
+    session:"The Captain's Table: Private Dinner on the Riviera (9–11 PM CEST). Accepted — note any food allergies in advance." },
+  // Monday Jun 22
+  { id:'chris-mon-can-breakfast', dayKey:'d3', slot:0, hour:8, minute:30, endHour:11, endMinute:30,
+    date:'2026-06-22', time:'8:30 AM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:'CAN Boat open — light breakfast, workspace & 1:1 meetings' },
+  { id:'chris-mon-human-edge', dayKey:'d3', slot:3, hour:11, minute:15, endHour:12, endMinute:15,
+    date:'2026-06-22', time:'11:15 AM',
+    venue:'Adweek House (Le Majestic Hotel)',
+    session:'The Human Edge of Marketing',
+    people:'Tristan Pineiro (Grindr CMO)' },
+  { id:'chris-mon-bc-villa', dayKey:'d3', slot:4, hour:12, minute:0, endHour:15, endMinute:0,
+    date:'2026-06-22', time:'12:00 PM',
+    venue:'Brands&Culture Villa',
+    session:'Brands & Culture Villa — Monday opening sessions (noon–3 PM)' },
+  { id:'chris-mon-hannah-bowler', dayKey:'d3', slot:7, hour:15, minute:30, endHour:16, endMinute:30,
+    date:'2026-06-22', time:'3:30 PM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:'CAN Boat — Hannah Bowler on board',
+    people:'Hannah Bowler (Adweek / The Subthread, freelance journalist)' },
+  { id:'chris-mon-rose-riviera', dayKey:'d3', slot:9, hour:17, minute:0, endHour:19, endMinute:30,
+    date:'2026-06-22', time:'5:00 PM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:'Rose on the Riviera — networking, agencies bring partners (5–7:30 PM)' },
+  { id:'chris-mon-chloe-markowicz', dayKey:'d3', slot:9, hour:17, minute:45, endHour:19, endMinute:30,
+    date:'2026-06-22', time:'5:45 PM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:'CAN Boat — Chloe Markowicz on board',
+    people:'Chloe Markowicz (Contagious)' },
+  { id:'chris-mon-campaign-fireside', dayKey:'d3', slot:10, hour:18, minute:0, endHour:19, endMinute:0,
+    date:'2026-06-22', time:'6:00 PM',
+    venue:'Campaign House (Canopy by Hilton)',
+    session:'Campaign House: Fireside Chat — Saylor & Hilton' },
+  { id:'chris-mon-after-dark', dayKey:'d3', slot:14, hour:22, minute:0, endHour:23, endMinute:0,
+    date:'2026-06-22', time:'10:00 PM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:'CAN After Dark — cocktails, popcorn & charcuterie under the stars (10 PM–12:30 AM)' },
+  // Tuesday Jun 23
+  { id:'chris-tue-can-breakfast', dayKey:'d4', slot:0, hour:8, minute:30, endHour:11, endMinute:30,
+    date:'2026-06-23', time:'8:30 AM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:'CAN Boat open — light breakfast, workspace & 1:1 meetings (main deck only)' },
+  { id:'chris-tue-roi-relevance', dayKey:'d4', slot:3, hour:11, minute:45, endHour:12, endMinute:15,
+    date:'2026-06-23', time:'11:45 AM',
+    venue:'Brands&Culture Villa',
+    session:"The ROI of Relevance: Quantifying Culture's Business Impact",
+    people:'Candace Payne (Sephora VP Brand Marketing)' },
+  { id:'chris-tue-paige-grossman', dayKey:'d4', slot:6, hour:14, minute:0, endHour:15, endMinute:0,
+    date:'2026-06-23', time:'2:00 PM',
+    venue:'Brands&Culture Villa',
+    session:'Culture Lab Q&A: Live from Cannes',
+    people:'Paige Grossman (Ancestry VP Global Brand & Creative)' },
+  { id:'chris-tue-yasmin-oneal', dayKey:'d4', slot:6, hour:14, minute:35, endHour:15, endMinute:5,
+    date:'2026-06-23', time:'2:35 PM',
+    venue:'Brands&Culture Villa',
+    session:'Anti-Slop, Pro-Humanity: Brands That Stand Out',
+    people:"Yasmin O'Neal (DECIEM / The Ordinary Global Brand Senior Director)" },
+  { id:'chris-tue-ali-payne', dayKey:'d4', slot:7, hour:15, minute:10, endHour:16, endMinute:10,
+    date:'2026-06-23', time:'3:10 PM',
+    venue:'Brands&Culture Villa',
+    session:'From Hype to Habit: Gen Z and the Mega-Sports Moment',
+    people:'Ali Payne (Heineken USA CMO) · Ricardo Aspiazu (Verizon SVP Creative & Brand Design)' },
+  { id:'chris-tue-catherine-ferdon', dayKey:'d4', slot:7, hour:15, minute:45, endHour:16, endMinute:45,
+    date:'2026-06-23', time:'3:45 PM',
+    venue:'Brands&Culture Villa',
+    session:'Culturally Disruptive by Nature',
+    people:'Catherine Ferdon (Coinbase CMO) · Sona Iliffe-Moon (Yahoo CCO) · Alex Weller (Patagonia Global VP Creative)' },
+  { id:'chris-tue-craft-cocktails', dayKey:'d4', slot:8, hour:16, minute:0, endHour:18, endMinute:0,
+    date:'2026-06-23', time:'4:00 PM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:'Craft & Cocktails: Long Form Content for Short Attention Spans (4–6 PM) — Clio Awards × Cheil Agency Network × McKinney × Iris × Barbarian. CCOs on why long-form is winning.' },
+  { id:'chris-tue-sips-croisette', dayKey:'d4', slot:10, hour:18, minute:30, endHour:20, endMinute:0,
+    date:'2026-06-23', time:'6:30 PM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:'Sips on the Croisette — Cheil Agency Network golden hour cocktails (6:30–8 PM). Invite only.' },
+  // Wednesday Jun 24
+  { id:'chris-wed-can-breakfast', dayKey:'d5', slot:0, hour:8, minute:30, endHour:11, endMinute:0,
+    date:'2026-06-24', time:'8:30 AM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:'CAN Boat open — light breakfast, workspace & 1:1 meetings' },
+  { id:'chris-wed-bc-villa-doors', dayKey:'d5', slot:3, hour:11, minute:30, endHour:12, endMinute:30,
+    date:'2026-06-24', time:'11:30 AM',
+    venue:'Brands&Culture Villa',
+    session:'Brands & Culture Villa — doors open (11:30 AM). Wednesday programming begins.' },
+  { id:'chris-wed-business-case-irl', dayKey:'d5', slot:4, hour:12, minute:30, endHour:13, endMinute:0,
+    date:'2026-06-24', time:'12:30 PM',
+    venue:'Brands&Culture Villa',
+    session:'The Business Case for IRL: Turning Experiences into Cultural Impact',
+    people:'Tristan Pineiro (Grindr CMO) · Louisa Wee' },
+  { id:'chris-wed-adaptive-brands', dayKey:'d5', slot:6, hour:14, minute:45, endHour:15, endMinute:45,
+    date:'2026-06-24', time:'2:45 PM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:'The Future Belongs to Adaptive Brands (2:45–3:45 PM) — Barbarian × New Generation × Genspark AI. AI, agentic internet & the future of brand experience.',
+    people:'Lia Haberman (ICYMI, moderator) · Wen Sang (Genspark AI Co-Founder & COO) · Jeff Blackman (Barbarian Managing Director) · Jonathan Arena (New Generation Co-Founder)' },
+  { id:'chris-wed-kelly-mahoney', dayKey:'d5', slot:7, hour:15, minute:30, endHour:16, endMinute:30,
+    date:'2026-06-24', time:'3:30 PM',
+    venue:'Female Quotient Equality Lounge (Hotel Martinez)',
+    session:'Beyond the Purchase: Building Loyalty for Every Generation',
+    people:'Kelly Mahoney (Ulta Beauty CMO)' },
+  { id:'chris-wed-shannon-womack', dayKey:'d5', slot:8, hour:16, minute:0, endHour:16, endMinute:30,
+    date:'2026-06-24', time:'4:00 PM',
+    venue:'Brands&Culture Villa',
+    session:'Culture in the Making: Where AI Helps — and Human Judgment Still Wins',
+    people:'Shannon Womack (Delta Air Lines Head of Global Brand & Creative) · Matt Watson (PepsiCo CCO)' },
+  { id:'chris-wed-cote-azur', dayKey:'d5', slot:9, hour:17, minute:0, endHour:19, endMinute:30,
+    date:'2026-06-24', time:'5:00 PM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:"Côte d'Azur Cocktail Event — networking (agencies bring partners, 5–7:30 PM)" },
+  { id:'chris-wed-campaign-party', dayKey:'d5', slot:10, hour:18, minute:30, endHour:21, endMinute:30,
+    date:'2026-06-24', time:'6:30 PM',
+    venue:'Campaign Party (Carlton Beach)',
+    session:'Campaign Party — invite only (6:30–9:30 PM)' },
+  // Thursday Jun 25
+  { id:'chris-thu-can-breakfast', dayKey:'d6', slot:0, hour:8, minute:30, endHour:11, endMinute:30,
+    date:'2026-06-25', time:'8:30 AM',
+    venue:'CAN Boat (Jetée Albert Edouard)',
+    session:'CAN Boat open — light breakfast, workspace & 1:1 meetings (main deck only)' },
+  { id:'chris-thu-duolingo', dayKey:'d6', slot:2, hour:10, minute:30, endHour:11, endMinute:30,
+    date:'2026-06-25', time:'10:30 AM',
+    venue:'Female Quotient Equality Lounge (Hotel Martinez)',
+    session:'Culture on Cue: How Brands Show Up in Culture',
+    people:'Manu Orssaud (Duolingo CMO)' },
+];
 
 // ---- Per-item Calendar URL helpers ----
 function pad(n) { return n < 10 ? '0' + n : String(n); }
@@ -305,27 +411,31 @@ function fmtCal(date, hour, minute) {
   const [Y, M, D] = date.split('-');
   return `${Y}${M}${D}T${pad(hour)}${pad(minute)}00`;
 }
-function gcalUrlFor(item, dur = 60) {
+function endFor(item) {
+  return {
+    endH: (item.endHour !== undefined) ? item.endHour : item.hour + 1,
+    endM: (item.endMinute !== undefined) ? item.endMinute : item.minute,
+  };
+}
+function gcalUrlFor(item) {
   const start = fmtCal(item.date, item.hour, item.minute);
-  const endH = item.hour + Math.floor((item.minute + dur) / 60);
-  const endM = (item.minute + dur) % 60;
+  const { endH, endM } = endFor(item);
   const end = fmtCal(item.date, endH, endM);
   const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
-  const details = [item.people, 'Saved from CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
+  const details = [item.people, 'Chris Rose · CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
   const params = new URLSearchParams({
     action: 'TEMPLATE', text: title, dates: `${start}/${end}`,
     details, location: item.venue || 'Cannes, France', ctz: 'Europe/Paris',
   });
   return 'https://calendar.google.com/calendar/render?' + params.toString();
 }
-function outlookUrlFor(item, dur = 60) {
+function outlookUrlFor(item) {
   const [Y, M, D] = item.date.split('-');
   const startISO = `${Y}-${M}-${D}T${pad(item.hour)}:${pad(item.minute)}:00`;
-  const endH = item.hour + Math.floor((item.minute + dur) / 60);
-  const endM = (item.minute + dur) % 60;
+  const { endH, endM } = endFor(item);
   const endISO = `${Y}-${M}-${D}T${pad(endH)}:${pad(endM)}:00`;
   const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
-  const body = [item.people, 'Saved from CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
+  const body = [item.people, 'Chris Rose · CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
   const params = new URLSearchParams({
     path: '/calendar/action/compose', rru: 'addevent',
     subject: title, body, location: item.venue || 'Cannes, France',
@@ -333,13 +443,12 @@ function outlookUrlFor(item, dur = 60) {
   });
   return 'https://outlook.live.com/calendar/0/deeplink/compose?' + params.toString();
 }
-function icsUriFor(item, dur = 60) {
+function icsUriFor(item) {
   const start = fmtCal(item.date, item.hour, item.minute);
-  const endH = item.hour + Math.floor((item.minute + dur) / 60);
-  const endM = (item.minute + dur) % 60;
+  const { endH, endM } = endFor(item);
   const end = fmtCal(item.date, endH, endM);
   const title = `${item.session}${item.venue ? ' @ ' + item.venue : ''}`;
-  const desc = [item.people, 'Saved from CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
+  const desc = [item.people, 'Chris Rose · CYLNDR × Cannes 2026'].filter(Boolean).join('\n\n');
   const esc = s => String(s).replace(/[\\,;]/g, '\\$&').replace(/\n/g, '\\n');
   const ics = [
     'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//CYLNDR//Cannes2026//EN',
@@ -364,23 +473,15 @@ document.addEventListener('click', e => {
   }
 });
 
-// Group saved items by dayKey + slot index
+// Group pinned items by dayKey + slot index
 function savedByDayAndSlot() {
   const out = {};
-  getSavedItems().forEach(item => {
+  PINNED.forEach(item => {
     const key = item.dayKey + ':' + item.slot;
     if (!out[key]) out[key] = [];
-    out[key].push(item);
+    if (!out[key].some(x => x.id === item.id)) out[key].push(item);
   });
   return out;
-}
-
-function rerender() {
-  mainEl.innerHTML = '';
-  DAYS.forEach(day => mainEl.appendChild(renderDay(day)));
-  // Re-apply active state
-  const active = document.querySelector('.day-tabs button.active');
-  if (active) setActive(active.dataset.day);
 }
 
 function renderDay(day) {
@@ -449,8 +550,7 @@ function renderDay(day) {
               <a href="${outlookUrlFor(item)}" target="_blank" rel="noopener">Outlook</a>
               <a href="${icsUriFor(item)}" download="cannes-${item.id}.ics">Apple / .ics</a>
             </div>
-          </div>
-          <button class="remove" title="Remove from My Schedule" onclick="removeSavedItem('${item.id}')">✕</button>`;
+          </div>`;
         sUl.appendChild(li);
       });
       tdAct.appendChild(sUl);
@@ -486,8 +586,6 @@ buildTabs();
 const today = new Date().toISOString().slice(0, 10);
 const match = DAYS.find(d => d.date === today);
 setActive(match ? match.key : 'd2');
-
-updateBanner();
 
 // ---- Subscribe URL wiring ----
 (function setupSubscribe() {

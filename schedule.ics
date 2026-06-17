@@ -160,4 +160,294 @@ SUMMARY:Reddit Community Deli
 LOCATION:Promenade Robert Favre le Bret\, Cannes
 END:VEVENT
 
+BEGIN:VEVENT
+UID:chris-sun-kickoff-cocktails@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260621T173000
+DTEND;TZID=Europe/Paris:20260621T203000
+SUMMARY:CAN@Cannes Kick Off Cocktails (5:30–8:30 PM)
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:CAN@Cannes Kick Off Cocktails (5:30–8:30 PM CEST). Organized by Desiree Pomales.\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-sun-adweek-soiree@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260621T190000
+DTEND;TZID=Europe/Paris:20260621T210000
+SUMMARY:ADWEEK Annual Kickoff Soirée (7–9 PM)
+LOCATION:Esplanade de Pantiero\, Cannes
+DESCRIPTION:ADWEEK Annual Kickoff Soirée (7–9 PM) — connecting brand-side leaders at Cannes. Invite required.\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-sun-captains-table@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260621T210000
+DTEND;TZID=Europe/Paris:20260621T230000
+SUMMARY:The Captain's Table: Private Dinner on the Riviera
+LOCATION:CAN Flagship (Jetée Albert Edouard\, Port de Cannes)
+DESCRIPTION:The Captain's Table: Private Dinner on the Riviera (9–11 PM CEST). Accepted.\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-mon-can-breakfast@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T083000
+DTEND;TZID=Europe/Paris:20260622T113000
+SUMMARY:CAN Boat open — light breakfast\, workspace & 1:1 meetings
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:CAN Boat open — light breakfast\, workspace & 1:1 meetings\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-mon-human-edge@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T111500
+DTEND;TZID=Europe/Paris:20260622T121500
+SUMMARY:The Human Edge of Marketing
+LOCATION:Adweek House (Le Majestic Hotel)
+DESCRIPTION:The Human Edge of Marketing\n\nTristan Pineiro (Grindr CMO)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-mon-bc-villa@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T120000
+DTEND;TZID=Europe/Paris:20260622T150000
+SUMMARY:Brands & Culture Villa — Monday opening sessions
+LOCATION:Brands&Culture Villa
+DESCRIPTION:Brands & Culture Villa — Monday opening sessions (noon–3 PM)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-mon-hannah-bowler@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T153000
+DTEND;TZID=Europe/Paris:20260622T163000
+SUMMARY:CAN Boat — Hannah Bowler on board
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:Hannah Bowler (Adweek / The Subthread\, freelance journalist)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-mon-rose-riviera@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T170000
+DTEND;TZID=Europe/Paris:20260622T193000
+SUMMARY:Rose on the Riviera — networking (5–7:30 PM)
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:Rose on the Riviera — networking\, agencies bring partners (5–7:30 PM)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-mon-chloe-markowicz@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T174500
+DTEND;TZID=Europe/Paris:20260622T193000
+SUMMARY:CAN Boat — Chloe Markowicz on board
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:Chloe Markowicz (Contagious)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-mon-campaign-fireside@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T180000
+DTEND;TZID=Europe/Paris:20260622T190000
+SUMMARY:Campaign House: Fireside Chat — Saylor & Hilton
+LOCATION:Campaign House (Canopy by Hilton)
+DESCRIPTION:Campaign House: Fireside Chat — Saylor & Hilton\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-mon-after-dark@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260622T220000
+DTEND;TZID=Europe/Paris:20260622T230000
+SUMMARY:CAN After Dark — cocktails\, popcorn & charcuterie under the stars
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:CAN After Dark — cocktails\, popcorn & charcuterie under the stars (10 PM–12:30 AM)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-tue-can-breakfast@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T083000
+DTEND;TZID=Europe/Paris:20260623T113000
+SUMMARY:CAN Boat open — light breakfast\, workspace & 1:1 meetings
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:CAN Boat open — light breakfast\, workspace & 1:1 meetings (main deck only)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-tue-roi-relevance@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T114500
+DTEND;TZID=Europe/Paris:20260623T121500
+SUMMARY:The ROI of Relevance: Quantifying Culture's Business Impact
+LOCATION:Brands&Culture Villa
+DESCRIPTION:The ROI of Relevance: Quantifying Culture's Business Impact\n\nCandace Payne (Sephora VP Brand Marketing)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-tue-paige-grossman@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T140000
+DTEND;TZID=Europe/Paris:20260623T150000
+SUMMARY:Culture Lab Q&A: Live from Cannes
+LOCATION:Brands&Culture Villa
+DESCRIPTION:Culture Lab Q&A: Live from Cannes\n\nPaige Grossman (Ancestry VP Global Brand & Creative)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-tue-yasmin-oneal@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T143500
+DTEND;TZID=Europe/Paris:20260623T150500
+SUMMARY:Anti-Slop\, Pro-Humanity: Brands That Stand Out
+LOCATION:Brands&Culture Villa
+DESCRIPTION:Anti-Slop\, Pro-Humanity: Brands That Stand Out\n\nYasmin O'Neal (DECIEM / The Ordinary Global Brand Senior Director)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-tue-ali-payne@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T151000
+DTEND;TZID=Europe/Paris:20260623T161000
+SUMMARY:From Hype to Habit: Gen Z and the Mega-Sports Moment
+LOCATION:Brands&Culture Villa
+DESCRIPTION:From Hype to Habit: Gen Z and the Mega-Sports Moment\n\nAli Payne (Heineken USA CMO) · Ricardo Aspiazu (Verizon SVP Creative & Brand Design)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-tue-catherine-ferdon@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T154500
+DTEND;TZID=Europe/Paris:20260623T164500
+SUMMARY:Culturally Disruptive by Nature
+LOCATION:Brands&Culture Villa
+DESCRIPTION:Culturally Disruptive by Nature\n\nCatherine Ferdon (Coinbase CMO) · Sona Iliffe-Moon (Yahoo CCO) · Alex Weller (Patagonia Global VP Creative)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-tue-craft-cocktails@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T160000
+DTEND;TZID=Europe/Paris:20260623T180000
+SUMMARY:Craft & Cocktails: Long Form Content for Short Attention Spans
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:Craft & Cocktails: Long Form Content for Short Attention Spans (4–6 PM) — Clio Awards × Cheil Agency Network × McKinney × Iris × Barbarian.\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-tue-sips-croisette@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260623T183000
+DTEND;TZID=Europe/Paris:20260623T200000
+SUMMARY:Sips on the Croisette — Cheil Agency Network golden hour
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:Sips on the Croisette — Cheil Agency Network golden hour cocktails (6:30–8 PM). Invite only.\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-wed-can-breakfast@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T083000
+DTEND;TZID=Europe/Paris:20260624T110000
+SUMMARY:CAN Boat open — light breakfast\, workspace & 1:1 meetings
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:CAN Boat open — light breakfast\, workspace & 1:1 meetings\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-wed-bc-villa-doors@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T113000
+DTEND;TZID=Europe/Paris:20260624T123000
+SUMMARY:Brands & Culture Villa — doors open (11:30 AM)
+LOCATION:Brands&Culture Villa
+DESCRIPTION:Brands & Culture Villa — doors open (11:30 AM). Wednesday programming begins.\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-wed-business-case-irl@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T123000
+DTEND;TZID=Europe/Paris:20260624T130000
+SUMMARY:The Business Case for IRL: Turning Experiences into Cultural Impact
+LOCATION:Brands&Culture Villa
+DESCRIPTION:The Business Case for IRL: Turning Experiences into Cultural Impact\n\nTristan Pineiro (Grindr CMO) · Louisa Wee\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-wed-adaptive-brands@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T144500
+DTEND;TZID=Europe/Paris:20260624T154500
+SUMMARY:The Future Belongs to Adaptive Brands
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:The Future Belongs to Adaptive Brands (2:45–3:45 PM)\n\nLia Haberman (ICYMI\, moderator) · Wen Sang (Genspark AI) · Jeff Blackman (Barbarian MD) · Jonathan Arena (New Generation)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-wed-kelly-mahoney@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T153000
+DTEND;TZID=Europe/Paris:20260624T163000
+SUMMARY:Beyond the Purchase: Building Loyalty for Every Generation
+LOCATION:Female Quotient Equality Lounge (Hotel Martinez)
+DESCRIPTION:Beyond the Purchase: Building Loyalty for Every Generation\n\nKelly Mahoney (Ulta Beauty CMO)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-wed-shannon-womack@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T160000
+DTEND;TZID=Europe/Paris:20260624T163000
+SUMMARY:Culture in the Making: Where AI Helps — and Human Judgment Still Wins
+LOCATION:Brands&Culture Villa
+DESCRIPTION:Culture in the Making: Where AI Helps — and Human Judgment Still Wins\n\nShannon Womack (Delta Air Lines Head of Global Brand & Creative) · Matt Watson (PepsiCo CCO)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-wed-cote-azur@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T170000
+DTEND;TZID=Europe/Paris:20260624T193000
+SUMMARY:Côte d'Azur Cocktail Event — networking (5–7:30 PM)
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:Côte d'Azur Cocktail Event — networking\, agencies bring partners (5–7:30 PM)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-wed-campaign-party@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260624T183000
+DTEND;TZID=Europe/Paris:20260624T213000
+SUMMARY:Campaign Party (invite only)
+LOCATION:Campaign Party (Carlton Beach)
+DESCRIPTION:Campaign Party — invite only (6:30–9:30 PM)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-thu-can-breakfast@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260625T083000
+DTEND;TZID=Europe/Paris:20260625T113000
+SUMMARY:CAN Boat open — light breakfast\, workspace & 1:1 meetings
+LOCATION:CAN Boat (Jetée Albert Edouard)
+DESCRIPTION:CAN Boat open — light breakfast\, workspace & 1:1 meetings (main deck only)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
+BEGIN:VEVENT
+UID:chris-thu-duolingo@cylndr-cannes-2026
+DTSTAMP:20260616T120000Z
+DTSTART;TZID=Europe/Paris:20260625T103000
+DTEND;TZID=Europe/Paris:20260625T113000
+SUMMARY:Culture on Cue: How Brands Show Up in Culture
+LOCATION:Female Quotient Equality Lounge (Hotel Martinez)
+DESCRIPTION:Culture on Cue: How Brands Show Up in Culture\n\nManu Orssaud (Duolingo CMO)\n\nChris Rose · CYLNDR × Cannes 2026
+END:VEVENT
+
 END:VCALENDAR

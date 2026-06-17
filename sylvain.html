@@ -98,6 +98,23 @@ table.schedule tr.has-saved td { background: #fff8f6; }
 .saved-banner-inner button { font: inherit; font-size: 11px; padding: 4px 10px; border-radius: 4px; border: 1px solid #f8bfaa; background: #fff; color: #6b1d05; cursor: pointer; }
 .saved-banner-inner button:hover { background: #a83307; color: #fff; border-color: #a83307; }
 
+/* Subscribe section */
+.sub-section { padding: 14px 32px 0; max-width: 1100px; margin: 0 auto; }
+.sub-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px 16px; }
+.sub-title { font-size: 12px; font-weight: 700; color: #171717; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.sub-title .pill-set { font-size: 9px; padding: 2px 6px; border-radius: 3px; background: #eef2ea; color: #4a6040; letter-spacing: 0.06em; }
+.sub-sub { font-size: 12px; color: #666; margin-bottom: 12px; line-height: 1.5; }
+.sub-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.sub-btn { font: inherit; font-size: 12px; font-weight: 600; padding: 7px 12px; border-radius: 6px; border: 1px solid #171717; background: #171717; color: #fff; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.sub-btn:hover { background: #000; }
+.sub-btn.secondary { background: #fff; color: #171717; border-color: #d4d4d4; }
+.sub-btn.secondary:hover { border-color: #171717; background: #fafafa; }
+.sub-url { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; color: #555; background: #fdf9f6; padding: 6px 10px; border-radius: 4px; border: 1px solid #e5e5e5; flex: 1; min-width: 240px; user-select: all; }
+.sub-toast { font-size: 11px; color: #a83307; margin-left: 8px; opacity: 0; transition: opacity 0.2s; }
+.sub-toast.show { opacity: 1; }
+.sub-help { font-size: 11px; color: #888; margin-top: 8px; line-height: 1.5; }
+.sub-help code { font-family: ui-monospace, Menlo, monospace; background: #fdf9f6; padding: 1px 5px; border-radius: 3px; font-size: 11px; color: #171717; }
+
 footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; font-size: 11px; color: #aaa; display: flex;  flex-wrap: wrap; gap: 8px; }
 
 @media (max-width: 700px) {
@@ -140,6 +157,25 @@ footer { border-top: 1px solid #e5e5e5; background: #fff; padding: 18px 32px; fo
 
 <div class="day-tabs" id="day-tabs"></div>
 <main id="main"></main>
+
+<div class="sub-section">
+  <div class="sub-card">
+    <div class="sub-title">Subscribe in your calendar <span class="pill-set">SET ONCE</span></div>
+    <div class="sub-sub">Subscribe and Sylvain's schedule shows up in Google Calendar, Apple Calendar, or Outlook on every device — and updates whenever this schedule changes.</div>
+    <div class="sub-actions">
+      <a class="sub-btn" id="apple-sub" href="#"><span>🍎</span> Add to Apple Calendar</a>
+      <a class="sub-btn secondary" id="google-sub" href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl" target="_blank" rel="noopener"><span>📆</span> Open Google "From URL"</a>
+      <a class="sub-btn secondary" id="ics-download" href="sylvain.ics" download="cylndr-cannes-sylvain-2026.ics"><span>⬇️</span> Download .ics</a>
+      <span class="sub-url" id="sub-url-display"></span>
+      <button class="sub-btn secondary" onclick="copySubUrl()" id="copy-btn">Copy URL</button>
+      <span class="sub-toast" id="copy-toast">Copied</span>
+    </div>
+    <div class="sub-help">
+      <strong>Google Calendar setup:</strong> click <em>Open Google "From URL"</em> above, paste the copied URL, click <code>Add calendar</code>. Google refreshes external feeds roughly every 12–24 hours.<br>
+      <strong>Apple Calendar:</strong> click the Add to Apple Calendar button — it opens the subscription dialog. Set refresh frequency to your preference.
+    </div>
+  </div>
+</div>
 
 <footer>
   <span>CYLNDR × Cannes Lions 2026 · Sylvain Tron's Schedule</span>
@@ -567,6 +603,31 @@ buildTabs();
 const today = new Date().toISOString().slice(0, 10);
 const match = DAYS.find(d => d.date === today);
 setActive(match ? match.key : 'd3');
+
+(function setupSubscribe() {
+  const icsPath = 'sylvain.ics';
+  const base = window.location.href.replace(/[^\/]*$/, '');
+  const httpsUrl = base + icsPath;
+  const webcalUrl = httpsUrl.replace(/^https?:\/\//, 'webcal://');
+  document.getElementById('sub-url-display').textContent = httpsUrl;
+  document.getElementById('apple-sub').href = webcalUrl;
+  document.getElementById('ics-download').href = httpsUrl;
+})();
+
+function copySubUrl() {
+  const url = document.getElementById('sub-url-display').textContent;
+  navigator.clipboard.writeText(url).then(() => {
+    const toast = document.getElementById('copy-toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1500);
+  }).catch(() => {
+    const range = document.createRange();
+    range.selectNodeContents(document.getElementById('sub-url-display'));
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  });
+}
 </script>
 </body>
 </html>
